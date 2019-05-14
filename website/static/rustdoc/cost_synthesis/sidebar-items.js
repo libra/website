@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["with_loaded_vm",""]],"mod":[["bytecode_specifications",""],["module_generator",""],["stack_generator","This file encodes the stack evolution logic that is used in `cost_determination` in order to evolve the stack from one iteration to the next."],["vm_runner",""]]});

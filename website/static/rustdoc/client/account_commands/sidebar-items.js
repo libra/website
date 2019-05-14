@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AccountCommand",""],["AccountCommandCreate",""],["AccountCommandListAccounts",""],["AccountCommandLoadKnown",""],["AccountCommandSaveAccounts",""]]});

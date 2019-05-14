@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["NOISE_IX_25519_CHACHAPOLY_SHA256_PROTOCOL_NAME",""],["NOISE_IX_PARAMETER",""]],"struct":[["NoiseConfig","The Noise protocol configuration to be used to perform a protocol upgrade on an underlying socket."],["NoiseSocket","A Noise session with a remote"]]});

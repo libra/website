@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["NativeReturnType",""]],"fn":[["dispatch_native_call",""]],"struct":[["CostedReturnType",""],["Error","The `Error` type, which can contain any failure."]],"trait":[["StackAccessor",""]],"type":[["Result",""]]});

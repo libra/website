@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SimpleDeserializer",""],["SimpleSerializer","An implementation of a simple canonical serialization format that implements the CanonicalSerializer trait using a byte vector."]],"trait":[["CanonicalDeserialize",""],["CanonicalDeserializer",""],["CanonicalSerialize",""],["CanonicalSerializer",""]]});

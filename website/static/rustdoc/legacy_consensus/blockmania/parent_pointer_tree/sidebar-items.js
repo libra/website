@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ParentPointerTree","An immutable parent pointer node. May be empty or contain a value; may have a pointer to a parent or not."],["ParentPointerTreeValsIter","An iterator over a `ParentPointerTree` stack's values. Note that the iterator produces values starting from this node and then walking up towards the root."]]});

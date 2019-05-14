@@ -11,7 +11,7 @@
 // site configuration options.
 
 // Define this so it can be easily modified in scripts (to host elsewhere)
-const baseUrl = '/';
+const baseUrl = '/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/';
 
 // List of projects/orgs using your project for the users page.
 const users = [];
@@ -37,7 +37,7 @@ const siteConfig = {
   // links that will be used in the header navigation bar
   headerLinks: [
     {doc: 'welcome-to-libra', label: 'Learn'},
-    {href: '${baseUrl}rustdoc/', label: 'Rustdoc'},
+    {href: `${baseUrl}rustdoc/`, label: 'Rustdoc'},
     {doc: 'move/overview', label: 'Move'},
     {blog: true, label: "Blog" },
     {href: 'https://github.com/libra/libra', label: 'GitHub'},

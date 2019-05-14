@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["dump_jemalloc_memory_profile","Tell jemalloc to dump the heap memory profile. This only works if the binary is started with environment variable"]]});

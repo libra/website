@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["render_from_accum_proof","Renders a graphviz accumulator proof.  This is used to show the path a proof follows and how it was derived"]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Account","Details about an account. Tests will create a set of Account they want to run transactions on. This instance should have all the info to operate and verify operations on the account."],["AccountData","Represents an account along with initial state about it."]]});

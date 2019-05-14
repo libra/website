@@ -8,6 +8,9 @@ html body {
   overflow-x: hidden;
 }
 
+body { padding: 0px !important; }
+nav { border: 0px !important; }
+
 .fixedHeaderContainer {
   background-color: #fff;
 }
@@ -201,6 +204,11 @@ a.docs-prev:hover {
 .wrapper {
   max-width: 1400px;
 }
+
+h2, h3:not(.impl):not(.method):not(.type):not(.tymethod), h4:not(.method):not(.type):not(.tymethod):not(.associatedconstant) {
+  border-bottom: 0px !important;
+}
+
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }

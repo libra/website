@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AdmissionControlNode","Struct to run Admission Control service in a dedicated process. It will be used to spin up extra AC instances to talk to the same validator."]]});

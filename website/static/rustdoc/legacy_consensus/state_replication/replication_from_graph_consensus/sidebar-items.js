@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Payload","What we send to consensus for ordering."],["StateReplicationProvider","The main object implementing state-machine replication on top of atomic broadcast."]]});

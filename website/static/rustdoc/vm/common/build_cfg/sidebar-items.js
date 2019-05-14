@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BasicBlock","A basic block"],["VMControlFlowGraph","The control flow graph that we build from the bytecode."]],"trait":[["ControlFlowGraph","A trait that specifies the basic requirements for a CFG"]],"type":[["BlockId",""]]});

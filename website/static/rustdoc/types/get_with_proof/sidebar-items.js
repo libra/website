@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["RequestItem",""],["ResponseItem",""],["TransactionStatus",""]],"struct":[["UpdateToLatestLedgerAndGetProofsRequest",""],["UpdateToLatestLedgerAndGetProofsResponse",""]]});

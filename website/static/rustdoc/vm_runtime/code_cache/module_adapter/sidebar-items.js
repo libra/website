@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FakeFetcher",""],["ModuleFetcherImpl",""],["NullFetcher",""]],"trait":[["ModuleFetcher",""]]});

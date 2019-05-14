@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DEFAULT_CF_NAME",""]],"enum":[["QuerySchema",""],["SchemaError",""]],"trait":[["Schema",""]],"type":[["ColumnFamilyName",""],["KVPair",""]]});

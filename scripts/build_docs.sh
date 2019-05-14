@@ -14,7 +14,7 @@ usage() {
   exit 1
 }
 
-BUILD_STATIC=true
+BUILD_STATIC=false
 
 while getopts 'hb' flag; do
   case "${flag}" in
@@ -33,6 +33,20 @@ done
 echo "-----------------------------------"
 echo "Generating API reference via Rustdoc"
 echo "-----------------------------------"
+cd ../libra/libra
+cargo doc --no-deps
+cd ../../libra.github.io
+
+RUSTDOC_DIR='../libra/libra/target/doc/'
+DOCUSAURUS_RUSTDOC_DIR='./website/static/rustdoc/'
+
+mkdir -p $DOCUSAURUS_RUSTDOC_DIR
+
+echo $RUSTDOC_DIR $DOCUSAURUS_RUSTDOC_DIR
+
+# move JS/CSS design assets
+echo "cp -r $RUSTDOC_DIR $DOCUSAURUS_RUSTDOC_DIR"
+
 # cd libra || exit
 # cargo doc
 # cd .. || exit
@@ -48,17 +62,8 @@ echo "--------------------------------------------"
 echo "Parsing Rustdoc and Protogen docs and moving to Docusaurus"
 echo "--------------------------------------------"
 cd ..
-mkdir -p "website/pages/api/"
+# mkdir -p "website/pages/api/"
 
-cwd=$(pwd)
-
-RUSTDOC_DIR='../libra/libra/target/doc'
-DOCUSAURUS_RUSTDOC_DIR='website/static/js/'
-
-mkdir -p $DOCUSAURUS_RUSTDOC_DIR
-
-# move JS/CSS design assets
-cp $RUSTDOC_DIR -r $DOCUSAURUS_RUSTDOC_DIR
 
 cd website || exit
 

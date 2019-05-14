@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FakeExecutor","Provides an environment to run a VM instance via execute_block(). It mocks an Executor"]]});

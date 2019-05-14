@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["OUTPUT_LENGTH",""],["PROOF_LENGTH",""]],"struct":[["Output",""],["Proof",""],["VRFExpandedPrivateKey","A longer private key which is slightly optimized for proof generation."],["VRFPrivateKey",""],["VRFPublicKey",""]]});

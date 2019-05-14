@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["ADDRESS_LENGTH",""]],"struct":[["AccountAddress","A struct that represents an account address. Currently Public Key is used."]]});

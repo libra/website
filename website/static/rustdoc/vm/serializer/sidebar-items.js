@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["serialize_module","Serialize a module into a Vec which can be used as a binary for that script"],["serialize_transaction_script","Serialize a transaction script into a Vec which can be used as a binary for that script"]],"trait":[["CommonTables",""]]});

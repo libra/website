@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["StorageCache","A wrapper for `GlobalStorageCache` that knows to convert to and from Move IR types."]]});

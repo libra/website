@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["NodeType",""],["NodeTypeTag",""]],"struct":[["BranchType",""],["ExtensionType",""],["LeafType","Leaf node doesn't have height field because it will always be 0."],["NullType",""]]});

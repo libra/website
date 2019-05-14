@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ModuleBuilder",""]],"trait":[["ModuleGenerator",""]]});

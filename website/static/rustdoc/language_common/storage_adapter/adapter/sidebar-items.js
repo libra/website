@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DeadGlobalStorageAdapter",""],["GlobalStorageAdapterImpl",""]],"trait":[["GlobalStorageAdapter",""]]});

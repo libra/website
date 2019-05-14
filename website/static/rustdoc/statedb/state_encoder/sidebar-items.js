@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["SchemaTag",""],["StateSchema",""],["StateValueType",""]],"fn":[["write_version","Encodes version using big endian format."]]});

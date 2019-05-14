@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["yamux","StreamMultiplexer implementation for Yamux"]],"trait":[["StreamMultiplexer","A StreamMultiplexer is responsible for multiplexing multiple [`AsyncRead`]/[`AsyncWrite`] streams over a single underlying [`AsyncRead`]/[`AsyncWrite`] stream."]]});

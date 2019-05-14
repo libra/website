@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["NetworkNotification",""],["NetworkRequest","Events `ValidatorNetwork` receives from the network interface, `PeerManager`, and the sub-protocols."]],"mod":[["network_builder",""]],"struct":[["ValidatorNetwork",""]]});
