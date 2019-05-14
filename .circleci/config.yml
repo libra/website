@@ -1,0 +1,101 @@
+version: 2.1
+
+commands:
+
+  conda_install:
+    description: "Install dependencies via cargo"
+    parameters:
+      args:
+        type: string
+        default: ""
+    steps:
+      - run:
+          name: "Install dependencies via cARGO"
+          command: cargo
+
+  unit_tests:
+    description: "Run unit tests"
+    steps:
+      - run:
+          name: "Run unit tests"
+          command: cargo test
+
+  rustdoc:
+    description: "Run Rustdoc"
+    steps:
+      - run:
+          name: "Run Rustdoc"
+          command: cargo doc
+
+#wget https://github.com/pseudomuto/protoc-gen-doc/releases/download/v1.1.0/protoc-gen-doc-1.1.0.linux-amd64.go1.10.tar.gz .
+#tar -xzf protoc-gen-doc-1.1.0.linux-amd64.go1.10.tar.gz
+#ln -s protoc-gen-doc-1.1.0.linux-amd64.go1.10/protoc-gen-doc protoc-gen-doc
+#cd $LIBRA_HOME/libra
+#PATH=/data/users/frumious/external:$PATH protoc --doc_out=./doc --doc_opt=html,index.html types/src/proto/*.proto -Itypes/src/proto
+
+  protogen:
+    description: "Run Protogen"
+    steps:
+      - run:
+          name: "Run Rustdoc"
+          command: cargo doc
+
+  configure_github_bot:
+    description: "Configure Docusaurus GitHub bot"
+    steps:
+      - run:
+          name: "Configure Docusaurus GitHub bot"
+          # Do not do this if we don't have the right org (pytorch), or if this is just a PR
+          command: |
+            if [[ $CIRCLE_PROJECT_USERNAME == "pytorch" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
+              git config --global user.email "docusaurus-bot@users.noreply.github.com"
+              git config --global user.name "Libra website deployment script"
+              echo "machine github.com login docusaurus-bot password $GITHUB_TOKEN" > ~/.netrc
+            fi
+
+  deploy_site:
+    description: "Deploy website to GitHub Pages"
+    steps:
+      - run:
+          name: "Deploy website to GitHub Pages"
+            # TODO: make the installation above conditional on there being relevant changes (no need to install if there are none)
+          command: |
+            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^docs\/.*)|(^website\/.*)|(^scripts\/.*)|(^sphinx\/.*)|(^tutorials\/.*)"; then
+              echo "Skipping deploy. No relevant website files have changed"
+            elif [[ $CIRCLE_PROJECT_USERNAME == "pytorch" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
+              mkdir -p website/static/.circleci && cp -a .circleci/. website/static/.circleci/.
+              ./scripts/build_docs.sh -b
+              cd website
+              GIT_USER=docusaurus-bot USE_SSH=false yarn run publish-gh-pages
+            else
+              echo "Skipping deploy."
+            fi
+
+
+jobs:
+
+aliases:
+
+  - &exclude_ghpages_fbconfig
+    branches:
+      ignore:
+        - gh-pages
+        - fb-config
+
+
+workflows:
+
+  lint_and_test:
+    jobs:
+      - lint_test_py36_pip:
+          filters: *exclude_ghpages_fbconfig
+      - lint_test_py37_conda_latest:
+          filters: *exclude_ghpages_fbconfig
+
+  auto_deploy_site:
+    jobs:
+      - auto_deploy_site:
+          filters:
+            branches:
+              only:
+                - master

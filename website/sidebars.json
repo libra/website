@@ -1,0 +1,10 @@
+{
+  "docs": {
+    "Learn": ["welcome-to-libra", "libra-spec", "move/overview"],
+    "Get Started": ["installation", "my-first-transaction", "life-of-a-transaction"],
+    "Guides": ["libra-cli", "libra-accounts", "libra-nodes"],
+    "Modules": ["modules/admission_control"],
+    "Technical Papers": ["technical-papers/libra-protocol", "technical-papers/state-machine-replication", "technical-papers/move-programming-language"],
+    "Reference": ["reference/glossary"]
+  }
+}

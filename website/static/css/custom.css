@@ -1,0 +1,218 @@
+/*
+ * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+ */
+
+
+html body {
+  font-family: 'Helvetica', sans-serif;
+  overflow-x: hidden;
+}
+
+.fixedHeaderContainer {
+  background-color: #fff;
+}
+
+.fixedHeaderContainer header .headerTitleWithLogo {
+  display: none;
+}
+
+.navigationSlider .slidingNav ul {
+    background: #fff;
+}
+
+.navigationSlider .slidingNav ul li a {
+  color: #39298C;
+  background-color: #fff;
+}
+
+.navigationSlider .slidingNav ul li a:hover,
+.navigationSlider .slidingNav ul li a:focus {
+  color: #39298C;
+  background-color: inherit;
+}
+
+.navigationSlider .slidingNav ul li.siteNavItemActive > a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive > a {
+  color: #39298C;
+  background-color: inherit;
+}
+
+.homeContainer {
+  background-color: #1E4855;
+  padding: 30px 0px;
+}
+
+.splashLogo {
+  display: block;
+  margin: 0 auto;
+  height: 100px;
+  width: 275px;
+}
+
+.projectTitle {
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.promoSection .button {
+  border: 1px solid #fff;
+  color: #ffffff;
+}
+
+.promoSection .button:hover {
+  background-color: inherit;
+  border: 1px solid #39298C;
+  color: #39298C;
+}
+
+.landingPage {
+  padding: 0px;
+}
+
+div.productShowcaseSection {
+  padding-top: 40px;
+  color: #6c6c6c;
+}
+
+.productShowcaseSection > h2 {
+  font-weight: 360;
+  margin: 0px;
+  padding: 0px;
+  color: #39298C;
+}
+
+.productShowcaseSection p {
+  font-weight: 360;
+}
+
+.productShowcaseSection div.container {
+  padding: 40px 0px;
+}
+
+.productShowcaseSection div.blockImage {
+  height: 80px;
+}
+
+.productShowcaseSection li {
+  padding: 10px 0;
+}
+
+.productShowcaseSection pre {
+  margin: 10px 0;
+}
+
+.productShowcaseSection code {
+  background: #fff;
+}
+
+.container .wrapper .alignCenter h2 {
+  color: #222222;
+}
+
+div#quickstart {
+  background: #efefef;
+}
+
+div#quickstart ol {
+  margin-bottom: 0px;
+}
+
+.nav-footer {
+  background-color: #222222;
+}
+
+.nav-footer .sitemap a {
+  color: #efefef;
+}
+
+.nav-footer .sitemap a:hover {
+  color: #39298C;
+}
+
+a,
+p a {
+  color: #39298C;
+}
+
+a:hover,
+p a:hover {
+  color: #39298C;
+}
+
+/* Style docs */
+.toc .toggleNav .navGroup .navGroupCategoryTitle {
+  color: #222222;
+}
+
+.toc .toggleNav ul li a {
+  color: #6c6c6c;
+}
+
+.toc .toggleNav ul li a:hover {
+  color: #39298C;
+}
+
+.toc .toggleNav .navGroup .navListItemActive a {
+  color: #39298C;
+}
+
+.mainContainer .wrapper .post .postHeaderTitle {
+  color: #222222;
+}
+
+.mainContainer .wrapper .post h1,
+.mainContainer .wrapper .post h2,
+.mainContainer .wrapper .post h3 {
+  color: #222222;
+}
+
+.mainContainer .wrapper .post {
+  color: #6c6c6c;
+}
+
+.mainContainer .wrapper .post strong {
+  color: #222222;
+}
+
+a.edit-page-link {
+  color: #39298C;
+  border: 1px solid #39298C;
+}
+
+a.edit-page-link:hover {
+  color: #39298C;
+  border: 1px solid #39298C;
+  background-color: inherit;
+}
+
+a.docs-next,
+a.docs-prev {
+  color: #39298C;
+  border: 1px solid #39298C;
+}
+
+a.docs-next:hover,
+a.docs-prev:hover {
+  color: #39298C;
+  border: 1px solid #39298C;
+  background-color: inherit;
+}
+
+.wrapper {
+  max-width: 1400px;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
