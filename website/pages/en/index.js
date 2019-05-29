@@ -69,7 +69,7 @@ class HomeSplash extends React.Component {
           <PromoSection>
             <Button href={docUrl('welcome-to-libra.html')}>Welcome to Libra</Button>
             <Button href={docUrl('life-of-a-transaction.html')}>Life of a transaction</Button>
-            <Button href={docUrl('move-overview.html')}>Move Overview</Button>
+            <Button href={docUrl('move/overview.html')}>Move Overview</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -101,7 +101,7 @@ class Index extends React.Component {
           {
             content:
               'This is another description of how this project is useful',
-            image: `${baseUrl}img/botorch_logo_lockup_white.svg`,
+            image: `${baseUrl}img/libra_logo_lockup_white.svg`,
             imageAlign: 'right',
             title: 'Description',
           },
@@ -134,11 +134,11 @@ class Index extends React.Component {
             </li>
             <li>
               <h4>Install dependencies:</h4>
-              <MarkdownBlock>{bash`crate`}</MarkdownBlock>
+              <MarkdownBlock>{bash`cargo`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run CLI:</h4>
-              <MarkdownBlock>{bash`crate cli`}</MarkdownBlock>
+              <MarkdownBlock>{bash`cargo cli`}</MarkdownBlock>
             </li>
           </ol>
         </Container>

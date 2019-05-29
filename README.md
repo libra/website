@@ -40,4 +40,4 @@ See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
 
 
 ## License
-BoTorch is MIT licensed, as found in the [LICENSE](LICENSE) file.
+Libra is Apache 2 licensed, as found in the [LICENSE](LICENSE) file.

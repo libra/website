@@ -10,7 +10,7 @@ commands:
         default: ""
     steps:
       - run:
-          name: "Install dependencies via cARGO"
+          name: "Install dependencies via cargo"
           command: cargo
 
   unit_tests:
@@ -45,9 +45,9 @@ commands:
     steps:
       - run:
           name: "Configure Docusaurus GitHub bot"
-          # Do not do this if we don't have the right org (pytorch), or if this is just a PR
+          # Do not do this if we don't have the right org (libra), or if this is just a PR
           command: |
-            if [[ $CIRCLE_PROJECT_USERNAME == "pytorch" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
+            if [[ $CIRCLE_PROJECT_USERNAME == "libra" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
               git config --global user.email "docusaurus-bot@users.noreply.github.com"
               git config --global user.name "Libra website deployment script"
               echo "machine github.com login docusaurus-bot password $GITHUB_TOKEN" > ~/.netrc
@@ -60,9 +60,9 @@ commands:
           name: "Deploy website to GitHub Pages"
             # TODO: make the installation above conditional on there being relevant changes (no need to install if there are none)
           command: |
-            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^docs\/.*)|(^website\/.*)|(^scripts\/.*)|(^sphinx\/.*)|(^tutorials\/.*)"; then
+            if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -E "(^docs\/.*)|(^website\/.*)|(^scripts\/.*)|(^rustdoc\/.*); then
               echo "Skipping deploy. No relevant website files have changed"
-            elif [[ $CIRCLE_PROJECT_USERNAME == "pytorch" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
+            elif [[ $CIRCLE_PROJECT_USERNAME == "libra" && -z $CI_PULL_REQUEST && -z $CIRCLE_PR_USERNAME ]]; then
               mkdir -p website/static/.circleci && cp -a .circleci/. website/static/.circleci/.
               ./scripts/build_docs.sh -b
               cd website

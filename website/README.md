@@ -10,7 +10,6 @@ You need [Node](https://nodejs.org/en/) >= 8.x and
 Switch to the `website` dir from the project root and start the server:
 ```bash
 cd website
-yarn
 yarn start
 ```
 
@@ -29,6 +28,18 @@ Rustdoc and Protogen). To generate these pages, you can run the following:
 To generate a static build of the website in the `website/build` directory, run
 ```bash
 ./scripts/build_docs.sh -b
+```
+
+#### Deploying for wider testing
+
+```bash
+zip libra.zip -r website/build
+scp -r website/build/ user@server:/path
+```
+
+on server:
+```bash
+unzip libra.zip
 ```
 
 ## Publishing

@@ -1,6 +1,6 @@
 ---
-id: libra-spec
-title: Libra Specification
+id: libra-protocol
+title: Libra Protocol
 ---
 
 ## Overview

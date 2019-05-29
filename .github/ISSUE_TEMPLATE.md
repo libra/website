@@ -8,7 +8,8 @@ Provide a short description.
 
 ## Code example
 
-Please try to provide a minimal example to repro the issue.
+Please try to provide a minimal example to reproduce the issue.
+
 Error messages and stack traces are also helpful.
 
 ## System Info
