@@ -1,8 +1,6 @@
-<center>
-	<a href="https://developers.libra.org">
-		<img width="350" src="./libra.png" alt="Libra Logo" />
-	</a>
-</center>
+<a href="https://developers.libra.org">
+	<img width="350" src="./libra.png" alt="Libra Logo" />
+</a>
 
 <hr/>
 
