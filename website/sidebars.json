@@ -29,6 +29,7 @@
 	    "crates/admission-control",
 		"crates/consensus",
 		"crates/crypto",
+		"crates/execution",
 		"crates/mempool",
 		"crates/move-language",
 		"crates/network",

@@ -36,9 +36,10 @@ const siteConfig = {
 
   // links that will be used in the header navigation bar
   headerLinks: [
-    {doc: 'welcome', label: 'Get Started'},
+    {href: 'https://libra.org', label: 'libra.org'},
+    {href: 'https://developers.libra.org', label: 'Home'},
+    {doc: 'welcome', label: 'Welcome'},
     {href: `${baseUrl}rustdoc/admission_control/`, label: 'Rustdoc'},
-    {doc: 'move/overview', label: 'Move'},
     {href: 'https://discourse.libra.org', label: 'Forum'},
     {blog: true, label: "Blog" },
     {href: 'https://github.com/libra/libra', label: 'GitHub'},
