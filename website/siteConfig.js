@@ -32,11 +32,11 @@ const siteConfig = {
   projectName: 'libra',
 
   // Page analytics
-  gaTrackingId: 'UA-XXXXX-2',
+  // gaTrackingId: 'UA-XXXXX-2',
 
   // links that will be used in the header navigation bar
   headerLinks: [
-    {doc: 'welcome-to-libra', label: 'Learn'},
+    {doc: 'welcome', label: 'Get Started'},
     {href: `${baseUrl}rustdoc/admission_control/`, label: 'Rustdoc'},
     {doc: 'move/overview', label: 'Move'},
     {href: 'https://discourse.libra.org', label: 'Forum'},

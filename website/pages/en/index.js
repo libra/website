@@ -67,7 +67,7 @@ class HomeSplash extends React.Component {
           <Logo img_src={baseUrl + 'img/libra-header-logo-white.png'} />
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('welcome-to-libra.html')}>Welcome to Libra</Button>
+            <Button href={docUrl('welcome')}>Introduction to Libra</Button>
             <Button href={docUrl('life-of-a-transaction.html')}>Life of a transaction</Button>
             <Button href={docUrl('move/overview.html')}>Move Overview</Button>
           </PromoSection>

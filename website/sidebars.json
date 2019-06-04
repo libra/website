@@ -1,10 +1,40 @@
 {
   "docs": {
-    "Learn": ["welcome-to-libra", "libra-protocol", "move/overview"],
-    "Get Started": ["installation", "my-first-transaction", "life-of-a-transaction"],
-    "Guides": ["libra-cli"],
-    "Modules": ["modules-overview", "modules/admission_control"],
-    "Technical Papers": ["technical-papers/libra-protocol", "technical-papers/state-machine-replication", "technical-papers/move-programming-language"],
+    "Overview": [
+    	"welcome",
+    	"libra-protocol",
+    	"move/overview"
+    ],
+    "Get Started": [
+    	"installation",
+    	"my-first-transaction",
+    	"life-of-a-transaction",
+    	"libra-core-overview"
+    ],
+    "Guides": [
+    	"libra-cli"
+    ],
+    "Technical Papers": [
+    	"papers/the-libra-blockchain",
+    	"papers/the-move-language",
+    	"papers/state-machine-replication",
+    	"papers/specifying-and-verifying-move-programs"
+    ],
+    "Community" : [
+    	"community/libra-open-source",
+    	"community/governance",
+    	"community/contributing"
+    ],
+    "Crates": [
+	    "crates/admission-control",
+		"crates/consensus",
+		"crates/crypto",
+		"crates/mempool",
+		"crates/move-language",
+		"crates/network",
+		"crates/storage",
+		"crates/vm"
+	],
     "Reference": ["reference/glossary"]
   }
 }

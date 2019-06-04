@@ -5,7 +5,7 @@ FontAwesome icons were used under the
 ## Building
 
 You need [Node](https://nodejs.org/en/) >= 8.x and
-[Yarn](https://yarnpkg.com/en/) >= 1.5 in order to build the botorch website.
+[Yarn](https://yarnpkg.com/en/) >= 1.5 in order to build the libra website.
 
 Switch to the `website` dir from the project root and start the server:
 ```bash
