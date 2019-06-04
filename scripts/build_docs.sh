@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) Libra Association. All Rights Reserved
+# Copyright (c) Calibra. All Rights Reserved
 
 # run this script from the project root using `./scripts/build_docs.sh`
 

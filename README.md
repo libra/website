@@ -8,15 +8,16 @@
 [![Crates.io]()]()
 [![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE.md)
 
-Libra tagline
+Libra is a simple, borderless global currency and financial ecosystem designed to empower billions of people.
 
-*Libra is currently in beta and under heavy development!*
+*Libra is currently under heavy development!*
 
 #### Why Libra
 
 
 
 #### Target Audience
+
 
 
 
@@ -40,4 +41,4 @@ See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
 
 
 ## License
-Libra is Apache 2 licensed, as found in the [LICENSE](LICENSE) file.
+Libra is licensed under the Apache 2 license as found in the [LICENSE](LICENSE) file.

@@ -7,7 +7,7 @@ Our goal is to make contributing to Libra easy and transparent.
 
 ### The Libra Spec
 
-The changes to the Libra specification go through LIPs (Libra Improvement Proposals). LIPs are managed on the Libra Github repo. To learn more about how LIPs work please see this review LIP-0, the first proposal.  
+The changes to the Libra specification shall go through a formal process that is still under development.
 
 ### The Core Libra Implementation
 

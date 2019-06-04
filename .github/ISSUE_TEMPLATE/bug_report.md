@@ -23,7 +23,7 @@ If you've uncovered a security issue, please follow our Security Issue Report pr
 
 ** Stack trace/error message **
 ```
-// Paste the bad output here!
+// Paste the output here
 ```
 
 ## Expected Behavior
