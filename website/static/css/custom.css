@@ -44,7 +44,7 @@ nav { border: 0px !important; }
 
 .navigationSlider .slidingNav ul li a {
   color: #39298C;
-  background-color: transparent;
+  background-color: #fff;
   transition: all 0.2s;
 }
 

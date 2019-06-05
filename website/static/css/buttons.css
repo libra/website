@@ -23,6 +23,7 @@
   color: #19CDA6;
 }
 
+.button[type="submit"],
 .docs-next,
 .docs-prev {
   background-color: #39298C;
@@ -30,6 +31,7 @@
   font-weight: bold;
 }
 
+.button[type="submit"]:hover,
 .docs-next:hover,
 .docs-prev:hover {
   background-color: #19CDA6;

@@ -76,9 +76,7 @@ const siteConfig = {
 
   // CSS sources to load
   stylesheets: [
-    `${baseUrl}css/code_block_buttons.css`,
-    `${baseUrl}css/forms.css`
-  ],
+    `${baseUrl}css/code_block_buttons.css`],
 
   // enable on-page navigation for the current documentation page
   onPageNav: 'separate',

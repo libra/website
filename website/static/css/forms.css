@@ -4,7 +4,7 @@
  * Main containers and layouts
  */
 .formPage {
-  background-color: #F5F6FA;
+  background-color: #F3F4FB;
   padding-top: 0;
   position: relative;
   z-index: 0;
@@ -23,14 +23,16 @@
  * Change this to be consistent.
  */
 .formPage h1 {
-  font-size: 70px;
+  font-size: 4rem;
+  line-height: 1.3em;
   font-weight: bold;
-  line-height: 70px;
+  margin-bottom: 0;
 }
 
 .formPage h2 {
-  font-size: 24px;
-  line-height: 36px;
+  color: #8E9AA3;
+  font-size: 1.5rem;
+  line-height: 1.5em;
   opacity: 0.75;
   font-weight: normal;
   margin-top: 0;
@@ -77,6 +79,7 @@
   width: 50%;
   margin-bottom: 1em;
   display: inline-block;
+  vertical-align: top;
   height: 72px;
 }
 
@@ -94,12 +97,13 @@
 }
 
 .formPage form legend {
-  font-weight: bold;
-  font-size: 2em;
+  /*font-weight: bold;*/
+  font-size: 1.5rem;
   margin-bottom: 0.75em;
 }
 
 .formPage form label {
+  color: #B3BCC3;
   font-weight: bold;
   width: 100%;
   font-size: 0.8em;
@@ -116,12 +120,13 @@
   width: 95%;
   padding: 0.75em;
   display: inline-block;
-  border: 1px solid #E1E4E8;
+  border: 1px solid #E1E4E7;
   border-radius: 4px;
   vertical-align: middle;
   box-sizing: border-box;
   line-height: normal;
   font-size: 1em;
+  transition: all 0.2s;
 }
 
 .formPage form input:focus,
@@ -129,6 +134,10 @@
   outline: none !important;
   border-color: #39298C;
   border: 1px solid #39298C;
+}
+
+.formPage form input:focus{
+  color: #19CDA6;
 }
 
 /* Customizing the select and adding a chevron for dropdown */
