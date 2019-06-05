@@ -14,11 +14,9 @@ const getOptions = (options, placeholderText) => {
       {placeholderText || 'Please choose an option'}
     </option>
   )];
-
   options.forEach(item => {
-    const value = item.replace(' ','');
     items.push(
-      <option key={value} value={value}>{item}</option>
+      <option key={item.value} value={item.value}>{item.text}</option>
     );
   });
   return items;
@@ -41,9 +39,11 @@ const SelectInput = (props) => {
     ...selectProps
   } = props;
 
+  const fieldLabel = selectProps.required ? `${label}*` : label;
+
   return (
     <div className="inputGroup selectWrapper">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>{fieldLabel}</label>
       <select id={id} {...selectProps}>
         {getOptions(options, placeholderText)}
       </select>

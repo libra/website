@@ -26,25 +26,43 @@ const formConfig = [{
     label: 'Organization name',
     type: 'select',
     required: true,
-    options: [
-      'Enterprise',
-      'NGO',
-      'Multilateral',
-      'Social impact partner',
-      'University'
-    ]
+    options: [{
+      value: 'Enterprise',
+      text: 'Enterprise'
+    }, {
+      value: 'NGO',
+      text: 'NGO'
+    }, {
+      value: 'Multilateral',
+      text: 'Multilateral'
+    }, {
+      value: 'Social impact partner',
+      text: 'Social impact partner'
+    }, {
+      value: 'University',
+      text: 'University'
+    }]
   }, {
     id: 'org-revenue',
     label: 'Organization name',
     type: 'select',
     required: true,
-    options: [
-      '<5M USD',
-      '5M - 25M USD',
-      '25M - 50M USD',
-      '50M - 100M USD',
-      '>100M USD'
-    ]
+    options: [{
+      value: 'greaterThan5M',
+      text: '<5M USD'
+    }, {
+      value: '5M-25M',
+      text: '5M - 25M USD'
+    }, {
+      value: '25M-50M',
+      text: '25M - 50M USD'
+    }, {
+      value: '50M-100M',
+      text: '50M - 100M USD'
+    }, {
+      value: 'lessThan100MUSD',
+      text: '>100M USD'
+    }]
   }, {
     id: 'org-hq',
     label: 'Organization HQ',

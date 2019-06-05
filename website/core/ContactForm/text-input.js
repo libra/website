@@ -11,9 +11,10 @@ const React = require('react');
  *
  */
 const TextInput = ({ label, id, ...inputProps }) => {
+  const fieldLabel = inputProps.required ? `${label}*` : label;
   return (
     <div className="inputGroup">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>{fieldLabel}</label>
       <input id={id} type="text" {...inputProps} />
     </div>
   );
