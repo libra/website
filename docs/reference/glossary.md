@@ -222,7 +222,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### LibraBFT
 
 * LibraBFT is the Libra protocol's BFT consensus algorithm
-* Libra BFT is based on HotStuff.
+* LibraBFT is based on HotStuff.
 
 ### Libra blockchain
 
@@ -398,32 +398,30 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ## T
 
 * * *
-**TESTNET**
+### TESTNET
 
 * **testnet** is a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. 
-* The Libra testnet is comprised of test [validator nodes](https://fb.quip.com/LkbMAEBIVNbh#ffYACAzmuKt) running [Libra Core](https://fb.quip.com/LkbMAEBIVNbh#ffYACAHaEVV), the software which maintains the Libra cryptocurrency. 
+* The Libra testnet is comprised of test [validator nodes](#validator-node) running [Libra Core](#libra-core), the software which maintains the Libra cryptocurrency. 
 * The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. 
-* testnet is the predecessor to the Libra [mainnet](https://fb.quip.com/LkbMAEBIVNbh#ffYACA9klbQ), but testnet has a digital currency _with no real world value_.
+* testnet is the predecessor to the Libra [mainnet](#mainnet), but testnet has a digital currency _with no real world value_.
 
-### Transaction**
+### Transaction
 
 * A raw **transaction** contains the following fields:
-    * [Sender (account address)](https://fb.quip.com/LkbMAEBIVNbh#ffYACAzjXJz)
-    * [Transaction script](https://fb.quip.com/LkbMAEBIVNbh#ffYACAiqKeu)
-    * [Gas price](https://fb.quip.com/LkbMAEBIVNbh#ffYACAAkqbQ)
-    * [Maximum gas amount](https://fb.quip.com/LkbMAEBIVNbh#ffYACASl7k9)
-    * [Sequence number](https://fb.quip.com/LkbMAEBIVNbh#ffYACA1E7ny)
-    * [Expiration time](https://fb.quip.com/LkbMAEBIVNbh#ffYACA0bGAw)
+    * [Sender (account address)](#account-address)
+    * [Transaction script](#transaction-script)
+    * [Gas price](#gas-price)
+    * [Maximum gas amount](#maximum-gas-amount)
+    * [Sequence number](#sequence-number)
+    * [Expiration time](#expiration-time)
 * A signed transaction is a raw transaction with the digital signature.
 * An executed transaction changes the state of the Libra Blockchain.
 
-### Transaction script**
+### Transaction script
 
-Note to me: Clarify between program and transaction script.
-
-* Each transaction submitted by a user includes a** transaction script**.
+* Each transaction submitted by a user includes a **transaction script**.
 * It represents the operation a client submits to a validator node.  
-* The operation could be a request to move coins from user A to user B, or it could involve interactions with published [Move modules](https://fb.quip.com/LkbMAEBIVNbh#ffYACAvmT6F)/smart contracts.
+* The operation could be a request to move coins from user A to user B, or it could involve interactions with published [Move modules](#move-modules)/smart contracts.
 * The transaction script is an arbitrary program that interacts with resources published in the global storage of the Libra blockchain by calling the procedures of a module. It encodes the logic for a transaction.
 * A single transaction script can send funds to multiple recipients and invoke procedures from several different modules.
 * A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
@@ -432,14 +430,14 @@ Note to me: Clarify between program and transaction script.
 
 * * *
 
-### **Validator Node****
+### Validator Node
 
 * *Alternate name*: Validators
 * A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. It receives requests from clients, and runs consensus, execution, and storage.
 * A validator maintains the history of all the transactions on the blockchain.
 * Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. 
 
-### Version**
+### Version
 
 * A **version** is also called “height” in blockchain literature. 
 * In the Libra Blockchain, we don't have an explicit notion of a block, we only use blocks for batching and executing transactions.  
@@ -449,15 +447,14 @@ Note to me: Clarify between program and transaction script.
 
 * * *
 
-### Well-formed Transaction
+### Well-Formed Transaction
 
-A Libra transaction is **well-formed **if each of the following conditions are true for the transaction:
-
+A Libra transaction is **well-formed** if each of the following conditions are true for the transaction:
 * The transaction has a valid signature.
 * An account exists at the sender address.
 * It includes a public key, and the hash of the public key matches the sender account's authentication key. 
 * The sequence number of the transaction matches the sender account's sequence number.
-* The sender account's balance is greater than the [maximum gas amount](https://fb.quip.com/LkbMAEBIVNbh#ffYACASl7k9).
+* The sender account's balance is greater than the [maximum gas amount](#maximum-gas-amount).
 * The expiration time of the transaction has not passed.
 
 
