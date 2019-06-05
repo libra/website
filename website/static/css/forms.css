@@ -25,7 +25,7 @@
 .formPage h1 {
   font-size: 4rem;
   line-height: 1.3em;
-  font-weight: bold;
+  font-weight: 400;
   margin-bottom: 0;
 }
 
@@ -33,7 +33,6 @@
   color: #8E9AA3;
   font-size: 1.5rem;
   line-height: 1.5em;
-  opacity: 0.75;
   font-weight: normal;
   margin-top: 0;
   margin-bottom: 2em;
@@ -103,7 +102,7 @@
 }
 
 .formPage form label {
-  color: #B3BCC3;
+  color: #8E9AA3;
   font-weight: bold;
   width: 100%;
   font-size: 0.8em;

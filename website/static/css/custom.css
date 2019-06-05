@@ -91,14 +91,15 @@ div.productShowcaseSection {
 }
 
 .productShowcaseSection > h2 {
+  color: #000;
   font-weight: 360;
   margin: 0px;
   padding: 0px;
-  color: #39298C;
 }
 
 .productShowcaseSection h4 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  color: #8E9AA3 !important;
 }
 
 .productShowcaseSection p {
