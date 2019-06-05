@@ -27,7 +27,11 @@ html body {
 }
 
 body { padding: 0px !important; }
-nav { border: 0px !important; }
+nav { 
+  border: 0px !important; 
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
 
 .fixedHeaderContainer {
   background-color: #fff;
@@ -152,17 +156,18 @@ div#quickstart ol {
 }
 
 .nav-footer .sitemap a:hover {
-  color: #92b5d8;
+  color: #19CDA6;
 }
 
 a,
 p a {
   color: #39298C;
+  transition: all 0.2s;
 }
 
 a:hover,
 p a:hover {
-  color: #92b5d8;
+  color: #19CDA6;
 }
 
 /* Style docs */
@@ -182,8 +187,17 @@ p a:hover {
   color: #39298C;
 }
 
+.docsNavContainer .toc .navBreadcrumb {
+  background-color: #E1E4E7;
+}
+
+.mainContainer {
+  padding-top: 5rem;
+}
+
 .mainContainer .wrapper .post .postHeaderTitle {
   color: #222222;
+  font-size: 1.8rem;
 }
 
 .mainContainer .wrapper .post h1,

@@ -45,5 +45,6 @@
 
 /*Search bar overrides */
 input#search_input_react {
-  background-color: #39298C;
+  background-color: #39298C !important;
+  padding: 0.5em;
 }
