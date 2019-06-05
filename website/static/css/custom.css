@@ -92,6 +92,7 @@ div.productShowcaseSection {
 
 .productShowcaseSection > h2 {
   color: #000;
+  font-size: 2rem;
   font-weight: 360;
   margin: 0px;
   padding: 0px;
@@ -99,7 +100,7 @@ div.productShowcaseSection {
 
 .productShowcaseSection h4 {
   font-size: 1.5rem;
-  color: #8E9AA3 !important;
+  color: #39298C !important;
 }
 
 .productShowcaseSection p {
@@ -120,13 +121,13 @@ div.productShowcaseSection {
 
 .productShowcaseSection pre {
   margin: 10px 0;
-  background: #fff;
+  background: #F3F4FB;
   border: 1px solid #E1E4E7;
   border-radius: 5px;
 }
 
 .productShowcaseSection code {
-  background: #fff;
+  background: #F3F4FB;
   padding: 1em;
 }
 
@@ -135,7 +136,7 @@ div.productShowcaseSection {
 }
 
 div#quickstart {
-  background: #F3F4FB;
+  background: #fff;
 }
 
 div#quickstart ol {

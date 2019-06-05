@@ -30,7 +30,7 @@
 }
 
 .formPage h2 {
-  color: #8E9AA3;
+  color: #000;
   font-size: 1.5rem;
   line-height: 1.5em;
   font-weight: normal;
@@ -102,7 +102,7 @@
 }
 
 .formPage form label {
-  color: #8E9AA3;
+  color: #39298C;
   font-weight: bold;
   width: 100%;
   font-size: 0.8em;
