@@ -1,39 +1,90 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @format
+ * Form for the Newletter signup.
  */
-
 const React = require('react');
+const FormContainer = require(`${process.cwd()}/core/ContactForm/form-container.js`);
+const FieldSet = require(`${process.cwd()}/core/ContactForm/fieldset.js`);
+const FormHeader = require(`${process.cwd()}/core/ContactForm/form-header.js`);
+const countryCodes = require(`${process.cwd()}/core/ContactForm/country-codes.js`);
 
-const CompLibrary = require('../../core/CompLibrary.js');
+const formConfig = [{
+  items: [{
+    id: 'email',
+    label: 'Email',
+    type: 'email',
+    required: true
+  }, {
+    id: 'interest',
+    label: 'Interest',
+    type: 'select',
+    required: false,
+    options: [{
+      value: 'Protocol',
+      text: 'Protocol'
+    }, {
+      value: 'Application development',
+      text: 'Application development'
+    }, {
+      value: 'Both?',
+      text: 'Both?'
+    }]
+  }, {
+    id: 'background',
+    label: 'Background',
+    type: 'select',
+    required: false,
+    options: [{
+      value: 'BlockchainDeveloper',
+      text: 'Blockchain Developer'
+    }, {
+      value: 'Researcher',
+      text: 'Researcher',
+    }, {
+      value: 'InstitutionalDeveloper',
+      text: 'Institutional Developer'
+    }, {
+      value: 'dAppsDeveloper',
+      text: 'dApps Developer'
+    }, {
+      value: 'Other',
+      text: 'Other'
+    }]
+  }, {
+    id: 'country',
+    label: 'Country',
+    type: 'select',
+    required: false,
+    options: countryCodes.map(country => {
+      return {
+        value: country.abbreviation,
+        text: country.country
+      };
+    })
+  }]
+}];
 
-const Container = CompLibrary.Container;
+const getFields = () => {
+  return formConfig.map((config, idx) => {
+    return <FieldSet key={`form-fieldset-${idx}`} {...config} />;
+  });
+};
 
-function Help(props) {
-  const {config: siteConfig, language = ''} = props;
-  const {baseUrl, docsUrl} = siteConfig;
-  const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-  const langPart = `${language ? `${language}/` : ''}`;
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
 
+function NewsletterForm(props) {
   return (
-    <div className="docMainWrapper wrapper">
-      <Container className="mainContainer documentContainer postContainer">
-        <div className="post">
-          <header className="postHeader">
-            <h1>Sign up for our newsletter</h1>
-          </header>
-          <form>
-            <input type="text" name="email" />
-          </form>
+    <FormContainer {...props}>
+      <FormHeader
+        title="Newsletter Sign-up"
+        subtitle="Please complete the form below and hit submit."
+      />
+      <form id="newsletterForm">
+        {getFields()}
+        <div className="formControlGroup">
+          <button className="button right" type="submit">Submit</button>
         </div>
-      </Container>
-    </div>
+      </form>
+    </FormContainer>
   );
 }
 
-module.exports = Help;
+module.exports = NewsletterForm;

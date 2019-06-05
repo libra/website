@@ -2,17 +2,40 @@
  * Copyright (c) Libra Association. All Rights Reserved.
  */
 
+/* CSS Custom Properties available for reference, 
+but not using for now due to no IE support */
+:root {
+  --primaryText: #000000;
+  --secondaryText: #8E9AA3;
+  --tertiaryText: #B3BCC3;
+  --dividerLines: #E1E4E7;
+  --fieldBg: #F5F6FA;
+  --homeBg: #F3F4FB;
+  --darkPurple: #39298C;
+  --medPurple: #5645F5;
+  --lightPurple: #E7E5FD;
+  --darkTeal: #1E4855;
+  --teal: #19CDA6;
+  --lightBlue: #92b5d8;
+  --primaryTheme: var(--darkPurple);
+}
 
 html body {
   font-family: 'Helvetica', sans-serif;
   overflow-x: hidden;
+  font-size: 16px;
 }
 
 body { padding: 0px !important; }
-nav { border: 0px !important; }
+nav { 
+  border: 0px !important; 
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
 
 .fixedHeaderContainer {
   background-color: #fff;
+  padding: 1rem;
 }
 
 .fixedHeaderContainer header .headerTitleWithLogo {
@@ -20,29 +43,34 @@ nav { border: 0px !important; }
 }
 
 .navigationSlider .slidingNav ul {
-    background: #fff;
+  background: #fff;
 }
 
 .navigationSlider .slidingNav ul li a {
   color: #39298C;
   background-color: #fff;
+  transition: all 0.2s;
 }
 
 .navigationSlider .slidingNav ul li a:hover,
 .navigationSlider .slidingNav ul li a:focus {
   color: #39298C;
   background-color: inherit;
+  text-decoration: underline;
 }
 
 .navigationSlider .slidingNav ul li.siteNavItemActive > a,
 .navigationSlider .slidingNav ul li.siteNavGroupActive > a {
   color: #39298C;
   background-color: inherit;
+  text-decoration: underline;
 }
 
 .homeContainer {
   background-color: #1E4855;
-  padding: 30px 0px;
+  background-image: url('../img/hero.jpg');
+  background-size: cover;
+  padding: 4rem 0;
 }
 
 .splashLogo {
@@ -57,15 +85,8 @@ nav { border: 0px !important; }
   font-weight: 300;
 }
 
-.promoSection .button {
-  border: 1px solid #fff;
-  color: #ffffff;
-}
-
-.promoSection .button:hover {
-  background-color: inherit;
-  border: 1px solid #39298C;
-  color: #39298C;
+.homeContainer .projectTitle > small {
+  line-height: 1.3em;
 }
 
 .landingPage {
@@ -73,15 +94,20 @@ nav { border: 0px !important; }
 }
 
 div.productShowcaseSection {
-  padding-top: 40px;
   color: #6c6c6c;
 }
 
 .productShowcaseSection > h2 {
+  color: #000;
+  font-size: 2rem;
   font-weight: 360;
   margin: 0px;
   padding: 0px;
-  color: #39298C;
+}
+
+.productShowcaseSection h4 {
+  font-size: 1.5rem;
+  color: #39298C !important;
 }
 
 .productShowcaseSection p {
@@ -102,10 +128,14 @@ div.productShowcaseSection {
 
 .productShowcaseSection pre {
   margin: 10px 0;
+  background: #F3F4FB;
+  border: 1px solid #E1E4E7;
+  border-radius: 5px;
 }
 
 .productShowcaseSection code {
-  background: #fff;
+  background: #F3F4FB;
+  padding: 1em;
 }
 
 .container .wrapper .alignCenter h2 {
@@ -113,7 +143,7 @@ div.productShowcaseSection {
 }
 
 div#quickstart {
-  background: #efefef;
+  background: #fff;
 }
 
 div#quickstart ol {
@@ -129,17 +159,18 @@ div#quickstart ol {
 }
 
 .nav-footer .sitemap a:hover {
-  color: #39298C;
+  color: #19CDA6;
 }
 
 a,
 p a {
   color: #39298C;
+  transition: all 0.2s;
 }
 
 a:hover,
 p a:hover {
-  color: #39298C;
+  color: #19CDA6;
 }
 
 /* Style docs */
@@ -159,8 +190,17 @@ p a:hover {
   color: #39298C;
 }
 
+.docsNavContainer .toc .navBreadcrumb {
+  background-color: #E1E4E7;
+}
+
+.mainContainer {
+  padding-top: 5rem;
+}
+
 .mainContainer .wrapper .post .postHeaderTitle {
   color: #222222;
+  font-size: 1.8rem;
 }
 
 .mainContainer .wrapper .post h1,
@@ -177,30 +217,6 @@ p a:hover {
   color: #222222;
 }
 
-a.edit-page-link {
-  color: #39298C;
-  border: 1px solid #39298C;
-}
-
-a.edit-page-link:hover {
-  color: #39298C;
-  border: 1px solid #39298C;
-  background-color: inherit;
-}
-
-a.docs-next,
-a.docs-prev {
-  color: #39298C;
-  border: 1px solid #39298C;
-}
-
-a.docs-next:hover,
-a.docs-prev:hover {
-  color: #39298C;
-  border: 1px solid #39298C;
-  background-color: inherit;
-}
-
 .wrapper {
   max-width: 1400px;
 }
@@ -214,6 +230,10 @@ h2, h3:not(.impl):not(.method):not(.type):not(.tymethod), h4:not(.method):not(.t
 }
 
 @media only screen and (min-width: 1024px) {
+  .navigationSlider .slidingNav ul li a {
+    padding: 0.5em 1em;
+    font-weight: normal;
+  }
 }
 
 @media only screen and (max-width: 1023px) {
