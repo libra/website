@@ -51,8 +51,8 @@ const siteConfig = {
 
   // search integration w/ algolia
   algolia: {
-    apiKey: 'xxx',
-    indexName: 'l',
+    apiKey: '7c82db8b8ceae28c1601f34346452f65',
+    indexName: 'libra',
   },
 
   // colors for website
