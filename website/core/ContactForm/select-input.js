@@ -8,9 +8,9 @@ const React = require('react');
  * @param  {Array<string>} options
  * @param  {string} placeholderText Override the default text
  */
-const getOptions = (options, placeholderText) => {
+const getOptions = (options, placeholderText, fieldLabel) => {
   const items = [(
-    <option value="" disabled selected>
+    <option key={`${fieldLabel}-placeholder`} value="" disabled selected>
       {placeholderText || 'Please choose an option'}
     </option>
   )];
@@ -45,7 +45,7 @@ const SelectInput = (props) => {
     <div className="inputGroup selectWrapper">
       <label htmlFor={id}>{fieldLabel}</label>
       <select id={id} {...selectProps}>
-        {getOptions(options, placeholderText)}
+        {getOptions(options, placeholderText, fieldLabel)}
       </select>
     </div>
   );

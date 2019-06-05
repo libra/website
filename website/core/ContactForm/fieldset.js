@@ -15,7 +15,7 @@ const getLegend = (title) => {
  */
 const getInputs = (items) => {
   return items.map(item => {
-    // FIXME (joshua): Maybe include the class in the config. The goal is to
+    // FIXME: Maybe include the class in the config. The goal is to
     // remove the need to parse a string.
     const Input = item.type === 'select' ? SelectInput : TextInput;
     return <Input key={`input-${item.id}`} {...item} />;

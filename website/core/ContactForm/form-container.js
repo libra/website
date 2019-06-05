@@ -2,7 +2,7 @@
  * A container for the partner and newsletter form. It adds the background
  * images for the pages.
  *
- * TODO (joshua): Figure out how to import the CompLibrary from here
+ * TODO: Figure out how to import the CompLibrary from here
  */
 const React = require('react');
 
