@@ -212,6 +212,9 @@ h2, h3:not(.impl):not(.method):not(.type):not(.tymethod), h4:not(.method):not(.t
 }
 
 @media only screen and (min-width: 1024px) {
+  .navigationSlider .slidingNav ul li a {
+    padding: 0.5em 1em;
+  }
 }
 
 @media only screen and (max-width: 1023px) {

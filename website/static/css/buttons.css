@@ -41,3 +41,9 @@
 #back-to-top {
   background: #39298C;
 }
+
+
+/*Search bar overrides */
+input#search_input_react {
+  background-color: #39298C;
+}

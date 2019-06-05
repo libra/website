@@ -153,7 +153,8 @@
   width: 0.35em;
   position: relative;
   vertical-align: top;
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
   left: 90%;
   top: -2em;
 }
