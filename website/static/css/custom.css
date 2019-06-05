@@ -85,12 +85,15 @@ nav {
   font-weight: 300;
 }
 
+.homeContainer .projectTitle > small {
+  line-height: 1.3em;
+}
+
 .landingPage {
   padding: 0px;
 }
 
 div.productShowcaseSection {
-  padding-top: 4rem;
   color: #6c6c6c;
 }
 
@@ -229,6 +232,7 @@ h2, h3:not(.impl):not(.method):not(.type):not(.tymethod), h4:not(.method):not(.t
 @media only screen and (min-width: 1024px) {
   .navigationSlider .slidingNav ul li a {
     padding: 0.5em 1em;
+    font-weight: normal;
   }
 }
 
