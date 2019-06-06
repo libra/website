@@ -18,12 +18,12 @@ const formConfig = [{
     required: true
   }, {
     id: 'org-website',
-    label: 'Organization name',
+    label: 'Organization website',
     type: 'url',
     required: true
   }, {
     id: 'org-type',
-    label: 'Organization name',
+    label: 'Organization type',
     type: 'select',
     required: true,
     options: [{
@@ -44,7 +44,7 @@ const formConfig = [{
     }]
   }, {
     id: 'org-revenue',
-    label: 'Organization name',
+    label: 'Organization revenue',
     type: 'select',
     required: true,
     options: [{
