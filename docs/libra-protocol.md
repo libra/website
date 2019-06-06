@@ -13,7 +13,7 @@ Libra *testnet* is a demonstration of an early prototype of the Libra Blockchain
 
 At the heart of the Libra protocol are two fundamental concepts - **transactions** and **states**. At any point in time, the blockchain has a "state". The state represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
-![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.png)
+![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small>Figure 1.1 A transaction changes state.</small>
 
 Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state Sn-1, Alice has a balance of 110 and Bob has a balance of 52. When a transaction is applied to the blockchain, it generates a new state. To transition from Sn-1 to Sn, transaction Tn is applied against the state Sn-1. This causes Alice's balance to be reduced by 10 and Bob's balance to be increased by 10. The new state Sn now shows these updated balances. In figure 1.1:
@@ -83,7 +83,7 @@ In a blockchain the client does not need trust the entity from which it is recei
 ### Validator
 
 Clients of the Libra Blockchain create transactions, and submit them to a Validator. A Validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the distributed database of the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
-![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.png)
+![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
 <small>Figure 1.1 Logical components of a validator.</small>
 
  A validator contains the following logical components:
