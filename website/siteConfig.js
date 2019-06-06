@@ -36,12 +36,11 @@ const siteConfig = {
 
   // links that will be used in the header navigation bar
   headerLinks: [
-    {href: 'https://libra.org', label: 'libra.org'},
-    {href: 'https://developers.libra.org', label: 'Home'},
-    {doc: 'welcome', label: 'Welcome'},
+    {doc: 'welcome', label: 'Documentation'},
     {href: `${baseUrl}rustdoc/admission_control/`, label: 'Rustdoc'},
-    {href: 'https://libra.trydiscourse.com', label: 'Forum'},
+    {href: 'https://libra.trydiscourse.com', label: 'Community'},
     {blog: true, label: "Blog" },
+    {href: 'https://libra.org', label: 'libra.org'},
     {href: 'https://github.com/libra/libra', label: 'GitHub'},
     {search: true}, // position search box to the very right
   ],
