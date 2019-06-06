@@ -2,12 +2,12 @@
  * Form for the Newletter signup.
  */
 const React = require('react');
+
 const FormContainer = require(`${process.cwd()}/core/ContactForm/form-container.js`);
-const FieldSet = require(`${process.cwd()}/core/ContactForm/fieldset.js`);
-const FormHeader = require(`${process.cwd()}/core/ContactForm/form-header.js`);
 const countryCodes = require(`${process.cwd()}/core/ContactForm/country-codes.js`);
 
-const formConfig = [{
+
+const formFields = [{
   items: [{
     id: 'email',
     label: 'Email',
@@ -63,27 +63,16 @@ const formConfig = [{
   }]
 }];
 
-const getFields = () => {
-  return formConfig.map((config, idx) => {
-    return <FieldSet key={`form-fieldset-${idx}`} {...config} />;
-  });
-};
-
 
 function NewsletterForm(props) {
   return (
-    <FormContainer {...props}>
-      <FormHeader
-        title="Newsletter Sign-up"
-        subtitle="Please complete the form below and hit submit."
-      />
-      <form id="newsletterForm">
-        {getFields()}
-        <div className="formControlGroup">
-          <button className="button right" type="submit">Submit</button>
-        </div>
-      </form>
-    </FormContainer>
+    <FormContainer
+      {...props}
+      fields={formFields}
+      formId="newsletterForm"
+      title="Newsletter Sign-up"
+      subtitle="Please complete the form below and hit submit."
+    />
   );
 }
 
