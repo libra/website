@@ -100,7 +100,7 @@ function PartnerInterestForm(props) {
       {...props}
       formId="partnerForm"
       fields={formFields}
-      title="Sign-up Form"
+      title="Partner Interest"
       subtitle="Please complete the form below and hit submit."
     />
   );
