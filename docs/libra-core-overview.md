@@ -12,7 +12,7 @@ As mentioned in the [Introduction to Libra](welcome) the *Libra Core* is an earl
 * [Cypto](crates/crypto)
 * [Execution](crates/execution)
 * [Mempool](crates/mempool)
-* [Move](crates/move)
+* [Move](crates/move-language)
 * [Network](crates/network)
 * [Storage](crates/storage)
 * [VM](crates/vm)

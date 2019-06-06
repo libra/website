@@ -386,16 +386,16 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 
 ## Reference
 
-* For a detailed description of the protocol and the design decisions, refer to the Libra Blockchain technical paper LINK: [The Libra Blockchain]. 
-* For an introduction to the Libra ecosystem refer to [🔒 Libra Guides - Introduction to Libra](https://fb.quip.com/BalbATbLkHye). 
-* For key concepts of the Libra protocol refer to [🔒 Libra Guides - Libra Protocol (wip)](https://fb.quip.com/W5zBAb9wLpIU).
-* To execute a transaction on the Libra testnet refer to  [Libra Guides - My First Transaction (wip)](https://fb.quip.com/sIrOAbc770Kq) (TBD).
-* To learn about the logical components of Libra Core implementation, refer to LINK: [Libra Core Overview]
-* The [CLI guide](https://fb.quip.com/7UiFAHF5mNlb) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
+* For a detailed description of the protocol and the design decisions, refer to the [The Libra Blockchain technical paper](papers/the-libra-blockchain). 
+* For an introduction to the Libra ecosystem refer to [Introduction to Libra](welcome). 
+* For key concepts of the Libra protocol refer to [Libra Protocol](libra-protocol).
+* To execute a transaction on the Libra testnet refer to [My First Transaction](my-first-transaction).
+* To learn about the logical components of [Libra Core implementation](libra-core-overview).
+* The [CLI guide](libra-cli) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
 * Move is a new blockchain programming language, you may refer to the following documents for more information on Move:
-    *  [Libra Guides - Move - Getting Started (wip)](https://fb.quip.com/RasdAtnP6ROr) - for an introduction to Move. 
-    * LINK: [Move: a language with safe programmable assets] - the technical paper, for a detailed technical understanding of Move.
-* [Libra Glossary](https://fb.quip.com/LkbMAEBIVNbh) is a quick reference for Libra terminology.
+    *  [Move Overview](move-overview) - for an introduction to Move. 
+    * [Move: a Language for Managing Access to Scarce Resources](papers/the-move-language) - the technical paper, for a detailed technical understanding of Move.the-move-language
+* [Libra Glossary](reference/glossary) is a quick reference for Libra terminology.
 
 
 

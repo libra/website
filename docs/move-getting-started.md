@@ -1,6 +1,6 @@
 ---
-id: move-overview
-title: Move Overview
+id: move-getting-started
+title: Move Getting Started
 ---
 
 ## Overview
@@ -55,7 +55,7 @@ We will proceed by presenting snippets of heavily-commented Move IR. We encourag
 
 As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount.T` and `LibraCoin.T` resource types. `LibraAccount` is the name of the module, and `T` is the name of a resource declared by that module. This is a common naming convention in Move; the “main” type declared by a module is typically named `T`. 
 
-When we says that a user “has an account at address `0xff`” on the Libra blockchain, what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
+When we say that a user “has an account at address `0xff` on the Libra blockchain, what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
 
 The account balance is a resource of type `LibraCoin.T`. As you might have expected, this is the type of a Libra coin. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this type is a first-class citizen in the Move language. Resources of type `LibraCoin.T` can be stored in program variables, passed between procedures, and so on, just like any other value.
 

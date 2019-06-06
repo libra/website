@@ -102,7 +102,7 @@ A **client** is a piece of software that has the capability to interact with the
 
 * * *
 
-### Digital currency**
+### Digital currency
 
 * *Alternate name:* Cryptocurrency
 * The type of money Libra is.
@@ -386,12 +386,12 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * See [Move Module](#move-module)
 
-### State**
+### State
 
 * A **state** in the Libra protocol is a snapshot of the distributed database. 
 * A transaction modifies the database and produces a new and updated state.
 
-### State Root Hash**
+### State Root Hash
 
 * **State Root Hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Libra Blockchain at a given version.
 
