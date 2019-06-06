@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["create_admission_control",""]],"struct":[["AdmissionControlClient",""]],"trait":[["AdmissionControl",""]]});

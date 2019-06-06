@@ -4,15 +4,15 @@ title: Libra Core Overview
 ---
 
 
-As mentioned in the [Welcome to Libra]() the *Libra Core* is an early prototype of the Libra Blockchain software. Libra Core is comprised of the following components:
+As mentioned in the [Introduction to Libra](welcome) the *Libra Core* is an early prototype of the Libra Blockchain software. Libra Core is comprised of the following components:
 
 
-* [Admission Control](crates/admission-control.md)
-* [Consensus](crates/consensus.md)
-* [Cypto](crates/crypto.md)
-* [Execution](crates/execution.md)
-* [Mempool](crates/mempool.md)
-* [Move](crates/move.md)
-* [Network](crates/network.md)
-* [Storage](crates/storage.md)
-* [VM](crates/vm.md)
+* [Admission Control](crates/admission-control)
+* [Consensus](crates/consensus)
+* [Cypto](crates/crypto)
+* [Execution](crates/execution)
+* [Mempool](crates/mempool)
+* [Move](crates/move)
+* [Network](crates/network)
+* [Storage](crates/storage)
+* [VM](crates/vm)

@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["LocalNetwork","A network provider where everything is produced and received locally."]]});

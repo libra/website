@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["CommitBlockResponse",""]],"mod":[["proto",""]],"struct":[["CommitBlockRequest",""],["ExecuteBlockRequest",""],["ExecuteBlockResponse",""],["ExecuteChunkRequest",""],["ExecuteChunkResponse",""]]});

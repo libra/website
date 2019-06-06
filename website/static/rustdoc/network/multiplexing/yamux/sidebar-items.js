@@ -1,1 +1,0 @@
-initSidebarItems({"constant":[["YAMUX_PROTOCOL_NAME",""]],"enum":[["Mode",""]],"struct":[["Close",""],["Listener",""],["Yamux",""]],"type":[["StreamHandle",""]]});

@@ -37,6 +37,8 @@ cd ../libra/libra
 cargo doc --no-deps
 cd ../../libra.github.io
 
+# manually copy crate README files from fixed directory
+
 RUSTDOC_DIR='../libra/libra/target/doc/'
 DOCUSAURUS_RUSTDOC_DIR='./website/static/rustdoc/'
 

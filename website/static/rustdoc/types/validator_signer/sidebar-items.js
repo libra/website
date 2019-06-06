@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["arb_keypair",""],["arb_signer",""],["mostly_in_keypair_pool",""],["rand_signer",""],["signer_strategy",""]],"struct":[["ValidatorSigner","ValidatorSigner associates an author with public and private keys with helpers for signing and validating."]]});

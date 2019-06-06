@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["static_verify_program","Run static checks on a program directly. Provided as an alternative API for tests."],["verify_transaction",""]],"struct":[["ALLOWED_SCRIPT_HASHES",""]]});

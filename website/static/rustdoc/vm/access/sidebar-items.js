@@ -1,1 +1,0 @@
-initSidebarItems({"trait":[["ModuleAccess","Represents accessors for a compiled module."]]});

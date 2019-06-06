@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["create_access_path",""],["from_module",""],["from_module_handle",""],["make_access_path",""]],"struct":[["FieldIdentifier",""],["FunctionIdentifier",""],["StructIdentifier",""]]});

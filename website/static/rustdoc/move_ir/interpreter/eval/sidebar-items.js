@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["CallStack",""],["FrameId",""],["Interpreter",""]]});

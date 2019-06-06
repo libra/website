@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["IncomingEvent",""],["Record","The messages seen by the networking (aka. shared storage) layer."]],"struct":[["GraphConsensusProvider","Implementation of a consensus provider based on an event graph."]]});

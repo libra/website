@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["CompiledModuleStrategyGen","Contains configuration to generate `CompiledModule` instances."]],"type":[["TableSize","CompiledModule limits its internal sizes to u16."]]});

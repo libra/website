@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["ContractEvent","Entry produced via a call to the `emit_event` builtin."]]});

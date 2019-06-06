@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["LocalEventProcessor","An event processor where everything is produced and committed locally."]]});

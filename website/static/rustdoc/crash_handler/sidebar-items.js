@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["setup_panic_handler",""]],"struct":[["CrashInfo",""]]});

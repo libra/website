@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["sign_genesis_transaction",""]],"struct":[["GENESIS_KEYPAIR",""],["GenesisAccount","Represents an account in the genesis transaction."],["GenesisResources",""]]});

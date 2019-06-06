@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["deserialize_module","Serialize a &[u8] slice into a module (CompiledModule)"],["deserialize_transaction_script","Deserialize a &[u8] slice into a transaction script (CompiledScript)"]]});

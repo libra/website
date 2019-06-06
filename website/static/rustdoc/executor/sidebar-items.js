@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["mock_vm",""]],"struct":[["Executor","`Executor` implements all functionalities the execution module needs to provide."]]});

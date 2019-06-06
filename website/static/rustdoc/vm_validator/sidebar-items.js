@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["mocks",""],["vm_validator",""]]});

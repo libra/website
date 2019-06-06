@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["client_stub_gen","Generate client trait for the GRPC Client * `from` - the files with the services to generate client traits for * `includes` - a vector of the parent folder of the files from `from` and all their includes. * `to` - a path to a folder to store the generated files."]]});

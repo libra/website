@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["ByteArray","A struct that represents a ByteArray in Move."]]});

@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["block_minter",""],["block_proposal",""],["block_state",""],["blockmania_event_processor",""],["parent_pointer_tree",""]]});

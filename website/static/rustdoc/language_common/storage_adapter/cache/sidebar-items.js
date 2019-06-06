@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["CachedCode",""],["SimpleStorageCache",""]],"trait":[["GlobalStorageCache",""]]});

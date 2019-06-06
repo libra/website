@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["AddressAndIndex",""],["TestClient","Client used to test"]]});

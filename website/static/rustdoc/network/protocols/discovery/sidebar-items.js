@@ -1,1 +1,0 @@
-initSidebarItems({"constant":[["DISCOVERY_PROTOCOL_NAME",""]],"struct":[["Discovery","Represents a prototype for an upgrade to handle the Libra Discovery protocol."]]});

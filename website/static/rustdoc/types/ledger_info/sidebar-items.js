@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["LedgerInfo","This structure serves a dual purpose."],["LedgerInfoWithSignatures",""]]});

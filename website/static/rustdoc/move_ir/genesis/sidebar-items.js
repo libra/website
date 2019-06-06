@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["MoveIRGenesis","Data for the genesis transaction."]]});

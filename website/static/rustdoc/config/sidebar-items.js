@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["config",""],["legacy_genesis",""],["seed_peers",""],["swarm_config","Convenience structs and functions for generating configuration for a swarm of libra nodes"],["trusted_peers",""],["utils",""]]});

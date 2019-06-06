@@ -5,81 +5,390 @@ title: Life of a Transaction
 
 ## Overview
 
-Let's follow a transaction on its journey from submission to execution. A client creates and submits a signed transaction to a validator to transfer 10 Libras from Alice's account to Bob's account.
+To get a deeper understanding of the lifecycle of a Libra transaction, we will follow a transaction on its journey from being submitted to a Libra validator to being committed into the Libra Blockchain. We will then “zoom-in” on each logical component of a validator and take a look at its interactions with other components.
 
-[Graphic: A version of the following figure]
-[Image: image.png]
+## Client Submits a Transaction
 
-Figure n.n Transaction Submission Flow/[Or Another name]
+A Libra **client** **constructs a raw transaction** (let us call it T_5_raw) to transfer 10 Libra from Alice's account to Bob's account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
-## The Admission Control
+* Alice's [account address](reference/glossary#account-address).
+* A [program](#program) that indicates the actions to be performed on Alice's behalf. It contains:
+    * A Move bytecode [peer-to-peer transaction script](reference/glossary#transaction-script).
+    * A list of inputs to the script (for example, Bob's account address and the amount of payment).
+* [Gas price](reference/glossary#gas-price)- the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
+* [Maximum gas amount](reference/glossary#maximum-gas-amount) Alice is willing to pay for this transaction.
+* [Expiration time](reference/glossary#expiration-time) of the transaction.
+* [Sequence number](reference/glossary#sequence-numnber) - 5
+    * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
-[Image: Screen Shot 2019-04-30 at 9.27.25 AM.png]
+The **client signs transaction** T_5_raw with her private key. The signed transaction T_5 includes the following additional fields.
 
-1. The validator node's load balancer forwards the transaction to one of its admission control modules.
-2. The selected admission control module accesses the virtual machine (VM) module of the node to perform preliminary checks to reject malformed transactions early.
+* Alice's public key
+* Alice's signature
+
+### Assumptions
+
+To describe the lifecycle of transaction T_5 we will assume that:
+
+* Alice and Bob have [accounts](reference/glossary#accounts) on the Libra Blockchain.
+* Alice's account has 110 Libra.
+* The current [sequence number](reference/glossary#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
+* There are a total of 100 validators - V_1 to V_100 on the network.
+* The client submits transaction T_5 to validator V_1
+* **Validator V_1 is a proposer/leader for the current round.**
+
+## Lifecycle Of The Transaction
+
+In this section, we will describe the lifecycle of transaction T_5 from being submitted by the client to being committed into the Libra Blockchain. 
+
+Where relevant, and following a numbered step in the lifecycle, we have provided a link to the corresponding inter-component interaction(s) of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interaction(s) for each step.
+
+![Figure 1.1 Lifecycle of a Transaction](assets/illustrations/validator-sequence.png)
+<small>Figure 1.1 Lifecycle of a Transaction</small>
+
+### Accepting The Transaction
+
+* **1** - The client submits transaction T_5 to validator V_1, and its admission control (AC) component receives the transaction. (AC → [Action A](#action-a))
+* **2** - The AC will use the virtual machine (VM) component to perform validation checks like check signature, check if  Alice's account has sufficient balance, check if transaction T_5 is not being replayed, etc. (AC → [Action B](#action-b), VM → [Action B](#action-b))
+* **3** - When T_5 passes the validation checks, AC sends T_5 to V_1's mempool. (AC → [Action C](#action-c))
+
+### Sharing the transaction with other validators
+
+* **4** - The mempool will hold T_5  in an in-memory buffer. Mempool may already contain multiple transactions sent from Alice's address. 
+* **5** - Using the shared-mempool protocol, V_1 will share the transactions (including T_5) in its mempool with other validators (V_2 to V_100) and place transactions received from the other validators in its own mempool. (Mempool → [Action B](#action-b))
+
+### Proposing The Block
+
+* **6** - As validator V_1 is a proposer/leader, it will create/pull a block of transactions from its mempool and broadcast this block as a proposal to other validators via its consensus component. (Mempool → [Action C](#action-c))
+* **7** - The consensus component of V_1 is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → [Action B](#action-b))
+
+### Executing Block and Reaching Consensus
+
+* **8** - As part of reaching agreement, the block of transactions (containing T_5) is passed to the execution component. (Consensus → [Action C](#action-c))
+* **9** - The execution component manages the execution of transactions in the virtual machine (VM). Note that this execution happens speculatively, before the transactions in the block have been agreed upon. (Execution → [Action B](#action-B))
+* **10** - After executing the transactions in the block, the execution component appends the transactions in the block (including T_5) to the [Merkle accumulator](#merkle-accumulator) (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The (proposed/speculative) root-hash of the accumulator is returned to the consensus component. (Execution → [Action A](#action-a))
+* **11** - V_1 (the consensus leader) attempts to reach consensus on this root-hash with other validators participating in the consensus. (Consensus → [Action C](#action-c))
+
+### Committing The Block 
+
+* **12** - If the root-hash is agreed upon and signed by a set of validators which have the super-majority of votes, validator V_1 reads the result of the block execution from cache in the execution component and commits all the transactions in the block to the storage. Refer to:
+    * Execution → [Action C](#action-c)
+    * Execution → [Action D](#action-d)
+* **13** - Alice's account will now have 100 Libra and its sequence number will be 6. If T_5 is replayed by Bob it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the transaction (5).
+
+## Validator Component Interactions
+
+In the [Libra Protocol](libra-protocol#transactions) document we looked at the structure of a transaction, and mentioned that:
+
+* Clients of the Libra Blockchain submit transactions to request updates to the ledger state. 
+* These transactions are submitted to a Libra validator node. 
+
+In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look at the inter-component interactions of a validator as the validator processes transactions and reads queries.  This information is useful to you if:
+
+* You would like to get an overall idea of how the system works under the covers.
+* You are interested in eventually contributing to the Libra Core software.
+
+For our narrative, we will assume that a client submits a  transaction T_N to a validator V_X. For each validator component we will describe each of its inter-component interaction in “ACTION” subsections. Note that the “ACTIONS” are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (for existing information on the blockchain).
+
+ Let us look at each logical component of a validator node:
+
+* [Admission Control](#admission-control-ac)
+* [Mempool](#mempool)
+* [Consensus](#consensus)
+* [Execution](#execution)
+* [Virtual Machine](#virtual-machine-vm)
+* [Storage](#storage)
+
+A link to the “README” of the [Libra Core](reference/glossary#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
+
+### Use of arrows in the diagrams
+
+The arrows in the following graphics start on the component initiating an interaction/action and end on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned).
+
+## Admission Control (AC) 
+
+![Figure 1.2 Admission Control](assets/illustrations/admission-control.png)
+<small>Figure 1.2 Admission Control</small>
+
+Admission Control is the _sole external interface_ of the validator. Any request made by a client to the validator goes to AC first. 
+
+### Action A
+
+A client submits a  transaction to the admission control of a validator V_X. This is done via:
+`AC::SubmitTransaction()`
+
+### Action B
+
+The admission control accesses the virtual machine (VM) of the validator to perform preliminary checks on the transaction, to reject malformed transactions early. This is done via:
+ `[VM::ValidateTransaction()](https://fb.quip.com/NQc6AXFKc3go#TWTACAIxkEr)`. 
+
+### Action C
+
+Once `VM::ValidateTransaction() `returns without errors AC forwards the transaction to validator V_X 's mempool via:
+`Mempool::AddTransactionWithValidation(). `The mempool for validator V_X will accept the transaction T_N from the AC only if the sequence number of T_N is greater than or equal to the current sequence number of the sender's account.
+
+### Action D
+
+When the client performs a read query on the Libra Blockchain, (for example, get the balance of Alice's account) AC interacts with the storage component directly to obtain the information.
+
+### **Admission Control Readme**
+
+For implementation details, repository structure, and API of the admission control crate of Libra Core software refer to LINK: [Admission Control crate Readme] 
+
+## Virtual Machine (VM) 
+
+[Image: image (14).png]
+Figure 1.3 Virtual Machine
+AC and mempool use VM  to perform validation checks on transactions. VM (also called [Move VM](https://fb.quip.com/RasdAtnP6ROr#HDbACALrHXT)) is used to run the program included in a transaction and determine the results. 
+
+### Action A
+
+When admission control of validator V_X receives a transaction from a client, it invokes `VM::ValidateTransaction()` on the VM  to validate the transaction.
+
+### Action B
+
+When AC or mempool request VM to validate a transaction via
+`VM::ValidateTransaction(),` VM loads the transaction sender's account from storage and performs the following verifications:
+
+* Checks that the input signature(s) on the signed transaction are correct (to reject incorrectly signed transactions).
+* Checks that the sender's account authentication key is same as the hash of the public key (corresponding to the private key used to sign the transaction).
+* Verifies that the sequence number for the transaction is not less than the current sequence number for the sender's account.  Doing this check prevents replay of the same transaction against the sender's account.
+* Verifies that the program in the signed transaction is not malformed, as a malformed program cannot be executed by the VM.
+* Verifies that there is sufficient balance in the sender's account to support the max gas amount specified in the transaction (this avoids spam transactions).
+
+### Action C
+
+The execution component invokes VM to execute a transaction via:
+`VM::ExecuteTransaction()`
+
+It is important to understand that executing a transaction is different from updating the state of the ledger (persisting the results in storage). A transaction T_N is first executed as part of an attempt to reach agreement on its sequencing within the blockchain. If agreement is reached with the other validators, on the ordering of transactions and the execution results, the results/output is written to the ledger.
+
+### Action D
+
+When mempool receives a transaction from other validators, mempool invokes `[VM::ValidateTransaction()](https://fb.quip.com/NQc6AXFKc3go#TWTACAIxkEr)` on the VM to validate the transaction.
+
+### **VM  Readme**
+
+For implementation details, repository structure, and external API for the virtual machine module refer to LINK: [VM Module Readme] 
 
 
-LINK: [Admission Control module in Libra Core]
+## Mempool
 
-## The Virtual Machine (VM)
+[Image: image (15).png]
+Figure 1.4 Mempool 
 
-[Image: Screen Shot 2019-04-30 at 9.44.51 AM.png]
+Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to the mempool, the mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the ordered queue of the recipient validator. The mempool does not push transactions to consensus, the consensus pulls transactions from mempool. When a transaction is fully executed and written to storage, consensus notifies mempool, and mempool drops that transaction from its internal state.
 
-1. The VM loads information about the client's account from the storage.
-2. The transaction is accepted if it has the the sender Alice's signature, the correct sequence number, and an appropriate amount of currency to pay for gas.
-3. If the transaction passes the preliminary checks, it is sent to the node's mempool.
+### Action A
 
-[Note to me: What else does VM do, add some details here, and that it will be covered later?]
+* After performing initial validation checks,  AC sends a transaction to the mempool of the validator. 
+* The mempool for a validator V_X accepts the transaction T_N from the admission control, for the sender's account, only if the sequence number of T_N is greater than or equal to the current sequence number of the sender's account. 
 
-In Libra Core the vm_validator crate/package [LINK to crate documentation] represents the virtual machine module of a validator node.
+### Action B
 
-## The Mempool
+* The mempool of validator V_X shares the transaction T_N with the other validators on the same network. 
+* Other validators share the transactions in their mempool with V_X's mempool.
 
-(Graphic: Does this graphic provide a complete picture of Mempool?)
-[Image: Screen Shot 2019-04-30 at 9.53.19 AM.png]
-Mempool is a memory buffer, which holds transactions 'waiting' to be executed. 
+### Action C
 
-1. When a new transaction is added, Mempool shares this transaction with other validator nodes in the system.
-2. Transactions with high sequence numbers are held in the “parking lot” while the others are ordered.
-3. The node loads its signing key, signs the transaction, and sends it back to the client.
-4. The node aggregates the ordered transactions of its mempool into blocks and shares the blocks with the other nodes through the shared mempool.
+* When validator V_X becomes the leader, its consensus will pull a block of transactions from its mempool and broadcast the block to other validators.* *It does this* *to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
+* If the gas price is a tie between two transactions, then they are ordered by how long ago they were submitted.
+* Note that just because a transaction T_N was included in a consensus block it does not guarantee that T_N will eventually be persisted in the distributed database of the blockchain.
 
-In Libra Core the mempool crate/package [LINK to crate documentation] represents the mempool module of a validator node.
+### Action D
 
-## The Consensus
+When mempool receives a transaction from other validators, mempool invokes `[VM::ValidateTransaction()](https://fb.quip.com/NQc6AXFKc3go#TWTACAIxkEr)` on the VM to validate the transaction.
 
-(**Note to me**: Introduce BFT/HotStuff here?)
-(Graphic: Need a version of this graphic)
-[Image: Screen Shot 2019-04-30 at 11.07.59 AM.png]
+### **Mempool  Readme**
 
-1. The node attempts to reach consensus with other nodes to obtain an ordered sequence of blocks. This should be agreed and signed by at least 2f+1 nodes (the consensus majority).
-2. **To reach consensus** with the other nodes:
-    1. The node calls its VM to execute the smart contract.
-    2. The VM loads the input resources and the smart contract from the storage.
-    3. VM stores the output into its cache (scratchpad). VM output is not written to storage at this stage.
-    4. The node now knows which transactions of the block execute correctly.????
-    5. It removes from the block the transactions that do not execute correctly..
-    6. At the end of the consensus, at least 2f + 1 nodes agree on:
-        1. The committed block.
-        2. Output of the execution ???
+For implementation details,  repository, and API of the mempool crate refer to LINK: [[Mempool Readme](https://fb.quip.com/5XUmA2YcEajj)] 
 
-## The Storage
+## Consensus
 
-(Graphic: Need a version of the following graphic, without “secret service”.)
-[Image: Screen Shot 2019-04-30 at 11.22.14 AM.png]
+[Image: image (16).png]
+Figure 1.5 Consensus Logical Module
+The consensus component is responsible for ordering blocks of transactions, and agreeing on the results of execution by participating in the [consensus protocol](https://fb.quip.com/0fQ1AzLdEXiQ#DQCACAPKpfs) with other validators in the network.
 
-1. The node accesses the cache of the VM to load the output of the smart contract computed and updates the storage.
-2. When the storage is updated, the sequence numbers of all resources (????) modified by the transaction are updated to the transaction's sequence number. The sequence number monotonically increases (never decreases) with each transaction. 
-3. A transaction is executed only if it matches the next expected sequence number for the sender account. This helps sequence multiple transactions from the same sender, and prevents replay attacks.
+### Action A
 
-It is important to understand how the sequence number of Alice's account and Bob's account change after 10 Libras are transferred. Let us assume the sequence number of Alice's account was p and the sequence number of Bob's account was m, before the transaction. [TBD]
+* When validator V_X is a leader/proposer, the consensus of V_X pulls a block of transactions from its mempool via: `Mempool::GetBlock()`, and forms a proposal. 
+* `Mempool::GetBlock()` pulls transactions out of mempool in a way that if sequential transactions (transactions which have their sequence numbers in a sequence, for a single account) are sitting in mempool they will be added to the ordered queue. 
 
-[TBD::
+### Action B
 
-* Talk about how transactions change states.
-* How sequence numbers are incremented
-* How a transaction is executed etc.
-* The database/StateStore]
+* If V_X is a proposer/leader, its consensus sends the proposed block of transactions (containing T_N) to other validators. 
+
+### Action C
+
+* To execute a block of transactions consensus interacts with the execution component . Consensus executes a block of transactions via: `Execution:ExecuteBlock()`(Refer to Execution →  [Action A](#action-a))
+* When execution computes the speculative root hash, it responds to consensus with this new root hash.
+* Consensus signs this root hash and attempts to reach agreement on this root hash with other validators participating in consensus.
+
+### Action D
+
+* If enough validators vote for the same root hash, consensus of V_X informs execution via:  `Execution::CommitBlock()`that this block is ready to be committed 
+
+### **Consensus  Readme**
+
+For implementation details, repository structure, and API of the consensus crate refer to LINK: [ Consensus Readme] 
+
+## Execution
+
+[Image: image (17).png]
+Figure 1.6 Execution
+
+Execution's job is to coordinate the execution of a block of transactions and maintain a transient state that can be voted upon by consensus. 
+
+### Action A
+
+*  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock().`` `
+* Execution maintains a “scratchpad” which holds in memory copies of the relevant portions of the [Merkle accumulators](https://fb.quip.com/0fQ1AzLdEXiQ#DQCACA81Oil). This information is used to calculate the root hash of the current state of the blockchain. 
+* The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data, this ensures that no state or transaction is stored until agreement is reached by a quorum of validators.
+* Execution computes the speculative root hash and then consensus of V_X signs this root hash and attempts to reach agreement on this root hash with other validators.
+
+### Action B
+
+When Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock(),`
+execution uses the VM to determine the changes to the current state.
+
+### Action C
+
+* If enough nodes vote for the same root hash, consensus of V_X informs its execution module via `Execution::CommitBlock() `that this block is ready to be committed.  
+* `Execution::CommitBlock()`will include the signatures of the validators who voted for this block (the signatures that signed the root hash of the accumulator). 
+
+### Action D
+
+* Execution takes the values from scratchpad and sends them to storage for persistence via: `Storage::SaveTransactions()`.  
+* Execution clears the old values from the scratchpad that are no longer needed (for example, parallel blocks that are not going to be committed).
+
+### **Execution  Readme**
+
+For implementation details, repository structure, and API of the execution crate refer to LINK: [Execution Readme]. 
+
+## Storage 
+
+[Image: image (18).png]
+Figure 1.7 Storage
+
+The storage persists agreed upon blocks of transactions and their execution results. A block/set of transactions (which includes transaction T_N) will be saved to the storage when:
+
+* There is agreement between more than 2/3rd of the validators (participating in consensus) on all of the following: 
+    * The transactions to include in a block.
+    * The order of the transactions.  
+    * The execution results of the transactions to be included in the block.
+
+Refer to [Merkel accumulators](https://fb.quip.com/0fQ1AzLdEXiQ#DQCACA81Oil) for information on how a transaction is appended to the data structure representing the blockchain.
+
+### Action A
+
+When AC or mempool invoke `VM::ValidateTransaction()`to validate a transaction, `VM::ValidateTransaction()` loads the sender's account from the storage and performs the read-only validity checks. 
+
+### Action B
+
+When consensus calls Execution::ExecuteBlock(), execution reads the current state from storage and uses that to determine the execution results.
+
+### Action C
+
+* Once consensus is reached on a block of transactions, execution calls storage via: `Storage::SaveTransactions()` to save the block of transactions and permanently record them. This will also store the signatures from the validator nodes who agreed on this block of transactions. 
+* The data in the cache of the VM is passed to storage and the storage is updated (transactions are committed).
+* When the storage is updated, the sequence numbers of all resources modified by transaction T_N are updated to the transaction's sequence number. 
+* Note: The sequence number of an account on the Libra Blockchain increases by one for each transaction committed on that account.
+
+### Action D
+
+For any read queries by a client (to read information from the blockchain), AC directly interacts with storage to read the requested information.
+
+### **Storage  Readme**
+
+For implementation details, repository structure, and API of the storage crate refer to LINK: [Storage Readme] 
+
+## Appendix
+
+### Peer-to-peer Transaction Script And Inputs
+
+The following example of a Move transaction script is a pseudocode representation of a peer-to-peer transaction script for T_5. This pseudocode is similar to the Move Intermediate Representation (IR). 
+
+```
+main(payee: address, amount: uint) {
+  let coin = 0x0.Currency.withdraw_from_sender(copy(amount));
+  0x0.Currency.deposit(copy(payee), move(coin));
+}
+```
+
+* `**payee**`**, **is** **an input to the script** **is the recipient Bob's account address.
+* `**amount**`**, **is ** **an input to the script is the number of Libra to be transferred to Bob's account (10 for our example).
+* `**withdraw_from_sender and deposit**`** **are procedures of the Move module 0x0.Currency, where 0x0 is the address of the Currency module.
+* **`coin` **is a** **value returned by the procedure withdraw_from_sender. coin. It is a linear Move resource of type 0x0.Currency.Coin
+
+A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
+
+For further information refer to LINK: [Move Getting Started]
+
+### **`Currency` module**
+
+In the sample transaction script provided above: `0X0.Currency` identifies the Currency module.
+
+* `0X0` is the address where the module is stored
+* `Currency` is the name of the module.
+
+### **`Coin` Resource **
+
+In the sample transaction script provided above:
+
+* `coin` is a linear **resource** **value** of type `0X0.Currency.Coin.`
+    * The statement - `0X0.Currency.deposit(copy(payee), move(coin));`  moves the `coin` resource value into the `0X0.Currency `module's deposit procedure.
+    * The variable `coin` becomes unavailable after this  move. 
+* Move language implements linear resources that must be moved _exactly_ once. Failing to move a resource (deleting the the line `0X0.Currency.deposit(copy(payee), move(coin));)` will trigger a bytecode verification error. 
+
+### Consensus Protocol
+
+* Our proposed consensus protocol, **LibraBFT**, is based on HotStuff, a Byzantine fault-tolerant (BFT) protocol.
+* LibraBFT guarantees agreement on the final order of transactions (the **safety** property), provided the set of nodes deviating from the protocol (malicious nodes) is comprised of no more than a third of the total voting rights.
+* LibraBFT also guarantees that blocks of transactions never stop being finalized, (the **liveness** property), as long as the network delivers consensus messages in a timely manner (in addition to satisfying the voting rights necessary for safety).
+* The design of our consensus protocol is mostly independent of how clients interact with the Libra Blockchain. Transactions submitted by clients are first shared between validators by the mempool component.
+* LibraBFT works by electing and rotating special nodes called leaders (validators). When its round becomes active, a leader pulls transactions from the mempool to propose a block of transactions. It is then responsible for the coordination and agreement between all validators on the proposed block to be executed (and eventually finalized).
+* The Libra blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
+* Refer to our technical paper LINK: [State Machine Replication in the Libra Blockchain] for details of our proposed consensus protocol LibraBFT.
+
+For further information refer to LINK: [Consensus technical paper]
+
+### Merkle Accumulators
+
+The storage is used to persist **agreed upon** blocks of transaction and their execution results. All the data in the Libra Blockchain is stored in a single versioned database. The blockchain is represented as an ever-growing Merkle tree of transactions. A “leaf” is appended to the tree, for each transaction executed on the blockchain.
+
+[Image: image (19).png]
+Figure 1.2  Merkle Accumulator** **
+
+
+* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo`` `object gets appended, for each transaction executed.
+    * 0 - An empty accumulator contains just a **placeholder node**. 
+    * 1 - Every time a transaction is executed, a new `TransactionInfo `**object** and the corresponding **leaf node** is appended to the Merkle accumulator.  Any empty subtree is replaced by a placeholder node. 
+    * 2 - When a new `TransactionInfo` object and l**eaf node** are added, the placeholder node is replaced. 
+    * 3,4 - The Merkle accumulator grows as new transactions are appended to the ledger, and empty subtrees are replaced by placeholder nodes.
+* **Object** is the The `TransactionInfo` object. **Internal node** is calculated based on the leaf nodes, it is the hash of its children. **Leaf** of the Merkle accumulator is the hash of:
+    * The `TransactionInfo` object.
+    * The root hash of the final state the accumulator (after the transaction is applied).
+    * Other metadata. 
+* When validators reach **consensus** on a new [block](https://fb.quip.com/LkbMAEBIVNbh#ffYACAKMnIa) of transactions and agree on their ordering and execution results:
+    * The validators append all the transactions in the block, one-by-one, to the previous accumulator and compute the new root hash of the accumulator.
+    * All validators sign the root hash of the new tree.
+
+For further information refer to LINK: [Blockchain technical paper]
+
+## Reference
+
+* For a detailed description of the protocol and the design decisions, refer to the Libra Blockchain technical paper LINK: [The Libra Blockchain]. 
+* For an introduction to the Libra ecosystem refer to [🔒 Libra Guides - Introduction to Libra](https://fb.quip.com/BalbATbLkHye). 
+* For key concepts of the Libra protocol refer to [🔒 Libra Guides - Libra Protocol (wip)](https://fb.quip.com/W5zBAb9wLpIU).
+* To execute a transaction on the Libra testnet refer to  [Libra Guides - My First Transaction (wip)](https://fb.quip.com/sIrOAbc770Kq) (TBD).
+* To learn about the logical components of Libra Core implementation, refer to LINK: [Libra Core Overview]
+* The [CLI guide](https://fb.quip.com/7UiFAHF5mNlb) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
+* Move is a new blockchain programming language, you may refer to the following documents for more information on Move:
+    *  [Libra Guides - Move - Getting Started (wip)](https://fb.quip.com/RasdAtnP6ROr) - for an introduction to Move. 
+    * LINK: [Move: a language with safe programmable assets] - the technical paper, for a detailed technical understanding of Move.
+* [Libra Glossary](https://fb.quip.com/LkbMAEBIVNbh) is a quick reference for Libra terminology.
+
+
+
 
 

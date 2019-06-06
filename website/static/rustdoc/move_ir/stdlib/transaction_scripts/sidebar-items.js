@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["create_account_transaction_bincode",""],["mint_transaction_bincode",""],["peer_to_peer_transfer_transaction_bincode",""],["rotate_authentication_key_transaction_bincode",""]],"struct":[["CREATE_ACCOUNT_TXN_BODY",""],["MINT_TXN_BODY",""],["PEER_TO_PEER_TRANSFER_TXN_BODY",""],["ROTATE_AUTHENTICATION_KEY_TXN_BODY",""]]});

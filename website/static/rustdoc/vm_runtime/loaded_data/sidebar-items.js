@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["function",""],["loaded_module",""],["struct_def",""],["types",""]]});

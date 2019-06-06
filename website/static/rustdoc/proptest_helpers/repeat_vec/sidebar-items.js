@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["RepeatVec","A simple data structure that logically represents a vector with repeated elements inserted."]]});

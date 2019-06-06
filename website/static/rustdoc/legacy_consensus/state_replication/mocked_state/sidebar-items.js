@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["SimpleState","An execution state where the set of nodes is hardcoded and nodes have equal voting rights."]]});

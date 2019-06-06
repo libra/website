@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Account",""],["LegacyGenesis","Legacy implementation of genesis data. There's work going on to reify genesis into a transaction."]]});

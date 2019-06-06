@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["test_helper",""]],"trait":[["FromProto","Convert Protobuf struct to Rust."],["FromProtoBytes",""],["IntoProto","Convert Rust struct to Protobuf."],["IntoProtoBytes",""]]});

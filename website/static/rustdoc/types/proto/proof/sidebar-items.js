@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["file_descriptor_proto",""]],"struct":[["AccountStateProof",""],["AccumulatorProof",""],["EventProof",""],["SignedTransactionProof",""],["SparseMerkleProof",""]]});

@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["get_signed_transactions_digest","Used to get the digest of a set of signed transactions.  This is used by a validator to sign a block and to verify the signatures of other validators on a block"]]});

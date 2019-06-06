@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["DirectSendNotification",""],["DirectSendRequest",""]],"struct":[["DirectSend","The DirectSend actor."],["Message",""]]});

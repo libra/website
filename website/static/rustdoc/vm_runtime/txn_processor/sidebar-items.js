@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["execute_function",""]],"struct":[["ACCOUNT_MODULE",""],["TransactionProcessor","A struct that process one single transaction. 'alloc is the lifetime for the code cache, which is the argument type P here. Hence the P should live as long as alloc. 'txn is the lifetime of one single transaction."]]});

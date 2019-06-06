@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["DebugCommand",""],["DebugCommandDumpHeap",""],["DebugCommandGetMetrics",""]]});

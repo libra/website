@@ -40,7 +40,7 @@ const siteConfig = {
     {href: 'https://developers.libra.org', label: 'Home'},
     {doc: 'welcome', label: 'Welcome'},
     {href: `${baseUrl}rustdoc/admission_control/`, label: 'Rustdoc'},
-    {href: 'https://discourse.libra.org', label: 'Forum'},
+    {href: 'https://libra.trydiscourse.com', label: 'Forum'},
     {blog: true, label: "Blog" },
     {href: 'https://github.com/libra/libra', label: 'GitHub'},
     {search: true}, // position search box to the very right
@@ -52,7 +52,7 @@ const siteConfig = {
   // search integration w/ algolia
   algolia: {
     apiKey: '7c82db8b8ceae28c1601f34346452f65',
-    indexName: 'libra',
+    indexName: 'libra.github.io',
   },
 
   // colors for website

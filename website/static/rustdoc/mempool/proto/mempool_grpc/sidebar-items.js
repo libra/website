@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["create_mempool",""]],"struct":[["MempoolClient",""]],"trait":[["Mempool",""]]});

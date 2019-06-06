@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["get_clients",""],["get_debug_clients",""],["run",""]],"struct":[["AggregatedLoaderStats","Holds the LoaderStats from all the loaders and provide helper functions."],["LoaderStats","The current state of a single loader."]]});

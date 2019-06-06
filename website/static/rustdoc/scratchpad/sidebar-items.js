@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["AccountState","`AccountState` describes the result of querying an account from this SparseMerkleTree."]],"struct":[["Accumulator","The Accumulator implementation."],["SparseMerkleTree","The Sparse Merkle Tree implementation."]],"trait":[["ProofRead","A type that implements `ProofRead` can provide proof for keys in persistent storage."]]});

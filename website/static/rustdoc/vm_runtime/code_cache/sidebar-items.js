@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["module_adapter",""],["module_cache",""],["script_cache",""]]});

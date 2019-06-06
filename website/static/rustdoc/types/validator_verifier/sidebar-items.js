@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["VerifyError","Errors possible during signature verification"]],"struct":[["ValidatorVerifier","Supports validation of signatures for known authors"]]});

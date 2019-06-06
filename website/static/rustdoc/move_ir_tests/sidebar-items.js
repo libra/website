@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["resource_def",""],["run",""],["run_bincode",""],["run_with_classes",""],["run_with_context",""],["run_with_gas_unit_price",""],["run_with_max_gas_amount",""],["run_with_sequence_number",""],["struct_def",""],["to_script",""],["to_script_result",""],["to_standalone_script",""],["to_standalone_script_with_address",""]],"struct":[["TestEnvironment",""]]});
