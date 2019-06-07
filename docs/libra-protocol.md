@@ -3,13 +3,13 @@ id: libra-protocol
 title: Libra Protocol
 ---
 
-### Overview
+## Overview
 
 The **Libra Blockchain**, a cryptographically authenticated distributed database, is based on the **Libra protocol**. The blockchain is maintained by a distributed network of [validators](reference/glossary/#validators). The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the database. In this document, we introduce you to the key concepts of the Libra protocol. 
 
 Libra *testnet* is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
 
-### Transactions and States
+## Transactions and States
 
 At the heart of the Libra protocol are two fundamental concepts - **transactions** and **states**. At any point in time, the blockchain has a "state". The state represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
@@ -47,7 +47,7 @@ The *transaction script* is an arbitrary program that encodes the logic of a tra
 
 The **ledger state**, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. The state of each account is comprised of both code and data. Each validator must know the global state of the latest version to execute transactions. See [versioned database](reference/glossary#versioned-database).
 
-### Versioned Database
+## Versioned Database
 
 All data in the Libra Blockchain is stored/persisted in a single, versioned, distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
 
@@ -56,7 +56,7 @@ The versioned database allows validators to:
 * Execute a transaction against the **ledger state** at the latest version.
 * Respond to client queries about **ledger history** at both current and previous versions.
 
-### Account
+## Account
 
 A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary#account-address).  This essentially means that the state of each account is comprised of both code and data: 
 
@@ -71,7 +71,7 @@ The address of a Libra account is a 256-bit value. Users can claim addresses usi
 
 There is no limit on the number of addresses a Libra user can claim. To claim an account address, a transaction should be sent from an account that holds sufficient Libra, to pay the account creation fee.
 
-### Proof
+## Proof
 
 All the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist **agreed upon** blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
@@ -80,7 +80,7 @@ All the data in the Libra Blockchain is stored in a single versioned database. T
 
 In a blockchain the client does not need trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n) sized proof of a specific transaction object, where n is the total number of transactions processed.
 
-### Validator
+## Validator
 
 Clients of the Libra Blockchain create transactions, and submit them to a Validator. A Validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the distributed database of the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
@@ -119,7 +119,7 @@ Clients of the Libra Blockchain create transactions, and submit them to a Valida
 
 For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction).
 
-### Reference
+## Reference
 
 * For a detailed description of the Libra protocol and the design decisions, refer to the [Libra Blockchain technical paper](papers/the-libra-blockchain). 
 * For an introduction to the Libra ecosystem refer to [Introduction to Libra](welcome). 
