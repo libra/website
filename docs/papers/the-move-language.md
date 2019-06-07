@@ -19,4 +19,4 @@ Libra coin, transaction processing, and validator management.
 
 ### Downloads
 
-[PDF]()
+[![PDF](assets/illustrations/move-language-pdf.png)]()
