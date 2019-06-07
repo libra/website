@@ -6,9 +6,28 @@
  */
 const React = require('react');
 
+const FieldSet = require(`${process.cwd()}/core/ContactForm/fieldset.js`);
+const FormHeader = require(`${process.cwd()}/core/ContactForm/form-header.js`);
 
-const FormContainer = ({ children, config: siteConfig  }) => {
-  const {baseUrl} = siteConfig;
+
+const getFields = (fields) => {
+  return fields.map((config, idx) => {
+    return <FieldSet key={`form-fieldset-${idx}`} {...config} />;
+  });
+};
+
+
+const FormContainer = (props) => {
+  const {
+    children,
+    config: {
+      baseUrl
+    },
+    fields,
+    formId,
+    title,
+    subtitle
+  } = props;
 
   /**
    * Get the className and src props for the img elements.
@@ -22,6 +41,7 @@ const FormContainer = ({ children, config: siteConfig  }) => {
 
   return (
     <div className="mainContainer formPage">
+      <FormHeader title={title} subtitle={subtitle} />
       <div className="wrapper">
         <img {...getImageProps('formIcon', 'form-icon.svg')} />
         <img {...getImageProps('bgCircleLeft', 'bg-circle-whole.svg')} />
@@ -29,7 +49,12 @@ const FormContainer = ({ children, config: siteConfig  }) => {
         <img {...getImageProps('bgCircleRight', 'bg-circle-whole.svg')} />
         <div className="mainContainer documentContainer postContainer">
           <div className="formWrapper">
-            {children}
+            <form id={formId}>
+              {getFields(fields)}
+              <div className="formControlGroup">
+                <button className="button right" type="submit">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

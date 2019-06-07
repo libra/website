@@ -4,7 +4,6 @@
  * Main containers and layouts
  */
 .formPage {
-  background-color: #F3F4FB;
   padding-top: 0;
   position: relative;
   z-index: 0;
@@ -22,20 +21,10 @@
  * FIXME: There should be some consistency throughout the site.
  * Change this to be consistent.
  */
-.formPage h1 {
-  font-size: 4rem;
-  line-height: 1.3em;
-  font-weight: 400;
-  margin-bottom: 0;
-}
-
+.formPage h1,
 .formPage h2 {
-  color: #000;
-  font-size: 1.5rem;
-  line-height: 1.5em;
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 2em;
+  text-align: center;
+  color: #fff;
 }
 
 
@@ -96,7 +85,6 @@
 }
 
 .formPage form legend {
-  /*font-weight: bold;*/
   font-size: 1.5rem;
   margin-bottom: 0.75em;
 }
@@ -114,6 +102,7 @@
 
 .formPage form input,
 .formPage form select {
+  background: #F3F4FB;
   display: block;
   margin: .25em 1em .25em 0;
   width: 95%;
@@ -133,10 +122,6 @@
   outline: none !important;
   border-color: #39298C;
   border: 1px solid #39298C;
-}
-
-.formPage form input:focus{
-  color: #19CDA6;
 }
 
 /* Customizing the select and adding a chevron for dropdown */
@@ -162,7 +147,6 @@
 .formPage form select {
   -moz-appearance: none;
   -webkit-appearance: none;
-  background: white;
   cursor: pointer;
 }
 
