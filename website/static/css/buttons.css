@@ -44,7 +44,12 @@
 
 
 /*Search bar overrides */
-input#search_input_react {
-  background-color: #39298C !important;
-  padding: 0.5em;
+.reactNavSearchWrapper input#search_input_react {
+  background-color: #39298C;
+  /* 
+  This is a hack. We can't figure out  why line-height and font-size 
+  aren't fixing the issue. The defaults are top/bottom = 8px;
+  */
+  padding-top: 7px;
+  padding-bottom: 9px;
 }
