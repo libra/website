@@ -3,13 +3,13 @@ id: libra-open-source
 title: Libra Open Source
 ---
 
-### Libra Is Open Source 
+### Libra Is Open Source
 
 The Libra Blockchain is powered by open-source software. The first implementation of the Libra protocol, — the technology behind the blockchain, — is Libra Core, which is an open-source project managed by the Libra Association using development practices established by the open-source community. Developing the technology behind the Libra Blockchain in this way ensures that the blockchain is accessible to everyone and that technology decisions are fair and transparent.
 
 Open-source software is software that anyone can use, inspect, and modify. Building Libra Core on open-source software means that people can use the Libra Blockchain in new and creative ways. It means that developers can build new applications that support the blockchain and run those applications on any kind of device. It means that the public can inspect how the blockchain works, giving everyone equal knowledge of the inner workings of the code. It also means that the community of security researchers can work together to make the blockchain more secure. The Libra Association is committed to ensuring that the Libra protocol specification and Libra Core are and always will be open source.
 
-The invention of open-source software sparked a practice of engineers working across countries and across companies to collaborate on the development of ambitious software projects. Projects of this type build a community of developers who work together to make tough technical decisions about the evolution of the project. Because Libra is a platform that will serve many people, this type of community-focused decision making will be essential to make sure that everybody has a fair chance to contribute to the evolution of the platform. 
+The invention of open-source software sparked a practice of engineers working across countries and across companies to collaborate on the development of ambitious software projects. Projects of this type build a community of developers who work together to make tough technical decisions about the evolution of the project. Because Libra is a platform that will serve many people, this type of community-focused decision making will be essential to make sure that everybody has a fair chance to contribute to the evolution of the platform.
 
 Libra's Engineering Principles
 
@@ -19,11 +19,11 @@ Libra's Engineering Principles
 
 ### The Libra Blockchain: Built on Open Source
 
-After reviewing different open-source licenses, the association has chosen to open source the Libra Core under the Apache 2.0 License (https://www.apache.org/licenses/LICENSE-2.0.html). The license grants the user of the software the freedom to use the software for any purpose, to distribute it, and to modify it. Individuals and organizations who contribute code, documents, or ideas to Libra Core do so in the form a Contributor License Agreement (CLA). Libra will model its CLA on the Apache CLA (https://www.apache.org/licenses/contributor-agreements.html). By asking contributors to agree to the CLA, the community can be confident that they are free to use the software.
+After reviewing different open-source licenses, the association has chosen to open source the Libra Core under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.html). The license grants the user of the software the freedom to use the software for any purpose, to distribute it, and to modify it. Individuals and organizations who contribute code, documents, or ideas to Libra Core do so in the form a Contributor License Agreement (CLA). Libra will model its CLA on the [Apache CLA](https://www.apache.org/licenses/contributor-agreements.html). By asking contributors to agree to the CLA, the community can be confident that they are free to use the software.
 
 The Apache License and CLA has have a long history in the open-source developer community. It is well understood and trusted by thousands of open-source projects from many of the world's largest technology companies. The license provides certainty and protection for contributors, maintainers, and all other participants in the open-source ecosystem that choose to invest in technology.
 
-The Libra Association and Technology Decisions 
+The Libra Association and Technology Decisions
 
 Technology defines the way people interact with the Libra Blockchain. Therefore, decisions about technology are important to the future of the project. The association manages the open-source repositories that hold the technology used by the Libra Blockchain. Activities of the association are ultimately governed by the Libra Association Council, comprised of representatives from organizations which are running validator nodes on the Libra network. Because the set of validator nodes is designed to be diverse and collectively trusted, the association is an ideal governance body for the technology behind the Libra Blockchain.  However, all developers are welcome to participate in Libra's open-source development.
 

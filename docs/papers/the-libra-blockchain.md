@@ -13,4 +13,4 @@ We use Move to define the core mechanisms of the blockchain, such as the currenc
 
 ### Downloads
 
-[PDF]()
+[![PDF](assets/illustrations/libra-blockchain-pdf.png)]()

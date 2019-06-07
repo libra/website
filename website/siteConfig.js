@@ -10,6 +10,8 @@
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
 
+const markdownPlugins = require(`${process.cwd()}/markdownPlugins.js`);
+
 // Define this so it can be easily modified in scripts (to host elsewhere)
 const baseUrl = '/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/';
 
@@ -74,6 +76,9 @@ const siteConfig = {
 
   // CSS sources to load
   stylesheets: [`${baseUrl}css/code_block_buttons.css`],
+
+  // Custom markdown functions
+  markdownPlugins: markdownPlugins,
 
   // enable on-page navigation for the current documentation page
   onPageNav: 'separate',
