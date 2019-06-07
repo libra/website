@@ -9,6 +9,16 @@ module.exports = [
     ]);
   },
 
+  function addEmDash(md) {
+
+    const rule = (textRule) => (tokens, idx, options, env) => {
+      tokens[idx].content = tokens[idx].content.replace('---', '&mdash;');
+      return textRule(tokens, idx, options, env);
+      // return text.replace(' --- ', ' &mdash; ');
+      // &mdash;
+    };
+    md.renderer.rules.text = rule(md.renderer.rules.text);
+  },
   /**
    * This will add a class to an image. To use structure as:
    *   [<title>](<img path){: .<class>}
@@ -18,7 +28,7 @@ module.exports = [
    */
   function addImageClass(md) {
     // This takes a render method in as an arg.
-    const addClass = (imageRule) => (tokens, idx, options, env) => {
+    const rule = (imageRule) => (tokens, idx, options, env) => {
       // Get the default image
       const img = imageRule(tokens, idx, options, env);
 
@@ -42,6 +52,6 @@ module.exports = [
       return img.slice(0, -1) + classString;
     };
 
-    md.renderer.rules.image = addClass(md.renderer.rules.image)
+    md.renderer.rules.image = rule(md.renderer.rules.image);
   }
 ];
