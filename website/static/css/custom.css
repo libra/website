@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: CC-BY-4.0
  */
 
-/* CSS Custom Properties available for reference,
+/* CSS Custom Properties available for reference, 
 but not using for now due to no IE support */
 :root {
   --primaryText: #000000;
@@ -28,8 +28,8 @@ html body {
 }
 
 body { padding: 0px !important; }
-nav {
-  border: 0px !important;
+nav { 
+  border: 0px !important; 
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -67,8 +67,7 @@ nav {
   text-decoration: underline;
 }
 
-.homeContainer,
-.formHero {
+.homeContainer {
   background-color: #1E4855;
   background-image: url('../img/hero.jpg');
   background-size: cover;

@@ -27,15 +27,20 @@
     ],
     "Crates": [
 	    "crates/admission-control",
+        "crates/bytecode-verifier",
 		"crates/consensus",
 		"crates/crypto",
 		"crates/execution",
+        "crates/ir-to-bytecode",
 		"crates/mempool",
 		"crates/move-language",
 		"crates/network",
 		"crates/storage",
 		"crates/vm"
 	],
-    "Reference": ["reference/glossary"]
+    "Reference": [
+        "reference/rustdoc",
+        "reference/glossary"
+    ]
   }
 }
