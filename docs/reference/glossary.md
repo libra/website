@@ -153,7 +153,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Faucet
 
-* **Faucet** is the way to create Libra with no real world value, only on our testnet*.*
+* **Faucet** is the way to create Libra currency with no real world value, only on our testnet*.*
 * Faucet is a service running in AWS along with the testnet. This service only exists to facilitate minting coins for testnet.
 * You can use faucet by sending a request to create coins and transfer them into a given account on your behalf.
 

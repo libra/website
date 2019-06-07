@@ -32,10 +32,10 @@ The Libra developer site provides a technical walk-through of the Libra project,
 
 The entities of the Libra ecosystem are:
 
-* [Clients]()
-* [Validators]()
-* [Developers]()
-* [End-Users]()
+* [Clients](#clients)
+* [Validators](#validators)
+* [Developers](#developers)
+* [End-Users](#end-users)
 
 ### Clients
 
