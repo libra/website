@@ -9,4 +9,4 @@ This report presents LibraBFT, a robust and efficient state machine replication 
 
 ### Downloads
 
-[![PDF](assets/illustrations/state-machine-pdf.png)]()
+[![PDF](assets/illustrations/state-machine-pdf.png){: .download}]()

@@ -8,4 +8,40 @@ module.exports = [
       'sup'
     ]);
   },
+
+  /**
+   * This will add a class to an image. To use structure as:
+   *   [<title>](<img path){: .<class>}
+   *
+   * Example - add "download" class to an image:
+   *   [PDF](assets/illustrations/move-language-pdf.png){: .download}
+   */
+  function addImageClass(md) {
+    // This takes a render method in as an arg.
+    const addClass = (imageRule) => (tokens, idx, options, env) => {
+      // Get the default image
+      const img = imageRule(tokens, idx, options, env);
+
+      const clsTkn = tokens[idx+1];
+      // The token we are looking for will be text with content
+      if (!clsTkn || clsTkn.type !== 'text' || !clsTkn.content) {
+        return img;
+      }
+
+      //Finds the "{: .<className>}" and pulls out the className only
+      const getClassName = (name) => {
+        return name.match(/\{\:\s*\.[\w-]*\s*\}/g)
+            ? name.match(/(\w|\-)+/g)
+            : '';
+      }
+
+      const classString = ` class="${getClassName(clsTkn.content)}">`;
+      // Remove the special token or it will get rendered
+      clsTkn.content = '';
+
+      return img.slice(0, -1) + classString;
+    };
+
+    md.renderer.rules.image = addClass(md.renderer.rules.image)
+  }
 ];
