@@ -67,7 +67,8 @@ nav {
   text-decoration: underline;
 }
 
-.homeContainer {
+.homeContainer,
+.formHero {
   background-color: #1E4855;
   background-image: url('../img/hero.jpg');
   background-size: cover;
