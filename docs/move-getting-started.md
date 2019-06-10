@@ -126,30 +126,30 @@ main(payee: address, amount: u64) {
 Let us look at a more complex example. In this example, we will use a transaction script to pay multiple recipients instead of just one.
 
 ```rust
-// Multiple payee example. This is written in a slightly verbose way to emphasize
-// the ability to split a LibraCoin.T resource. The simpler way would be to use
-// multiple calls to LibraAccount.withdraw_from_sender.
+// Multiple payee example. This is written in a slightly verbose way to emphasize the ability to
+// split a `LibraCoin.T` resource. The more concise way would be to use multiple calls to
+// `LibraAccount.withdraw_from_sender`.
 
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
 main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
-  let coin1; // type: 0x0.LibraCoin.T
-  let coin2; // type: 0x0.LibraCoin.T
-  let total; // type: u64
-  
+  let coin1: R#LibraCoin.T;
+  let coin2: R#LibraCoin.T;
+  let total: u64;
+
   total = move(amount1) + copy(amount2);
   coin1 = LibraAccount.withdraw_from_sender(move(total));
-  // This mutates `coin1`, which now has value `amount1`
-  coin2 = LibraCoin.withdraw(move(amount2));
+  // This mutates `coin1`, which now has value `amount1`. `coin2` has value `amount2`.
+  coin2 = LibraCoin.withdraw(&mut coin1, move(amount2));
 
   // Perform the payments
   LibraAccount.deposit(move(payee1), move(coin1));
-  LibraAccount.deposit(move(payee2), move(coin2));    
+  LibraAccount.deposit(move(payee2), move(coin2));
   return;
 }
 ```
 
-This concludes our tour of transaction scripts. For more examples, including the transaction scripts supported in the initial testnet, check out  `libra/language/stdlib/transaction_scripts`.
+This concludes our tour of transaction scripts. For more examples, including the transaction scripts supported in the initial testnet, check out `libra/language/stdlib/transaction_scripts`.
 
 ### Writing Modules
 
@@ -157,7 +157,6 @@ We will now turn our attention to writing our own Move modules instead of just r
 
 ```rust
 // A module for earmarking a coin for a specific recipient
-
 module EarmarkedCoin {
   import 0x0.LibraCoin;
 
@@ -168,12 +167,12 @@ module EarmarkedCoin {
   }
 
   // Create a new earked coin with the given `recipient`.
-  // Publish the coin under the transaction sender's account address
+  // Publish the coin under the transaction sender's account address.
   public create(coin: R#LibraCoin.T, recipient: address) {
     let t: R#Self.T;
 
-    // Construct or "pack" a new resource of type T. Only procedures of the
-    // EarmarkedCoin module can create an EarmarkedCoin.T.
+    // Construct or "pack" a new resource of type T. Only procedures of the `EarmarkedCoin` module
+    // can create an `EarmarkedCoin.T`.
     t = T {
       coin: move(coin),
       recipient: move(recipient),
@@ -186,7 +185,7 @@ module EarmarkedCoin {
     return;
   }
 
-  // Allow the transaction sender to claim a coin that was earmarked for her
+  // Allow the transaction sender to claim a coin that was earmarked for her.
   public claim_for_recipient(earmarked_coin_address: address): R#Self.T {
     let t: R#Self.T;
     let t_ref: &R#Self.T;
@@ -197,16 +196,17 @@ module EarmarkedCoin {
     t = move_from<T>(move(earmarked_coin_address));
 
     t_ref = &t;
+    // This is a builtin that returns the address of the transaction sender.
     sender = get_txn_sender();
     // Ensure that the transaction sender is the recipient. If this assertion fails, the transaction
     // will fail and none of its effects (e.g., removing the earmarked coin) will be committed.
-    // The 99 is an error code that will be emitted if the assertion fails.
+    // 99 is an error code that will be emitted in the transaction output if the assertion fails.
     assert(*(&move(t_ref).recipient) == move(sender), 99);
 
     return move(t);
   }
 
-  // Allow the creator of the earmarked coin to reclaim it
+  // Allow the creator of the earmarked coin to reclaim it.
   public claim_for_creator(): R#Self.T {
     let t: R#Self.T;
     let coin: R#LibraCoin.T;
@@ -214,7 +214,7 @@ module EarmarkedCoin {
     let sender: address;
 
     sender = get_txn_sender();
-    // This will fail if no resource of type T under the sender's address
+    // This will fail if no resource of type T under the sender's address.
     t = move_from<T>(move(sender));
     return move(t);
   }
@@ -237,4 +237,4 @@ module EarmarkedCoin {
 
 In the near future, the IR will stabilize and compiling and verifying programs will become more user-friendly. Additionally, location information from the IR source will be tracked and passed to the verifier to make error messages easier to debug. However, the IR will continue to remain a tool for testing Move bytecode. It is meant to be a semantically transparent representation of the underlying bytecode. To allow effective tests, the IR compiler must produce bad code that will be rejected by the bytecode verifier or fail at runtime in the compiler. A user-friendly source language would make different choices; it should refuse to compile code that will fail at a subsequent step in the pipeline.
 
-In the future, we will have a higher-level Move source language. This language will be designed to provide a modern and expressive ecosystem that allows common idioms and programming patterns to be represented easily. Since Move bytecode is a new language and the blockchain is a new programming environment, our understanding of the idioms and patterns we should support is still evolving. The source language is in the early stages of development and we do not have a timetable for its release yet.
+In the future, we will have a higher-level Move source language. This source language will be designed to express common Move idioms and programming patterns safely and easily. Since Move bytecode is a new language and the blockchain is a new programming environment, our understanding of the idioms and patterns we should support is still evolving. The source language is in the early stages of development and we do not have a timetable for its release yet.
