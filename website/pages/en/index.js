@@ -67,9 +67,9 @@ class HomeSplash extends React.Component {
           <Logo img_src={baseUrl + 'img/libra-header-logo-white.png'} />
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('welcome')}>Introduction to Libra</Button>
-            <Button href={docUrl('life-of-a-transaction.html')}>Life of a Transaction</Button>
-            <Button href={docUrl('move-getting-started.html')}>Move Getting Started</Button>
+            <Button href={docUrl('welcome')}>Welcome to the Developer Site</Button>
+            <Button href={docUrl('papers/the-libra-blockchain.html')}>Libra Blockchain White Paper</Button>
+            <Button href={docUrl('move-getting-started.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -81,6 +81,14 @@ class Index extends React.Component {
   render() {
     const {config: siteConfig, language = ''} = this.props;
     const {baseUrl} = siteConfig;
+
+    const Button = props => (
+      <div className="pluginWrapper buttonWrapper">
+        <a className="button" href={props.href} target={props.target}>
+          {props.children}
+        </a>
+      </div>
+    );
 
     const Block = props => (
       <Container
@@ -125,20 +133,27 @@ class Index extends React.Component {
         className="productShowcaseSection"
         id="quickstart"
         style={{textAlign: 'center'}}>
-        <h2>Get Started</h2>
+        <h2>Try Libra</h2>
+        <p>Currently available for MacOS and Linux.</p>
         <Container>
           <ol>
             <li>
               <h4>Clone Libra:</h4>
-              <MarkdownBlock>{bash`git clone git@github.com:libra/libra.git`}</MarkdownBlock>
+              <MarkdownBlock>{
+bash`git clone git@github.com:libra/libra.git
+cd libra`}</MarkdownBlock>
             </li>
             <li>
               <h4>Install dependencies:</h4>
-              <MarkdownBlock>{bash`cargo`}</MarkdownBlock>
+              <MarkdownBlock>{bash`setup_scripts/dev_setup_mac.sh`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run CLI:</h4>
-              <MarkdownBlock>{bash`cargo cli`}</MarkdownBlock>
+              <MarkdownBlock>{bash`cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`}</MarkdownBlock>
+            </li>
+            <li>
+              <h4>Run your first transaction</h4>
+                <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
             </li>
           </ol>
         </Container>

@@ -175,6 +175,11 @@ p a:hover {
   color: #19CDA6;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
 sub {
   vertical-align: sub;
   font-size: smaller;
