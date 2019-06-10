@@ -44,7 +44,7 @@ This project is at an early prototype stage. We want to know what you think. To 
 
 ### Libra Ecosystem
 
-The Libra ecosystem consists of a number of different types of entities:
+The Libra ecosystem consists of different types of entities:
 
 * [Clients](#clients)
 * [Validators](#validators)
@@ -56,7 +56,7 @@ A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
 * Can be run by the end-user, or on behalf of the end user (for example, for a Custodial client). 
-* Allows the user to construct, sign, and submit transactions to a [validator]().
+* Allows the user to construct, sign, and submit transactions to a [validator](reference/glossary/#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator), request the status of a transaction or account, and verify the response. 
 
 ### Validators  
@@ -65,25 +65,24 @@ We have talked about validator nodes earlier in this document, validators decide
 
 ### Developers
 
+The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that make use of the blockchain. The term developer encompasses all of these groups. Developers might:
+
+* Build Libra clients.
+* Build applications to interact with a Libra client.
+* Write smart contracts to execute on the blockchain.
 * Contribute to the Libra Blockchain software.
-* Write software to interact with the Libra Blockchain.
 
-### End-Users 
-
-End-users may use clients to:
-
-* Construct and submit transactions to the Libra Blockchain.
-* Read information about accounts and transactions from the Libra Blockchain.
+This site is targeted at developers.
 
 ## The Structure Of This Site
 
-The Libra developer site provides a technical walk-through of the Libra project, it:
+The Libra developer site provides a technical walk-through of the Libra ecosystem, it:
 
 * Introduces you to the Libra Protocol [Libra Protocol](libra-protocol)
-* Provides abstracts of the Libra technical papers and links you to the latest copy of the papers - [Libra Technical Papers]().
-* Guides you through executing your very first transaction on the Libra Blockchain - [My First Transaction]()
-* Provides a look at what happens under the hood when a transaction is submitted and executed - [Life of a Transaction]()
-* Introduces you to a new blockchain programming language called Move - [Move - Getting Started]()
-* Provides the concept and implementation details of the Libra Core components and the associated API documentation - [Libra Core Overview]()
-* Includes a [CLI Guide](), which lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
-* Includes a [Libra Glossary]() for a quick reference to Libra terminology. 
+* Provides abstracts of the Libra technical papers and links you to the latest copy of the papers.
+* Guides you through executing your very first transaction on the Libra Blockchain - [My First Transaction](my-first-transaction)
+* Provides a look at what happens under the hood when a transaction is submitted and executed - [Life Of A Transaction](life-of-a-transaction)
+* Introduces you to a new blockchain programming language called [Getting Started With Move](move-getting-started).
+* Provides the concept and implementation details of the Libra Core components and the associated API documentation - [Libra Core Overview](libra-core-overview)
+* Includes a [CLI Guide](libra-cli), which lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
+* Includes a [Libra Glossary](reference/glossary) for a quick reference to Libra terminology.
