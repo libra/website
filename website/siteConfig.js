@@ -72,7 +72,8 @@ const siteConfig = {
     // Copy-to-clipboard button for code blocks
     `${baseUrl}js/code_block_buttons.js`,
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
-    // Segment analytics for the form data
+    // Segment analytics for the form data. Make sure to load the analytics 1st
+    `${baseUrl}js/segment.analytics.min.js`,
     `${baseUrl}js/segment.js`,
   ],
 
