@@ -63,17 +63,17 @@ A Libra account is a container for Move modules and Move resources. It is identi
 * **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary#move-module).
 * **Move resources** contain data, but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary#move-resource).
 
-An account may contain an arbitrary number of resources and modules.  Every non-empty account contains a [`LibraAccount.T`](reference/glossary#libraaccount.t) resource.
+An account may contain an arbitrary number of Move resources and Move modules.
 
 #### Account Address
 
-The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user's public verification key. To sign a transaction sent from their account address, the user can use the corresponding private key. 
+The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user's public verification key. To sign a transaction sent from their account address, the user can use the private key corresponding to that account.
 
-There is no limit on the number of addresses a Libra user can claim. To claim an account address, a transaction should be sent from an account that holds sufficient Libra, to pay the account creation fee.
+There is no limit on the number of addresses a Libra user can claim. To claim an account address, a transaction should be sent from an account that holds sufficient Libra to pay the account creation fee.
 
 ## Proof
 
-All the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist **agreed upon** blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
+All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist **agreed upon** blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
 * Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest n transactions from an account, the proof will verify that no transactions are omitted from the query response.
@@ -96,7 +96,7 @@ Clients of the Libra Blockchain create transactions, and submit them to a Valida
 **Mempool**
 
 * Mempool is in-memory buffer that holds the transactions that are ‘waiting’ to be executed. 
-* When a new transaction is added to the mempool, the mempool shares this transaction with other validators in the system. 
+* When a new transaction is added to a validator's mempool, this validator's mempool shares this transaction with the mempools of other validators in the system. 
 
 **Consensus**
 
