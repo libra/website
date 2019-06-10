@@ -154,7 +154,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Faucet
 
 * **Faucet** is the way to create Libra currency with no real world value, only on our testnet*.*
-* Faucet is a service running in AWS along with the testnet. This service only exists to facilitate minting coins for testnet.
+* The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet.
 * You can use faucet by sending a request to create coins and transfer them into a given account on your behalf.
 
 ## G
@@ -201,13 +201,12 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * In leader-based protocols, nodes must agree on a leader to make progress.
 * Leaders are selected by a function which takes the current [round number](https://fb.quip.com/LkbMAEBIVNbh#ffYACAO6CzD) as input. 
 
-### Libra
+### Libra (The Currency)
 
-* **Libra** is a simple, borderless, and global, currency and financial ecosystem, that empowers billions of people.
+* **Libra** is a global digital currency.
 * It is stored on the Libra Blockchain.
 * It is backed by a reserve of assets.
-* It is governed by the independent Libra Association tasked with evolving the ecosystem. 
-* It is the official name for the network, the currency, and the association.
+* It is governed by the independent Libra Association.
 
 ### Libra Association
 
@@ -218,7 +217,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Libra Association Council
 
 * Libra Association Council is the governing body of the Libra Association.
-* Libra Association Council and Libra Corporation are parts of the Libra Association. Libra Corporation is the for-profit subsidiary of the association 
+* Libra Association Council is part of the Libra Association.
 
 ### LibraBFT
 
