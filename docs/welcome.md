@@ -44,7 +44,7 @@ The testnet is built for experimenting with new ideas without disturbing or brea
 
 This project is at an early prototype stage. We want to know what you think. To learn more about the project goals and context, refer to the [Libra white paper](). 
 
-### Libra Ecosystem
+## Libra Ecosystem
 
 The Libra ecosystem consists of different types of entities:
 
