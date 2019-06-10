@@ -144,69 +144,83 @@ This concludes our tour of transaction scripts. For more examples, including the
 
 ### Writing modules
 
-We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. This section explains each component of a module in detail. Readers who would prefer a more example-based introduction to modules might prefer to start by looking at the module code under `libra/language/stdlib/modules`.
+We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. Consider the following situation. Bob is going to create an account at address *a* at some point in the future. Alice wants to "earmark" some funds for Bob so he can pull them into his account once it is created. But she also wants to be able to reclaim the funds for herself if Bob never creates the account.
 
 ```rust
-module MyModule {  
-  // Like transaction scripts, Move module declarations can import modules
-  // published elsewhere on the blockchain. Importing an external module allows 
-  // the current module to use type declarations and public procedures declared
-  // in the other module.
+// A module for earmarking a coin for a specific recipient
+
+module EarmarkedCoin {
   import 0x0.LibraCoin;
 
-  // (1) Resource and struct type declarations
+  // Wrapper containing a Libra coin and the address of the recipient the coin is earmarked for.
+  resource T {
+    coin: R#LibraCoin.T,
+    recipient: address
+  }
 
-  // The first part of a Move module is type declarations. A module can declare
-  // two different forms of types: *resources* and *structs*.
-  // Move resources are a special sort of C-style record. Resource fields can hold
-  // either primitive values...
-  resource ResourceExample { f: u64, b: bool, a: address, arr: bytearray }
-  // ... or nested resources. Nested resource types can be declared either in the
-  // current module (like R#Self.ResourceExample) or in a separate module
-  // (like R#LibraCoin.T). The R# and V# bits are *kind annotations*
-  // (shorthand for "Resource" and "unrestricted Value") that must match the kind
-  // of the declared type. For example...
-  resource ResourceWrapper { r: R#Self.ResourceExample, c: R#LibraCoin.T }
-  // ... the bytecode verifier would reject the following code because the
-  // ResourceExample type is incorrectly annotated with the kind V.
-  // resource BadResourceWrapper { r: V#Self.ResourceExample }
+  // Create a new earked coin with the given `recipient`.
+  // Publish the coin under the transaction sender's account address
+  public create(coin: R#LibraCoin.T, recipient: address) {
+    let t: R#Self.T;
 
-  // In addition to resources, Move has structs. Like resources, struct fields can
-  // contain both primitive values and nested structs...
-  // Move has C-style structs that can contain both primitive values... 
-  struct StructExample1 { f: u64 }
-  struct StructExample2 { s: V#Self.StructExample1, b: bool }
-  // .. but not nested resources. The following code would be rejected by the 
-  // byecode verifier. The reason why Move imposes this restriction will become
-  // clear shortly (see (3)).
-  // struct BadStructWrapper { r: R#Self.ResourceExample }
-      
-  // (2) Procedure declarations
-  
-  // The second part of a Move module is procedure declarations. Procedures
-  // can use types and invoke procedures both in other modules...  
-  public return_coin(coin: R#LibraCoin.T): R#LibraCoin.T {
-    let coin_value; // type: u64
-    
-    coin_value = LibraCoin.value(&coin);
+    // Construct or "pack" a new resource of type T. Only procedures of the
+    // EarmarkedCoin module can create an EarmarkedCoin.T.
+    t = T {
+      coin: move(coin),
+      recipient: move(recipient),
+    };
+
+    // Publish the earmarked coin under the transaction sender's account address.
+    // Each account can contain at most one resource of a given type; this call will fail if the
+    // sender already has a resource of this type.
+    move_to_sender<T>(move(t));
+    return;
+  }
+
+  // Allow the transaction sender to claim a coin that was earmarked for her
+  public claim_for_recipient(earmarked_coin_address: address): R#Self.T {
+    let t: R#Self.T;
+    let t_ref: &R#Self.T;
+    let sender: address;
+
+    // Remove the earmarked coin resource published under `earmarked_coin_address`.
+    // If there is resource of type T published under the address, this will fail.
+    t = move_from<T>(move(earmarked_coin_address));
+
+    t_ref = &t;
+    sender = get_txn_sender();
+    // Ensure that the transaction sender is the recipient. If this assertion fails, the transaction
+    // will fail and none of its effects (e.g., removing the earmarked coin) will be committed.
+    // The 99 is an error code that will be emitted if the assertion fails.
+    assert(*(&move(t_ref).recipient) == move(sender), 99);
+
+    return move(t);
+  }
+
+  // Allow the creator of the earmarked coin to reclaim it
+  public claim_for_creator(): R#Self.T {
+    let t: R#Self.T;
+    let coin: R#LibraCoin.T;
+    let recipient: address;
+    let sender: address;
+
+    sender = get_txn_sender();
+    // This will fail if no resource of type T under the sender's address
+    t = move_from<T>(move(sender));
+    return move(t);
+  }
+
+  // Extract the Libra coin from its wrapper and return it to the caller.
+  public unwrap(t: R#Self.T): R#LibraCoin.T {
+    let coin: R#LibraCoin.T;
+    let recipient: address;
+
+    // This "unpacks" a resource type by destroying the outer resource, but returning its contents.
+    // Only the module that declares a resource type can unpack it.
+    T { coin, recipient } = move(t);
     return move(coin);
   }
 
-  // ... and the same module. Procedures without a `public` modifier are *internal*
-  // and can only be invoked from inside their declaring module. Trying to invoke 
-  // an internal procedure from an external module will fail at bytecode 
-  // verification time.
-  internal_procedure(coin: R#LibraCoin.T): R#LibraCoin.T {
-    let return_value; // type: R#LibraCoin.T
-
-    return_value = Self.return_coin(move(coin));
-    return move(return_value);
-  }
-
-  // TODO: (3) Moving vs copying structs, resources, and primitive types
-
-  // TODO: (4) Module builtins
-   
 }
 ```
 
