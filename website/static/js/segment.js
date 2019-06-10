@@ -27,14 +27,14 @@ script.innerHTML = `
        //   n.type = "text/javascript";
        //   n.async = !0;
        //   // n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; 
-       //   n.src = "http://localhost:3000/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/js/segment.analytics.min.js";
+       //   n.src = "INTERNAL CDN";
        //   var a = document.getElementsByTagName("script")[0];
        //   a.parentNode.insertBefore(n, a);
        //   analytics._loadOptions = e 
        //  };
        analytics.SNIPPET_VERSION = "4.1.0";
 
-    analytics.load("Llc3xSsbfceDLVBzwOJKoJSkSHMRoj8V");
+    // analytics.load("Llc3xSsbfceDLVBzwOJKoJSkSHMRoj8V");
     analytics.page();
   }}();    
 `;
@@ -47,10 +47,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const forms = document.forms;
   for (i = 0; i < forms.length; i++) {
     const form = forms[i];
-    interceptSubmit(form);
+    trackFormData(form);
   }
 });
 
+/**
+ * Get all the input and select fields from a form.
+ */
 function getFormFields(form) {
   const fields = [];
   // Iterate over the form controls
@@ -64,7 +67,10 @@ function getFormFields(form) {
   return fields;
 }
 
-function interceptSubmit(form) {
+/**
+ * Sends the submitted form data to segment in a track call.
+ */
+function trackFormData(form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault()
     const fields = getFormFields(form);
@@ -74,7 +80,6 @@ function interceptSubmit(form) {
     fields.forEach(function(field) {
       data[field.id] = field.value;
     });
-    console.log('Submitting data: ', data)
     analytics.track('Form Submitted', data)
   })
 }
