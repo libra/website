@@ -5,9 +5,9 @@ title: Libra Protocol
 
 ## Overview
 
-The **Libra Blockchain**, a cryptographically authenticated distributed database, is based on the **Libra protocol**. The blockchain is maintained by a distributed network of [validators](reference/glossary/#validators). The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the database. In this document, we introduce you to the key concepts of the Libra protocol. 
+The **Libra Blockchain**, a cryptographically authenticated distributed database, is based on the **Libra protocol**. The blockchain is maintained by a distributed network of [validators](reference/glossary/#validators). The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the blockchain. In this document, we introduce you to the key concepts of the Libra protocol. 
 
-Libra *testnet* is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
+The Libra **testnet** is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
 
 ## Transactions and States
 
