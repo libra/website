@@ -75,7 +75,10 @@ const siteConfig = {
   ],
 
   // CSS sources to load
-  stylesheets: [`${baseUrl}css/code_block_buttons.css`],
+  stylesheets: [
+    `${baseUrl}css/code_block_buttons.css`,
+    `${baseUrl}css/fonts/NBInternationalProEditionWeb/stylesheet.css`,
+  ],
 
   // Custom markdown functions
   markdownPlugins: markdownPlugins,
