@@ -76,7 +76,7 @@ The Libra ecosystem supports a wide variety of developers, ranging from people w
 
 This site is targeted at developers.
 
-## The Structure Of This Site
+## Structure Of This Site
 
 The Libra developer site provides a technical walk-through of the Libra ecosystem, it:
 
