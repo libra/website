@@ -23,25 +23,24 @@ In the second part of this guide, we will lift up the hood and show you how to w
 
 * Each Libra transaction includes a **Move transaction script** which encodes the logic a validator should perform on the client's behalf (for example, move Libra from Alice's account to Bob's account). 
 * The transaction script interacts with [Move resources](#move-has-first-class-resources) published in the global storage of the Libra Blockchain by calling the procedures of one or more [Move modules](#move-modules-allow-composable-smart-contracts). 
-* A transaction script <u>is not</u> stored in the global state, and it cannot be invoked by other transaction scripts. It is a <u>single-use program</u>.
-* We present several examples of transaction scripts in [Writing Transaction Scripts](#writing-transaction-scripts)
+* A transaction script is not stored in the global state, and it cannot be invoked by other transaction scripts. It is a single-use program.
+* We present several examples of transaction scripts in [Writing Transaction Scripts](#writing-transaction-scripts).
 
 ### Move Modules Allow Composable Smart Contracts
 
-Move modules define the rules for updating the global state of the Libra Blockchain. Modules fill the same niche as “smart contracts” in other blockchain systems. Modules declare[resource](#move-has-first-class-resources) types that can be published under user accounts. Each account in the Libra Blockchain is a container for an arbitrary number of resources and modules.
+Move modules define the rules for updating the global state of the Libra Blockchain. Modules fill the same niche as “smart contracts” in other blockchain systems. Modules declare [resource](#move-has-first-class-resources) types that can be published under user accounts. Each account in the Libra Blockchain is a container for an arbitrary number of resources and modules.
 
-* A module declares both struct types (including resources) and procedures.
+* A module declares both struct types (including resources, which are a special kind of struct) and procedures.
 * The procedures of a Move module define rules for creating, accessing, and destroying the types it declares.
 * Modules are reusable. A struct type declared in one module can use struct types declared in another module, and a procedure declared in one module can invoke public procedures declared in another module. A module can invoke procedures declared in other Move modules. Transaction scripts can invoke any public procedure of a published module.
-* In the long term, any Libra user will be able to publish (and maintain) Move modules. A Libra user can publish modules under their own account. 
+* Eventually, Libra users will be able to publish modules under their own accounts.
 
 ### Move Has First Class Resources
 
-* The key feature of Move is the ability to define **custom resource types**. Resource types are used to encode programmable assets.
-* A Move resource is a struct that binds named fields to simple values such as integers, or complex values such as other resources. 
-* Resources are ordinary values in the language, they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
-* The <u>Move type system provides special safety guarantees</u> for resources. Move resources can never be copied, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move Virtual Machine](glossary#move-virtual-machine) via bytecode verification. The virtual machine will refuse to run code that might violate these guarantees.
-* Resource safety is powerful enough that the **Libra** currency itself is implemented as a normal resource type with no special status in the language.  
+* The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital  assets with rich programmability.
+* Resources are ordinary values in the language --- they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
+* However, the Move type system provides special safety guarantees for resources. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](glossary#move-virtual-machine) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
+* The Libra currency is implemented as a resource type called `LibraCoin.T`. `LibraCoin.T` coin has no special status in the language; every Move resource enjoys the same protections.
 
 ## Move: Under the Hood
 
@@ -51,7 +50,7 @@ This section describes how to write [transaction scripts](#writing-transaction-s
 
 We will proceed by presenting snippets of heavily-commented Move IR. We encourage readers to follow along with the examples by compiling, running, and modifying them locally. The README files under `libra/language/README.md` and `libra/language/ir_to_bytecode/README.md` will explain how to do this.
 
-### Writing Transaction scripts
+### Writing Transaction Scripts
 
 As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount.T` and `LibraCoin.T` resource types. `LibraAccount` is the name of the module, and `T` is the name of a resource declared by that module. This is a common naming convention in Move; the “main” type declared by a module is typically named `T`. 
 
@@ -142,7 +141,7 @@ main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
 
 This concludes our tour of transaction scripts. For more examples, including the transaction scripts supported in the initial testnet, check out  `libra/language/stdlib/transaction_scripts`.
 
-### Writing modules
+### Writing Modules
 
 We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. Consider the following situation. Bob is going to create an account at address *a* at some point in the future. Alice wants to "earmark" some funds for Bob so he can pull them into his account once it is created. But she also wants to be able to reclaim the funds for herself if Bob never creates the account.
 
@@ -224,7 +223,7 @@ module EarmarkedCoin {
 }
 ```
 
-### Future Developer experience
+### Future Developer Experience
 
 In the near future, the IR will stabilize and compiling and verifying programs will become more user-friendly. Additionally, location information from the IR source will be tracked and passed to the verifier to make error messages easier to debug. However, the IR will continue to remain a tool for testing Move bytecode. It is meant to be a semantically transparent representation of the underlying bytecode. To allow effective tests, the IR compiler must produce bad code that will be rejected by the bytecode verifier or fail at runtime in the compiler. A user-friendly source language would make different choices; it should refuse to compile code that will fail at a subsequent step in the pipeline.
 
