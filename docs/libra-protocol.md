@@ -33,7 +33,7 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Sender public key** - The public key that corresponds to the private key used to sign the transaction.
 * **Program**  - The program is comprised of:
     * A Move bytecode transaction script. Here is an example of a [peer to peer transaction script](life-of-a-transaction/#peer-to-peer-transaction-script-and-inputs). The information about the **recipient** of the transaction is part of the inputs to this script.
-    * An optional list of inputs to the script, which contains the information about the recipient, and the amount transfered to the recipient.
+    * An optional list of inputs to the script, which contains the information about the recipient and the amount transfered to the recipient.
     * An optional list of Move bytecode modules to publish. 
 * **Gas price** - The Libra amount the sender is willing to pay per unit of [gas](reference/glossary#gas), to execute the transaction.
 * **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume before halting.
