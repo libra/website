@@ -56,30 +56,39 @@ As we explained in [Move Transaction Scripts Enable Programmable Transactions](#
 
 When we say that a user “has an account at address `0xff` on the Libra blockchain", what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
 
-The account balance is a resource of type `LibraCoin.T`. As you might have expected, this is the type of a Libra coin. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this type is a first-class citizen in the Move language. Resources of type `LibraCoin.T` can be stored in program variables, passed between procedures, and so on, just like any other value.
+The account balance is a resource of type `LibraCoin.T`. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this is the type of a Libra coin. This type is a first-class citizen in the language just like any other Move resource. Resources of type `LibraCoin.T` can be stored in program variables, passed between procedures, and so on.
 
-The interested reader can find the Move IR definitions of these two key resources in the `LibraAccount` and `LibraCoin` modules under the `libra/language/stdlib/modules/` directory of Libra Core.
+We encourage the interested reader to examine the Move IR definitions of these two key resources in the `LibraAccount` and `LibraCoin` modules under the `libra/language/stdlib/modules/` directory.
 
 Now, let us see how a programmer can interact with these modules and resources in a transaction script.
 
 ```rust
 // Simple peer-peer payment example.
 
-// Use LibraAccount module published on the blockchain at account address
-// 0x0...0 (with 64 zeroes). 0x0 is shorthand that the IR pads out to 256 bits (64
-// digits) by adding leading zeroes.
+// Use LibraAccount module published on the blockchain at account address 0x0...0 (with 64 zeroes).
+// 0x0 is shorthand that the IR pads out to 256 bits (64 digits) by adding leading zeroes.
 import 0x0.LibraAccount;
+import 0x0.LibraCoin;
 main(payee: address, amount: u64) {
-  // Declare a local variable. For now, the compiler will infer the type. In 
-  // the future, the IR will require explicit type annotations.
-  let coin; // type: 0x0.LibraCoin.T
-  
-  // Acquire a 0x0.LibraCoin.T resource with value `amount` from the sender's account
+  // The bytecode (and consequently, the IR) has typed locals.
+  // The scope of each local is the entire procedure.
+  // All local variable declarations must be at the beginning of the procedure.
+  // Declaration and initialization of variables are separate operations, but the bytecode verifier
+  // will prevent any attempt to use an uninitialized variable.
+  let coin: R#LibraCoin.T;
+  // the R# part of the type above is one of two *kind annotation* R# and V# (shorthand for
+  // "Resource" and "unrestricted Value"). These annotations must match the kind of the type
+  // declaration (e.g, does the LibraCoin module declare `resource T` or `struct T`?).
+
+  // Acquire a LibraCoin.T resource with value `amount` from the sender's account
   // This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
   // Move the LibraCoin.T resource into the account of `payee`. If there is no
   // account at the address `payee`, this step will fail
-  LibraAccount.deposit(move(payee), move(coin));   
+  LibraAccount.deposit(move(payee), move(coin));
+
+  // Every procedure must end in a `return`. The IR compiler is very literal: it directly translates
+  // the source it is given. It will not do fancy things like inserting missing `return`s.
   return;
 }
 ```
@@ -87,28 +96,29 @@ main(payee: address, amount: u64) {
 This transaction script has an unfortunate problem, it will fail if the there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
 
 ```rust
-// A small variant of the peer-peer payment example that creates a fresh account if
-// one does not already exist.
+// A small variant of the peer-peer payment example that creates a fresh account if one does not
+// already exist.
 
 import 0x0.LibraAccount;
+import 0x0.LibraCoin;
 main(payee: address, amount: u64) {
-  let coin; // type: 0x0.LibraCoin.T
-  let account_exists; // type: bool
-  
-  // Acquire a 0x0.LibraCoin.T resource with value `amount` from the sender's account
+  let coin: R#LibraCoin.T;
+  let account_exists: bool;
+
+  // Acquire a LibraCoin.T resource with value `amount` from the sender's account.
   // This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
 
-  account_exists = Account.exists(copy(payee));
-  
+  account_exists = LibraAccount.exists(copy(payee));
+
   if (!move(account_exists)) {
-    // Creates a fresh account at address payee by publishing a LibraAccount.T
+    // Creates a fresh account at the address `payee` by publishing a LibraAccount.T
     // resource under this address. If theres is already a LibraAccount.T resource
     // under the address, this will fail.
     create_account(copy(payee));
   }
-  
-  LibraAccount.deposit(move(payee), move(coin));   
+
+  LibraAccount.deposit(move(payee), move(coin));
   return;
 }
 ```
