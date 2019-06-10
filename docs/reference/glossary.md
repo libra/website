@@ -224,9 +224,9 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * LibraBFT is the Libra protocol's BFT consensus algorithm
 * LibraBFT is based on HotStuff.
 
-### Libra blockchain
+### Libra Blockchain
 
-* The **Libra Blockchain** manages the Libra ledger, a globally accessible distributed ledger. It is used by the Libra ecosystem to power a new financial ecosystem.
+* The **Libra Blockchain** is a ledger of immutable transactions agreed upon by the validator nodes on the Libra network (the network of validator nodes).
 
 ### Libra Core
 
