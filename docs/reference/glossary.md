@@ -56,7 +56,7 @@ title: Glossary
 ### Blockchain
 
 * A **blockchain** is a distributed public ledger.
-* The Libra Blockchain is formed with approved transactions, and the execution-results of those transactions.
+* The Libra Blockchain is formed with approved transactions and the execution-results of those transactions.
 
 ### Byzantine (Validator)
 
