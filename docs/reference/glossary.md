@@ -400,7 +400,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * * *
 ### TESTNET
 
-* **testnet** is a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. 
+* The **testnet** is a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. 
 * The Libra testnet is comprised of test [validator nodes](#validator-node) running [Libra Core](#libra-core), the software which maintains the Libra cryptocurrency. 
 * The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. 
 * testnet is the predecessor to the Libra [mainnet](#mainnet), but testnet has a digital currency _with no real world value_.
