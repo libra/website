@@ -5,23 +5,23 @@ title: Move Getting Started
 
 ## Overview
 
-Move is a new programming language developed to provide a safe and programmable foundation for the Libra Blockchain. An account in the Libra Blockchain is a container for an arbitrary number of Move modules and Move resources. Every transaction submitted to the Libra Blockchain uses a transaction script written in Move to encode its logic. The transaction script can call and interact with procedures and resources defined in other Move modules to update the global state of the blockchain.
+Move is a new programming language developed to provide a safe and programmable foundation for the Libra Blockchain. An account in the Libra Blockchain is a container for an arbitrary number of Move resources and Move modules. Every transaction submitted to the Libra Blockchain uses a transaction script written in Move to encode its logic. The transaction script can call procedures declared by a module to update the global state of the blockchain.
 
 In the first part of this guide, we will provide a high-level introduction to the key features of the Move language:
 
-1. [Move Transaction Scripts Enable Programmable Transactions](##move-transaction-scripts-enable-programmable-transactions)
+1. [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions)
 2. [Move Modules Allow Composable Smart Contracts](#move-modules-allow-composable-smart-contracts)
 3. [Move Has First Class Resources](#move-has-first-class-resources)
 
 For the curious reader, the [Move technical paper](papers/the-move-language) contains much more detail about the language.
 
-In the second part of this guide, we'll lift up the hood and show you how to write your own Move programs in [Move Intermediate Representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available locally for you to try out.
+In the second part of this guide, we will lift up the hood and show you how to write your own Move programs in the [Move intermediate representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available for you to try out locally.
 
 ## Key Features of Move
 
 ### Move Transaction Scripts Enable Programmable Transactions
 
-* Each Libra transaction includes a **Move transaction script** which encodes the logic a validator should perform on the client's behalf (for example, move Libra from user A to user B). 
+* Each Libra transaction includes a **Move transaction script** which encodes the logic a validator should perform on the client's behalf (for example, move Libra from Alice's account to Bob's account). 
 * The transaction script interacts with [Move resources](#move-has-first-class-resources) published in the global storage of the Libra Blockchain by calling the procedures of one or more [Move modules](#move-modules-allow-composable-smart-contracts). 
 * A transaction script <u>is not</u> stored in the global state, and it cannot be invoked by other transaction scripts. It is a <u>single-use program</u>.
 * We present several examples of transaction scripts in [Writing Transaction Scripts](#writing-transaction-scripts)
