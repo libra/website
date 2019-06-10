@@ -155,9 +155,15 @@ This concludes our tour of transaction scripts. For more examples, including the
 
 We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. Consider the following situation. Bob is going to create an account at address *a* at some point in the future. Alice wants to "earmark" some funds for Bob so he can pull them into his account once it is created. But she also wants to be able to reclaim the funds for herself if Bob never creates the account.
 
+To solve this problem for Alice, we will write a module `EarmarkedLibraCoin` that:
+- Declares a new resource type `EarmarkedLibraCoin.T` that wraps a Libra coin and recipient address
+- Allows Alice to create such a type and publish it under her account (the `create` procedure)
+- Allows Bob to claim the resource (the `claim_for_recipient` procedure)
+- Allows anyone with an `EarmarkedLibraCoin.T` to destroy it and acquire the underlying coin (the `unwrap` procedure)
+
 ```rust
 // A module for earmarking a coin for a specific recipient
-module EarmarkedCoin {
+module EarmarkedLibraCoin {
   import 0x0.LibraCoin;
 
   // Wrapper containing a Libra coin and the address of the recipient the coin is earmarked for.
@@ -232,6 +238,10 @@ module EarmarkedCoin {
 
 }
 ```
+
+Alice can create an earmarked coin for Bob by creating a transaction script that invokes `create` on Bob's address *a* and a `LibraCoin.T` that she owns. Once *a* has been created, Bob can claim the coin by sending a transaction from *a* that invokes `claim_for_recipient`, passes the result to `unwrap`, and stores the returned `LibraCoin` wherever he wishes. If Bob takes too long to create an account under *a* and Alice wants to reclaim her funds, she can do so by using `claim_for_creator` followed by `unwrap`.
+
+The observant reader may have noticed that the code in this module is agnostic to the internal structure of `LibraCoin.T`. It could just as easily be written using generic programming (e.g., `resource T<AnyResource: R> { coin: AnyResource, ... }`). We are currently working on adding support for exactly this sort of parametric polymorphism to Move.
 
 ### Future Developer Experience
 
