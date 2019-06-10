@@ -236,7 +236,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Libra Protocol
 
-* **Libra protocol** is the specification of how transactions are submitted, ordered, executed and recorded within the Libra ecosystem.
+* **Libra protocol** is the specification of how transactions are submitted, ordered, executed, and recorded within the Libra ecosystem.
 
 ### Libra Reserve
 
