@@ -86,7 +86,7 @@ In a blockchain, the client does not need to trust the entity from which it is r
 
 ## Validator
 
-Clients of the Libra Blockchain create transactions and submit them to a validator. A validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the distributed database of the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
+Clients of the Libra Blockchain create transactions and submit them to a validator. A validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
 <small>Figure 1.2 Logical components of a validator.</small>
 
@@ -94,7 +94,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Admission Control (AC)**
 
-* Admission Control is the <u>sole external interface</u> of the validator. Any request made by a client to the validator goes to AC first. 
+* Admission Control is the sole external interface of the validator. Any request made by a client to the validator goes to AC first. 
 * AC performs initial checks on the requests to protect the other parts of the validator from corrupt or high volume input.
 
 **Mempool**
@@ -136,5 +136,5 @@ For information on interactions of each validator component with other component
     * [Move Technical Paper](), for a detailed technical understanding of Move.
 * [Glossary](glossary) is a quick reference for Libra terminology.
 
-> **Note**: In this document the term "State" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
+> **Note**: In this document the term "state" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
 
