@@ -11,11 +11,11 @@ Quoting from [the Libra white paper]():
 
 _“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of “the internet of money.” Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_
 
-Libra has a secure, scalable, and reliable **blockchain**. It is **backed by a reserve** of assets designed to give it intrinsic value. Libra is **governed by the independent Libra Association** tasked with evolving the ecosystem.
+Libra has a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
 
 The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability
 
-The Libra currency is built on the “Libra Blockchain.” The software that implements the Libra Blockchain is **open source**. Imagine an open interoperable ecosystem of financial services that developers and organizations will build to help people and businesses hold and transfer Libra for everyday use! 
+The Libra currency is built on the “Libra Blockchain.” The software that implements the Libra Blockchain is open source. Imagine an open interoperable ecosystem of financial services that developers and organizations will build to help people and businesses hold and transfer Libra for everyday use! 
 
 ## Move - A New Blockchain Programming Language
 
@@ -31,7 +31,7 @@ Refer to [Getting Started With Move]() for further information.
 
 ## The Testnet
 
-The **testnet** is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called **Libra Core**. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A validator is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
 
 The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary/#mainnet), testnet has a digital currency _with no real world value_.
 
