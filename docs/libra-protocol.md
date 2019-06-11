@@ -1,6 +1,6 @@
 ---
 id: libra-protocol
-title: Libra Protocol
+title: Libra Protocol - Key Concepts
 ---
 
 ## Overview

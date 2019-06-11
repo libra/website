@@ -86,7 +86,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ## Validator Component Interactions
 
-In the [Libra Protocol](libra-protocol#transactions) document we looked at the structure of a transaction, and mentioned that:
+In the [Libra Protocol - Key Concepts](libra-protocol#transactions) document we looked at the structure of a transaction, and mentioned that:
 
 * Clients of the Libra Blockchain submit transactions to request updates to the ledger state. 
 * These transactions are submitted to a Libra validator node. 
@@ -388,7 +388,7 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 
 * For a detailed description of the protocol and the design decisions, refer to the [The Libra Blockchain technical paper](papers/the-libra-blockchain). 
 * For an introduction to the Libra ecosystem refer to [Introduction to Libra](welcome). 
-* For key concepts of the Libra protocol refer to [Libra Protocol](libra-protocol).
+* For key concepts of the Libra protocol refer to [Libra Protocol - Key Concepts](libra-protocol).
 * To execute a transaction on the Libra testnet refer to [My First Transaction](my-first-transaction).
 * To learn about the logical components of [Libra Core implementation](libra-core-overview).
 * The [CLI guide](libra-cli) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.

@@ -78,7 +78,7 @@ This site is targeted at developers.
 
 ## Contents Of This Site
 
-* [Libra Protocol](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
+* [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
 * [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
 * [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
 * [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.

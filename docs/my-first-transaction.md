@@ -8,7 +8,7 @@ title: My First Transaction
 This document will guide you through executing your first transaction on the Libra Blockchain. Before you follow the steps to execute your first transaction, we recommend that you read the following documents to familiarize yourself with the key aspects of the Libra ecosystem and the Libra protocol.
 
 * [Welcome](welcome)
-* [The Libra protocol](libra-protocol)
+* [The Libra protocol - Key Concepts](libra-protocol)
 
 We provide a command line interface (CLI) client to interact with the blockchain. 
 
