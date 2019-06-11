@@ -24,11 +24,9 @@ The Libra currency is built on the “Libra Blockchain.” This site documents L
 
 Move takes insights from past security incidents with smart contracts and creates a language that makes it inherently easier to write code that fulfills the author's intent. This lessens the risk of unintended bugs or security incidents. Specifically, Move is designed to prevent assets from being cloned. It enables “resource types” that constrain digital assets to the same properties as physical assets: a resource has a single owner, it can only be spent once, and the creation of new resources is restricted. 
 
-The Move language also facilitates automatic proofs that transactions satisfy a specific set of properties, such as, enforce that payment transactions only changing the account balances of the payer and receiver. By prioritizing these features, Move will help keep the Libra Blockchain secure. 
-
 Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
 
-Refer to [Getting Started With Move]() for further information.
+Refer to [Getting Started With Move](move-getting-started) for further information.
 
 ## The Testnet
 
