@@ -13,7 +13,7 @@ The Libra **testnet** is a demonstration of an early prototype of the Libra Bloc
 
 ## Transactions and States
 
-At the heart of the Libra protocol are two fundamental concepts - **transactions** and **states**. At any point in time, the blockchain has a "state". The state represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
+At the heart of the Libra protocol are two fundamental concepts - **transactions** and **states**. At any point in time, the blockchain has a "state". The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small>Figure 1.1 A transaction changes state.</small>
@@ -119,22 +119,22 @@ Clients of the Libra Blockchain create transactions, and submit them to a Valida
 
 **Storage**
 
-* The storage is used to persist *agreed upon* blocks of transactions and their execution results.
+* The storage is used to persist **agreed upon** blocks of transactions and their execution results.
 
 For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction).
 
 ## Reference
 
 * For a detailed description of the Libra protocol and the design decisions, refer to the [Libra Blockchain technical paper](papers/the-libra-blockchain). 
-* For an introduction to the Libra ecosystem refer to [Introduction to Libra](welcome). 
-* To run a transaction on testnet refer to [My First Transaction](my-first-transaction). 
-* For a deeper look at the lifecycle of a Libra transaction refer to [Life of a Transaction](life-of-a-transaction).
-* To learn about the concept and implementation details of the Libra Core components and the associated API documentation refer to [Libra Core  Overview](libra-core-overview).
-* The [CLI guide](cli-guide) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
+* For an introduction to the Libra ecosystem refer to the [Welcome page](welcome). 
+* To run a transaction on the testnet refer to [My First Transaction](my-first-transaction). 
+* For a deeper look at the lifecycle of a transaction refer to [Life of a Transaction](life-of-a-transaction).
+* To learn about the concept and implementation details of the Libra Core components refer to [Libra Core component READMEs](libra-core-overview).
+* The [CLI guide](cli-guide) lists the CLI commands (and their usage).
 * Move is a new blockchain programming language. You can refer to the following documents for more information on Move:
-    * [Move - Overview](move-overview) - for an introduction to Move. 
-    * [Move: a language with safe programmable assets](papers/the-move-language) - the technical paper, for a detailed technical understanding of Move.
+    * [Getting Started With Move](), for an introduction to Move. 
+    * [Move Technical Paper](), for a detailed technical understanding of Move.
 * [Glossary](glossary) is a quick reference for Libra terminology.
 
-> *Note*: In this document the term "State" or "ledger state" refers to the <u>global state</u> of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
+> **Note**: In this document the term "State" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
 
