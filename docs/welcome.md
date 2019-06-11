@@ -11,17 +11,11 @@ Quoting from [the Libra white paper]():
 
 _“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of “the internet of money.” Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_
 
-Libra is made up of three parts that will work together to create an inclusive financial system:
+Libra has a secure, scalable, and reliable **blockchain**. It is **backed by a reserve** of assets designed to give it intrinsic value. Libra is **governed by the independent Libra Association** tasked with evolving the ecosystem.
 
-1. It is built on a secure, scalable, and reliable **blockchain**.
-1. It is **backed by a reserve** of assets designed to give it intrinsic value.
-1. It is **governed by the independent Libra Association** tasked with evolving the ecosystem.
+The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability
 
-The Libra currency is built on the “Libra Blockchain.” The software that implements the Libra Blockchain is open source. Imagine an open, interoperable ecosystem of financial services that developers and organizations will build to help people and businesses hold and transfer Libra for everyday use. With the proliferation of smartphones and wireless data, increasingly more people will be online and able to access Libra through these new services. To enable the Libra ecosystem to achieve this vision over time, the blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability.
-
-The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. 
-
-For further information on the Libra Blockchain refer to the [Libra Blockchain paper]().
+The Libra currency is built on the “Libra Blockchain.” The software that implements the Libra Blockchain is **open source**. Imagine an open interoperable ecosystem of financial services that developers and organizations will build to help people and businesses hold and transfer Libra for everyday use. 
 
 ## Move - A New Blockchain Programming Language
 
