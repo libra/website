@@ -88,7 +88,7 @@ In a blockchain the client does not need trust the entity from which it is recei
 
 Clients of the Libra Blockchain create transactions, and submit them to a Validator. A Validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the distributed database of the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
-<small>Figure 1.1 Logical components of a validator.</small>
+<small>Figure 1.2 Logical components of a validator.</small>
 
  A validator contains the following logical components:
 
