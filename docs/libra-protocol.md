@@ -99,7 +99,7 @@ Clients of the Libra Blockchain create transactions, and submit them to a Valida
 
 **Mempool**
 
-* Mempool is in-memory buffer that holds the transactions that are ‘waiting’ to be executed. 
+* Mempool is a buffer that holds the transactions that are ‘waiting’ to be executed. 
 * When a new transaction is added to a validator's mempool, this validator's mempool shares this transaction with the mempools of other validators in the system. 
 
 **Consensus**
