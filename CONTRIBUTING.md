@@ -1,17 +1,13 @@
 # Contributing to Libra
 
-Our goal is to make contributing to Libra easy and transparent.
+Our goal is to make contributing to the Libra project easy and transparent.
 
 ## On Contributing
 
 
-### The Libra Spec
+### The Libra Project
 
-The changes to the Libra specification shall go through a formal process that is still under development.
-
-### The Core Libra Implementation
-
-To contribute to the core Libra implementation, first start with the proper development copy.
+To contribute to the core Libra project, first start with the proper development copy.
 
 To get the development installation with all the necessary dependencies for
 linting, testing, and building the documentation, run the following:
@@ -27,11 +23,9 @@ cargo test
 
 #### Code Style
 
-Libra uses the ____ code formatter to
-enforce a common code style across the code base. _____ is installed easily via
-cargo using `cargo install ____`, and run locally by calling
+Libra uses the Rust `fmt` code formatter to enforce a common code style across the code base. _____ is installed easily via cargo using `cargo install ____`, and run locally by calling
 ```bash
-____ .
+cargo fmt
 ```
 from the repository root. No additional configuration should be needed (see the
 [_____ documentation](https://xxxx)
@@ -97,14 +91,13 @@ During intial phase of heavy development we plan to audit pull requests. As the 
 
 ## Contributor License Agreement ("CLA")
 
-For pull request to be accepted by any Libra projects, we need you to submit a CLA.
-You will only need to do this once to work on any of Libra's open source projects.
-You can complete your CLA here: <https://github.com/libra/libra/blob/master/CLA.md>
+For pull request to be accepted by any Libra projects an invididual or corporate CLA
+must be submitted. You will only need to do this once to work on any of Libra's open source projects. You can complete CLAs here: [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf) [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf)
 
 
 ## Issues
 
-Libra uses Github issues to track bugs. Please include necessary information and instructions to reproduce your issue.
+The Libra project uses Github issues to track bugs. Please include necessary information and instructions to reproduce your issue.
 
 Security issues should be submitted to the Libra Bug Bounty program. More information
 about this program will be released in the coming days.
@@ -112,5 +105,5 @@ about this program will be released in the coming days.
 
 ## License
 
-By contributing to Libra, you agree that your contributions will be licensed
+By contributing to the Libra project, you agree that your contributions will be licensed
 under the LICENSE file in the root directory of this source tree.

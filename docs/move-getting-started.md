@@ -40,7 +40,7 @@ Move modules define the rules for updating the global state of the Libra Blockch
 * The key feature of Move is the ability to define **custom resource types**. Resource types are used to encode programmable assets.
 * A Move resource is a struct that binds named fields to simple values such as integers, or complex values such as other resources. 
 * Resources are ordinary values in the language, they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
-* The <u>Move type system provides special safety guarantees</u> for resources. Move resources can never be copied, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move Virtual Machine](glossary#move-virtual-machine) via bytecode verification. The virtual machine will refuse to run code that might violate these guarantees.
+* The __Move type system provides special safety guarantees__ for resources. Move resources can never be copied, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move Virtual Machine](glossary#move-virtual-machine) via bytecode verification. The virtual machine will refuse to run code that might violate these guarantees.
 * Resource safety is powerful enough that the **Libra** currency itself is implemented as a normal resource type with no special status in the language.  
 
 ## Move: Under the Hood
