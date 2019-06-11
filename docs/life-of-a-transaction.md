@@ -386,18 +386,9 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 
 ## Reference
 
-* For a detailed description of the protocol and the design decisions, refer to the [The Libra Blockchain technical paper](papers/the-libra-blockchain). 
-* For an introduction to the Libra ecosystem refer to [Introduction to Libra](welcome). 
-* For key concepts of the Libra protocol refer to [Libra Protocol - Key Concepts](libra-protocol).
-* To execute a transaction on the Libra testnet refer to [My First Transaction](my-first-transaction).
-* To learn about the logical components of [Libra Core implementation](libra-core-overview).
-* The [CLI guide](libra-cli) lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
-* Move is a new blockchain programming language, you may refer to the following documents for more information on Move:
-    *  [Move Overview](move-overview) - for an introduction to Move. 
-    * [Move: a Language for Managing Access to Scarce Resources](papers/the-move-language) - the technical paper, for a detailed technical understanding of Move.the-move-language
-* [Libra Glossary](reference/glossary) is a quick reference for Libra terminology.
-
-
-
-
-
+* [Welcome page](welcome).
+* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
