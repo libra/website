@@ -15,7 +15,7 @@ A Libra **client** **constructs a raw transaction** (let us call it T~5~raw) to 
 * A program that indicates the actions to be performed on Alice's behalf. It contains:
     * A Move bytecode [peer-to-peer transaction script](reference/glossary#transaction-script).
     * A list of inputs to the script (for example, Bob's account address and the amount of payment).
-* [Gas price](reference/glossary#gas-price)- the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
+* [Gas price](reference/glossary#gas-price) is the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
 * [Maximum gas amount](reference/glossary#maximum-gas-amount) Alice is willing to pay for this transaction.
 * [Expiration time](reference/glossary#expiration-time) of the transaction.
 * [Sequence number](reference/glossary#sequence-numnber) - 5
