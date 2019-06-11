@@ -5,7 +5,7 @@ title: Welcome
 
 ## Overview
 
-Welcome to the **Libra developer site**! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
+Welcome to the Libra developer site! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
 
 Quoting from [the Libra white paper]():
 
@@ -19,11 +19,15 @@ The Libra currency is built on the “Libra Blockchain.” The software that imp
 
 ## Move - A New Blockchain Programming Language
 
-As described in the Libra white paper:
+“Move” is a new programming language for implementing custom transaction logic and "smart contracts" on the Libra Blockchain. Because of Libra's goal to serve billions of people one day, Move is designed with safety and security as the highest priorities. 
 
-_““Move” is a new programming language for implementing custom transaction logic and "smart contracts" on the Libra Blockchain. Because of Libra's goal to one day serve billions of people, Move is designed with safety and security as the highest priorities. Move takes insights from security incidents that have happened with smart contracts to date and creates a language that makes it inherently easier to write code that fulfills the author's intent, thereby lessening the risk of unintended bugs or security incidents. Specifically, Move is designed to prevent assets from being cloned. It enables “resource types” that constrain digital assets to the same properties as physical assets: a resource has a single owner, it can only be spent once, and the creation of new resources is restricted._ 
+Move takes insights from past security incidents with smart contracts and creates a language that makes it inherently easier to write code that fulfills the author's intent. This lessens the risk of unintended bugs or security incidents. Specifically, Move is designed to prevent assets from being cloned. It enables “resource types” that constrain digital assets to the same properties as physical assets: a resource has a single owner, it can only be spent once, and the creation of new resources is restricted. 
 
-_The Move language also facilitates automatic proofs that transactions satisfy certain properties, such as payment transactions only changing the account balances of the payer and receiver. By prioritizing these features, Move will help keep the Libra Blockchain secure. By making the development of critical transaction code easier, Move enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. Move will accelerate the evolution of the Libra Blockchain protocol and any financial innovations built on top of it. We anticipate that the ability for developers to create contracts will be opened up over time in order to support the evolution and validation of Move. Refer to [Getting Started With Move]() for further information."_
+The Move language also facilitates automatic proofs that transactions satisfy a specific set of properties, such as, enforce that payment transactions only changing the account balances of the payer and receiver. By prioritizing these features, Move will help keep the Libra Blockchain secure. 
+
+Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
+
+Refer to LINK [Getting Started With Move} for further information.
 
 ## The Testnet
 
