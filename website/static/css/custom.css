@@ -3,24 +3,6 @@
  * SPDX-License-Identifier: CC-BY-4.0
  */
 
-/* CSS Custom Properties available for reference, 
-but not using for now due to no IE support */
-:root {
-  --primaryText: #000000;
-  --secondaryText: #8E9AA3;
-  --tertiaryText: #B3BCC3;
-  --dividerLines: #E1E4E7;
-  --fieldBg: #F5F6FA;
-  --homeBg: #F3F4FB;
-  --darkPurple: #39298C;
-  --medPurple: #5645F5;
-  --lightPurple: #E7E5FD;
-  --darkTeal: #1E4855;
-  --teal: #19CDA6;
-  --lightBlue: #92b5d8;
-  --primaryTheme: var(--darkPurple);
-}
-
 html body {
   font-family: 'Helvetica', sans-serif;
   overflow-x: hidden;

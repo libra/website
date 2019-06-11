@@ -19,4 +19,4 @@ Libra coin, transaction processing, and validator management.
 
 ### Downloads
 
-[![PDF](assets/illustrations/move-language-pdf.png){: .download}]()
+[![Move: a Language for Managing Access to Scarce Resources PDF Download](assets/illustrations/move-language-pdf.png){: .download}]()

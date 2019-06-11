@@ -10,12 +10,9 @@ module.exports = [
   },
 
   function addEmDash(md) {
-
     const rule = (textRule) => (tokens, idx, options, env) => {
-      tokens[idx].content = tokens[idx].content.replace('---', '&mdash;');
-      return textRule(tokens, idx, options, env);
-      // return text.replace(' --- ', ' &mdash; ');
-      // &mdash;
+      const text = textRule(tokens, idx, options, env);
+      return text.replace('---', ' &mdash; ');
     };
     md.renderer.rules.text = rule(md.renderer.rules.text);
   },
@@ -41,8 +38,8 @@ module.exports = [
       //Finds the "{: .<className>}" and pulls out the className only
       const getClassName = (name) => {
         return name.match(/\{\:\s*\.[\w-]*\s*\}/g)
-            ? name.match(/(\w|\-)+/g)
-            : '';
+          ? name.match(/(\w|\-)+/g)
+          : '';
       }
 
       const classString = ` class="${getClassName(clsTkn.content)}">`;
