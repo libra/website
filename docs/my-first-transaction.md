@@ -28,7 +28,7 @@ In this example, we'll download the necessary Libra components and execute a tra
 
 Perform the following steps to submit a transaction to a validator node on the Libra testnet:
 
-1. [Clone and build Libra Core.]()
+1. [Clone and build Libra Core.](#clone-and-build-libra-core)
 2. [Build the Libra CLI client and connect to testnet.]()
 3. [Create Alice's and Bob's account]().
 4. [Mint coins and add to Alice's and Bob's account]().
