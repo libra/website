@@ -5,7 +5,9 @@ title: Libra Protocol
 
 ## Overview
 
-The **Libra Blockchain**, a cryptographically authenticated distributed database, is based on the **Libra protocol**. The blockchain is maintained by a distributed network of [validators](reference/glossary/#validators). The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the blockchain. In this document, we introduce you to the key concepts of the Libra protocol. 
+The **Libra Blockchain** is a cryptographically authenticated distributed database, and it is based on the **Libra protocol**. This document briefly describes the key concepts of the Libra protocol. For detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper]().
+
+The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary/#validators), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the blockchain. 
 
 The Libra **testnet** is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
 
@@ -16,13 +18,13 @@ At the heart of the Libra protocol are two fundamental concepts - **transactions
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small>Figure 1.1 A transaction changes state.</small>
 
-Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 and Bob has a balance of 52. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 and Bob's balance to be increased by 10. The new state S~N~ now shows these updated balances. In figure 1.1:
+Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 Libra and Bob has a balance of 52 Libra. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 Libra and Bob's balance to be increased by 10 Libra. The new state S~N~ now shows these updated balances. In figure 1.1:
 
 * **A** and **B** represent Alice and Bob's account in the blockchain.
 * **S~N-1~** represents the (n-1)-th state of the blockchain.
 * **T~N~** is the n-th transaction executed on the blockchain.  
     * In this example it is - “send 10 Libra from person A's account to person B's account”
-* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is _**always**_ S~N~.
+* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is **always** S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
 The Libra protocol uses the [Move language](reference/glossary#move-language) to implement the deterministic execution function F.
@@ -34,12 +36,12 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Sender address** - Account address of the sender of the transaction.
 * **Sender public key** - The public key that corresponds to the private key used to sign the transaction.
 * **Program**  - The program is comprised of:
-    * A Move bytecode transaction script. Here is an example of a [peer to peer transaction script](life-of-a-transaction/#peer-to-peer-transaction-script-and-inputs).
+    * A Move bytecode transaction script. (Here is an example of a [peer to peer transaction script](life-of-a-transaction/#peer-to-peer-transaction-script-and-inputs)).
     * An optional list of inputs to the script, which contains the information about the recipient and the amount transfered to the recipient.
     * An optional list of Move bytecode modules to publish. 
 * **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary#gas), to execute the transaction.
 * **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume before halting.
-* **Sequence number** - An unsigned integer that must be equal to the sequence number stored under the **sender's account**.
+* **Sequence number** - An unsigned integer that must be equal to the sequence number stored under the sender's account.
 * **Expiration time** - The time after which the transaction ceases to be valid.
 * **Signature** - The digital signature of the sender.
 
@@ -51,7 +53,7 @@ The **ledger state**, or global state of the Libra Blockchain, is comprised of t
 
 ## Versioned Database
 
-All data in the Libra Blockchain is stored/persisted in a single, versioned, distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
+All data in the Libra Blockchain is persisted in a single, versioned, distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
 
 The versioned database allows validators to:
 
