@@ -15,7 +15,7 @@ Libra Core is the official name for the open-source implementation of the Libra 
 
 * [Admission Control](crates/admission-control)
 * [Consensus](crates/consensus)
-* [Cypto](crates/crypto)
+* [Crypto](crates/crypto)
 * [Execution](crates/execution)
 * [Mempool](crates/mempool)
 * [Move](crates/move-language)
