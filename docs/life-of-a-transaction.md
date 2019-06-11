@@ -12,7 +12,7 @@ To get a deeper understanding of the lifecycle of a Libra transaction, we will f
 A Libra **client** **constructs a raw transaction** (let us call it T~5~raw) to transfer 10 Libra from Alice's account to Bob's account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
 * Alice's [account address](reference/glossary#account-address).
-* A [program](#program) that indicates the actions to be performed on Alice's behalf. It contains:
+* A program that indicates the actions to be performed on Alice's behalf. It contains:
     * A Move bytecode [peer-to-peer transaction script](reference/glossary#transaction-script).
     * A list of inputs to the script (for example, Bob's account address and the amount of payment).
 * [Gas price](reference/glossary#gas-price)- the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
