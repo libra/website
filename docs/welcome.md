@@ -76,15 +76,14 @@ The Libra ecosystem supports a wide variety of developers, ranging from people w
 
 This site is targeted at developers.
 
-## Structure Of This Site
+## Contents Of This Site
 
-The Libra developer site provides a technical walk-through of the Libra ecosystem, it:
-
-* Introduces you to the Libra Protocol [Libra Protocol](libra-protocol)
-* Provides abstracts of the Libra technical papers and links you to the latest copy of the papers.
-* Guides you through executing your very first transaction on the Libra Blockchain - [My First Transaction](my-first-transaction)
-* Provides a look at what happens under the hood when a transaction is submitted and executed - [Life Of A Transaction](life-of-a-transaction)
-* Introduces you to a new blockchain programming language called [Getting Started With Move](move-getting-started).
-* Provides the concept and implementation details of the Libra Core components and the associated API documentation - [Libra Core Overview](libra-core-overview)
-* Includes a [CLI Guide](libra-cli), which lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
-* Includes a [Libra Glossary](reference/glossary) for a quick reference to Libra terminology.
+* [Libra Protocol](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
+* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
+* Open Source and Community Information.
+* Libra technical papers.
