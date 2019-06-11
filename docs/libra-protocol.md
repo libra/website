@@ -27,7 +27,7 @@ Figure 1.1 represents change of state of the Libra Blockchain, when a transactio
 * **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
-The Libra protocol uses the [Move language](reference/glossary#move-language) to implement the deterministic execution function F.
+The Libra protocol uses the [Move language](move-getting-started) to implement the deterministic execution function F.
 
 ### Transactions
 
