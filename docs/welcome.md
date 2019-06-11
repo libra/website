@@ -15,7 +15,10 @@ Libra has a secure, scalable, and reliable blockchain. It is backed by a reserve
 
 The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability
 
-The Libra currency is built on the “Libra Blockchain.” The software that implements the Libra Blockchain is open source. Imagine an open interoperable ecosystem of financial services that developers and organizations will build to help people and businesses hold and transfer Libra for everyday use! 
+The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core — an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
+* How to try the testnet, a demonstration of this new system. 
+* Where to learn about new technology such as the Libra protocol, the Move Language, and LibraBFT.
+* How to be part of the community built around this new ecosystem.
 
 ## Move - A New Blockchain Programming Language
 
