@@ -125,16 +125,13 @@ For information on interactions of each validator component with other component
 
 ## Reference
 
-* For a detailed description of the Libra protocol and the design decisions, refer to the [Libra Blockchain technical paper](papers/the-libra-blockchain). 
-* For an introduction to the Libra ecosystem refer to the [Welcome page](welcome). 
-* To run a transaction on the testnet refer to [My First Transaction](my-first-transaction). 
-* For a deeper look at the lifecycle of a transaction refer to [Life of a Transaction](life-of-a-transaction).
-* To learn about the concept and implementation details of the Libra Core components refer to [Libra Core component READMEs](libra-core-overview).
-* The [CLI guide](cli-guide) lists the CLI commands (and their usage).
-* Move is a new blockchain programming language. You can refer to the following documents for more information on Move:
-    * [Getting Started With Move](), for an introduction to Move. 
-    * [Move Technical Paper](), for a detailed technical understanding of Move.
-* [Glossary](glossary) is a quick reference for Libra terminology.
+* [Welcome page](welcome).
+* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
 
 > **Note**: In this document the term "state" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
 
