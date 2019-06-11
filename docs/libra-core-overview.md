@@ -3,9 +3,15 @@ id: libra-core-overview
 title: Libra Core Overview
 ---
 
+## Overview
 
-As mentioned in the [Introduction to Libra](welcome) the *Libra Core* is an early prototype of the Libra Blockchain software. Libra Core is comprised of the following components:
+Libra Core is the official name for the open-source implementation of the Libra protocol published by the Libra Association.
 
+* This software is the first implementation of the Libra protocol and the Move language. 
+* Libra Core includes both validator and client functionalities.
+* Libra Core is written in Rust. Each logical module of Libra Core is a gRPC service
+
+## Component Readmes of Libra Core
 
 * [Admission Control](crates/admission-control)
 * [Consensus](crates/consensus)
