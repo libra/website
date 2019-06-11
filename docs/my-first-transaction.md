@@ -123,6 +123,8 @@ libra%
 
 If you have problems building the client and connecting to the testnet, refer to the [troubleshooting section](#troubleshooting).
 
+**Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
+
 ## Create Alice's and Bob's Account
 
 Once your client is connected to the testnet, you can run CLI commands to create Alice's and Bob's accounts.
