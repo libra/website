@@ -477,6 +477,10 @@ Once you have executed your first transaction, you may refer to the document [Li
 
 ## Reference
 
-* To learn about the logical components of Libra Core implementation, refer to LINK: [Libra Core Crate overview] and the associated API/code documentation.
-* The [CLI guide](reference/cli-guide) describes how to use the CLI and lists the Libra CLI commands and their usage. 
-* The [Libra Glossary](reference/glossary) is a quick reference for Libra terminology.
+* [Welcome page](welcome).
+* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
