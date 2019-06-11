@@ -486,7 +486,7 @@ $ cd ~/libra
 $ cargo run -p libra_swarm -- -s
 ```
 
-`-p libra_swarm` - causes cargo to run the libra_swarm package which starts a local blockchain consisting of 1 node.
+`-p libra_swarm` - causes cargo to run the libra_swarm package which starts a local blockchain consisting of one node.
 
 `-s` option starts a local client to connect to the local blockchain.
 
