@@ -27,7 +27,7 @@ The Move language also facilitates automatic proofs that transactions satisfy a 
 
 Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
 
-Refer to LINK [Getting Started With Move} for further information.
+Refer to [Getting Started With Move]() for further information.
 
 ## The Testnet
 
