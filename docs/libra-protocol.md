@@ -104,7 +104,7 @@ Clients of the Libra Blockchain create transactions, and submit them to a Valida
 
 **Consensus**
 
-* The consensus component is responsible for ordering blocks of transactions, and agreeing on the results of execution by participating in the [consensus protocol](reference/glossary#consensu) with other validators in the network.
+* The consensus component is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](reference/glossary#consensu) with other validators in the network.
 
 **Execution**
 
