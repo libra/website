@@ -5,15 +5,15 @@ title: Libra Protocol - Key Concepts
 
 ## Overview
 
-The **Libra Blockchain** is a cryptographically authenticated distributed database, and it is based on the **Libra protocol**. This document briefly describes the key concepts of the Libra protocol. For detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper]().
+The Libra Blockchain is a cryptographically authenticated distributed database, and it is based on the Libra protocol. This document briefly describes the key concepts of the Libra protocol. For detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper]().
 
 The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary/#validators), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the blockchain. 
 
-The Libra **testnet** is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
+The Libra testnet is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
 
 ## Transactions and States
 
-At the heart of the Libra protocol are two fundamental concepts - **transactions** and **states**. At any point in time, the blockchain has a "state". The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
+At the heart of the Libra protocol are two fundamental concepts - transactions and states. At any point in time, the blockchain has a "state". The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small>Figure 1.1 A transaction changes state.</small>
@@ -24,7 +24,7 @@ Figure 1.1 represents change of state of the Libra Blockchain, when a transactio
 * **S~N-1~** represents the (n-1)-th state of the blockchain.
 * **T~N~** is the n-th transaction executed on the blockchain.  
     * In this example it is - “send 10 Libra from person A's account to person B's account”
-* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is **always** S~N~.
+* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
 The Libra protocol uses the [Move language](reference/glossary#move-language) to implement the deterministic execution function F.
@@ -49,7 +49,7 @@ The *transaction script* is an arbitrary program that encodes the logic of a tra
 
 ### Ledger State
 
-The **ledger state**, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. We mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
+The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. We mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
 
 ## Versioned Database
 
@@ -57,8 +57,8 @@ All data in the Libra Blockchain is persisted in a single, versioned, distribute
 
 The versioned database allows validators to:
 
-* Execute a transaction against the **ledger state** at the latest version.
-* Respond to client queries about **ledger history** at both current and previous versions.
+* Execute a transaction against the ledger state at the latest version.
+* Respond to client queries about ledger history at both current and previous versions.
 
 ## Account
 
@@ -77,7 +77,7 @@ There is no limit on the number of addresses a Libra user can claim. To claim an
 
 ## Proof
 
-All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist **agreed upon** blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
+All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
 * Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest n transactions from an account, the proof will verify that no transactions are omitted from the query response.
@@ -119,7 +119,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Storage**
 
-* The storage is used to persist **agreed upon** blocks of transactions and their execution results.
+* The storage is used to persist agreed upon blocks of transactions and their execution results.
 
 For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction).
 
