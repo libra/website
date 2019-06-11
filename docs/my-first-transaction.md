@@ -67,10 +67,10 @@ source $CARGO_ENV
 The setup script performs these actions:
 
 * Installs **rustup** - rustup is an installer for the systems programming language Rust.
-* Installs the required versions of the **rust-toolchain**
+* Installs the required versions of the **rust-toolchain**.
 * Installs **CMake** - to manage the build process.
 * Installs **protoc** - a compiler for protocol buffers.
-* Installs **Go**
+* Installs **Go**.
 * Builds Libra server.
 
 If your setup fails, try the following:
