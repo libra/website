@@ -71,7 +71,7 @@ An account may contain an arbitrary number of Move resources and Move modules.
 
 #### Account Address
 
-The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user's public verification key. To sign a transaction sent from their account address, the user can use the private key corresponding to that account.
+The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user's public verification key. To sign a transaction sent from their account address, the user (or the custodial client representing the user) must use the private key corresponding to that account.
 
 There is no limit on the number of addresses a Libra user can claim. To claim an account address, a transaction should be sent from an account that holds sufficient Libra to pay the account creation fee.
 
