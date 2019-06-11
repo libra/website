@@ -72,7 +72,7 @@ The Libra ecosystem supports a wide variety of developers, ranging from people w
 
 This site is targeted at developers.
 
-## Contents Of This Site
+## Reference
 
 * [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
 * [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
@@ -81,5 +81,3 @@ This site is targeted at developers.
 * [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
-* Open Source and Community Information.
-* Libra technical papers.
