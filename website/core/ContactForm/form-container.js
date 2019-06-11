@@ -16,6 +16,23 @@ const getFields = (fields) => {
   });
 };
 
+const getForm = (formId, fields) => {
+  if (!formId) {
+    return null;
+  }
+
+  return (
+    <div className="formWrapper">
+      <form id={formId}>
+        {getFields(fields)}
+        <div className="formControlGroup">
+          <button className="button right" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>    
+  );  
+}
+
 
 const FormContainer = (props) => {
   const {
@@ -48,14 +65,7 @@ const FormContainer = (props) => {
         <img {...getImageProps('bgCircleBottom', 'bg-circle-half.svg')} />
         <img {...getImageProps('bgCircleRight', 'bg-circle-whole.svg')} />
         <div className="mainContainer documentContainer postContainer">
-          <div className="formWrapper">
-            <form id={formId}>
-              {getFields(fields)}
-              <div className="formControlGroup">
-                <button className="button right" type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
+          {getForm(formId, fields)}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 ---
 name: "\U0001F680 Feature request"
-about: Suggest an idea for new features in Libra
+about: Suggest an idea for new features in Libra core
 title: "[Feature Request]"
 labels: enhancement
 assignees: ''

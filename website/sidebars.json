@@ -1,23 +1,23 @@
 {
   "docs": {
-    "Overview": [
+    "Learn About Libra": [
     	"welcome",
     	"libra-protocol",
-    	"move-getting-started"
+    	"move-getting-started",
+        "life-of-a-transaction",
+        {
+            "type": "subcategory",
+            "label": "Technical Papers",
+            "ids": [
+                "papers/the-libra-blockchain",
+                "papers/the-move-language",
+                "papers/state-machine-replication"
+            ]
+        }
     ],
-    "Get Started": [
+    "Try Libra": [
     	"installation",
-    	"my-first-transaction",
-    	"life-of-a-transaction",
-    	"libra-core-overview"
-    ],
-    "Guides": [
-    	"libra-cli"
-    ],
-    "Technical Papers": [
-    	"papers/the-libra-blockchain",
-    	"papers/the-move-language",
-    	"papers/state-machine-replication"
+    	"my-first-transaction"
     ],
     "Community" : [
     	"community/libra-open-source",
@@ -25,21 +25,30 @@
         "community/contributing",
         "community/coding-guidelines"
     ],
-    "Crates": [
-	    "crates/admission-control",
-        "crates/bytecode-verifier",
-		"crates/consensus",
-		"crates/crypto",
-		"crates/execution",
-        "crates/ir-to-bytecode",
-		"crates/mempool",
-		"crates/move-language",
-		"crates/network",
-		"crates/storage",
-		"crates/vm"
+    "Libra Code Base": [
+        "libra-core-overview",
+    {
+        "type": "subcategory",
+        "label": "READMEs",
+        "ids": [
+            "crates/admission-control",
+            "crates/bytecode-verifier",
+            "crates/consensus",
+            "crates/crypto",
+            "crates/execution",
+            "crates/ir-to-bytecode",
+            "crates/mempool",
+            "crates/move-language",
+            "crates/network",
+            "crates/storage",
+            "crates/vm"
+        ]
+      },
+
+        "reference/rustdoc"
 	],
     "Reference": [
-        "reference/rustdoc",
+        "reference/libra-cli",
         "reference/glossary"
     ]
   }

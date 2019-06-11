@@ -10,7 +10,7 @@ const FormContainer = require(`${process.cwd()}/core/ContactForm/form-container.
 const FormHeader = require(`${process.cwd()}/core/ContactForm/form-header.js`);
 
 
-const FromThanks = (props) => {
+const FormThanks = (props) => {
   return (
     <FormContainer {...props} >
       <FormHeader
@@ -22,4 +22,4 @@ const FromThanks = (props) => {
   );
 };
 
-module.exports = FromThanks;
+module.exports = FormThanks;

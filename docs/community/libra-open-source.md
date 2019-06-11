@@ -3,7 +3,7 @@ id: libra-open-source
 title: Libra Open Source
 ---
 
-The Libra Blockchain is powered by open-source software. The first implementation of the Libra protocol, — the technology behind the blockchain, — is Libra Core, which is an open-source project managed by the Libra Association using development practices established by the open-source community. Developing the technology behind the Libra Blockchain in this way ensures that the blockchain is accessible to everyone and that technology decisions are fair and transparent.
+The Libra Blockchain is powered by open-source software. The first implementation of the Libra protocol — the technology behind the blockchain — is Libra Core, which is an open-source project managed by the Libra Association using development practices established by the open-source community. Developing the technology behind the Libra Blockchain in this way ensures that the blockchain is accessible to everyone and that technology decisions are fair and transparent.
 
 Open-source software is software that anyone can use, inspect, and modify. Building Libra Core on open-source software means that people can use the Libra Blockchain in new and creative ways. It means that developers can build new applications that support the blockchain and run those applications on any kind of device. It means that the public can inspect how the blockchain works, giving everyone equal knowledge of the inner workings of the code. It also means that the community of security researchers can work together to make the blockchain more secure. The Libra Association is committed to ensuring that the Libra protocol specification and Libra Core are and always will be open source.
 

@@ -5,37 +5,46 @@ title: Welcome
 
 ## Overview
 
-Welcome to the **Libra ecosystem**! The Libra mission is to create: 
+Welcome to the Libra developer site! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
 
-**“A simple, borderless, global currency, and financial ecosystem that empowers billions of people.”**
+_“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of “the internet of money.” Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ -- Libra White Paper
 
-We just launched the **testnet,** a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. The Libra testnet is comprised of test [validator nodes](#validatornodes) running [Libra Core](#LibraCore), the software which maintains the Libra cryptocurrency. The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](#mainnet), testnet has a digital currency _with no real world value_.
+Libra has a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
 
-This project is at an early prototype stage. We want to know what you think. To learn more about the project goals and context, refer to the [Libra white-paper](). 
+The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability
 
-The Libra developer site provides a technical walk-through of the Libra project, it:
+The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core — an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
+* How to try the testnet, a demonstration of this new system. 
+* Where to learn about new technology such as the Libra protocol, the Move Language, and LibraBFT.
+* How to be part of the community built around this new ecosystem.
 
-* Introduces you to the Libra Protocol [Libra Protocol](https://fb.quip.com/W5zBAb9wLpIU)
-* Provides abstracts of the Libra technical papers and links you to the latest copy of the papers - [Libra Technical Papers]().
-* Guides you through executing your very first transaction on the Libra Blockchain - [My First Transaction]()
-* Provides a look at what happens under the hood when a transaction is submitted and executed - [Life of a Transaction]()
-* Introduces you to a new blockchain programming language called Move - [Move - Getting Started]()
-* Provides the concept and implementation details of the Libra Core components and the associated API documentation - [Libra Core - Overview]()
-* Includes a [CLI Guide](), which lists the commands (and their usage) to help you connect to the testnet through a CLI client, and interact with the Libra Blockchain.
-* Includes a [Libra Glossary]() for a quick reference to Libra terminology.
+## Move - A New Blockchain Programming Language
 
-### Libra
+“Move” is a new programming language for implementing custom transaction logic and "smart contracts" on the Libra Blockchain. Because of Libra's goal to serve billions of people one day, Move is designed with safety and security as the highest priorities. 
 
-**Libra** is the reserve-backed global currency at the heart of the Libra project. The **Libra Blockchain** is a globally accessible decentralized software system for managing the Libra ledger. The blockchain is the primary motivation for creating the Libra Core software. 
+Move takes insights from past security incidents with smart contracts and creates a language that makes it inherently easier to write code that fulfills the author's intent. This lessens the risk of unintended bugs or security incidents. Specifically, Move is designed to prevent assets from being cloned. It enables “resource types” that constrain digital assets to the same properties as physical assets: a resource has a single owner, it can only be spent once, and the creation of new resources is restricted. 
 
-### Libra ecosystem
+The Move language also facilitates automatic proofs that transactions satisfy a specific set of properties, such as, enforce that payment transactions only changing the account balances of the payer and receiver. By prioritizing these features, Move will help keep the Libra Blockchain secure. 
 
-The entities of the Libra ecosystem are:
+Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
+
+Refer to [Getting Started With Move]() for further information.
+
+## The Testnet
+
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A validator is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
+
+The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary/#mainnet), testnet has a digital currency _with no real world value_.
+
+This project is at an early prototype stage. We want to know what you think. To learn more about the project goals and context, refer to the [Libra white paper](). 
+
+## Libra Ecosystem
+
+The Libra ecosystem consists of different types of entities:
 
 * [Clients](#clients)
 * [Validators](#validators)
 * [Developers](#developers)
-* [End-Users](#end-users)
 
 ### Clients
 
@@ -43,27 +52,30 @@ A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
 * Can be run by the end-user, or on behalf of the end user (for example, for a Custodial client). 
-* Allows the user to construct, sign, and submit transactions to a [validator]().
+* Allows the user to construct, sign, and submit transactions to a [validator](reference/glossary/#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator), request the status of a transaction or account, and verify the response. 
 
 ### Validators  
 
-Validators decide which transactions will be added to the Libra Blockchain and in which order. Validators execute the transactions and add the results to the Libra Blockchain. 
+We have talked about validator nodes earlier in this document, validators decide which transactions will be added to the Libra Blockchain and in which order. Validators execute the transactions and add the results to the Libra Blockchain. 
 
 ### Developers
 
+The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that make use of the blockchain. The term developer encompasses all of these groups. Developers might:
+
+* Build Libra clients.
+* Build applications to interact with a Libra client.
+* Write smart contracts to execute on the blockchain.
 * Contribute to the Libra Blockchain software.
-* Write software to interact with the Libra Blockchain.
 
-### End-Users 
+This site is targeted at developers.
 
-End-users may use clients to:
+## Reference
 
-* Construct and submit transactions to the Libra Blockchain.
-* Read information about accounts and transactions from the Libra Blockchain.
-
-### Move
-
-Move is a new programming language that was developed to provide a safe and programmable foundation for the Libra Blockchain. Move is used to implement core parts of the platform such as customizable transactions, the Libra currency, and the Libra governance rules. For more information, take a look at [Move - Getting Started]().
-
-Third-party developers can use Move to write custom transactions and smart contracts on the Libra Blockchain. These features are not yet enabled in the public testnet, but we explain how you can experiment with them locally in [Move - Under the Hood]()
+* [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
+* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.

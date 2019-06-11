@@ -1,7 +1,6 @@
 If you are submitting a bug report or feature request, please use the respective
 issue template.
 
-
 ## Issue description
 
 Provide a short description.
