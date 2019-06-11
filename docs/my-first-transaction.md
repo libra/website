@@ -70,6 +70,7 @@ The setup script performs these actions:
 * Installs the required versions of the **rust-toolchain**
 * Installs **CMake** - to manage the build process.
 * Installs **protoc** - a compiler for protocol buffers.
+* Installs **Go**
 * Builds Libra server.
 
 If your setup fails, try the following:
