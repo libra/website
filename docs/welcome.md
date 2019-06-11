@@ -38,7 +38,7 @@ _The Move language also facilitates automatic proofs that transactions satisfy c
 
 ## The Testnet
 
-We just launched the **testnet**, a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core), the software which maintains the Libra cryptocurrency. A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
+The **testnet** is a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core), the software which maintains the Libra cryptocurrency. A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
 
 The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary/#mainnet), testnet has a digital currency _with no real world value_.
 
