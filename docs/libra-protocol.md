@@ -16,14 +16,16 @@ At the heart of the Libra protocol are two fundamental concepts - **transactions
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small>Figure 1.1 A transaction changes state.</small>
 
-Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state Sn-1, Alice has a balance of 110 and Bob has a balance of 52. When a transaction is applied to the blockchain, it generates a new state. To transition from Sn-1 to Sn, transaction Tn is applied against the state Sn-1. This causes Alice's balance to be reduced by 10 and Bob's balance to be increased by 10. The new state Sn now shows these updated balances. In figure 1.1:
+Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 and Bob has a balance of 52. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 and Bob's balance to be increased by 10. The new state S~N~ now shows these updated balances. In figure 1.1:
 
 * **A** and **B** represent Alice and Bob's account in the blockchain.
-* **Sn-1** represents the (n-1)-th state of the blockchain.
-* **Tn** is the n-th transaction executed on the blockchain.  
+* **S~N-1~** represents the (n-1)-th state of the blockchain.
+* **T~N~** is the n-th transaction executed on the blockchain.  
     * In this example it is - “send 10 Libra from person A's account to person B's account”
-* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is Sn-1, and transaction Tn is executed on state Sn-1, the new state of the blockchain is _**always**_ Sn.
-* **Sn** is the n-th state of the blockchain. Sn is an outcome of applying F to Sn-1 and Tn.* *The Libra protocol uses the [Move language](reference/glossary#move-language) to implement the deterministic execution function F.
+* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is _**always**_ S~N~.
+* **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
+
+The Libra protocol uses the [Move language](reference/glossary#move-language) to implement the deterministic execution function F.
 
 ### Transactions
 
