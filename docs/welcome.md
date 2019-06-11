@@ -9,9 +9,9 @@ Welcome to the Libra developer site! Libra's mission is to enable a simple globa
 
 _“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of “the internet of money.” Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ -- Libra White Paper
 
-Libra has a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
+Libra is built on a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
 
-The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability
+_"The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability."_-- Libra White Paper
 
 The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core — an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
 * How to try the testnet, a demonstration of this new system. 
@@ -32,18 +32,18 @@ Refer to [Getting Started With Move]() for further information.
 
 ## The Testnet
 
-The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A validator is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator in [Life Of A Transaction]().
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
 
 The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary/#mainnet), testnet has a digital currency _with no real world value_.
 
-This project is at an early prototype stage. We want to know what you think. To learn more about the project goals and context, refer to the [Libra white paper](). 
+This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
 
 ## Libra Ecosystem
 
 The Libra ecosystem consists of different types of entities:
 
 * [Clients](#clients)
-* [Validators](#validators)
+* [Validator Nodes](#validators)
 * [Developers](#developers)
 
 ### Clients
@@ -52,12 +52,12 @@ A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
 * Can be run by the end-user, or on behalf of the end user (for example, for a Custodial client). 
-* Allows the user to construct, sign, and submit transactions to a [validator](reference/glossary/#validator-node).
-* Can issue queries to the Libra Blockchain (through the validator), request the status of a transaction or account, and verify the response. 
+* Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary/#validator-node).
+* Can issue queries to the Libra Blockchain (through the validator node), request the status of a transaction or account, and verify the response. 
 
-### Validators  
+### Validator Nodes  
 
-We have talked about validator nodes earlier in this document, validators decide which transactions will be added to the Libra Blockchain and in which order. Validators execute the transactions and add the results to the Libra Blockchain. 
+Validator nodes decide which transactions will be added to the Libra Blockchain and in which order. Validator nodes execute the transactions and add the results to the Libra Blockchain. 
 
 ### Developers
 
@@ -68,7 +68,7 @@ The Libra ecosystem supports a wide variety of developers, ranging from people w
 * Write smart contracts to execute on the blockchain.
 * Contribute to the Libra Blockchain software.
 
-This site is targeted at developers.
+This site is intended for developers.
 
 ## Reference
 
