@@ -49,7 +49,7 @@ The *transaction script* is an arbitrary program that encodes the logic of a tra
 
 ### Ledger State
 
-The **ledger state**, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. We mentioned earlier in this document that "state" represents the current snapshot of data on the chain. Each validator must know the global state of the latest version of the distributed database, to execute transactions. See [versioned database](#versioned-database).
+The **ledger state**, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. We mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
 
 ## Versioned Database
 
