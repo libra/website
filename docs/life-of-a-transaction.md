@@ -387,6 +387,7 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 ## Reference
 
 * [Welcome page](welcome).
+* [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
 * [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
 * [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
 * [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
