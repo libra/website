@@ -5,27 +5,31 @@ title: My First Transaction
 
 ## Overview
 
-This document guides you through executing your first transaction on the Libra Blockchain.  Before you follow the steps and execute your first transaction, we recommend that you read the following documents to familiarize yourself with the key aspects of the Libra ecosystem and the Libra protocol.
+This document will guide you through executing your first transaction on the Libra Blockchain. Before you follow the steps to execute your first transaction, we recommend that you read the following documents to familiarize yourself with the key aspects of the Libra ecosystem and the Libra protocol.
 
 * [Welcome](welcome)
 * [The Libra protocol](libra-protocol)
 
-We provide a command line interface (CLI) client to interact with the blockchain.
+We provide a command line interface (CLI) client to interact with the blockchain. 
+
 
 ## Assumptions
 
-* All commands in this document assume a Linux or macOS system.
-* A stable connection to the Internet.
-* What else??
+All commands in this document assume that:
+
+* You are running on a Linux or macOS system.
+* You have a stable connection to the Internet.
+* Git is installed on your system.
+* Homebrew is installed on a MacOS system.
 
 ## Steps to Submit a Transaction
 
-In this example, we'll download the necessary Libra components and execute a transaction between two users: Alice and Bob.
+In this example, we'll download the necessary Libra components and execute a transaction between two users: Alice and Bob.  
 
-Perform the following steps to submit a transaction to a validator node on the Libra testnet :
+Perform the following steps to submit a transaction to a validator node on the Libra testnet:
 
-1. [Clone](https://fb.quip.com/sIrOAbc770Kq#cXKACAK7mFs) and build[Libra Core](https://fb.quip.com/sIrOAbc770Kq#cXKACAK7mFs).
-2. [Build the Libra CLI client](https://fb.quip.com/sIrOAbc770Kq#cXKACAUgmWW) and connect to testnet.
+1. [Clone and build Libra Core.](https://fb.quip.com/sIrOAbc770Kq#cXKACAK7mFs)
+2. [Build the Libra CLI client and connect to testnet.](https://fb.quip.com/sIrOAbc770Kq#cXKACAUgmWW)
 3. [Create Alice's and Bob's account](https://fb.quip.com/sIrOAbc770Kq#cXKACAtvPLG).
 4. [Mint coins and add to Alice's and Bob's account](https://fb.quip.com/sIrOAbc770Kq#cXKACAOcYNl).
 5. [Submit a transaction](https://fb.quip.com/sIrOAbc770Kq#cXKACAShh4g).
@@ -34,56 +38,67 @@ Perform the following steps to submit a transaction to a validator node on the L
 
 ### Clone the Libra Core repo
 
-```
-$ git clone git@github.com:libra/libra.gits
+```bash
+$ git clone https://github.com/libra/libra.git
 ```
 
 ### Build Libra Core
 
 To setup Libra Core, change to the `libra` directory and run the setup script as shown below.
 
-```
+For MacOS, run:
+
+```bash
 setup_scripts/dev_setup_mac.sh
 ```
 
-The setup script performs the following actions:
+For Linux, run:
+
+```bash
+setup_scripts/dev_setup_centos.sh
+```
+
+Follow the instructions provided by the setup script. For example, add the following lines to your .bashrc or .zshrc files.
+```bash
+source $env_config
+source $CARGO_ENV
+```
+
+The setup script performs these actions:
 
 * Installs **rustup** - rustup is an installer for the systems programming language Rust.
-* Updates to **nightly rust - ?**
-* Installs **cmake** - to manage the build process.
+* Installs the required versions of the **rust-toolchain**
+* Installs **CMake** - to manage the build process.
 * Installs **protoc** - a compiler for protocol buffers.
-* Initializes **Submodule** - Submodules allow you to keep a Git repository as a subdirectory of another Git repository. This lets you clone another repository into your project and keep your commits separate.
 * Builds Libra server.
-
-### Troubleshoot libra core build
 
 If your setup fails, try the following:
 
 * Update Rust:
     * run `rustup update` from your libra directory
-* Remove cargo lock file:
+* Remove cargo lock file from the libra directory:
     * `rm Cargo.lock`
 * Re-run setup script from your libra directory:
-    * `setup_scripts/dev_setup_mac.sh`
+    * `setup_scripts/dev_setup_mac.sh`  OR
+    * `setup_scripts/dev_setup_centos.sh`
+* Ensure that you have updated your .bashrc or .zshrc files as instructed by the script.
 
 ## Build Libra CLI Client and Connect To Testnet
 
-To connect to a node running on the Libra testnet, change to your `client` directory and run the client as shown below.
+To connect to a validator node running on the Libra testnet, change to your `client` directory and run the client as shown below. 
 
-```
-$ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80 -m mint.key
+```bash
+$ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80
 ```
 
 This command **builds and runs** the client and connects to a validator node on testnet:
 
 * [ac.stable.aws.hlw3truzy4ls.com](http://ac.stable.aws.hlw3truzy4ls.com/) - is the hostname for the node running on testnet.
 * 80 - is the port on which the client will communicate with the testnet.
-* mint.key contains information about the Association account used for minting Libra coins.
 
 Once the client connects to a node on testnet you will see the following output.  To quit the client at any time, use the `quit` command.
 
-```
-
+```bash
 usage: <command> <args>
 
 Use the following commands:
@@ -101,32 +116,22 @@ help | h
 quit | q!
         Exit this client
 
-
 Please, input commands:
 
 libra%
 ```
 
-### Troubleshoot client build and run
-
-If your client did not connect to the testnet you will see the following error:
-TBD error message(s)
-
-To troubleshoot:
-
-* Check your internet connection.
-* Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:  
-  `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80 -m mint.key`
+If you have problems building the client and connecting to the testnet, refer to the [troubleshooting section](#troubleshooting).
 
 ## Create Alice's and Bob's Account
 
 Once your client is connected to the testnet, you can run CLI commands to create Alice's and Bob's accounts.
 
-### **Step 1 - Check if the CLI client is running on your system**
+### Step 1 - Check if the CLI client is running on your system
 
-A `libra%` command line prompt indicates that your Libra CLI client is running. To see the help information for the `account` command enter “account” as shown below:
+A **libra%** command line prompt indicates that your Libra CLI client is running. To see the help information for the `account` command enter “account” as shown below:
 
-```
+```bash
 libra% account
 usage: account <arg>
 
@@ -148,175 +153,194 @@ libra%
 
 ### Step 2 - Create Alice's account
 
-Note that creating an account using the CLI does not update the blockchain. It just creates a local key-pair.
+Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair. 
 
-**To create an account enter this command:**  
+**To create Alice's account enter this command:**
+
 `libra% account create`
 
-**Sample output on success:**  
-`>> Creating/retrieveing next account from wallet`  
-`Created account #0 address f2c74d3b046157cb967c1a872c8671d35e2e09163461010733649a5e50d016ed`
+**Sample output on success:**
 
-**0** - is the index of Alice's account and the hex number is the address of Alice's account. The index is just a way to refer to Alice's account.
+```bash
+>> Creating/retrieveing next account from wallet
+Created account #0 address f2c74d3b046157cb967c1a872c8671d35e2e09163461010733649a5e50d016ed
+```
 
-* The account index is a local index for users to conveniently refer to the accounts they created.
-* It is a shorthand used by the Libra CLI client, it does not mean anything for the blockchain.
-* This index can be used in other CLI commands.
-* Each instance of the Libra client can create an account with the same index (for example, each instance of the client can have an account with index 0), but the __account address/key-pair will be different for each account created on testnet.__
+**#0** - is the index of Alice's account and the hex number is the **address** of Alice's account. The index is just a way to refer to Alice's account. 
 
-**address** - The hex number following “address” is the address of Alice's account.  
-If your `account create` command did not succeed, refer to the [troubleshooting](https://fb.quip.com/sIrOAbc770Kq#cXKACATsijK) section.
+* The account index is a local index for users to conveniently refer to the accounts they created. 
+* It is a shorthand used by the Libra CLI client, it does not mean anything for the blockchain. 
+* This index can be used in other CLI commands. 
+* Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user.
 
+### Step 3 - Create Bob's account
 
-### Step 3 - Create BOB's account
+**To create Bob's account enter this command:**
 
-**Enter this command**  
-`libra% account create`  
-**Sample output on success**  
-`>> Creating/retrieveing next account from wallet`  
-`Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608`
+`libra% account create`
 
-**1** - is the index for Bob's account and the hex number is the address of Bob's account. The index is just a way to refer to Bob's account. It is a shorthand used by the Libra CLI, it does not mean anything for the blockchain. This index can be used in other commands.  
-**address** - The hex number following “address” is the address of Bob's account.  
-If your `account create` command did not succeed, refer to the [troubleshooting](https://fb.quip.com/sIrOAbc770Kq#cXKACATsijK) section.
+**Sample output on success:**
+
+```bash
+>> Creating/retrieveing next account from wallet
+Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608
+```
+
+**#1** - is the index for Bob's account and the hex number is the address of Bob's account. 
+For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (optional) - List Accounts
 
 To list the accounts you have created
-**Enter this command**  
-`libra% account list`  
-**Sample output on success**  
-`User account index: 0, address: 578560b3d71b86fab5f434a83b51bab1b753dde4c995ef7407d413159acbfb65, sequence number: 0`  
-`User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3286a2ba203495f24, sequence number: 0`  
-`Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5`  
 
-**Mint account address** - is the address of the Association account used for minting Libra coins.  
-The **sequence number** for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to the LINK [Libra glossary definition of the sequence number].
+**Enter this command:**
 
-### Troubleshoot account creation
+`libra% account list`
 
-If your account create command did not succeed you will see the following error:
-TBD
 
-To troubleshoot:
+**Sample output on success:**
+```bash
+User account index: 0, address: 578560b3d71b86fab5f434a83b51bab1b753dde4c995ef7407d413159acbfb65, sequence number: 0
+User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3286a2ba203495f24, sequence number: 0
+Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5
+```
 
-* Check internet connection
-* Check if your client is running.
-* Check if your client is connected to testnet. TBD How?
+**Faucet account address** - is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).
+The **sequence number** for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary#sequence-number).
 
-## Add Libra Coins to Alice's and Bob's Account
+## Add Libra Coins to Alice's and Bob's Accounts
 
-Minting and adding coins to accounts on testnet is done via **Faucet**. Faucet is a service running on AWS along with the testnet. This service only exists to facilitate minting coins for testnet. It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](https://fb.quip.com/sIrOAbc770Kq#cXKACAtvPLG), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
+Minting and adding coins to accounts on testnet is done via **Faucet**. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet. It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
 ### Step 1 - Add 110 Libra to Alice's account
 
 To mint Libra and add to Alice's account
-**Enter this command**  
-`libra%   account mint 0 110`  
-0 is the index of Alice's account  
-110  is the amount of Libra to be added to Alice's account.  
 
-**Sample output on success**  
-`>> Minting coins`  
-`Finished minting!`
+**Enter this command:**
 
-If your `account mint` command did not succeed refer to the [troubleshooting section.](https://fb.quip.com/sIrOAbc770Kq#cXKACAc20qI)
+`libra% account mint 0 110`
+
+* **0** is the index of Alice's account.
+* **110**  is the amount of Libra to be added to Alice's account.
+
+A successful account mint command will also create Alice's account on the blockchain.
+
+**Sample output on success:**
+
+```bash
+>> Minting coins
+Finished minting!
+```
+
+If your `account mint` command did not succeed refer to the [troubleshooting section.](#troubleshooting)
 
 ### Step 2 - Add 52 Libra to BOB's account
 
-To mint Libra and add to Bob's account  
-**Enter this command**  
-`libra%   account mint 1 52`  
-1 is the index of Bob's account  
-52  is the amount of Libra to be added to Bob's account.
+To mint Libra and add to Bob's account
 
-**Sample output on success**  
-`>> Minting coins`  
-`Finished minting!`
+**Enter this command:**
 
-If your `account mint` command did not succeed refer to the [troubleshooting section.](https://fb.quip.com/sIrOAbc770Kq#cXKACAc20qI)
+`libra% account mint 1 52`
+
+* **1** is the index of Bob's account
+* **52** is the amount of Libra to be added to Bob's account.
+* A successful account mint command will also create Bob's account on the blockchain. Another way to create Bob's account on the blockchain is to just transfer money from Alice's account to Bob's account.
+
+**Sample output on success:**
+
+```bash
+>> Minting coins
+Finished minting!
+```
+
+If your `account mint` command did not succeed refer to the [troubleshooting section.](#troubleshooting)
 
 ### Step 3 - Check the balance
 
-To check the balance in Alice's account:  
-**Enter this command**  
-`libra%   query balance 0 `  
-**Sample output on success**  
-`Balance is: 110`  
+To check the balance in Alice's account:
 
-To check the balance in Bob's account:  
-**Enter this command**  
-`libra%   query balance 1 `  
-**Sample output on success**  
-`Balance is: 52`  
+**Enter this command:**
 
-### Troubleshoot Minting and Adding Money to Account
+`libra% query balance 0`
 
-If the node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:  
-`libra% account mint 0 110 `  
-`>> Minting coins `  
-`[ERROR] Error minting coins: Server unavailable, please retry and/or check if host passed to client is running`
+**Sample output on success:**
 
-If your connection times out you will see the following error:  
-`$ account mint 0 110`  
-`>> Minting coins`  
-`[ERROR] Error minting coins: RpcFailure(RpcStatus { status: DeadlineExceeded, details: Some("Deadline Exceeded") })`
+`Balance is: 110`
 
-If there are problems with the faucet service you will see the following error:  
-`$ account mint 0 110 >> Minting coins `  
-`[ERROR] Error minting coins: Transaction failed with mempool status: InvalidUpdate`
+To check the balance in Bob's account:
 
-If you get the following error, retry the mint command and check if the account exists:  
-`[ERROR] Error minting coins: Transaction failed with vm status: ValidationStatus(SequenceNumberTooOld), please retry your transaction.`
+**Enter this command:**
 
-To check if an account exists, query the account state. For an account with index 0 enter this command:  
-`libra% query account_state 0`
+`libra% query balance 1`
+
+**Sample output on success:**
+
+`Balance is: 52`
+
+If you have problems minting and adding coin to the accounts refer to the [troubleshooting section](#troubleshooting).
 
 ## Submit a Transaction
 
 Before we submit a transaction to transfer Libra from Alice's account to Bob's account, we will query the sequence number of each account. This will help us understand how executing a transaction changes the sequence number of each account.
 
-### **Query Sequence Number**
+### Query Sequence Number
 
-`$ query sequence 0`  
-`>> Getting current sequence number`  
-`Sequence number is: 0`  
-`$ query sequence 1`  
-`>> Getting current sequence number`  
-`Sequence number is: 0`  
+```bash
+libra% query sequence 0
+>> Getting current sequence number
+Sequence number is: 0
+libra% query sequence 1
+>> Getting current sequence number
+Sequence number is: 0
+```
 
-In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0 for both Alice's and Bob's account indicates that no transactions either Alice's or Bob's account have been executed so far.
+In `query sequence 0`, **0** is the index of Alice's account. A sequence number of **0** for both Alice's and Bob's account indicates that no transactions from either Alice's or Bob's account have been executed so far.
 
 ### Transfer Money
 
-To submit a transaction to transfer 10 Libra from Alice's account to Bob's account  
-**Enter this command**  
-`libra%   transfer 0 1 10 `  
-0 is the index of Alice's account.  
-1 is the index of Bob's account.  
-10 is the number of Libra to transfer from Alice's to Bob's account.  
-**Sample output on success**  
-`>> Transferring`  
-`Transaction submitted to validator`  
-`To query for transaction status, run: query txn_acc_seq 0 0`  
+To submit a transaction to transfer 10 Libra from Alice's account to Bob's account 
 
-You can use the command `query txn_acc_seq 0 0` to retrieve the information about the transaction you just submitted. To see a sample output of this command refer to [Sample outputs - query txn_acc_seq](https://fb.quip.com/sIrOAbc770Kq#cXKACA7aru0) 0 0
+**Enter this command:**
 
-You just submitted your transaction to a validator node and it was included in the [mempool](https://fb.quip.com/LkbMAEBIVNbh#ffYACAGR6Mv) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times.
+`libra% transfer 0 1 10`
 
-You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt **only after** the transaction has been committed to the blockchain.
-`libra%   transferb 0 1 10 `
+* **0** is the index of Alice's account.
+* **1** is the index of Bob's account.
+* **10** is the number of Libra to transfer from Alice's account to Bob's account.
 
-Refer to [Life of a Transaction](https://fb.quip.com/0fQ1AzLdEXiQ) for an understanding of the lifecycle of a transaction from submission to execution and storage.
+**Sample output on success:**
 
-### Query Sequence number After Transfer
+```bash
+>> Transferring
+Transaction submitted to validator
+```
 
-`$ query sequence 0`  
-`>> Getting current sequence number`  
-`Sequence number is: 1`  
-`$ query sequence 1`  
-`>> Getting current sequence number`  
-`Sequence number is: 0`  
+To query for transaction status, run:
+
+`query txn_acc_seq 0 0`
+
+You can use the command `query txn_acc_seq 0 0` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq) section.
+
+You just submitted your transaction to a validator node and it was included in the [mempool](reference/glossary#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
+
+**The Blocking Transfer Command**
+
+You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt **only after** the transaction has been committed to the blockchain. An example is shown below:
+
+`libra% transferb 0 1 10`
+
+Refer to [Life of a Transaction](life-of-a-transaction) for an understanding of the lifecycle of a transaction from submission to execution and storage.
+
+### Query Sequence number After TRansfer
+
+```bash
+libra% query sequence 0
+>> Getting current sequence number
+Sequence number is: 1
+libra% query sequence 1
+>> Getting current sequence number
+Sequence number is: 0
+```
 
 The sequence number of 1 for Alice's account (index 0) indicates that one transaction has been sent from Alice's account so far. The sequence number of 0 for Bob's account (index 1) indicates that no transaction has been sent from Bob's account so far. Every time a transaction is sent from an account the sequence number is incremented by 1.
 
@@ -324,41 +348,80 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 To check the final balance in both accounts query the balance again for each account as you did in [this step](https://fb.quip.com/sIrOAbc770Kq#cXKACAHw03h). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
-```
-libra%   query balance 0
+```bash
+libra% query balance 0
 Balance is: 100
-libra%   query balance 1
+libra% query balance 1
 Balance is: 62
 ```
 
-**Congratulations!** you have successfully executed your transaction on the Libra testnet and transferred 10 Libra from Alice's account to Bob's account!
+### Congratulations!
 
-### Troubleshoot The transfer command
+You have successfully executed your transaction on the Libra testnet and transferred 10 Libra from Alice's account to Bob's account!
 
-If the testnet node (your client was connected to) is unavailable, or your connection to testnet has timed-out, you will see the following error:  
-`$ transfer 0 1 10`  
-`>> Transferring`  
-`[ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to client is running`
+## Troubleshooting
 
-If there is a problem with executing the transaction you will see the following error:  
-`$ transfer 0 1 10 `  
-`>> Transferring `  
-`[ERROR] Failed to perform transaction: Transaction failed with vm status: ExecutionStatus(MissingData)`
+### Client Build and Run
+
+If your client did not connect to the testnet:
+
+* Check your internet connection.
+* Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again: 
+    * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
+        
+
+### Minting and Adding Money to Account
+
+If the validator node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:
+
+```bash
+libra% account mint 0 110
+>> Minting coins
+[ERROR] Error minting coins: Server unavailable, please retry and/or check if host passed to client is running
+```
+
+If your connection times-out you will see the following error:
+```bash
+libra% account mint 0 110
+>> Minting coins
+[ERROR] Error minting coins: RpcFailure(RpcStatus { status: DeadlineExceeded, details: Some("Deadline Exceeded") })
+```
+
+To check if an account exists, query the account state. For an account with index 0 enter this:
+
+`libra% query account_state 0`
+
+### The Transfer Command
+
+If the testnet validator node (your client was connected to) is unavailable, or your connection to testnet has timed-out, you will see this error:
+
+```bash
+libra% transfer 0 1 10
+>> Transferring
+[ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to client is running
+```
+
+If there is a problem with executing the transaction you will see the following error:
+
+```bash
+libra% transfer 0 1 10 
+>> Transferring 
+[ERROR] Failed to perform transaction: Transaction failed with vm status: ExecutionStatus(MissingData)
+```
 
 To troubleshoot:
 
-* Check the connection to testnet - How? TBD
-* Query the sender and recipient account to make sure the accounts  exist. Use the following commands for accounts with index 0 and 1:
+* Check the connection to testnet.
+* Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-    * `query account_state 1`
-* You can try quitting the client using  `quit` or `q!`  and run the following command again to connect to testnet:  
-  `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80 -m mint.key`
+* You can try quitting the client using `quit` or `q!`  and run the following command again to connect to testnet:
+    * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
 ## Sample Outputs
 
-## query txn_acc_seq 0 0
+### query txn_acc_seq 
 
-```
+```bash
 libra% query txn_acc_seq 0 0
 >> Getting committed transaction by account and sequence number
 Committed transaction: SignedTransaction {
@@ -387,23 +450,58 @@ Committed transaction: SignedTransaction {
  }
 ```
 
+### Query account_state 
 
+```bash
+libra% query account_state 0
+>> Getting latest account state
+Latest account state is:
+ Account: 66e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462
+ Version: 126423
+ State: Some(
+    AccountStateBlob {
+     Raw: 0x01000000210000000116936b87fea31a928a402fa0b57dce9d79c0c47e1a9188d67b3aa2b3d9e6a91a440000002000000066e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462804a5d0500000000000000000000000002000000000000000200000000000000
+     Decoded: Ok(
+        AccountResource {
+            balance: 90000000,
+            sequence_number: 2,
+            authentication_key: 0x66e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462,
+            sent_events_count: 2,
+            received_events_count: 0,
+        },
+    )
+     },
+)
+```
 
+## Run A Local Validator Node
+
+To start a validator node locally on your computer, change to the libra folder of your Libra Core installation and run libra_swarm as instructed below:
+
+```bash
+$ cd ~/libra
+$ cargo run -p libra_swarm -- -s
+```
+
+`-p libra_swarm` - causes cargo to run the libra_swarm package which starts a local blockchain consisting of 1 node.
+
+`-s` option starts a local client to connect to the local blockchain.
+
+To see additional options for starting a node and connecting to the Libra Blockchain, run:
+
+`$ cargo run -p libra_swarm -- -h`
+
+The cargo run command may take a while to run. If the execution of this command completes without errors, an instance of the Libra CLI client and a Libra validator node is running on your system. Upon successful execution, you should see an output containing the CLI client menu and the `libra%` prompt.
 
 ## Life of a Transaction
 
-Once you have executed your first transaction, you may refer to the document [Life of a Transaction](https://fb.quip.com/NQc6AXFKc3go) for:
+Once you have executed your first transaction, you may refer to the document [Life of a Transaction](life-of-a-transaction) for:
 
-* A look under the hood at the lifecycle of a transaction from submission to execution.
+* A look under the hood at the lifecycle of a transaction from submission to execution. 
 * An understanding of the interactions between each logical component of a Libra validator, as transactions get submitted and executed in the Libra ecosystem.
 
 ## Reference
 
 * To learn about the logical components of Libra Core implementation, refer to LINK: [Libra Core Crate overview] and the associated API/code documentation.
-* The [CLI guide](https://fb.quip.com/7UiFAHF5mNlb) describes how to use the CLI and lists the Libra CLI commands and their usage.
-* The [Libra Glossary](https://fb.quip.com/LkbMAEBIVNbh) is a quick reference for Libra terminology.
-
-
-Next→[Life of a Transaction](https://fb.quip.com/NQc6AXFKc3go)
-
-
+* The [CLI guide](reference/cli-guide) describes how to use the CLI and lists the Libra CLI commands and their usage. 
+* The [Libra Glossary](reference/glossary) is a quick reference for Libra terminology.
