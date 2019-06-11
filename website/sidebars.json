@@ -48,7 +48,7 @@
         "reference/rustdoc"
 	],
     "Reference": [
-        "libra-cli",
+        "reference/libra-cli",
         "reference/glossary"
     ]
   }
