@@ -31,7 +31,7 @@ Perform the following steps to submit a transaction to a validator node on the L
 1. [Clone and build Libra Core.](#clone-and-build-libra-core).
 2. [Build the Libra CLI client and connect to testnet.](#build-libra-cli-client-and-connect-to-testnet).
 3. [Create Alice's and Bob's account](#create-alices-and-bobs-account).
-4. [Mint coins and add to Alice's and Bob's account]().
+4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alices-and-bobs-accounts).
 5. [Submit a transaction](#submit-a-transaction).
 
 ## Clone and Build Libra Core
