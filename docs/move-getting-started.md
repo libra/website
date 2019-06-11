@@ -1,6 +1,6 @@
 ---
 id: move-getting-started
-title: Move Getting Started
+title: Getting Started With Move
 ---
 
 ## Overview
