@@ -44,7 +44,7 @@ $ git clone https://github.com/libra/libra.git
 
 ### Setup Libra Core
 
-To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies as shown below:
+Change to the `libra` directory and run the setup script to install the dependencies, as shown below:
 
 ```
 scripts/dev-setup.sh
