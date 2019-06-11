@@ -7,7 +7,7 @@ Mempool is a memory-buffer that holds the transactions that are waiting to be ex
 
 ## Overview
 
-Admission control (AC) module sends transactions to mempool. Mempool holds the transactions for a period of time, before consensus commits them. When a new transaction is added, mempool shares this transaction with other validators (validator nodes) in the system. Mempool is a “shared mempool”, as transactions between mempools are shared with other validators. This helps maintain a pseudo global ordering.
+The admission control (AC) module sends transactions to mempool. Mempool holds the transactions for a period of time, before consensus commits them. When a new transaction is added, mempool shares this transaction with other validators (validator nodes) in the system. Mempool is a “shared mempool”, as transactions between mempools are shared with other validators. This helps maintain a pseudo global ordering.
 
 When a validator receives a transaction from another mempool, the transaction is ordered when it’s added to the ordered queue of the recipient validator. To reduce network consumption in the “shared mempool”, each validator is responsible for the delivery of its own transactions. We don't re-broadcast transactions originating from a peer validator.
 
@@ -30,11 +30,11 @@ Internally, mempool is modeled as `HashMap<AccountAddress, AccountTransactions>`
 
 The main index - PriorityIndex is an ordered queue of transactions that are “ready” to be included in the next block (i.e. they have a sequence number which is sequential to the current sequence number for the account). This queue is ordered by gas price, so that if a client is willing to pay more (than other clients) per unit of execution, then they can enter consensus earlier.
 
-Note that, even though global ordering is maintained by gas price, for a single account, transactions are ordered by sequence number. All transactions that are not ready to be included in the next block are part of a separate ParkingLotIndex. They are moved to the ordered queue once some event unblocks them.
+Note that even though global ordering is maintained by gas price for a single account, transactions are ordered by sequence number. All transactions that are not ready to be included in the next block are part of a separate ParkingLotIndex. They are moved to the ordered queue once some event unblocks them.
 
 Here is an example: mempool has a transaction with sequence number 4, while the current sequence number for that account is 3. This transaction is considered “non-ready”. Callback from consensus notifies that transaction was committed (i.e. transaction 3 was submitted to a different node and has hence been committed on chain). This event “unblocks” the local transaction, and transaction #4 is moved to the OrderedQueue.
 
-Mempool only holds a limited number of transactions to avoid overwhelming the system, and to prevent abuse and attack. Transactions in Mempool have two types of expirations - systemTTL and client-specified expiration. When either of these is reached, the transaction is removed from Mempool.
+Mempool holds only a limited number of transactions in order to avoid overwhelming the system, and to prevent abuse and attack. Transactions in Mempool have two types of expirations - systemTTL and client-specified expiration. When either of these is reached, the transaction is removed from Mempool.
 
 SystemTTL is checked periodically in the background, while the expiration specified by the client is checked on every Consensus commit request. We use a separate system TTL to ensure that a transaction doesn’t remain stuck in the Mempool forever, even if Consensus doesn't make progress.
 
