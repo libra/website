@@ -16,7 +16,7 @@ The Libra testnet is a demonstration of an early prototype of the Libra Blockcha
 At the heart of the Libra protocol are two fundamental concepts - transactions and states. At any point in time, the blockchain has a "state". The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
-<small>Figure 1.1 A transaction changes state.</small>
+<small>Figure 1.1 Transactions change state.</small>
 
 Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 Libra and Bob has a balance of 52 Libra. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 Libra and Bob's balance to be increased by 10 Libra. The new state S~N~ now shows these updated balances. In figure 1.1:
 
@@ -53,7 +53,7 @@ The ledger state, or global state of the Libra Blockchain, is comprised of the s
 
 ## Versioned Database
 
-All data in the Libra Blockchain is persisted in a single, versioned, distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
+All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
 
 The versioned database allows validators to:
 
