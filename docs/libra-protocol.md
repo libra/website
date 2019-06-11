@@ -82,7 +82,7 @@ All of the data in the Libra Blockchain is stored in a single versioned database
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
 * Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest n transactions from an account, the proof will verify that no transactions are omitted from the query response.
 
-In a blockchain the client does not need trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n) sized proof of a specific transaction object, where n is the total number of transactions processed.
+In a blockchain the client does not need to trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n) sized proof of a specific transaction object, where n is the total number of transactions processed.
 
 ## Validator
 
