@@ -28,11 +28,11 @@ In this example, we'll download the necessary Libra components and execute a tra
 
 Perform the following steps to submit a transaction to a validator node on the Libra testnet:
 
-1. [Clone and build Libra Core.](https://fb.quip.com/sIrOAbc770Kq#cXKACAK7mFs)
-2. [Build the Libra CLI client and connect to testnet.](https://fb.quip.com/sIrOAbc770Kq#cXKACAUgmWW)
-3. [Create Alice's and Bob's account](https://fb.quip.com/sIrOAbc770Kq#cXKACAtvPLG).
-4. [Mint coins and add to Alice's and Bob's account](https://fb.quip.com/sIrOAbc770Kq#cXKACAOcYNl).
-5. [Submit a transaction](https://fb.quip.com/sIrOAbc770Kq#cXKACAShh4g).
+1. [Clone and build Libra Core.]()
+2. [Build the Libra CLI client and connect to testnet.]()
+3. [Create Alice's and Bob's account]().
+4. [Mint coins and add to Alice's and Bob's account]().
+5. [Submit a transaction]().
 
 ## Clone and Build Libra Core
 
@@ -123,7 +123,7 @@ libra%
 
 If you have problems building the client and connecting to the testnet, refer to the [troubleshooting section](#troubleshooting).
 
-**Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
+**Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
 ## Create Alice's and Bob's Account
 
