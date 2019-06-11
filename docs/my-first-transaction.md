@@ -42,47 +42,19 @@ Perform the following steps to submit a transaction to a validator node on the L
 $ git clone https://github.com/libra/libra.git
 ```
 
-### Build Libra Core
+### Setup Libra Core
 
-To setup Libra Core, change to the `libra` directory and run the setup script as shown below.
+To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies as shown below:
 
-For MacOS, run:
-
-```bash
-setup_scripts/dev_setup_mac.sh
 ```
-
-For Linux, run:
-
-```bash
-setup_scripts/dev_setup_centos.sh
+scripts/dev-setup.sh
 ```
-
-Follow the instructions provided by the setup script. For example, add the following lines to your .bashrc or .zshrc files.
-```bash
-source $env_config
-source $CARGO_ENV
-```
-
 The setup script performs these actions:
 
-* Installs **rustup** - rustup is an installer for the systems programming language Rust.
-* Installs the required versions of the **rust-toolchain**.
-* Installs **CMake** - to manage the build process.
-* Installs **protoc** - a compiler for protocol buffers.
-* Installs **Go**.
-* Builds Libra server.
-
-If your setup fails, try the following:
-
-* Update Rust:
-    * run `rustup update` from your libra directory
-* Remove cargo lock file from the libra directory:
-    * `rm Cargo.lock`
-* Re-run setup script from your libra directory:
-    * `setup_scripts/dev_setup_mac.sh`  OR
-    * `setup_scripts/dev_setup_centos.sh`
-* Ensure that you have updated your .bashrc or .zshrc files as instructed by the script.
+* Installs rustup - rustup is an installer for the systems programming language Rust.
+* Installs the required versions of the rust-toolchain.
+* Installs CMake, protoc, and Go to build protocol buffers.
+* Provides instructions to build the Libra server.
 
 ## Build Libra CLI Client and Connect To Testnet
 
