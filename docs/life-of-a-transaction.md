@@ -21,7 +21,7 @@ A Libra **client constructs a raw transaction** (let us call it T~5~raw) to tran
 * [Sequence number](reference/glossary.md#sequence-numnber) - 5
     * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
-The **client signs transaction** T~5~raw with her private key. The signed transaction T~5~ includes the following:
+The **client signs transaction** T~5~raw with Alice's private key. The signed transaction T~5~ includes the following:
 
 * The raw transaction.
 * Alice's public key.
@@ -59,11 +59,11 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **4** - The mempool will hold T~5~ in an in-memory buffer. Mempool may already contain multiple transactions sent from Alice's address.
 
-**5** - Using the shared-mempool protocol, V~1~ will share the transactions (including T~5~) in its mempool with other validators (V~2~ to V~100~) and place transactions received from the other validators in its own mempool. (Mempool → Other Validators [MP.2](#mempool-other-validators-mp2))
+**5** - Using the shared-mempool protocol, V~1~ will share the transactions (including T~5~) in its mempool with other validators (V~2~ to V~100~) and place transactions received from the other validators into its own mempool. (Mempool → Other Validators [MP.2](#mempool-other-validators-mp2))
 
 ### Proposing The Block
 
-**6** - As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and broadcast this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
+**6** - As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
 
 **7** - The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2))
 
@@ -73,15 +73,15 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **9** - The execution component manages the execution of transactions in the virtual machine (VM). Note that this execution happens speculatively, before the transactions in the block have been agreed upon. (Execution → VM [EX.2](#execution-vm-ex2), [VM.3](#execution-vm-vm3))
 
-**10** - After executing the transactions in the block, the execution component appends the transactions in the block (including T~5~) to the [Merkle accumulator](#merkle-accumulators) (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The (proposed/speculative) root-hash of the accumulator is returned to the consensus component. (Consensus → Execution [CO.3](#consensus-execution-consensus-other-validators-co3), [EX.1](#consensus-execution-ex1))
+**10** - After executing the transactions in the block, the execution component appends the transactions in the block (including T~5~) to the [Merkle accumulator](#merkle-accumulators) (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The (proposed/speculative) result of executing these transactions is returned to the consensus component. (Consensus → Execution [CO.3](#consensus-execution-consensus-other-validators-co3), [EX.1](#consensus-execution-ex1))
 
-**11** - V~1~ (the consensus leader) attempts to reach consensus on this root-hash with other validators participating in the consensus. (Consensus → Other Validators [CO.3](#consensus-execution-consensus-other-validators-co3))
+**11** - V~1~ (the consensus leader) attempts to reach consensus on the block's execution result with other validators participating in the consensus. (Consensus → Other Validators [CO.3](#consensus-execution-consensus-other-validators-co3))
 
 ### Committing The Block
 
-**12** - If the root-hash is agreed upon and signed by a set of validators which have the super-majority of votes, validator V~1~ reads the result of the block execution from cache in the execution component and commits all the transactions in the block to the storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
+**12** - If the block's execution result is agreed upon and signed by a set of validators which have the super-majority of votes, validator V~1~'s execution component reads the result of the block execution from the speculative execution cache and commits all the transactions in the block to persistent storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
 
-**13** - Alice's account will now have 100 Libra and its sequence number will be 6. If T~5~ is replayed by Bob it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the transaction (5).
+**13** - Alice's account will now have 100 Libra and its sequence number will be 6. If T~5~ is replayed by Bob it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
 
 ## Validator Component Interactions
 
