@@ -125,10 +125,10 @@ For information on interactions of each validator component with other component
 
 ## Reference
 
-* [Welcome page](welcome).
+* [Welcome Page](welcome).
 * [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
-* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Getting Started with Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
+* [Life of a Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
