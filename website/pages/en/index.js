@@ -145,7 +145,7 @@ cd libra`}</MarkdownBlock>
             </li>
             <li>
               <h4>Install dependencies:</h4>
-              <MarkdownBlock>{bash`setup_scripts/dev_setup_mac.sh`}</MarkdownBlock>
+              <MarkdownBlock>{bash`setup_scripts/dev_setup.sh`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run CLI:</h4>
@@ -157,6 +157,9 @@ cd libra`}</MarkdownBlock>
             </li>
           </ol>
         </Container>
+        <div>
+          <p>Spot a security or privacy issue? Please email <img src={baseUrl + "img/securityemail.png"} className="security" />.</p>
+        </div>
       </div>
     );
 
