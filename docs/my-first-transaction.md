@@ -144,47 +144,40 @@ Note that creating an account using the CLI does not update the blockchain, it j
 Created account #0 address f2c74d3b046157cb967c1a872c8671d35e2e09163461010733649a5e50d016ed
 ```
 
-**#0** - is the index of Alice's account and the hex number is the **address** of Alice's account. The index is just a way to refer to Alice's account. 
-
-* The account index is a local index for users to conveniently refer to the accounts they created. 
-* It is a shorthand used by the Libra CLI client, it does not mean anything for the blockchain. 
-* This index can be used in other CLI commands. 
-* Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user.
+#0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.  
 
 ### Step 3 - Create Bob's account
 
-**To create Bob's account enter this command:**
+To create Bob's account, repeat the account creation command:
 
 `libra% account create`
 
-**Sample output on success:**
+Sample output on success:
 
 ```bash
 >> Creating/retrieveing next account from wallet
 Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608
 ```
 
-**#1** - is the index for Bob's account and the hex number is the address of Bob's account. 
+#1 - is the index for Bob's account and the hex number is the address of Bob's account. 
 For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (optional) - List Accounts
 
 To list the accounts you have created
-
-**Enter this command:**
+Enter this command:
 
 `libra% account list`
 
 
-**Sample output on success:**
+Sample output on success:
 ```bash
 User account index: 0, address: 578560b3d71b86fab5f434a83b51bab1b753dde4c995ef7407d413159acbfb65, sequence number: 0
 User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3286a2ba203495f24, sequence number: 0
 Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5
 ```
 
-**Faucet account address** - is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).
-The **sequence number** for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary#sequence-number).
+Faucet account address** is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary#sequence-number).
 
 ## Add Libra Coins to Alice's and Bob's Accounts
 
