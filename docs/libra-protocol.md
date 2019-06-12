@@ -119,7 +119,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Storage**
 
-* The storage is used to persist agreed upon blocks of transactions and their execution results.
+The storage is used to persist agreed upon blocks of transactions and their execution results.
 
 For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction.md).
 
