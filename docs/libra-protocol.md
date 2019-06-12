@@ -39,13 +39,13 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
     * A Move bytecode transaction script. Here is an example of a [peer-to-peer transaction script](life-of-a-transaction.md#peer-to-peer-transaction-script-and-inputs).
     * An optional list of inputs to the script. For a peer-to-peer transaction, the inputs will contain the information about the recipient and the amount transferred to the recipient.
     * An optional list of Move bytecode modules to publish. 
-* **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas), to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+* **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas) to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume.
 * **Sequence number** - An unsigned integer that must be equal to the sequence number stored under the sender's account.
 * **Expiration time** - The time after which the transaction ceases to be valid.
 * **Signature** - The digital signature of the sender.
 
-The transaction script is an arbitrary program that encodes the logic of a transaction, and interacts with resources published in the distributed database of the Libra blockchain. 
+The transaction script is an arbitrary program that encodes the logic of a transaction and interacts with resources published in the distributed database of the Libra blockchain. 
 
 ### Ledger State
 
@@ -53,7 +53,7 @@ The ledger state, or global state of the Libra Blockchain, is comprised of the s
 
 ## Versioned Database
 
-All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer which corresponds to the number of transactions the system has executed.
+All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer that corresponds to the number of transactions the system has executed.
 
 The versioned database allows validators to:
 
