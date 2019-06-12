@@ -12,12 +12,11 @@ This document will guide you through executing your first transaction on the Lib
 
 We provide a command line interface (CLI) client to interact with the blockchain. 
 
-
 ## Assumptions
 
 All commands in this document assume that:
 
-* You are running on a `Linux` or `macOS` system.
+* You are running on a `Linux` (Red Hat or Debian-based) or `macOS` system.
 * You have a stable connection to the internet.
 * `Git` is installed on your system.
 * `Homebrew` is installed on a `macOS` system.
