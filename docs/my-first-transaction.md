@@ -20,7 +20,7 @@ All commands in this document assume that:
 * You are running on a Linux or macOS system.
 * You have a stable connection to the Internet.
 * Git is installed on your system.
-* Homebrew is installed on a MacOS system.
+* Homebrew is installed on a macOS system.
 
 ## Steps to Submit a Transaction
 
