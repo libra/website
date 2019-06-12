@@ -176,22 +176,21 @@ For implementation details, repository structure, and external API for the virtu
 ![Figure 1.4 Mempool](assets/illustrations/mempool.svg)
 <small>Figure 1.4 Mempool</small>
 
-Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to the mempool, the mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the ordered queue of the recipient validator. The mempool does not push transactions to consensus, the consensus pulls transactions from mempool. When a transaction is fully executed and written to storage, consensus notifies mempool, and mempool drops that transaction from its internal state.
+Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to mempool, mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
 
 ### AC → Mempool (MP.1)
 
-* After performing initial validation checks,  AC sends a transaction to the mempool of the validator.
-* The mempool for a validator V~X~ accepts the transaction T~N~ from the admission control, for the sender's account, only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
+* After performing initial validation checks, a validator's AC sends the transaction to the validator's mempool.
+* Mempool for validator V~X~ accepts transaction T~N~ for the sender's account only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
 
 ### Mempool → Other Validators (MP.2)
 
-* The mempool of validator V~X~ shares the transaction T~N~ with the other validators on the same network.
+* The mempool of validator V~X~ shares transaction T~N~ with the other validators on the same network.
 * Other validators share the transactions in their mempool with V~X~'s mempool.
 
 ### Consensus → Mempool (MP.3)
 
-* When validator V~X~ becomes the leader, its consensus will pull a block of transactions from its mempool and broadcast the block to other validators. *It does this* to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
-* If the gas price is a tie between two transactions, then they are ordered by how long ago they were submitted.
+* When validator V~X~ becomes the leader, its consensus will pull a block of transactions from its mempool and replicate the block to other validators. It does this to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
 * Note that just because a transaction T~N~ was included in a consensus block it does not guarantee that T~N~ will eventually be persisted in the distributed database of the blockchain.
 
 ### Mempool → VM (MP.4)
@@ -211,22 +210,21 @@ The consensus component is responsible for ordering blocks of transactions, and 
 
 ### Consensus → Mempool (CO.1)
 
-* When validator V~X~ is a leader/proposer, the consensus of V~X~ pulls a block of transactions from its mempool via: `Mempool::GetBlock()`, and forms a proposal.
-* `Mempool::GetBlock()` pulls transactions out of mempool in a way that if sequential transactions (transactions which have their sequence numbers in a sequence, for a single account) are sitting in mempool they will be added to the ordered queue.
+When validator V~X~ is a leader/proposer, the consensus of V~X~ pulls a block of transactions from its mempool via: `Mempool::GetBlock()`, and forms a proposal.
 
 ### Consensus → Other Validators (CO.2)
 
-* If V~X~ is a proposer/leader, its consensus sends the proposed block of transactions (containing T~N~) to other validators.
+If V~X~ is a proposer/leader, its consensus replicates the proposed block of transactions to other validators.
 
 ### Consensus → Execution, Consensus → Other Validators (CO.3)
 
-* To execute a block of transactions consensus interacts with the execution component . Consensus executes a block of transactions via: `Execution:ExecuteBlock()`(Refer to Execution →  [Action A](#action-a))
-* When execution computes the speculative root hash, it responds to consensus with this new root hash.
-* Consensus signs this root hash and attempts to reach agreement on this root hash with other validators participating in consensus.
+* To execute a block of transactions, consensus interacts with the execution component. Consensus executes a block of transactions via `Execution:ExecuteBlock()`(Refer to [Consensus → Execution](#consensus-execution-ex1))
+* After executing the transactions in the block, execution responds to consensus with the result of executing these transactions.
+* Consensus signs the execution results and attempts to reach agreement on this result with other validators participating in consensus.
 
 ### Consensus → Execution (CO.4)
 
-* If enough validators vote for the same root hash, consensus of V~X~ informs execution via:  `Execution::CommitBlock()`that this block is ready to be committed
+If enough validators vote for the same root hash, the consensus component of V~X~ informs execution via `Execution::CommitBlock()` that this block is ready to be committed.
 
 ### Consensus README
 
