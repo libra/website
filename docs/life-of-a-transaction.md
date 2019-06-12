@@ -23,7 +23,7 @@ A Libra **client constructs a raw transaction** (let us call it T~5~raw) to tran
 
 The **client signs transaction** T~5~raw with her private key. The signed transaction T~5~ includes the following:
 
-* The Raw Transaction.
+* The raw transaction.
 * Alice's public key.
 * Alice's signature.
 
