@@ -39,7 +39,7 @@ Move modules define the rules for updating the global state of the Libra Blockch
 
 * The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital  assets with rich programmability.
 * Resources are ordinary values in the language --- they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
-* However, the __Move type system provides special safety guarantees for resources__. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
+* However, the __Move type system provides special safety guarantees for resources__. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine-mvm) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
 * The Libra currency is implemented as a resource type named `LibraCoin.T`. `LibraCoin.T` has no special status in the language; every Move resource enjoys the same protections.
 
 ## Move: Under the Hood

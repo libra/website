@@ -85,19 +85,14 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ## Validator Component Interactions
 
-In the [Libra Protocol - Key Concepts](libra-protocol#transactions) document we looked at the structure of a transaction, and mentioned that:
-
-* Clients of the Libra Blockchain submit transactions to request updates to the ledger state.
-* These transactions are submitted to a Libra validator node.
-
-In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look at the inter-component interactions of a validator as the validator processes transactions and reads queries.  This information is useful to you if:
+In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries.  This information is useful to you if:
 
 * You would like to get an overall idea of how the system works under the covers.
 * You are interested in eventually contributing to the Libra Core software.
 
-For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component we will describe each of its inter-component interaction in “ACTION” subsections. Note that the “ACTIONS” are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (for existing information on the blockchain).
+For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (to query for existing information on the blockchain).
 
- Let us look at each logical component of a validator node:
+ Let us look at the core logical components of a validator node:
 
 * [Admission Control](#admission-control-ac)
 * [Mempool](#mempool)
@@ -110,7 +105,7 @@ A link to the “README” of the [Libra Core](reference/glossary.md#libra-core)
 
 ### Use of arrows in the diagrams
 
-The arrows in the following graphics start on the component initiating an interaction/action and end on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned).
+The arrows in the following graphics originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned).
 
 ## Admission Control (AC)
 
@@ -122,33 +117,31 @@ Admission Control is the _sole external interface_ of the validator. Any request
 ### Client → AC (AC.1)
 
 A client submits a  transaction to the admission control of a validator V~X~. This is done via:
-`AC::SubmitTransaction()`
+`AC::SubmitTransaction()`.
 
 ### AC → VM (AC.2)
 
-The admission control accesses the virtual machine (VM) of the validator to perform preliminary checks on the transaction, to reject malformed transactions early. This is done via:
+Admission control accesses the virtual machine (VM) of the validator to perform preliminary checks on the transaction in order to reject malformed transactions early. This is done via:
  [`VM::ValidateTransaction()`](#virtual-machine-b).
 
 ### AC → Mempool (AC.3)
 
-Once `VM::ValidateTransaction()` returns without errors AC forwards the transaction to validator V~X~ 's mempool via:
-
-`Mempool::AddTransactionWithValidation().` The mempool for validator V~X~ will accept the transaction T~N~ from the AC only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
+Once `VM::ValidateTransaction()` returns without errors, AC forwards the transaction to validator V~X~'s mempool via `Mempool::AddTransactionWithValidation().` The mempool for validator V~X~ will accept the transaction T~N~ from the AC only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account (note that the transaction will not be passed to consensus until it is the next sequence number).
 
 ### AC → Storage (AC.4)
 
-When the client performs a read query on the Libra Blockchain, (for example, get the balance of Alice's account) AC interacts with the storage component directly to obtain the information.
+When the client performs a read query on the Libra Blockchain, (for example, to get the balance of Alice's account) AC interacts with the storage component directly to obtain the requested information.
 
 ### Admission Control README
 
-For implementation details, repository structure, and API of the admission control crate of Libra Core software refer to the [Admission Control README](crates/admission-control.md).
+For implementation details, repository structure, and APIs of the admission control crate, refer to the [Admission Control README](crates/admission-control.md).
 
 ## Virtual Machine (VM)
 
 ![Figure 1.3 Virtual Machine](assets/illustrations/virtual-machine.svg)
 <small>Figure 1.3 Virtual Machine</small>
 
-AC and mempool use VM to perform validation checks on transactions. VM (also called [Move VM](move-getting-started.md)) is used to run the program included in a transaction and determine the results.
+The [Move virtual machine](move-getting-started.md) (VM) verifies and executes transaction scripts written in Move bytecode.
 
 ### AC → VM (VM.1)
 
@@ -156,8 +149,7 @@ When admission control of validator V~X~ receives a transaction from a client, i
 
 ### VM → Storage (VM.2)
 
-When AC or mempool request VM to validate a transaction via
-`VM::ValidateTransaction(),` VM loads the transaction sender's account from storage and performs the following verifications:
+When AC or mempool request VM to validate a transaction via `VM::ValidateTransaction()`, VM loads the transaction sender's account from storage and performs the following verifications:
 
 * Checks that the input signature(s) on the signed transaction are correct (to reject incorrectly signed transactions).
 * Checks that the sender's account authentication key is same as the hash of the public key (corresponding to the private key used to sign the transaction).
@@ -167,14 +159,13 @@ When AC or mempool request VM to validate a transaction via
 
 ### Execution → VM (VM.3)
 
-The execution component invokes VM to execute a transaction via:
-`VM::ExecuteTransaction()`
+The execution component utilizes the VM to execute a transaction via `VM::ExecuteTransaction()`.
 
-It is important to understand that executing a transaction is different from updating the state of the ledger (persisting the results in storage). A transaction T~N~ is first executed as part of an attempt to reach agreement on its sequencing within the blockchain. If agreement is reached with the other validators, on the ordering of transactions and the execution results, the results/output is written to the ledger.
+It is important to understand that executing a transaction is different from updating the state of the ledger (persisting the results in storage). A transaction T~N~ is first executed as part of an attempt to reach agreement on blocks during consensus. If agreement is reached with the other validators on the ordering of transactions and their execution results, the results are persisted to the ledger.
 
 ### Mempool → VM (VM.4)
 
-When mempool receives a transaction from other validators, mempool invokes [`VM::ValidateTransaction()`](#action-b-1) on the VM to validate the transaction.
+When mempool receives a transaction from other validators via shared mempool, mempool invokes [`VM::ValidateTransaction()`](#action-b-1) on the VM to validate the transaction.
 
 ### VM README
 
@@ -185,22 +176,21 @@ For implementation details, repository structure, and external API for the virtu
 ![Figure 1.4 Mempool](assets/illustrations/mempool.svg)
 <small>Figure 1.4 Mempool</small>
 
-Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to the mempool, the mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the ordered queue of the recipient validator. The mempool does not push transactions to consensus, the consensus pulls transactions from mempool. When a transaction is fully executed and written to storage, consensus notifies mempool, and mempool drops that transaction from its internal state.
+Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to mempool, mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
 
 ### AC → Mempool (MP.1)
 
-* After performing initial validation checks,  AC sends a transaction to the mempool of the validator.
-* The mempool for a validator V~X~ accepts the transaction T~N~ from the admission control, for the sender's account, only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
+* After performing initial validation checks, a validator's AC sends the transaction to the validator's mempool.
+* Mempool for validator V~X~ accepts transaction T~N~ for the sender's account only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
 
 ### Mempool → Other Validators (MP.2)
 
-* The mempool of validator V~X~ shares the transaction T~N~ with the other validators on the same network.
+* The mempool of validator V~X~ shares transaction T~N~ with the other validators on the same network.
 * Other validators share the transactions in their mempool with V~X~'s mempool.
 
 ### Consensus → Mempool (MP.3)
 
-* When validator V~X~ becomes the leader, its consensus will pull a block of transactions from its mempool and broadcast the block to other validators. *It does this* to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
-* If the gas price is a tie between two transactions, then they are ordered by how long ago they were submitted.
+* When validator V~X~ becomes the leader, its consensus will pull a block of transactions from its mempool and replicate the block to other validators. It does this to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
 * Note that just because a transaction T~N~ was included in a consensus block it does not guarantee that T~N~ will eventually be persisted in the distributed database of the blockchain.
 
 ### Mempool → VM (MP.4)
@@ -220,22 +210,21 @@ The consensus component is responsible for ordering blocks of transactions, and 
 
 ### Consensus → Mempool (CO.1)
 
-* When validator V~X~ is a leader/proposer, the consensus of V~X~ pulls a block of transactions from its mempool via: `Mempool::GetBlock()`, and forms a proposal.
-* `Mempool::GetBlock()` pulls transactions out of mempool in a way that if sequential transactions (transactions which have their sequence numbers in a sequence, for a single account) are sitting in mempool they will be added to the ordered queue.
+When validator V~X~ is a leader/proposer, the consensus of V~X~ pulls a block of transactions from its mempool via: `Mempool::GetBlock()`, and forms a proposal.
 
 ### Consensus → Other Validators (CO.2)
 
-* If V~X~ is a proposer/leader, its consensus sends the proposed block of transactions (containing T~N~) to other validators.
+If V~X~ is a proposer/leader, its consensus replicates the proposed block of transactions to other validators.
 
 ### Consensus → Execution, Consensus → Other Validators (CO.3)
 
-* To execute a block of transactions consensus interacts with the execution component . Consensus executes a block of transactions via: `Execution:ExecuteBlock()`(Refer to Execution →  [Action A](#action-a))
-* When execution computes the speculative root hash, it responds to consensus with this new root hash.
-* Consensus signs this root hash and attempts to reach agreement on this root hash with other validators participating in consensus.
+* To execute a block of transactions, consensus interacts with the execution component. Consensus executes a block of transactions via `Execution:ExecuteBlock()`(Refer to [Consensus → Execution](#consensus-execution-ex1))
+* After executing the transactions in the block, execution responds to consensus with the result of executing these transactions.
+* Consensus signs the execution results and attempts to reach agreement on this result with other validators participating in consensus.
 
 ### Consensus → Execution (CO.4)
 
-* If enough validators vote for the same root hash, consensus of V~X~ informs execution via:  `Execution::CommitBlock()`that this block is ready to be committed
+If enough validators vote for the same root hash, the consensus component of V~X~ informs execution via `Execution::CommitBlock()` that this block is ready to be committed.
 
 ### Consensus README
 

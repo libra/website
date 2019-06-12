@@ -12,13 +12,12 @@ This document will guide you through executing your first transaction on the Lib
 
 We provide a command line interface (CLI) client to interact with the blockchain. 
 
-
 ## Assumptions
 
 All commands in this document assume that:
 
-* You are running on a `Linux` or `macOS` system.
-* You have a stable connection to the Internet.
+* You are running on a `Linux` (Red Hat or Debian-based) or `macOS` system.
+* You have a stable connection to the internet.
 * `Git` is installed on your system.
 * `Homebrew` is installed on a `macOS` system.
 
@@ -67,10 +66,10 @@ To connect to a validator node running on the Libra testnet, change to the `clie
 $ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80
 ```
 
-This command builds and runs the client, utilizing cargo (Rust’s package manager), and connects the client to a validator node on testnet:
+This command builds and runs the client utilizing cargo (Rust’s package manager) and connects the client to a validator node on testnet:
 
-* [ac.stable.aws.hlw3truzy4ls.com](http://ac.stable.aws.hlw3truzy4ls.com/) - is the hostname for the node running on testnet.
-* 80 - is the port on which the client will communicate with the testnet.
+* [ac.stable.aws.hlw3truzy4ls.com](http://ac.stable.aws.hlw3truzy4ls.com/) - Is the hostname for the node running on testnet.
+* 80 - Is the port on which the client will communicate with the testnet.
 
 Once the client connects to a node on testnet, you will see the following output.  To quit the client at any time, use the `quit` command.
 
@@ -97,9 +96,9 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to [Troubleshooting -  client build and run](#client-build-and-run).
+If you have problems building the client and connecting to the testnet, refer to [Troubleshooting -  Client Build and Run](#client-build-and-run).
 
-**Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
+**Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run a Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
 ## Create Alice's and Bob's Account
 
