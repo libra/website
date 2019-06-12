@@ -57,7 +57,7 @@ The setup script performs these actions:
 * Installs protoc - a compiler for protocol buffers.
 * Installs Go (for building protocol buffers).
 
-If your setup fails, see [Troubleshooting setup]((#troubleshooting))
+If your setup fails, see [Troubleshooting - setup](my-first-transaction.md#setup)
 
 ## Build Libra CLI Client and Connect To Testnet
 
