@@ -15,7 +15,7 @@ In the first part of this guide, we will provide a high-level introduction to th
 
 For the curious reader, the [Move technical paper](papers/the-move-language) contains much more detail about the language.
 
-In the second part of this guide, we will lift up the hood and show you how to write your own Move programs in the [Move intermediate representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available for you to try out locally.
+In the second part of this guide, we will "lift up the hood" and show you how to write your own Move programs in the [Move intermediate representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available for you to try out locally.
 
 ## Key Features of Move
 
@@ -23,7 +23,7 @@ In the second part of this guide, we will lift up the hood and show you how to w
 
 * Each Libra transaction includes a **Move transaction script** which encodes the logic a validator should perform on the client's behalf (for example, move Libra from Alice's account to Bob's account). 
 * The transaction script interacts with [Move resources](#move-has-first-class-resources) published in the global storage of the Libra Blockchain by calling the procedures of one or more [Move modules](#move-modules-allow-composable-smart-contracts). 
-* A transaction script is not stored in the global state, and it cannot be invoked by other transaction scripts. It is a single-use program.
+* A transaction script is not stored in the global state and it cannot be invoked by other transaction scripts. It is a single-use program.
 * We present several examples of transaction scripts in [Writing Transaction Scripts](#writing-transaction-scripts).
 
 ### Move Modules Allow Composable Smart Contracts
