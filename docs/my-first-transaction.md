@@ -231,26 +231,15 @@ If your account mint command did not submit your request successfully, refer to
 ### Step 3 - Check the balance
 
 To check the balance in Alice's account:
-
-**Enter this command:**
-
+Enter this command:
 `libra% query balance 0`
-
-**Sample output on success:**
-
+Sample output on success:
 `Balance is: 110`
-
 To check the balance in Bob's account:
-
-**Enter this command:**
-
+Enter this command:
 `libra% query balance 1`
-
-**Sample output on success:**
-
+Sample output on success:
 `Balance is: 52`
-
-If you have problems minting and adding coin to the accounts refer to the [troubleshooting section](#troubleshooting).
 
 ## Submit a Transaction
 
@@ -267,7 +256,7 @@ libra% query sequence 1
 Sequence number is: 0
 ```
 
-In `query sequence 0`, **0** is the index of Alice's account. A sequence number of **0** for both Alice's and Bob's account indicates that no transactions from either Alice's or Bob's account have been executed so far.
+In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0 for both Alice's and Bob's account indicates that no transactions from either Alice's or Bob's account have been executed so far.
 
 ### Transfer Money
 
