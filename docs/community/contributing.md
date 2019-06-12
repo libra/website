@@ -24,39 +24,9 @@ cargo test
 
 ## Our Development Process
 
-#### Code Style
+#### Code Style, Hints, and Testing
 
-Libra uses the `fmt` code formatter to
-enforce a common code style across the code base. _____ is installed easily via
-cargo using `cargo install ____`, and run locally by calling
-```bash
-____ .
-```
-from the repository root. No additional configuration should be needed (see the
-[_____ documentation](https://xxxx)
-for advanced usage).
-
-We feel strongly that having a consistent code style is extremely important, so
-CircleCI will fail on your PR if it does not adhere to the _____ formatting style.
-
-
-#### Type Hints
-
-Libra is fully typed using Rust. We expect any contributions to also use proper type annotations. While we currently do not enforce full consistency of these in our continuous integration test, you should strive to type check your code locally. For this we recommend using [====](https://====.com).
-
-
-#### Unit Tests
-
-To run the unit tests, you can either use `cargo test` (if installed):
-```bash
-cargo test
-```
-
-To get coverage reports we recommend using the `cargo test-report` plugin:
-```bash
-cargo test --report
-```
-
+Refer to our [Coding Guidelines](coding-guidelines.md) for detailed guidance around how to contribute to the project.
 
 #### Documentation
 
@@ -89,12 +59,10 @@ During intial phase of heavy development we plan to only audit and review pull r
 6. If you haven't already, complete the Contributor License Agreement ("CLA").
 7. Submit your Pull Request.
 
-
 ## Contributor License Agreement ("CLA")
 
 For pull request to be accepted by any Libra projects an invididual or corporate CLA
 must be submitted. You will only need to do this once to work on any of Libra's open source projects. You can complete CLAs here: [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf) [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf)
-
 
 ## Issues
 

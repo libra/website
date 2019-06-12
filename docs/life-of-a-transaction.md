@@ -11,14 +11,14 @@ To get a deeper understanding of the lifecycle of a Libra transaction, we will f
 
 A Libra **client** **constructs a raw transaction** (let us call it T~5~raw) to transfer 10 Libra from Alice's account to Bob's account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
-* Alice's [account address](reference/glossary#account-address).
+* Alice's [account address](reference/glossary.md#account-address).
 * A program that indicates the actions to be performed on Alice's behalf. It contains:
-    * A Move bytecode [peer-to-peer transaction script](reference/glossary#transaction-script).
+    * A Move bytecode [peer-to-peer transaction script](reference/glossary.md#transaction-script).
     * A list of inputs to the script (for example, Bob's account address and the amount of payment).
-* [Gas price](reference/glossary#gas-price) is the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
-* [Maximum gas amount](reference/glossary#maximum-gas-amount) Alice is willing to pay for this transaction.
-* [Expiration time](reference/glossary#expiration-time) of the transaction.
-* [Sequence number](reference/glossary#sequence-numnber) - 5
+* [Gas price](reference/glossary.md#gas-price) is the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
+* [Maximum gas amount](reference/glossary.md#maximum-gas-amount) Alice is willing to pay for this transaction.
+* [Expiration time](reference/glossary.md#expiration-time) of the transaction.
+* [Sequence number](reference/glossary.md#sequence-numnber) - 5
     * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
 The **client signs transaction** T~5~raw with her private key. The signed transaction T~5~ includes the following additional fields.
@@ -30,9 +30,9 @@ The **client signs transaction** T~5~raw with her private key. The signed transa
 
 To describe the lifecycle of transaction T~5~ we will assume that:
 
-* Alice and Bob have [accounts](reference/glossary#accounts) on the Libra Blockchain.
+* Alice and Bob have [accounts](reference/glossary.md#accounts) on the Libra Blockchain.
 * Alice's account has 110 Libra.
-* The current [sequence number](reference/glossary#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
+* The current [sequence number](reference/glossary.md#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
 * There are a total of 100 validators - V~1~ to V~100~ on the network.
 * The client submits transaction T~5~ to validator V~1~
 * **Validator V~1~ is a proposer/leader for the current round.**
@@ -107,7 +107,7 @@ For our narrative, we will assume that a client submits a  transaction T~N~ to a
 * [Virtual Machine](#virtual-machine-vm)
 * [Storage](#storage)
 
-A link to the “README” of the [Libra Core](reference/glossary#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
+A link to the “README” of the [Libra Core](reference/glossary.md#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
 
 ### Use of arrows in the diagrams
 
@@ -142,7 +142,7 @@ When the client performs a read query on the Libra Blockchain, (for example, get
 
 ### Admission Control README
 
-For implementation details, repository structure, and API of the admission control crate of Libra Core software refer to the [Admission Control README](crates/admission-control).
+For implementation details, repository structure, and API of the admission control crate of Libra Core software refer to the [Admission Control README](crates/admission-control.md).
 
 ## Virtual Machine (VM) 
 
@@ -179,7 +179,7 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### VM README
 
-For implementation details, repository structure, and external API for the virtual machine module refet to the [Virtual Machine README](crates/virtual-machine).
+For implementation details, repository structure, and external API for the virtual machine module refet to the [Virtual Machine README](crates/virtual-machine.md).
 
 ## Mempool
 
@@ -240,7 +240,7 @@ The consensus component is responsible for ordering blocks of transactions, and 
 
 ### Consensus README
 
-For implementation details, repository structure, and API of the consensus crate refer to the [Consensus README](crates/consensus).
+For implementation details, repository structure, and API of the consensus crate refer to the [Consensus README](crates/consensus.md).
 
 ## Execution
 
@@ -287,7 +287,7 @@ The storage persists agreed upon blocks of transactions and their execution resu
     * The order of the transactions.  
     * The execution results of the transactions to be included in the block.
 
-Refer to [Merkel accumulators](https://fb.quip.com/0fQ1AzLdEXiQ#DQCACA81Oil) for information on how a transaction is appended to the data structure representing the blockchain.
+Refer to [Merkel accumulators](reference/glossary.md#merkel-accumulators) for information on how a transaction is appended to the data structure representing the blockchain.
 
 ### Action A
 
@@ -310,7 +310,7 @@ For any read queries by a client (to read information from the blockchain), AC d
 
 ### Storage README
 
-For implementation details, repository structure, and API of the storage crate refer to the [Storage README](crates/storage).
+For implementation details, repository structure, and API of the storage crate refer to the [Storage README](crates/storage.md).
 
 ## Appendix
 
@@ -332,7 +332,7 @@ main(payee: address, amount: uint) {
 
 A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
 
-For further information refer to [Move Overview](move-overview)
+For further information refer to [Getting Started with Move](move-overview.md)
 
 ### `Currency` module
 
@@ -358,9 +358,9 @@ In the sample transaction script provided above:
 * The design of our consensus protocol is mostly independent of how clients interact with the Libra Blockchain. Transactions submitted by clients are first shared between validators by the mempool component.
 * LibraBFT works by electing and rotating special nodes called leaders (validators). When its round becomes active, a leader pulls transactions from the mempool to propose a block of transactions. It is then responsible for the coordination and agreement between all validators on the proposed block to be executed (and eventually finalized).
 * The Libra blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
-* Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication) for details of our proposed consensus protocol LibraBFT.
+* Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
 
-For further information refer to the [Consensus technical paper](papers/consensus)
+For further information refer to the [Consensus technical paper](papers/consensus.md)
 
 ### Merkle Accumulators
 
@@ -369,7 +369,7 @@ The storage is used to persist **agreed upon** blocks of transaction and their e
 ![Figure 1.8 Merkle Accumulator](assets/illustrations/merkle-accumulators.svg)
 <small>Figure 1.8 Merkle Accumulator</small>
 
-* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo`` `object gets appended, for each transaction executed.
+* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo` object gets appended, for each transaction executed.
     * 0 - An empty accumulator contains just a **placeholder node**. 
     * 1 - Every time a transaction is executed, a new `TransactionInfo `**object** and the corresponding **leaf node** is appended to the Merkle accumulator.  Any empty subtree is replaced by a placeholder node. 
     * 2 - When a new `TransactionInfo` object and l**eaf node** are added, the placeholder node is replaced. 
@@ -378,18 +378,18 @@ The storage is used to persist **agreed upon** blocks of transaction and their e
     * The `TransactionInfo` object.
     * The root hash of the final state the accumulator (after the transaction is applied).
     * Other metadata. 
-* When validators reach **consensus** on a new [block](https://fb.quip.com/LkbMAEBIVNbh#ffYACAKMnIa) of transactions and agree on their ordering and execution results:
+* When validators reach **consensus** on a new [block](reference/glossary.md#block) of transactions and agree on their ordering and execution results:
     * The validators append all the transactions in the block, one-by-one, to the previous accumulator and compute the new root hash of the accumulator.
     * All validators sign the root hash of the new tree.
 
-For further information refer to [Blockchain Technical Paper](papers/the-libra-blockchain)
+For further information refer to [Blockchain Technical Paper](papers/the-libra-blockchain.md)
 
 ## Reference
 
-* [Welcome page](welcome).
-* [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
-* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
-* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
-* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
+* [Welcome page](welcome.md).
+* [Libra Protocol - Key Concepts](libra-protocol.md) - Introduces you to the fundamental concepts of the Libra protocol.
+* [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.

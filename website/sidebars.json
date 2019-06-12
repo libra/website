@@ -3,7 +3,6 @@
     "Learn About Libra": [
     	"welcome",
     	"libra-protocol",
-    	"move-getting-started",
         "life-of-a-transaction",
         {
             "type": "subcategory",
@@ -17,7 +16,8 @@
     ],
     "Try Libra": [
     	"installation",
-    	"my-first-transaction"
+    	"my-first-transaction",
+        "move-getting-started"
     ],
     "Community" : [
     	"community/libra-open-source",
