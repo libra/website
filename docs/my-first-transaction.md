@@ -325,7 +325,18 @@ You have successfully executed your transaction on the Libra testnet and transfe
 
 ## Troubleshooting
 
+###Setup
+
+* Update Rust:
+    * run `rustup update` from your libra directory
+* Re-run setup script from your libra directory:
+    * `setup/dev-setup.sh`
+
 ### Client Build and Run
+
+If you are experiencing build failures, try to remove the cargo lock file from the libra directory:
+
+* `rm Cargo.lock`
 
 If your client did not connect to the testnet:
 
