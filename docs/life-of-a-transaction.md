@@ -286,7 +286,7 @@ The storage persists agreed upon blocks of transactions and their execution resu
     * The order of the transactions.
     * The execution results of the transactions to be included in the block.
 
-Refer to [Merkel accumulators](reference/glossary.md#merkel-accumulators) for information on how a transaction is appended to the data structure representing the blockchain.
+Refer to [Merkle accumulators](reference/glossary.md#merkle-accumulators) for information on how a transaction is appended to the data structure representing the blockchain.
 
 ### VM → Storage (ST.1)
 
