@@ -10,7 +10,7 @@ This document will guide you through executing your first transaction on the Lib
 * [Welcome](welcome.md)
 * [The Libra protocol - Key Concepts](libra-protocol.md)
 
-We provide a command line interface (CLI) client to interact with the blockchain. 
+We provide a command line interface (CLI) client to interact with the blockchain.
 
 ## Assumptions
 
@@ -20,15 +20,16 @@ All commands in this document assume that:
 * You have a stable connection to the internet.
 * `Git` is installed on your system.
 * `Homebrew` is installed on a `macOS` system.
+* `yum`or `apt-get` are installed on a `Linux` system.
 
 ## Steps to Submit a Transaction
 
-In this example, we'll download the necessary Libra components and execute a transaction between two users: Alice and Bob.  
+In this example, we'll download the necessary Libra components and execute a transaction between two users: Alice and Bob.
 
 Perform the following steps to submit a transaction to a validator node on the Libra testnet:
 
 1. [Clone and build Libra Core](#clone-and-build-libra-core).
-2. [Build the Libra CLI client and connect to testnet](#build-libra-cli-client-and-connect-to-testnet).
+2. [Build the Libra CLI client and connect to the testnet](#build-libra-cli-client-and-connect-to-testnet).
 3. [Create Alice's and Bob's account](#create-alice-s-and-bob-s-account).
 4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
 5. [Submit a transaction](#submit-a-transaction).
@@ -46,21 +47,21 @@ $ git clone https://github.com/libra/libra.git
 To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies, as shown below:
 
 ```
-scripts/dev-setup.sh
+./scripts/dev-setup.sh
 ```
 The setup script performs these actions:
 
-* Installs rustup - rustup is an installer for the systems programming language Rust.
+* Installs rustup - rustup is an installer for the Rust programming language Libra core is implemented in.
 * Installs the required versions of the rust-toolchain.
 * Installs CMake - to manage the build process.
 * Installs protoc - a compiler for protocol buffers.
 * Installs Go (for building protocol buffers).
 
-If your setup fails, see [Troubleshooting - setup](#setup)
+If your setup fails, see [Troubleshooting](#setup)
 
-## Build Libra CLI Client and Connect To Testnet
+## Build Libra CLI Client and Connect to the Testnet
 
-To connect to a validator node running on the Libra testnet, change to the `client` directory and run the client as shown below. 
+To connect to a validator node running on the Libra testnet, change to the `client` directory and run the client as shown below.
 
 ```bash
 $ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80
@@ -96,13 +97,13 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to [Troubleshooting -  Client Build and Run](#client-build-and-run).
+If you have problems building the client and connecting to the testnet, refer to [Troubleshooting](#client-build-and-run).
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run a Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
 ## Create Alice's and Bob's Account
 
-Once your client is connected to the testnet, you can run CLI commands to create Alice's and Bob's accounts.
+Once your client is connected to the testnet, you can run CLI commands to create new accounts.  We will walk you through creating accounts for two users (let's call them Alice and Bob).
 
 ### Step 1 - Check if the CLI client is running on your system
 
@@ -130,7 +131,7 @@ libra%
 
 ### Step 2 - Create Alice's account
 
-Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair. 
+Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair.
 
 To create Alice's account enter this command:
 
@@ -143,7 +144,7 @@ Sample output on success:
 Created account #0 address f2c74d3b046157cb967c1a872c8671d35e2e09163461010733649a5e50d016ed
 ```
 
-#0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.  
+#0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
 ### Step 3 - Create Bob's account
 
@@ -158,7 +159,7 @@ Sample output on success:
 Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608
 ```
 
-#1 - is the index for Bob's account and the hex number is the address of Bob's account. 
+#1 - is the index for Bob's account and the hex number is the address of Bob's account.
 For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (optional) - List Accounts
@@ -265,7 +266,7 @@ In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0
 
 ### Transfer Money
 
-To submit a transaction to transfer 10 Libra from Alice's account to Bob's account 
+To submit a transaction to transfer 10 Libra from Alice's account to Bob's account
 
 Enter this command:
 
@@ -284,9 +285,9 @@ Transaction submitted to validator
 
 To query for transaction status, run:
 
-`query txn_acc_seq 0 0`
+`query txn_acc_seq 0 0 true`
 
-You can use the command `query txn_acc_seq 0 0` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq).
+You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq).
 
 You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
 
@@ -344,9 +345,9 @@ If you are experiencing build failures, try to remove the cargo lock file from t
 If your client did not connect to the testnet:
 
 * Check your Internet connection.
-* Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again: 
+* Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
-        
+
 
 ### Minting and Adding Money to Account
 
@@ -377,15 +378,15 @@ To troubleshoot transfer errors:
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-* You can try quitting the client using `quit` or `q!`  and run the following command again to connect to testnet:
+* You can try quitting the client using `quit` or `q!`  and run the following command again to connect to the testnet:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
 ## Sample Outputs
 
-### query txn_acc_seq 
+### query txn_acc_seq
 
 ```bash
-libra% query txn_acc_seq 0 0
+libra% query txn_acc_seq 0 0 false
 >> Getting committed transaction by account and sequence number
 Committed transaction: SignedTransaction {
  { raw_txn: RawTransaction {
@@ -413,7 +414,7 @@ Committed transaction: SignedTransaction {
  }
 ```
 
-### Query account_state 
+### Query account_state
 
 ```bash
 libra% query account_state 0
@@ -460,7 +461,7 @@ The cargo run command may take a while to run. If the execution of this command 
 
 Once you have executed your first transaction, you may refer to the document [Life of a Transaction](life-of-a-transaction.md) for:
 
-* A look under the hood at the lifecycle of a transaction from submission to execution. 
+* A look under the hood at the lifecycle of a transaction from submission to execution.
 * An understanding of the interactions between each logical component of a Libra validator, as transactions get submitted and executed in the Libra ecosystem.
 
 ## Reference
