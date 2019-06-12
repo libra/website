@@ -352,7 +352,7 @@ If your client did not connect to the testnet:
   ```bash
   libra% account mint 0 110
   >> Minting coins
- [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to  client is running
+  [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to   client is running
   ```
 * If your balance was not updated after submitting a transaction, wait a moment and query the balance again.  It may take a moment if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
 
