@@ -23,8 +23,8 @@ Figure 1.1 represents change of state of the Libra Blockchain, when a transactio
 * **A** and **B** represent Alice's and Bob's account in the blockchain.
 * **S~N-1~** represents the (n-1)-th state of the blockchain.
 * **T~N~** is the n-th transaction executed on the blockchain.  
-    * In this example T~N~ is - “send 10 Libra from person A's account to person B's account.”
-* **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
+    * In this example, T~N~ is - “send 10 Libra from person A's account to person B's account.”
+* **F** is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
 The Libra protocol uses the [Move language](move-getting-started.md) to implement the deterministic execution function F.
@@ -35,9 +35,9 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 
 * **Sender address** - Account address of the sender of the transaction.
 * **Sender public key** - The public key that corresponds to the private key used to sign the transaction.
-* **Program**  - The program is comprised of:
-    * A Move bytecode transaction script. (Here is an example of a [peer to peer transaction script](life-of-a-transaction.md#peer-to-peer-transaction-script-and-inputs)).
-    * An optional list of inputs to the script. For a peer to peer transaction, it will contain the information about the recipient and the amount transferred to the recipient.
+* **Program**  - The program is comprised of the following:
+    * A Move bytecode transaction script. Here is an example of a [peer to peer transaction script](life-of-a-transaction.md#peer-to-peer-transaction-script-and-inputs).
+    * An optional list of inputs to the script. For a peer to peer transaction, the inputs will contain the information about the recipient and the amount transferred to the recipient.
     * An optional list of Move bytecode modules to publish. 
 * **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas), to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume.
