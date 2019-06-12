@@ -97,7 +97,7 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to the [troubleshooting -  client build and run](##client-build-and-run).
+If you have problems building the client and connecting to the testnet, refer to the [Troubleshooting -  client build and run](#client-build-and-run).
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
