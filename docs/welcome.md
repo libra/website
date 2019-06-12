@@ -7,13 +7,13 @@ title: Welcome
 
 Welcome to the Libra developer site! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
 
-_“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of “the internet of money.” Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ -- Libra White Paper
+_“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of 'the internet of money.' Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ -- Libra White Paper
 
 Libra is built on a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
 
 _"The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability."_-- Libra White Paper
 
-The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core — an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
+The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core, an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
 * How to try the testnet, a demonstration of this new system. 
 * Where to learn about new technology such as the Libra protocol, the Move Language, and LibraBFT.
 * How to be part of the community built around this new ecosystem.
@@ -30,7 +30,7 @@ Refer to [Getting Started With Move](move-getting-started.md) for further inform
 
 ## The Testnet
 
-The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running [Libra Core](reference/glossary.md#libra-core). A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running the [Libra Core](reference/glossary.md#libra-core) software. A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
 
 The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary.md#mainnet), testnet has a digital currency _with no real world value_.
 
@@ -49,7 +49,7 @@ The Libra ecosystem consists of different types of entities:
 A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
-* Can be run by the end-user, or on behalf of the end user (for example, for a Custodial client). 
+* Can be run by the end-user, or on behalf of the end user (for example, for a custodial client). 
 * Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary.md#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator node), request the status of a transaction or account, and verify the response. 
 
@@ -59,7 +59,7 @@ Validator nodes decide which transactions will be added to the Libra Blockchain 
 
 ### Developers
 
-The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that make use of the blockchain. The term developer encompasses all of these groups. Developers might:
+The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that use the blockchain. The term developer encompasses all of these groups. Developers might:
 
 * Build Libra clients.
 * Build applications to interact with a Libra client.
@@ -75,5 +75,5 @@ This site is intended for developers.
 * [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
 * [Life Of A Transaction](life-of-a-transaction.md) - Provides a look at what happens under the hood when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [CLI Guide](libra-cli.md) - Lists the commands of the Libra CLI client and their usage.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
