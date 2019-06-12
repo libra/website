@@ -59,7 +59,7 @@ Validator nodes decide which transactions will be added to the Libra Blockchain 
 
 ### Developers
 
-The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that use the blockchain. The term developer encompasses all of these groups. Developers might:
+The Libra ecosystem supports a wide variety of developers, ranging from people who contribute to Libra Core to those who build applications that use the blockchain. The term "developer" encompasses all of these groups. Developers might:
 
 * Build Libra clients.
 * Build applications to interact with a Libra client.
