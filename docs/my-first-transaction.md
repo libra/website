@@ -289,6 +289,8 @@ You can use the command `query txn_acc_seq 0 0` (transaction by account and sequ
 
 You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
 
+To troubleshoot the transfer command refer to [Troubleshooting - transfer command](#the-transfer-command).
+
 The Blocking Transfer Command: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
 `libra% transferb 0 1 10`
