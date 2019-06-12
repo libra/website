@@ -36,15 +36,17 @@
                 <tspan x="37.1049805" y="100">Execution</tspan>
             </text>
         </g>
-        <text id="B" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="526.4729" y="288">B</tspan>
+        <text id="EX.2" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="505.900391" y="288">EX.</tspan>
+            <tspan x="543.195801" y="288">2</tspan>
         </text>
-        <text id="D" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="259.4729" y="370">D</tspan>
+        <text id="EX.4" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="242.900391" y="360">EX.</tspan>
+            <tspan x="280.195801" y="360">4</tspan>
         </text>
-        <text id="A-&amp;-C" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" line-spacing="30" letter-spacing="-2" fill="#15112C">
-            <tspan x="253.430664" y="229">A &amp; </tspan>
-            <tspan x="294.515137" y="229">C</tspan>
+        <text id="EX.1-&amp;-EX.3" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" line-spacing="30" letter-spacing="-1" fill="#15112C">
+            <tspan x="237.327881" y="215">EX.1 &amp; EX.</tspan>
+            <tspan x="353.768311" y="215">3</tspan>
         </text>
     </g>
 </svg>
