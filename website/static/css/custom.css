@@ -78,7 +78,7 @@ nav {
 }
 
 div.productShowcaseSection {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .productShowcaseSection > h2 {
@@ -172,8 +172,12 @@ sub {
   color: #222222;
 }
 
+.onPageNav a {
+  color: #24292e;
+}
+
 .toc .toggleNav ul li a {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .toc .toggleNav ul li a:hover {
@@ -204,7 +208,7 @@ sub {
 }
 
 .mainContainer .wrapper .post {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .mainContainer .wrapper .post strong {

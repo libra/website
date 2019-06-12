@@ -250,7 +250,7 @@ Execution's job is to coordinate the execution of a block of transactions and ma
 
 ### Consensus → Execution (EX.1)
 
-*  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock().`` `
+*  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
 * Execution maintains a “scratchpad” which holds in memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
 * The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data, this ensures that no state or transaction is stored until agreement is reached by a quorum of validators.
 * Execution computes the speculative root hash and then consensus of V~X~ signs this root hash and attempts to reach agreement on this root hash with other validators.
@@ -368,7 +368,7 @@ The storage is used to persist **agreed upon** blocks of transaction and their e
 ![Figure 1.8 Merkle Accumulator](assets/illustrations/merkle-accumulators.svg)
 <small>Figure 1.8 Merkle Accumulator</small>
 
-* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo`` `object gets appended, for each transaction executed.
+* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo` object gets appended, for each transaction executed.
     * 0 - An empty accumulator contains just a **placeholder node**.
     * 1 - Every time a transaction is executed, a new `TransactionInfo` **object** and the corresponding **leaf node** is appended to the Merkle accumulator.  Any empty subtree is replaced by a placeholder node.
     * 2 - When a new `TransactionInfo` object and l**eaf node** are added, the placeholder node is replaced.
