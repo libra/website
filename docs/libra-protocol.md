@@ -65,7 +65,7 @@ The versioned database allows validators to:
 A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary.md#account-address). This essentially means that the state of each account is comprised of both code and data: 
 
 * **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary.md#move-module).
-* **Move resources** contain data, but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resource).
+* **Move resources** contain data but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resource).
 
 An account may contain an arbitrary number of Move resources and Move modules.
 
@@ -80,13 +80,13 @@ There is no limit on the number of addresses a Libra user can claim. To claim an
 All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary.md#merkle-trees). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
-* Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest n transactions from an account, the proof will verify that no transactions are omitted from the query response.
+* Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest _n_ transactions from an account, the proof will verify that no transactions are omitted from the query response.
 
-In a blockchain, the client does not need to trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n) sized proof of a specific transaction object, where n is the total number of transactions processed.
+In a blockchain, the client does not need to trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n)-sized proof of a specific transaction object, where _n_ is the total number of transactions processed.
 
 ## Validator Node (Validator)
 
-Clients of the Libra Blockchain create transactions and submit them to a validator node. A validator node runs a consensus protocol (together with other validator nodes), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validator nodes decide which transactions will be added to the blockchain, and in which order.
+Clients of the Libra Blockchain create transactions and submit them to a validator node. A validator node runs a consensus protocol (together with other validator nodes), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validator nodes decide which transactions will be added to the blockchain and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
 <small>Figure 1.2 Logical components of a validator.</small>
 
@@ -99,7 +99,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Mempool**
 
-* Mempool is a buffer that holds the transactions that are ‘waiting’ to be executed. 
+* Mempool is a buffer that holds the transactions that are "waiting" to be executed. 
 * When a new transaction is added to a validator node's mempool, this validator node's mempool shares this transaction with the mempools of other validators in the system. 
 
 **Consensus**
@@ -121,14 +121,14 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 The storage is used to persist agreed upon blocks of transactions and their execution results.
 
-For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction.md).
+For information on interactions of each validator component with other components, refer to [Life of a Transaction](life-of-a-transaction.md).
 
 ## Reference
 
 * [Welcome Page](welcome.md).
 * [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
 * [Getting Started with Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
-* [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens "under the hood" when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
