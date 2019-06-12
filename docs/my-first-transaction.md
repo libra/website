@@ -29,8 +29,8 @@ Perform the following steps to submit a transaction to a validator node on the L
 
 1. [Clone and build Libra Core](#clone-and-build-libra-core).
 2. [Build the Libra CLI client and connect to testnet](#build-libra-cli-client-and-connect-to-testnet).
-3. [Create Alice's and Bob's account](#create-alices-and-bobs-account).
-4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alices-and-bobs-accounts).
+3. [Create Alice's and Bob's account](#create-alice-s-and-bob-s-account).
+4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
 5. [Submit a transaction](#submit-a-transaction).
 
 ## Clone and Build Libra Core
@@ -313,7 +313,7 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 ### Check The Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3---check-the-balance). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
 ```bash
 libra% query balance 0
