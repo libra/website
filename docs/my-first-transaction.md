@@ -325,7 +325,7 @@ You have successfully executed your transaction on the Libra testnet and transfe
 
 ## Troubleshooting
 
-###Setup
+### Setup
 
 * Update Rust:
     * run `rustup update` from your libra directory
@@ -340,31 +340,25 @@ If you are experiencing build failures, try to remove the cargo lock file from t
 
 If your client did not connect to the testnet:
 
-* Check your internet connection.
+* Check your Internet connection.
 * Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again: 
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
         
 
 ### Minting and Adding Money to Account
 
-If the validator node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:
+* If the validator node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:
 
-```bash
-libra% account mint 0 110
->> Minting coins
-[ERROR] Error minting coins: Server unavailable, please retry and/or check if host passed to client is running
-```
+  ```bash
+  libra% account mint 0 110
+  >> Minting coins
+ [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to  client is running
+  ```
+* If your balance was not updated after submitting a transaction, wait a moment and query the balance again.  It may take a moment if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
 
-If your connection times-out you will see the following error:
-```bash
-libra% account mint 0 110
->> Minting coins
-[ERROR] Error minting coins: RpcFailure(RpcStatus { status: DeadlineExceeded, details: Some("Deadline Exceeded") })
-```
+* To check if an account exists, query the account state. For an account with index 0 enter this:
 
-To check if an account exists, query the account state. For an account with index 0 enter this:
-
-`libra% query account_state 0`
+  `libra% query account_state 0`
 
 ### The Transfer Command
 
