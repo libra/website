@@ -49,7 +49,7 @@ The Libra ecosystem consists of different types of entities:
 A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
-* Can be run by the end-user, or on behalf of the end user (for example, for a custodial client). 
+* Can be run by the end-user or on behalf of the end user (for example, for a custodial client). 
 * Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary.md#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator node), request the status of a transaction or account, and verify the response. 
 
