@@ -49,11 +49,11 @@ The transaction script is an arbitrary program that encodes the logic of a trans
 
 ### Ledger State
 
-The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. As mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
+The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
 
 ## Versioned Database
 
-All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer, which corresponds to the number of transactions the system has executed.
+All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer which corresponds to the number of transactions the system has executed.
 
 The versioned database allows validators to:
 
@@ -62,7 +62,7 @@ The versioned database allows validators to:
 
 ## Account
 
-A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary.md#account-address).  This essentially means that the state of each account is comprised of both code and data: 
+A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary.md#account-address). This essentially means that the state of each account is comprised of both code and data: 
 
 * **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary.md#move-module).
 * **Move resources** contain data, but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resource).
