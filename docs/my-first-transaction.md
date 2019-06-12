@@ -369,16 +369,7 @@ libra% transfer 0 1 10
 >> Transferring
 [ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to client is running
 ```
-
-If there is a problem with executing the transaction you will see the following error:
-
-```bash
-libra% transfer 0 1 10 
->> Transferring 
-[ERROR] Failed to perform transaction: Transaction failed with vm status: ExecutionStatus(MissingData)
-```
-
-To troubleshoot:
+To troubleshoot transfer errors:
 
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
