@@ -57,7 +57,7 @@ The setup script performs these actions:
 * Installs protoc - a compiler for protocol buffers.
 * Installs Go (for building protocol buffers).
 
-If your setup fails, see [Troubleshooting - setup](my-first-transaction.md#setup)
+If your setup fails, see [Troubleshooting - setup](#setup)
 
 ## Build Libra CLI Client and Connect To Testnet
 
@@ -97,7 +97,7 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to the [troubleshoot building and running](#troubleshooting).
+If you have problems building the client and connecting to the testnet, refer to the [troubleshooting -  client build and run](##client-build-and-run).
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
