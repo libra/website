@@ -30,7 +30,7 @@ Refer to [Getting Started With Move](move-getting-started.md) for further inform
 
 ## The Testnet
 
-The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running the [Libra Core](reference/glossary.md#libra-core) software. A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running the [Libra Core](reference/glossary.md#libra-core) software. A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction](life-of-a-transaction).
 
 The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary.md#mainnet), testnet has a digital currency _with no real world value_.
 
@@ -41,7 +41,7 @@ This project is at an early prototype stage. The Libra protocol and Libra Core A
 The Libra ecosystem consists of different types of entities:
 
 * [Clients](#clients)
-* [Validator Nodes](#validators)
+* [Validator Nodes](#validator-nodes)
 * [Developers](#developers)
 
 ### Clients
