@@ -205,7 +205,7 @@ Mint request submitted
 
 Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully completed. Later, we will query the account balance to confirm if minting was successful.
 If your account mint command did not submit your request successfully, refer to
-[Troubleshooting - minting and adding coins.](##minting-and-adding-money-to-account)
+[Troubleshooting - minting and adding coins.](#minting-and-adding-money-to-account)
 
 ### Step 2 - Add 52 Libra to BOB's account
 
@@ -226,16 +226,18 @@ Sample output on success:
 Mint request submitted
 ```
 If your account mint command did not submit your request successfully, refer to
-[troubleshoot minting.](#troubleshooting)
+[Troubleshoot - minting and adding coins.](#minting-and-adding-money-to-account)
 
 ### Step 3 - Check the balance
 
 To check the balance in Alice's account:
 
 Enter this command:
+
 `libra% query balance 0`
 
 Sample output on success:
+
 `Balance is: 110`
 
 To check the balance in Bob's account:
@@ -312,7 +314,7 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 ### Check The Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3---check-the-balance). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
 ```bash
 libra% query balance 0
