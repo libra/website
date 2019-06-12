@@ -97,7 +97,7 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to the [Troubleshooting -  client build and run](#client-build-and-run).
+If you have problems building the client and connecting to the testnet, refer to [Troubleshooting -  client build and run](#client-build-and-run).
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
@@ -205,7 +205,7 @@ Mint request submitted
 
 Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully completed. Later, we will query the account balance to confirm if minting was successful.
 If your account mint command did not submit your request successfully, refer to
-[troubleshoot minting.](#troubleshooting)
+[Troubleshooting - minting and adding coins.](##minting-and-adding-money-to-account)
 
 ### Step 2 - Add 52 Libra to BOB's account
 
