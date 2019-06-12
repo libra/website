@@ -84,18 +84,18 @@ All of the data in the Libra Blockchain is stored in a single versioned database
 
 In a blockchain, the client does not need to trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n) sized proof of a specific transaction object, where n is the total number of transactions processed.
 
-## Validator
+## Validator Node (Validator)
 
-Clients of the Libra Blockchain create transactions and submit them to a validator. A validator runs a consensus protocol (together with other validators), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validators decide which transactions will be added to the blockchain, and in which order.
+Clients of the Libra Blockchain create transactions and submit them to a validator node. A validator node runs a consensus protocol (together with other validator nodes), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validator nodes decide which transactions will be added to the blockchain, and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
 <small>Figure 1.2 Logical components of a validator.</small>
 
- A validator contains the following logical components:
+ A validator node contains the following logical components:
 
 **Admission Control (AC)**
 
-* Admission Control is the sole external interface of the validator. Any request made by a client to the validator goes to AC first. 
-* AC performs initial checks on the requests to protect the other parts of the validator from corrupt or high volume input.
+* Admission Control is the sole external interface of the validator node. Any request made by a client to the validator node goes to AC first. 
+* AC performs initial checks on the requests to protect the other parts of the validator node from corrupt or high volume input.
 
 **Mempool**
 
