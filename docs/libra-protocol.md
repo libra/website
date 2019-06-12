@@ -7,7 +7,7 @@ title: Libra Protocol - Key Concepts
 
 The Libra Blockchain is a cryptographically authenticated distributed database, and it is based on the Libra protocol. This document briefly describes the key concepts of the Libra protocol. For detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper]().
 
-The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary/#validators), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary/#consensus-protocol) to agree on a total ordering of transactions in the blockchain. 
+The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary.md#validators), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary.md#consensus-protocol) to agree on a total ordering of transactions in the blockchain. 
 
 The Libra testnet is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
 
@@ -27,7 +27,7 @@ Figure 1.1 represents change of state of the Libra Blockchain, when a transactio
 * **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
-The Libra protocol uses the [Move language](move-getting-started) to implement the deterministic execution function F.
+The Libra protocol uses the [Move language](move-getting-started.md) to implement the deterministic execution function F.
 
 ### Transactions
 
@@ -36,10 +36,10 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Sender address** - Account address of the sender of the transaction.
 * **Sender public key** - The public key that corresponds to the private key used to sign the transaction.
 * **Program**  - The program is comprised of:
-    * A Move bytecode transaction script. (Here is an example of a [peer to peer transaction script](life-of-a-transaction/#peer-to-peer-transaction-script-and-inputs)).
+    * A Move bytecode transaction script. (Here is an example of a [peer to peer transaction script](life-of-a-transaction.md#peer-to-peer-transaction-script-and-inputs)).
     * An optional list of inputs to the script. For a peer to peer transaction, it will contain the information about the recipient and the amount transferred to the recipient.
     * An optional list of Move bytecode modules to publish. 
-* **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary#gas), to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+* **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas), to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume.
 * **Sequence number** - An unsigned integer that must be equal to the sequence number stored under the sender's account.
 * **Expiration time** - The time after which the transaction ceases to be valid.
@@ -62,10 +62,10 @@ The versioned database allows validators to:
 
 ## Account
 
-A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary#account-address).  This essentially means that the state of each account is comprised of both code and data: 
+A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary.md#account-address).  This essentially means that the state of each account is comprised of both code and data: 
 
-* **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary#move-module).
-* **Move resources** contain data, but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary#move-resource).
+* **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary.md#move-module).
+* **Move resources** contain data, but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resource).
 
 An account may contain an arbitrary number of Move resources and Move modules.
 
@@ -77,7 +77,7 @@ There is no limit on the number of addresses a Libra user can claim. To claim an
 
 ## Proof
 
-All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary#merkle-tree). A “leaf” is appended to the tree for each transaction executed on the blockchain.
+All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary.md#merkle-trees). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
 * Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest n transactions from an account, the proof will verify that no transactions are omitted from the query response.
@@ -104,7 +104,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Consensus**
 
-* The consensus component is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](reference/glossary#consensu) with other validators in the network.
+* The consensus component is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](reference/glossary.md#consensu) with other validators in the network.
 
 **Execution**
 
@@ -121,17 +121,17 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 * The storage is used to persist agreed upon blocks of transactions and their execution results.
 
-For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction).
+For information on interactions of each validator component with other components refer to [Life of a Transaction](life-of-a-transaction.md).
 
 ## Reference
 
-* [Welcome page](welcome).
-* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
-* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
-* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
-* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
+* [Welcome Page](welcome.md).
+* [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started with Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
 
 > **Note**: In this document the term "state" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
 

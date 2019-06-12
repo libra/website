@@ -26,13 +26,13 @@ Move takes insights from past security incidents with smart contracts and create
 
 Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
 
-Refer to [Getting Started With Move](move-getting-started) for further information.
+Refer to [Getting Started With Move](move-getting-started.md) for further information.
 
 ## The Testnet
 
-The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary/#validator-node) running [Libra Core](reference/glossary/#libra-core). A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
+The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running [Libra Core](reference/glossary.md#libra-core). A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life Of A Transaction]().
 
-The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary/#mainnet), testnet has a digital currency _with no real world value_.
+The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary.md#mainnet), testnet has a digital currency _with no real world value_.
 
 This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
 
@@ -50,7 +50,7 @@ A Libra client:
 
 * Is a piece of software which has the capability to interact with the Libra Blockchain. 
 * Can be run by the end-user, or on behalf of the end user (for example, for a Custodial client). 
-* Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary/#validator-node).
+* Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary.md#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator node), request the status of a transaction or account, and verify the response. 
 
 ### Validator Nodes  
@@ -70,10 +70,10 @@ This site is intended for developers.
 
 ## Reference
 
-* [Libra Protocol - Key Concepts](libra-protocol) - Introduces you to the fundamental concepts of the Libra protocol.
-* [My First Transaction](my-first-transaction) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started) - Introduces you to a new blockchain programming language called Move.
-* [Life Of A Transaction](life-of-a-transaction) - Provides a look at what happens under the hood when a transaction is submitted and executed.
-* [Libra Core Overview](libra-core-overview) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli) - Lists the commands (and their usage) of the Libra CLI client.
-* [Libra Glossary](reference/glossary) - Provides a quick reference to Libra terminology.
+* [Libra Protocol - Key Concepts](libra-protocol.md) - Introduces you to the fundamental concepts of the Libra protocol.
+* [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Life Of A Transaction](life-of-a-transaction.md) - Provides a look at what happens under the hood when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.

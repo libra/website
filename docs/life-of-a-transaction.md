@@ -9,22 +9,23 @@ To get a deeper understanding of the lifecycle of a Libra transaction, we will f
 
 ## Client Submits a Transaction
 
-A Libra **client** **constructs a raw transaction** (let us call it T~5~raw) to transfer 10 Libra from Alice's account to Bob's account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
+A Libra **client constructs a raw transaction** (let us call it T~5~raw) to transfer 10 Libra from Alice's account to Bob's account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
 * Alice's [account address](reference/glossary.md#account-address).
 * A program that indicates the actions to be performed on Alice's behalf. It contains:
     * A Move bytecode [peer-to-peer transaction script](reference/glossary.md#transaction-script).
     * A list of inputs to the script (for example, Bob's account address and the amount of payment).
-* [Gas price](reference/glossary.md#gas-price) is the Libra amount Alice is willing to pay per unit of gas, to execute this transaction.
-* [Maximum gas amount](reference/glossary.md#maximum-gas-amount) Alice is willing to pay for this transaction.
-* [Expiration time](reference/glossary.md#expiration-time) of the transaction.
-* [Sequence number](reference/glossary.md#sequence-numnber) - 5
+	* [Gas price](reference/glossary.md#gas-price) (in microlibra/gas units) - The amount Alice is willing to pay per unit of gas, to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+	* [Maximum gas amount](reference/glossary.md#maximum-gas-amount) Alice is willing to pay for this transaction.
+	* [Expiration time](reference/glossary.md#expiration-time) of the transaction.
+	* [Sequence number](reference/glossary.md#sequence-numnber) - 5
     * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
-The **client signs transaction** T~5~raw with her private key. The signed transaction T~5~ includes the following additional fields.
+The **client signs transaction** T~5~raw with her private key. The signed transaction T~5~ includes the following:
 
-* Alice's public key
-* Alice's signature
+* The raw transaction.
+* Alice's public key.
+* Alice's signature.
 
 ### Assumptions
 

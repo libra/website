@@ -11,6 +11,13 @@
 Libra is a simple, borderless global currency and financial ecosystem designed to empower billions of people.
 
 *Libra is currently under heavy development!*
+### Building and Running this Site Locally
+
+```
+git clone git@github.com:libra/website.git
+cd website 
+sh scripts/build_docs.sh
+```
 
 #### Why Libra
 
