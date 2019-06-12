@@ -75,5 +75,5 @@ This site is intended for developers.
 * [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
 * [Life Of A Transaction](life-of-a-transaction.md) - Provides a look at what happens under the hood when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli.md) - Lists the commands of the Libra CLI client and their usage.
+* [CLI Guide](reference/libra-cli.md) - Lists the commands of the Libra CLI client and their usage.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.

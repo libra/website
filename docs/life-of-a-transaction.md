@@ -150,7 +150,7 @@ For implementation details, repository structure, and API of the admission contr
 ![Figure 1.3 Virtual Machine](assets/illustrations/virtual-machine.svg)
 <small>Figure 1.3 Virtual Machine</small>
 
-AC and mempool use VM to perform validation checks on transactions. VM (also called [Move VM](move-overview)) is used to run the program included in a transaction and determine the results. 
+AC and mempool use VM to perform validation checks on transactions. VM (also called [Move VM](move-getting-started.md)) is used to run the program included in a transaction and determine the results. 
 
 ### Action A
 
@@ -180,7 +180,7 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### VM README
 
-For implementation details, repository structure, and external API for the virtual machine module refet to the [Virtual Machine README](crates/virtual-machine.md).
+For implementation details, repository structure, and external API for the virtual machine module refet to the [Virtual Machine README](crates/vm.md).
 
 ## Mempool
 
@@ -333,7 +333,7 @@ main(payee: address, amount: uint) {
 
 A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
 
-For further information refer to [Getting Started with Move](move-overview.md)
+For further information refer to [Getting Started with Move](move-getting-started.md)
 
 ### `Currency` module
 
@@ -361,7 +361,7 @@ In the sample transaction script provided above:
 * The Libra blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
 * Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
 
-For further information refer to the [Consensus technical paper](papers/consensus.md)
+For further information refer to the [Consensus technical paper](papers/state-machine-replication.md)
 
 ### Merkle Accumulators
 
@@ -392,5 +392,5 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 * [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
 * [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
