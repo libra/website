@@ -85,19 +85,14 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ## Validator Component Interactions
 
-In the [Libra Protocol - Key Concepts](libra-protocol#transactions) document we looked at the structure of a transaction, and mentioned that:
-
-* Clients of the Libra Blockchain submit transactions to request updates to the ledger state.
-* These transactions are submitted to a Libra validator node.
-
-In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look at the inter-component interactions of a validator as the validator processes transactions and reads queries.  This information is useful to you if:
+In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries.  This information is useful to you if:
 
 * You would like to get an overall idea of how the system works under the covers.
 * You are interested in eventually contributing to the Libra Core software.
 
-For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component we will describe each of its inter-component interaction in “ACTION” subsections. Note that the “ACTIONS” are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (for existing information on the blockchain).
+For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (to query for existing information on the blockchain).
 
- Let us look at each logical component of a validator node:
+ Let us look at the core logical components of a validator node:
 
 * [Admission Control](#admission-control-ac)
 * [Mempool](#mempool)
@@ -110,7 +105,7 @@ A link to the “README” of the [Libra Core](reference/glossary.md#libra-core)
 
 ### Use of arrows in the diagrams
 
-The arrows in the following graphics start on the component initiating an interaction/action and end on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned).
+The arrows in the following graphics originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned).
 
 ## Admission Control (AC)
 
@@ -122,26 +117,24 @@ Admission Control is the _sole external interface_ of the validator. Any request
 ### Client → AC (AC.1)
 
 A client submits a  transaction to the admission control of a validator V~X~. This is done via:
-`AC::SubmitTransaction()`
+`AC::SubmitTransaction()`.
 
 ### AC → VM (AC.2)
 
-The admission control accesses the virtual machine (VM) of the validator to perform preliminary checks on the transaction, to reject malformed transactions early. This is done via:
+Admission control accesses the virtual machine (VM) of the validator to perform preliminary checks on the transaction in order to reject malformed transactions early. This is done via:
  [`VM::ValidateTransaction()`](#virtual-machine-b).
 
 ### AC → Mempool (AC.3)
 
-Once `VM::ValidateTransaction()` returns without errors AC forwards the transaction to validator V~X~ 's mempool via:
-
-`Mempool::AddTransactionWithValidation().` The mempool for validator V~X~ will accept the transaction T~N~ from the AC only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account.
+Once `VM::ValidateTransaction()` returns without errors, AC forwards the transaction to validator V~X~'s mempool via `Mempool::AddTransactionWithValidation().` The mempool for validator V~X~ will accept the transaction T~N~ from the AC only if the sequence number of T~N~ is greater than or equal to the current sequence number of the sender's account (note that the transaction will not be passed to consensus until it is the next sequence number).
 
 ### AC → Storage (AC.4)
 
-When the client performs a read query on the Libra Blockchain, (for example, get the balance of Alice's account) AC interacts with the storage component directly to obtain the information.
+When the client performs a read query on the Libra Blockchain, (for example, to get the balance of Alice's account) AC interacts with the storage component directly to obtain the requested information.
 
 ### Admission Control README
 
-For implementation details, repository structure, and API of the admission control crate of Libra Core software refer to the [Admission Control README](crates/admission-control.md).
+For implementation details, repository structure, and APIs of the admission control crate, refer to the [Admission Control README](crates/admission-control.md).
 
 ## Virtual Machine (VM)
 
