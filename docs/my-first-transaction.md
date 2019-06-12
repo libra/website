@@ -133,11 +133,11 @@ libra%
 
 Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair. 
 
-**To create Alice's account enter this command:**
+To create Alice's account enter this command:
 
 `libra% account create`
 
-**Sample output on success:**
+Sample output on success:
 
 ```bash
 >> Creating/retrieveing next account from wallet
@@ -177,33 +177,35 @@ User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3
 Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5
 ```
 
-Faucet account address** is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary#sequence-number).
+Faucet account address is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary#sequence-number).
 
 ## Add Libra Coins to Alice's and Bob's Accounts
 
-Minting and adding coins to accounts on testnet is done via **Faucet**. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet. It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
+Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](). It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
 ### Step 1 - Add 110 Libra to Alice's account
 
 To mint Libra and add to Alice's account
 
-**Enter this command:**
+Enter this command:
 
 `libra% account mint 0 110`
 
-* **0** is the index of Alice's account.
-* **110**  is the amount of Libra to be added to Alice's account.
+* 0 is the index of Alice's account.
+* 110  is the amount of Libra to be added to Alice's account.
 
 A successful account mint command will also create Alice's account on the blockchain.
 
-**Sample output on success:**
+Sample output on success:
 
 ```bash
 >> Minting coins
-Finished minting!
+Mint request submitted
 ```
 
-If your `account mint` command did not succeed refer to the [troubleshooting section.](#troubleshooting)
+Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully completed. Later, we will query the account balance to confirm if minting was successful.
+If your account mint command did not submit your request successfully, refer to
+[troubleshoot minting.](#troubleshooting)
 
 ### Step 2 - Add 52 Libra to BOB's account
 
