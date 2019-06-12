@@ -44,7 +44,7 @@ $ git clone https://github.com/libra/libra.git
 
 ### Setup Libra Core
 
-Change to the `libra` directory and run the setup script to install the dependencies, as shown below:
+To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies, as shown below:
 
 ```
 scripts/dev-setup.sh
@@ -53,23 +53,26 @@ The setup script performs these actions:
 
 * Installs rustup - rustup is an installer for the systems programming language Rust.
 * Installs the required versions of the rust-toolchain.
-* Installs CMake, protoc, and Go to build protocol buffers.
-* Provides instructions to build the Libra server.
+* Installs CMake - to manage the build process.
+* Installs protoc - a compiler for protocol buffers.
+* Installs Go (for building protocol buffers).
+
+If your setup fails, see [Troubleshooting setup]((#troubleshooting))
 
 ## Build Libra CLI Client and Connect To Testnet
 
-To connect to a validator node running on the Libra testnet, change to your `client` directory and run the client as shown below. 
+To connect to a validator node running on the Libra testnet, change to the `client` directory and run the client as shown below. 
 
 ```bash
 $ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80
 ```
 
-This command **builds and runs** the client and connects to a validator node on testnet:
+This command builds and runs the client, utilizing cargo (Rust’s package manager), and connects the client to a validator node on testnet:
 
 * [ac.stable.aws.hlw3truzy4ls.com](http://ac.stable.aws.hlw3truzy4ls.com/) - is the hostname for the node running on testnet.
 * 80 - is the port on which the client will communicate with the testnet.
 
-Once the client connects to a node on testnet you will see the following output.  To quit the client at any time, use the `quit` command.
+Once the client connects to a node on testnet, you will see the following output.  To quit the client at any time, use the `quit` command.
 
 ```bash
 usage: <command> <args>
@@ -94,7 +97,7 @@ Please, input commands:
 libra%
 ```
 
-If you have problems building the client and connecting to the testnet, refer to the [troubleshooting section](#troubleshooting).
+If you have problems building the client and connecting to the testnet, refer to the [troubleshoot building and running](#troubleshooting).
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run A Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
