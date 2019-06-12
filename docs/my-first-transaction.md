@@ -211,22 +211,22 @@ If your account mint command did not submit your request successfully, refer to
 
 To mint Libra and add to Bob's account
 
-**Enter this command:**
+Enter this command:
 
 `libra% account mint 1 52`
 
-* **1** is the index of Bob's account
-* **52** is the amount of Libra to be added to Bob's account.
-* A successful account mint command will also create Bob's account on the blockchain. Another way to create Bob's account on the blockchain is to just transfer money from Alice's account to Bob's account.
+* 1 is the index of Bob's account
+* 52 is the amount of Libra to be added to Bob's account.
+* A successful account mint command will also create Bob's account on the blockchain. Another way to create Bob's account on the blockchain is to simply transfer money from Alice's account to Bob's account.
 
-**Sample output on success:**
+Sample output on success:
 
 ```bash
 >> Minting coins
-Finished minting!
+Mint request submitted
 ```
-
-If your `account mint` command did not succeed refer to the [troubleshooting section.](#troubleshooting)
+If your account mint command did not submit your request successfully, refer to
+[troubleshoot minting.](#troubleshooting)
 
 ### Step 3 - Check the balance
 
