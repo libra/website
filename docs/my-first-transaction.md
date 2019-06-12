@@ -262,15 +262,15 @@ In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0
 
 To submit a transaction to transfer 10 Libra from Alice's account to Bob's account 
 
-**Enter this command:**
+Enter this command:
 
 `libra% transfer 0 1 10`
 
-* **0** is the index of Alice's account.
-* **1** is the index of Bob's account.
-* **10** is the number of Libra to transfer from Alice's account to Bob's account.
+* 0 is the index of Alice's account.
+* 1 is the index of Bob's account.
+* 10 is the number of Libra to transfer from Alice's account to Bob's account.
 
-**Sample output on success:**
+Sample output on success:
 
 ```bash
 >> Transferring
@@ -281,13 +281,11 @@ To query for transaction status, run:
 
 `query txn_acc_seq 0 0`
 
-You can use the command `query txn_acc_seq 0 0` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq) section.
+You can use the command `query txn_acc_seq 0 0` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq).
 
-You just submitted your transaction to a validator node and it was included in the [mempool](reference/glossary#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
+You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
 
-**The Blocking Transfer Command**
-
-You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
+The Blocking Transfer Command: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
 `libra% transferb 0 1 10`
 
