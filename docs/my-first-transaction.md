@@ -231,11 +231,15 @@ If your account mint command did not submit your request successfully, refer to
 ### Step 3 - Check the balance
 
 To check the balance in Alice's account:
+
 Enter this command:
 `libra% query balance 0`
+
 Sample output on success:
 `Balance is: 110`
+
 To check the balance in Bob's account:
+
 Enter this command:
 `libra% query balance 1`
 Sample output on success:
