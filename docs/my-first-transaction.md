@@ -287,13 +287,13 @@ You just submitted your transaction to a validator node and it was included in t
 
 **The Blocking Transfer Command**
 
-You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt **only after** the transaction has been committed to the blockchain. An example is shown below:
+You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
 `libra% transferb 0 1 10`
 
 Refer to [Life of a Transaction](life-of-a-transaction) for an understanding of the lifecycle of a transaction from submission to execution and storage.
 
-### Query Sequence number After TRansfer
+### Query Sequence number After Transfer
 
 ```bash
 libra% query sequence 0
@@ -308,7 +308,7 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 ### Check The Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts query the balance again for each account as you did in [this step](https://fb.quip.com/sIrOAbc770Kq#cXKACAHw03h). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
 ```bash
 libra% query balance 0
