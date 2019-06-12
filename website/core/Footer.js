@@ -1,10 +1,6 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @format
+ * Copyright (c) The Libra Core Contributors
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 const PropTypes = require('prop-types');
@@ -68,13 +64,16 @@ class Footer extends React.Component {
             </a>
           )}
           <div className="footerSection">
-            <h5>Docs</h5>
+            <h5>Learn</h5>
             <a href={this.docUrl('introduction')}>Welcome to Libra</a>
             <a href={this.docUrl('getting-started')}>Getting Started</a>
             <a href={this.docUrl('life-of-a-transaction')}>Life of a Transaction</a>
-            <a href={this.docUrl('move/overview')}>Overview of Move</a>
+            <a href={this.docUrl('move-overview')}>Getting Started with Move</a>
             <a href={this.docUrl('libra-spec')}>Libra Specification</a>
-            <a href={`${this.props.config.baseUrl}rustdoc`}>Rustdoc</a>
+          </div>
+          <div className="footerSection">
+            <h5></h5>
+            <a href="">Privacy Policy</a>
           </div>
           <SocialFooter config={this.props.config} />
         </section>
@@ -82,7 +81,7 @@ class Footer extends React.Component {
           {this.props.config.copyright && (
             <span>{this.props.config.copyright}</span>
           )}{' '}
-          Copyright &copy; {currentYear} Libra Association.
+          Copyright Libra Association.
         </section>
       </footer>
     );
