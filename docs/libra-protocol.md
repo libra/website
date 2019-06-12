@@ -45,11 +45,11 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Expiration time** - The time after which the transaction ceases to be valid.
 * **Signature** - The digital signature of the sender.
 
-The *transaction script* is an arbitrary program that encodes the logic of a transaction, and interacts with resources published in the distributed database of the Libra blockchain. 
+The transaction script is an arbitrary program that encodes the logic of a transaction, and interacts with resources published in the distributed database of the Libra blockchain. 
 
 ### Ledger State
 
-The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. We mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
+The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. As mentioned earlier in this document that "state" represents the current snapshot of data on the chain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
 
 ## Versioned Database
 
