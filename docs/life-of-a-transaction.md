@@ -141,7 +141,7 @@ For implementation details, repository structure, and APIs of the admission cont
 ![Figure 1.3 Virtual Machine](assets/illustrations/virtual-machine.svg)
 <small>Figure 1.3 Virtual Machine</small>
 
-AC and mempool use VM to perform validation checks on transactions. VM (also called [Move VM](move-getting-started.md)) is used to run the program included in a transaction and determine the results.
+The [Move virtual machine](move-getting-started.md) (VM) verifies and executes transaction scripts written in Move bytecode.
 
 ### AC → VM (VM.1)
 
@@ -149,8 +149,7 @@ When admission control of validator V~X~ receives a transaction from a client, i
 
 ### VM → Storage (VM.2)
 
-When AC or mempool request VM to validate a transaction via
-`VM::ValidateTransaction(),` VM loads the transaction sender's account from storage and performs the following verifications:
+When AC or mempool request VM to validate a transaction via `VM::ValidateTransaction()`, VM loads the transaction sender's account from storage and performs the following verifications:
 
 * Checks that the input signature(s) on the signed transaction are correct (to reject incorrectly signed transactions).
 * Checks that the sender's account authentication key is same as the hash of the public key (corresponding to the private key used to sign the transaction).
@@ -160,14 +159,13 @@ When AC or mempool request VM to validate a transaction via
 
 ### Execution → VM (VM.3)
 
-The execution component invokes VM to execute a transaction via:
-`VM::ExecuteTransaction()`
+The execution component utilizes the VM to execute a transaction via `VM::ExecuteTransaction()`.
 
-It is important to understand that executing a transaction is different from updating the state of the ledger (persisting the results in storage). A transaction T~N~ is first executed as part of an attempt to reach agreement on its sequencing within the blockchain. If agreement is reached with the other validators, on the ordering of transactions and the execution results, the results/output is written to the ledger.
+It is important to understand that executing a transaction is different from updating the state of the ledger (persisting the results in storage). A transaction T~N~ is first executed as part of an attempt to reach agreement on blocks during consensus. If agreement is reached with the other validators on the ordering of transactions and their execution results, the results are persisted to the ledger.
 
 ### Mempool → VM (VM.4)
 
-When mempool receives a transaction from other validators, mempool invokes [`VM::ValidateTransaction()`](#action-b-1) on the VM to validate the transaction.
+When mempool receives a transaction from other validators via shared mempool, mempool invokes [`VM::ValidateTransaction()`](#action-b-1) on the VM to validate the transaction.
 
 ### VM README
 
