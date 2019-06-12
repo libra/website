@@ -20,10 +20,10 @@ At the heart of the Libra protocol are two fundamental concepts - transactions a
 
 Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 Libra and Bob has a balance of 52 Libra. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 Libra and Bob's balance to be increased by 10 Libra. The new state S~N~ now shows these updated balances. In figure 1.1:
 
-* **A** and **B** represent Alice and Bob's account in the blockchain.
+* **A** and **B** represent Alice's and Bob's account in the blockchain.
 * **S~N-1~** represents the (n-1)-th state of the blockchain.
 * **T~N~** is the n-th transaction executed on the blockchain.  
-    * In this example it is - “send 10 Libra from person A's account to person B's account”
+    * In this example T~N~ is - “send 10 Libra from person A's account to person B's account.”
 * **F** is a deterministic function. F always returns the same final state, for a specific initial state, and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
