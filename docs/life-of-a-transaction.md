@@ -65,7 +65,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **6** - As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
 
-**7** - The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2))
+**7** - The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2)). Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
 
 ### Executing Block and Reaching Consensus
 
@@ -295,78 +295,6 @@ For any read queries by a client (to read information from the blockchain), AC d
 
 For implementation details, repository structure, and APIs of the storage crate refer to the [Storage README](crates/storage.md).
 
-## Appendix
-
-### Peer-to-peer Transaction Script And Inputs
-
-The following example of a Move transaction script is a pseudocode representation of a peer-to-peer transaction script for T~5~. This pseudocode is similar to the Move Intermediate Representation (IR).
-
-```rust
-main(payee: address, amount: uint) {
-  let coin = 0x0.Currency.withdraw_from_sender(copy(amount));
-  0x0.Currency.deposit(copy(payee), move(coin));
-}
-```
-
-* `payee`, is an input to the script and represents the recipient Bob's account address.
-* `amount`, is an input to the script and represents the number of microlibra to be transferred to Bob's account (10 * 10^6 for our example).
-* `withdraw_from_sender` and `deposit`are procedures of the Move module `0x0.Currency`, where `0x0` is the address of the `Currency` module.
-* `coin` is a value returned by the procedure `withdraw_from_sender`. It is a linear Move resource of type `0x0.Currency.Coin`.
-
-A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
-
-For further information refer to [Getting Started with Move](move-getting-started.md)
-
-### `Currency` module
-
-In the sample transaction script provided above: `0X0.Currency` identifies the Currency module.
-
-* `0X0` is the address where the module is stored
-* `Currency` is the name of the module.
-
-### `Coin` Resource
-
-In the sample transaction script provided above:
-
-* `coin` is a linear **resource** **value** of type `0X0.Currency.Coin.`
-    * The statement - `0X0.Currency.deposit(copy(payee), move(coin));`  moves the `coin` resource value into the `0X0.Currency `module's deposit procedure.
-    * The variable `coin` becomes unavailable after this  move.
-* Move language implements linear resources that must be moved _exactly_ once. Failing to move a resource (deleting the the line `0X0.Currency.deposit(copy(payee), move(coin));)` will trigger a bytecode verification error.
-
-### Consensus Protocol
-
-* Our proposed consensus protocol, **LibraBFT**, is based on HotStuff, a Byzantine fault-tolerant (BFT) protocol.
-* LibraBFT guarantees agreement on the final order of transactions (the **safety** property), provided the set of nodes deviating from the protocol (malicious nodes) is comprised of no more than a third of the total voting rights.
-* LibraBFT also guarantees that blocks of transactions never stop being finalized, (the **liveness** property), as long as the network delivers consensus messages in a timely manner (in addition to satisfying the voting rights necessary for safety).
-* The design of our consensus protocol is independent of how clients interact with the Libra Blockchain.
-* LibraBFT works by electing and rotating special nodes called leaders from the set of validators. When its round becomes active, a leader pulls transactions from its mempool to propose a block of transactions. The leader is then responsible for the coordination and agreement between all validators on the proposed block to be executed (and eventually finalized).
-* The Libra blockchain is formed with these agreed-upon transactions and their corresponding execution results.
-* Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
-
-For further information, refer to the [Consensus technical paper](papers/state-machine-replication.md)
-
-### Merkle Accumulators
-
-The storage component is used to persist **agreed upon** blocks of transaction and their execution results. All of the data in the Libra Blockchain is stored in a single versioned database. The blockchain is represented as an ever-growing Merkle tree of transactions. A “leaf” is appended to the tree for each transaction executed on the blockchain.
-
-![Figure 1.8 Merkle Accumulator](assets/illustrations/merkle-accumulators.svg)
-<small>Figure 1.8 Merkle Accumulator</small>
-
-* A Merkle accumulator is an append-only Merkle tree. Figure 1.2 shows how the Merkle accumulator grows as a new `TransactionInfo` object gets appended for each transaction executed.
-    * 0 - An empty accumulator contains just a **placeholder node**.
-    * 1 - Every time a transaction is executed, a new `TransactionInfo` **object** and the corresponding **leaf node** is appended to the Merkle accumulator.  Any empty subtree is replaced by a placeholder node.
-    * 2 - When a new `TransactionInfo` object and l**eaf node** are added, the placeholder node is replaced.
-    * 3,4 - The Merkle accumulator grows as new transactions are appended to the ledger, and empty subtrees are replaced by placeholder nodes.
-* **Object** is the The `TransactionInfo` object. **Internal node** is calculated based on the leaf nodes, it is the hash of its children. **Leaf** of the Merkle accumulator is the hash of:
-    * The `TransactionInfo` object.
-    * The root hash of the final state the accumulator (after the transaction is applied).
-    * Other metadata.
-* When validators reach **consensus** on a new [block](reference/glossary.md#block) of transactions and agree on their ordering and execution results:
-    * The validators append all the transactions in the block, one-by-one, to the previous accumulator and compute the new state.
-    * All validators sign and agree upon the resultant state.
-
-For further information refer to [Blockchain Technical Paper](papers/the-libra-blockchain.md)
-
 ## Reference
 
 * [Welcome page](welcome.md).
@@ -376,3 +304,4 @@ For further information refer to [Blockchain Technical Paper](papers/the-libra-b
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
+* [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) - Provides a detailed look into our consensus protocol **LibraBFT**.
