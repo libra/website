@@ -24,7 +24,7 @@
         "community/contributing",
         "community/coding-guidelines"
     ],
-    "Libra Code Base": [
+    "Libra Codebase": [
         "libra-core-overview",
     {
         "type": "subcategory",
