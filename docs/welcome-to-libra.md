@@ -7,11 +7,11 @@ title: Welcome
 
 Welcome to the Libra developer site! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
 
-_“The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of 'the internet of money.' Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ -- Libra White Paper
+_"The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of 'the internet of money.' Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn."_ &mdash; Libra White Paper
 
 Libra is built on a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value. Libra is governed by the independent Libra Association tasked with evolving the ecosystem.
 
-_"The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability."_-- Libra White Paper
+_"The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability."_&mdash; Libra White Paper
 
 The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core, an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
 * How to try the testnet, a demonstration of this new system. 
@@ -70,10 +70,10 @@ This site is intended for developers.
 
 ## Reference
 
-* [Libra Protocol - Key Concepts](libra-protocol.md) - Introduces you to the fundamental concepts of the Libra protocol.
-* [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-overview.md) - Introduces you to a new blockchain programming language called Move.
-* [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens "under the hood" when a transaction is submitted and executed.
-* [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](reference/libra-cli.md) - Lists the commands of the Libra CLI client and their usage.
-* [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
+* [Libra Protocol - Key Concepts](libra-protocol.md) &mdash; Introduces you to the fundamental concepts of the Libra protocol.
+* [My First Transaction](my-first-transaction.md) &mdash; Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started With Move](move-overview.md) &mdash; Introduces you to a new blockchain programming language called Move.
+* [Life of a Transaction](life-of-a-transaction.md) &mdash; Provides a look at what happens "under the hood" when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview.md) &mdash; Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](reference/libra-cli.md) &mdash; Lists the commands of the Libra CLI client and their usage.
+* [Libra Glossary](reference/glossary.md) &mdash; Provides a quick reference to Libra terminology.
