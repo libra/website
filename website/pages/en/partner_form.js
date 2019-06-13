@@ -5,15 +5,18 @@ const React = require('react');
 
 const FormContainer = require(`${process.cwd()}/core/ContactForm/form-container.js`);
 
-
+/**
+ * NOTE: These ids should map to the Segment Zendesk mapping.
+ * https://segment.com/docs/destinations/zendesk/
+ */
 const formFields = [{
   items: [{
-    id: 'first-name',
+    id: 'firstName',
     label: 'First name',
     type: 'text',
     required: true
   }, {
-    id: 'last-name',
+    id: 'lastName',
     label: 'Last name',
     type: 'text',
     required: true
@@ -35,17 +38,17 @@ const formFields = [{
   }]
 },{
   items: [{
-    id: 'org-name',
+    id: 'organizationId',
     label: 'Organization name',
     type: 'text',
     required: true
   }, {
-    id: 'org-website',
+    id: 'organizationWebsite',
     label: 'Organization website',
     type: 'url',
     required: true
   }, {
-    id: 'org-type',
+    id: 'organizationType',
     label: 'Organization type',
     type: 'select',
     required: true,
@@ -66,7 +69,7 @@ const formFields = [{
       text: 'University'
     }]
   }, {
-    id: 'org-revenue',
+    id: 'organizationRevenue',
     label: 'Organization revenue',
     type: 'select',
     required: true,
@@ -87,7 +90,7 @@ const formFields = [{
       text: '>100M USD'
     }]
   }, {
-    id: 'org-hq',
+    id: 'organizationHQ',
     label: 'Organization HQ',
     type: 'text',
     required: true

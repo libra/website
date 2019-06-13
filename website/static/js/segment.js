@@ -63,8 +63,53 @@ function getFormFields(form) {
       fields.push(el);
     }
   }
-
   return fields;
+}
+
+/**
+ * Filter an object by an array of fields passed in.
+ */
+function filterFields(data, fields) {
+  const filtered = Object.keys(data)
+    .filter(key => fields.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = data[key];
+      return obj;
+    }, {});
+
+  return filtered;
+}
+
+function addOrganization(data) {
+  const fields = [
+    'organizationId',
+    'organizationHQ',
+    'organizationRevenue',
+    'organizationType',
+    'organizationWebsite',
+  ];
+  const filteredData = filterFields(data, fields);  
+  const groupId = data.organizationId;
+  const groupData = {
+    ...filteredData,
+    name: filteredData.organizationId,
+  };
+ 
+  analytics.group(groupId, groupData);
+}
+
+function addUser(data) {
+  const fields = [
+    'email',
+    'firstName',
+    'lastName',
+    'phone',
+    'title',
+    'formId', 
+    'organizationId',
+  ];
+  const filteredData = filterFields(data, fields);
+  analytics.identify(filteredData.email, filteredData);
 }
 
 /**
@@ -80,6 +125,17 @@ function trackFormData(form) {
     fields.forEach(function(field) {
       data[field.id] = field.value;
     });
+
     analytics.track('Form Submitted', data)
+
+    if (form.id === 'newsletterForm') {
+      // A name is required for adding users
+      data.name = data.email;
+    }
+
+    if (data.organizationId) {
+      addOrganization(data);
+    }
+    addUser(data);
   })
 }
