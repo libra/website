@@ -1,5 +1,5 @@
 <a href="https://developers.libra.org">
-	<img width="350" src="./libra.png" alt="Libra Logo" />
+	<img width="200" src="./libra.png" alt="Libra Logo" />
 </a>
 
 <hr/>
@@ -8,8 +8,6 @@
 [![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE.md)
 
 Libra Core implements a decentralized, programmable database which provides a financial infrastructure that can empower billions of people
-
-[https://libra.org](https://libra.org)
 
 ## Network
 
@@ -21,9 +19,38 @@ Read our [Contrbuting guide](https://developers.libra.org/docs/community/contrib
 
 ## Getting Started
 
-Read [developer docs](https://developers.libr.org), learn about [how Libra Core works](https://developers.libra.org/docs/welcome-to-libra).
+### Learn About Libra
+* [Welcome](https://developers.libra.org/docs/welcome-to-libra)
+* [Libra Protocol - Key Concepts](https://developers.libra.org/docs/libra-protocol)
+* [Life of a Transaction](https://developers.libra.org/docs/life-of-a-transaction)
 
-[Try out the Libra testnet.](https://developers.libra.org/docs/my-first-transaction)
+### Try Libra Core
+* [My First Transaction](https://developers.libra.org/docs/my-first-transaction)
+* [Getting Started With Move](https://developers.libra.org/docs/move-overview)
+
+### Technical Papers
+* [The Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-paper)
+* [Move: a Language for Managing Access to Scarce Resources](https://developers.libra.org/docs/move-paper)
+* [State Machine Replication in the Libra Blockchain](https://developers.libra.org/docs/state-machine-replication-paper)
+
+### Blog
+* [Libra: The Path Forward](https://developers.libra.org/blog/2019/06/18/the-path-forward/)
+
+### Libra Codebase
+
+* [Libra Core Overview](https://developers.libra.org/docs/libra-core-overview)
+* [Admission Control](https://developers.libra.org/docs/crates/admission-control)
+* [Bytecode Verifier](https://developers.libra.org/docs/crates/bytecode-verifier)
+* [Consensus](https://developers.libra.org/docs/crates/consensus)
+* [Crypto](https://developers.libra.org/docs/crates/crypto)
+* [Execution](https://developers.libra.org/docs/crates/execution)
+* [Mempool](https://developers.libra.org/docs/crates/mempool)
+* [Move IR Compiler](https://developers.libra.org/docs/crates/ir-to-bytecode)
+* [Move Language](https://developers.libra.org/docs/crates/move-language)
+* [Network](https://developers.libra.org/docs/crates/network)
+* [Storage](https://developers.libra.org/docs/crates/storage)
+* [Virtual Machine](https://developers.libra.org/docs/crates/vm)
+
 
 ## Community
 
