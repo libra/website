@@ -10,7 +10,7 @@ Our goal is to make contributing to the Libra project easy and transparent.
 ## On Contributing
 
 
-### Core Libra
+### Libra Core
 
 To contribute to the core Libra implementation, first start with the proper development copy.
 
@@ -44,7 +44,7 @@ The following command will both build the docs and serve the site locally:
 ```bash
 cd libra.github.io
 cd scripts
-./scripts/build_docs.sh
+./build_docs.sh
 ```
 
 ## Pull Requests
