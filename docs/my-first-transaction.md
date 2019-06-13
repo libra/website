@@ -51,7 +51,7 @@ To setup Libra Core, change to the `libra` directory and run the setup script to
 ```
 The setup script performs these actions:
 
-* Installs rustup - rustup is an installer for the Rust programming language Libra core is implemented in.
+* Installs rustup - rustup is an installer for the Rust programming language Libra Core is implemented in.
 * Installs the required versions of the rust-toolchain.
 * Installs CMake - to manage the build process.
 * Installs protoc - a compiler for protocol buffers.
