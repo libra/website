@@ -99,6 +99,7 @@ If you enter only the major command, it will show the help information for that 
           * `star_sequence_number` - The sequence number of event to query from.
           * `ascending` - The direction of query from `star_sequence_number`.
           * `limit` - The maximum number of events to query.
+          
 **`quit | q!`** - Exits the CLI. No sub command is required.
  
 **`help | h`** - Prints help. No sub command is required.
