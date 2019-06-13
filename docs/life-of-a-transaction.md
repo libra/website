@@ -176,7 +176,7 @@ For implementation details, repository structure, and external APIs for the virt
 ![Figure 1.4 Mempool](assets/illustrations/mempool.svg)
 <small>Figure 1.4 Mempool</small>
 
-Mempool is a shared buffer that holds the transactions that are ‘waiting’ to be executed. When a new transaction is added to mempool, mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool”, each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
+Mempool is a shared buffer that holds the transactions that are "waiting" to be executed. When a new transaction is added to mempool, mempool shares this transaction with other validators in the system. To reduce network consumption in the “shared mempool," each validator is responsible for delivering its own transactions to other validators. When a validator receives a transaction from the mempool of another validator, the transaction is added to the mempool of the recipient validator.
 
 ### AC → Mempool (MP.1)
 
@@ -228,7 +228,7 @@ If enough validators vote for the same execution result, the consensus component
 
 ### Consensus README
 
-For implementation details, repository structure, and APIs of the consensus crate refer to the [Consensus README](crates/consensus.md).
+For implementation details, repository structure, and APIs of the consensus crate, refer to the [Consensus README](crates/consensus.md).
 
 ## Execution
 
@@ -240,7 +240,7 @@ Execution's job is to coordinate the execution of a block of transactions and ma
 ### Consensus → Execution (EX.1)
 
 *  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
-* Execution maintains a “scratchpad” which holds in memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
+* Execution maintains a “scratchpad,” which holds in memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
 * The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data, this ensures that no state or transaction is stored until agreement is reached by a quorum of validators.
 * Execution computes the speculative root hash and then consensus of V~X~ signs this root hash and attempts to reach agreement on this root hash with other validators.
 
@@ -258,7 +258,7 @@ Execution takes the values from its "scratchpad" and sends them to storage for p
 
 ### Execution README
 
-For implementation details, repository structure, and APIs of the execution crate refer to the [Execution README](crates/execution).
+For implementation details, repository structure, and APIs of the execution crate, refer to the [Execution README](crates/execution).
 
 ## Storage
 
@@ -295,7 +295,7 @@ For any read queries by a client (to read information from the blockchain), AC d
 
 ### Storage README
 
-For implementation details, repository structure, and APIs of the storage crate refer to the [Storage README](crates/storage.md).
+For implementation details, repository structure, and APIs of the storage crate, refer to the [Storage README](crates/storage.md).
 
 ## Reference
 
