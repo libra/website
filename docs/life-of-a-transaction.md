@@ -15,10 +15,10 @@ A Libra **client constructs a raw transaction** (let us call it T~5~raw) to tran
 * A program that indicates the actions to be performed on Alice's behalf. It contains:
     * A Move bytecode [peer-to-peer transaction script](reference/glossary.md#transaction-script).
     * A list of inputs to the script (for this example, Bob's account address and the amount of payment).
-* [Gas price](reference/glossary.md#gas-price) (in microlibra/gas units) - The amount Alice is willing to pay per unit of gas, to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+* [Gas price](reference/glossary.md#gas-price) (in microlibra/gas units) &mdash; The amount Alice is willing to pay per unit of gas, to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * [Maximum gas amount](reference/glossary.md#maximum-gas-amount) Alice is willing to pay for this transaction.
 * [Expiration time](reference/glossary.md#expiration-time) of the transaction.
-* [Sequence number](reference/glossary.md#sequence-numnber) - 5
+* [Sequence number](reference/glossary.md#sequence-numnber) &mdash; 5
     * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
 The **client signs transaction** T~5~raw with Alice's private key. The signed transaction T~5~ includes the following:
@@ -34,7 +34,7 @@ To describe the lifecycle of transaction T~5~, we will assume that:
 * Alice and Bob have [accounts](reference/glossary.md#accounts) on the Libra Blockchain.
 * Alice's account has 110 Libra.
 * The current [sequence number](reference/glossary.md#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
-* There are a total of 100 validators - V~1~ to V~100~ on the network.
+* There are a total of 100 validators &mdash; V~1~ to V~100~ on the network.
 * The client submits transaction T~5~ to validator V~1~
 * **Validator V~1~ is a proposer/leader for the current round.**
 
