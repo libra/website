@@ -26,11 +26,11 @@ The following options are available:
 
 ### Invocation
 
-CLI is invoked as an interactive shell. A user can enter commands to interact with the Libra chain.
+The CLI is invoked as an interactive shell. A user can enter commands to interact with the Libra blockchain.
 
 ### Command
 
-CLI commands are in the following format:
+The CLI commands are in the following format:
 
 ```rust
 major_command sub_command [options]
