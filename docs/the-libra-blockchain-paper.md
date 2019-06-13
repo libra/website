@@ -1,5 +1,5 @@
 ---
-id: the-libra-blockchain
+id: the-libra-blockchain-paper
 title: The Libra Blockchain
 ---
 

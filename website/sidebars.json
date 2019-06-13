@@ -8,7 +8,7 @@
             "type": "subcategory",
             "label": "Technical Papers",
             "ids": [
-                "papers/the-libra-blockchain",
+                "the-libra-blockchain-paper",
                 "papers/the-move-language",
                 "papers/state-machine-replication"
             ]
@@ -16,7 +16,7 @@
     ],
     "Try Libra": [
     	"my-first-transaction",
-	"move-getting-started"
+    	"move-getting-started"
     ],
     "Community" : [
     	"community/libra-open-source",
