@@ -57,44 +57,54 @@ If you enter only the major command, it will show the help information for that 
         
 **`query | q`** - Query data from destination chain. All query operations are blocking. Sub commands include:
 
-  * **balance** | **b**     Get the current balance of an account
-      * Usage: balance | b <account_ref_id>|<account_address>
+  * `balance | b`     Get the current balance of an account
+  
+     * Usage: balance | b <account_ref_id>|<account_address>
+     * Arguments:
+         * account_ref_id|account_address, the account to query balance for.
+         * assert_balance | a    Assert that balance is equal to the specified value, CLI will panic if the value from storage does not equal to expected value.
+     * Usage: assert_balance | a <account_ref_id>|<account_address> <expected_value>
+     * Arguments:
+         * `account_ref_id | account_address` - The account to assert balance.
+         * `expected_value` - The expected value to assert to.
+         
+  * `sequence | s` - Get the current sequence number for an account.
+  
+      * Usage: `sequence | s <account_ref_id>|<account_address>`.
       * Arguments:
-          * account_ref_id|account_address, the account to query balance for.
-          * assert_balance | a    Assert that balance is equal to the specified value, CLI will panic if the value from storage does not equal to expected value.
-      * Usage: assert_balance | a <account_ref_id>|<account_address> <expected_value>
+          * `<account_ref_id>|<account_address>` - The account to get current/latest sequence number.
+  * `account_state | as` - Get the latest state for an account.
+  
+      * Usage: `account_state | as <account_ref_id>|<account_address>`.
       * Arguments:
-          * account_ref_id | account_address, the account to assert balance.
-          * expected_value, expected value to assert to.
-  * **sequence** | **s**    Get the current sequence number for an account.
-        * Usage: sequence | s <account_ref_id>|<account_address>.
-        * Arguments:
-            * <account_ref_id>|<account_address> the account to get current/latest sequence number.
-  * **account_state** | **as**   Get the latest state for an account.
-        * Usage: account_state | as <account_ref_id>|<account_address>.
-        * Arguments:
-            * account_ref_id | account_address, the account to query latest state.
-  * **txn_acc_seq** | **ts**     Get the committed transaction by account and sequence number.
-        * Usage: txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number>
-        * Arguments:
-            * account_ref_id | account_address, the account to query committed transaction.
-            * sequence_number, the sequence number of committed transaction.
-  * **txn_range** | **tr**    Get the committed transaction by range
-        * Usage: txn_range | tr <start_version> <limit>
-        * Arguments:
-            * start_version, the version to query the transaction from.
-            * limit, the maximal number of transactions to query.
-  * **event** | **ev**    Get event by account and path.
-        * Usage: event | ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>.
-        * Arguments:
-            * account_ref_id | account_address, the account to query events.
-            * path, the path of the events to query.
-            * star_sequence_number, the sequence number of event to query from.
-            * ascending, the direction of query from star_sequence_number.
-            * limit, the maximal number of events to query.
-* **quit** | **q!**, exit the CLI. No sub command is required.
-* **help** | **h**, prints help. No sub command is required.
-* **debug** | **d**, retrieve debug information. Sub commands include:
+          * `account_ref_id | account_address` - The account to query latest state.
+  * `txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
+  
+      * Usage: `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number>`
+      * Arguments:
+          * `account_ref_id | account_address` - The account to query committed transaction.
+          * `sequence_number` - The sequence number of committed transaction.
+  * `txn_range | tr` - Get the committed transaction by range
+  
+      * Usage: `txn_range | tr <start_version> <limit>`
+      * Arguments:
+          * `start_version` - The version to query the transaction from.
+          * `limit` - The maximum number of transactions to query.
+  * `event | ev` - Get event by account and path.
+  
+      * Usage: event | `ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>`.
+      * Arguments:
+          * `account_ref_id | account_address` - The account to query events.
+          * path, the path of the events to query.
+          * star_sequence_number, the sequence number of event to query from.
+          * ascending, the direction of query from star_sequence_number.
+          * limit, the maximal number of events to query.
+**quit** | **q!**, exit the CLI. No sub command is required.
+ 
+**help** | **h**, prints help. No sub command is required.
+
+**debug** | **d**, retrieve debug information. Sub commands include:
+
     * **metrics** | **metrics?** | **m** | **m?**,  Print node metrics. (? for json output)
     * **dump** | **d**, Dump node heap profile
 
