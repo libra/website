@@ -32,7 +32,7 @@ Refer to [Getting Started With Move](move-overview.md) for further information.
 
 The testnet is a live demonstration of an early prototype of the Libra Blockchain software. This prototype implementation is called Libra Core. The Libra testnet is comprised of test [validator nodes](reference/glossary.md#validator-node) running the [Libra Core](reference/glossary.md#libra-core) software. A validator node is an entity of the Libra ecosystem that validates the Libra Blockchain. A validator node maintains the history of all the transactions on the blockchain. Internally, a validator node needs to keep the current state to execute transactions and to calculate the next state. We will learn more about the components of a validator node in [Life of a Transaction](life-of-a-transaction).
 
-The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary.md#mainnet), testnet has a digital currency _with no real world value_.
+The testnet is built for experimenting with new ideas without disturbing or breaking the main cryptocurrency software. In contrast to the forthcoming Libra [mainnet](reference/glossary.md#mainnet), the testnet uses a digital currency _with no real world value_.
 
 This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
 
@@ -48,7 +48,7 @@ The Libra ecosystem consists of different types of entities:
 
 A Libra client:
 
-* Is a piece of software which has the capability to interact with the Libra Blockchain. 
+* Is a piece of software that has the capability to interact with the Libra Blockchain. 
 * Can be run by the end-user or on behalf of the end user (for example, for a custodial client). 
 * Allows the user to construct, sign, and submit transactions to a [validator node](reference/glossary.md#validator-node).
 * Can issue queries to the Libra Blockchain (through the validator node), request the status of a transaction or account, and verify the response. 
