@@ -65,11 +65,11 @@ class Footer extends React.Component {
           )}
           <div className="footerSection">
             <h5>Learn</h5>
-            <a href={this.docUrl('introduction')}>Welcome to Libra</a>
-            <a href={this.docUrl('getting-started')}>Getting Started</a>
+            <a href={this.docUrl('welcome')}>Welcome to Libra</a>
+            <a href={this.docUrl('my-first-transaction')}>My First Transaction</a>
             <a href={this.docUrl('life-of-a-transaction')}>Life of a Transaction</a>
-            <a href={this.docUrl('move-overview')}>Getting Started with Move</a>
-            <a href={this.docUrl('libra-spec')}>Libra Specification</a>
+            <a href={this.docUrl('move-getting-started')}>Getting Started With Move</a>
+            <a href={this.docUrl('libra-protocol')}>Libra Protocol</a>
           </div>
           <div className="footerSection">
             <h5>Policies</h5>
