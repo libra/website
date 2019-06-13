@@ -4,7 +4,7 @@ title: Libra CLI
 ---
 ### Overview
 
-This guide describes how to use the Libra command line interface (CLI) client to interact with the Libra Blockchain. It provides basic commands to create accounts, mint coins, perform transfers, and query the blockchain. You can use the CLI client to interact with any of the following, by specifying a validator node's hostname:
+This guide describes how to use the Libra command line interface (CLI) client to interact with the Libra Blockchain. It provides basic commands to create accounts, mint coins, perform transfers, and query the blockchain. You can use the CLI client to interact with a validator node on any of the following, by specifying the node's hostname:
 
 * The testnet.
 * A local Libra Blockchain.
