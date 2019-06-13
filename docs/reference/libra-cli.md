@@ -12,7 +12,7 @@ cargo run -p client --bin client -- [-a host] [-p port] [-f accounts] [-d debug_
 
 ### Description
 
-Libra CLI (client) is the user interface (interactive shell) to interact with Libra chain. It provides basic commands for a user to create accounts, mint coins, perform transfers, and query the blockchain. It can be used to interact with the testnet, a local Libra blockchain, or any other remote blockchain chain by specifying validator host.
+Libra CLI (client) is the user interface (interactive shell) to interact with the Libra Blockchain. It provides basic commands for a user to create accounts, mint coins, perform transfers, and query the blockchain. It can be used to interact with the testnet, a local Libra Blockchain, or any other remote blockchain chain by specifying a validator host.
 
 The following options are available:
 
@@ -99,7 +99,7 @@ Enter major command only will show the help information under this major command
 
 Account creation provided by the CLI generates a local keypair, but nothing is created on the blockchain.  To create an account on the blockchain:
 
-* Transfer coins to the address for which you wish to create. If the recipient account does not exist, the receiver account will be created first and then coins will be transferred. The sender pays for both account creation and transfer.
+* Transfer coins to the address you wish to create. If the recipient account does not exist, the receiver account will be created first and then coins will be transferred. The sender pays for both account creation and transfer.
 * Send a mint transaction to mint coins to an account. The account will be created first and coins will then be minted. Unlike other transactions, a non-existing account itself can request a mint transaction.  For test net, there is NO explicit limit for how many coins an account can mint. It will be utilized as the method for users to receive coins to being experimenting with the testnet.
 
 
