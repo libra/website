@@ -34,8 +34,7 @@ Libra's website is also open source (the
 code can be found in this [repo](https://github.com/libra/libra.github.io/)).
 It is built using [Docusaurus](https://docusaurus.io/):
 
-If you know Markdown, you can
-   already contribute!). This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
+If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
 
 To build the documentation you will need [Node](https://nodejs.org/en/) >= 8.x
 and [Yarn](https://yarnpkg.com/en/) >= 1.5.
