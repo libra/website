@@ -49,11 +49,11 @@ If you enter only the major command, it will show the help information for that 
           
 **`transfer | transferb | t | tb`** - Transfer coins from account to another. Suffix 'b' is for blocking.
 
-* Usage: transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>
+* Usage: `transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>`
 * Arguments:
-   * sender_account_address | sender_account_ref_id, the account to send this transfer transaction. The sender account pays the gas.
-   * receive_account_address | receiver_account_ref_id, the account to which this transaction sends coins. If the receiver account does not exist, it will be created first and sender will pay the gas for both account creation and coin transfer.
-      * number_of_coins, the number of coins transferred to receiver account.
+   * `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction is sent. The sender account pays for the gas.
+   * `receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins. If the receiver account does not exist, it will be created first. The sender will pay for gas required for both account creation and coin transfer.
+      * `number_of_coins` - The number of coins transferred to receiver account.
         
 **`query | q`** - Query data from destination chain. All query operations are blocking. Sub commands include:
 
@@ -99,14 +99,15 @@ If you enter only the major command, it will show the help information for that 
           * star_sequence_number, the sequence number of event to query from.
           * ascending, the direction of query from star_sequence_number.
           * limit, the maximal number of events to query.
-**quit** | **q!**, exit the CLI. No sub command is required.
+**`quit | q!`** - Exits the CLI. No sub command is required.
  
-**help** | **h**, prints help. No sub command is required.
+**`help | h`** - Prints help. No sub command is required.
 
-**debug** | **d**, retrieve debug information. Sub commands include:
+**`debug | d`** - Retrievea debug information. Sub commands include:
 
-    * **metrics** | **metrics?** | **m** | **m?**,  Print node metrics. (? for json output)
-    * **dump** | **d**, Dump node heap profile
+   * `metrics | metrics?| m | m?` - Print node metrics. (? for json output)
+
+   * `dump | d` - Dump node heap profile
 
 ### Account Creation/Mint(Faucet) for testnet
 
