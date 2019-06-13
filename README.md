@@ -24,7 +24,7 @@ Read our [Contrbuting guide][https://developers.libra.org/docs/community/contrib
 
 ## Getting Started
 
-[Learn about how Libra Core works.](https://developers.libra.org/docs/welcome-to-libra)
+Read [developer docs](https://developers.libr.org), learn about [how Libra Core works](https://developers.libra.org/docs/welcome-to-libra).
 
 [Try out the Libra testnet.](https://developers.libra.org/docs/my-first-transaction)
 
