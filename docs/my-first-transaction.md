@@ -61,18 +61,15 @@ If your setup fails, see [Troubleshooting](#setup)
 
 ## Build Libra CLI Client and Connect to the Testnet
 
-To connect to a validator node running on the Libra testnet, change to the `client` directory and run the client as shown below.
+To connect to a validator node running on the Libra testnet, change to the `scripts/cli` directory and run the client as shown below.
 
 ```bash
-$ cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80
+./start_cli_testnet.sh
 ```
 
-This command builds and runs the client utilizing cargo (Rust’s package manager) and connects the client to a validator node on testnet:
+This command builds and runs the client utilizing cargo (Rust’s package manager) and connects the client to a validator node on the testnet.
 
-* [ac.stable.aws.hlw3truzy4ls.com](http://ac.stable.aws.hlw3truzy4ls.com/) - Is the hostname for the node running on testnet.
-* 80 - Is the port on which the client will communicate with the testnet.
-
-Once the client connects to a node on testnet, you will see the following output.  To quit the client at any time, use the `quit` command.
+Once the client connects to a node on the testnet, you will see the following output.  To quit the client at any time, use the `quit` command.
 
 ```bash
 usage: <command> <args>
@@ -80,17 +77,17 @@ usage: <command> <args>
 Use the following commands:
 
 account | a
-        Account operations
-debug | d
-        Debug operations
+  Account operations
 query | q
-        Query operations
-transfer | t
-        Transfer operations
+  Query operations
+transfer | transferb | t | tb
+  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)] Suffix 'b' is for blocking.
+  Transfer coins from account to another.
 help | h
-        Prints this help
+  Prints this help
 quit | q!
-        Exit this client
+  Exit this client
+
 
 Please, input commands:
 
@@ -116,17 +113,15 @@ usage: account <arg>
 Use the following args for this command:
 
 create | c
-    Create an account. Returns reference ID to use in other operations
+  Create an account. Returns reference ID to use in other operations
 list | la
-    Print all accounts that were created or loaded
+  Print all accounts that were created or loaded
 recover | r <file path>
-    Recover Libra Wallet from the file path
+  Recover Libra Wallet from the file path
 write | w <file name>
-    Save Libra Wallet mnemonic recovery seed to disk
+  Save Libra Wallet mnemonic recovery seed to disk
 mint | mintb | m | mb <receiver account> <number of coins>
-    Mint coins to the account. Suffix 'b' is for blocking
-
-libra%
+  Mint coins to the account. Suffix 'b' is for blocking
 ```
 
 ### Step 2 - Create Alice's account
@@ -140,8 +135,8 @@ To create Alice's account, enter this command:
 Sample output on success:
 
 ```bash
->> Creating/retrieveing next account from wallet
-Created account #0 address f2c74d3b046157cb967c1a872c8671d35e2e09163461010733649a5e50d016ed
+>> Creating/retrieving next account from wallet
+Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
 
 #0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
@@ -155,8 +150,8 @@ To create Bob's account, repeat the account creation command:
 Sample output on success:
 
 ```bash
->> Creating/retrieveing next account from wallet
-Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608
+>> Creating/retrieving next account from wallet
+Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
 ```
 
 #1 is the index for Bob's account and the hex string is the address of Bob's account.
@@ -170,11 +165,10 @@ To list the accounts you have created, enter this command:
 
 Sample output on success:
 ```bash
-User account index: 0, address: 578560b3d71b86fab5f434a83b51bab1b753dde4c995ef7407d413159acbfb65, sequence number: 0
-User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3286a2ba203495f24, sequence number: 0
-Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5
+User account index: 0, address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, sequence number: 0
+User account index: 1, address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, sequence number: 0
 ```
-Faucet account address is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary.md#sequence-number).
+The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary.md#sequence-number).
 
 ## Add Libra Coins to Alice's and Bob's Accounts
 
@@ -271,11 +265,8 @@ Sample output on success:
 ```bash
 >> Transferring
 Transaction submitted to validator
+To query for transaction status, run: query txn_acc_seq 0 0 <fetch_events=true|false>
 ```
-
-To query for transaction status, run:
-
-`query txn_acc_seq 0 0 true`
 
 You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-txn_acc_seq).
 
@@ -336,7 +327,7 @@ If your client did not connect to the testnet:
 
 * Check your internet connection.
 * Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:
-    * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
+    * `./start_cli_testnet.sh`
 
 
 ### Minting and Adding Money to Account
@@ -376,56 +367,57 @@ To troubleshoot transfer errors:
 ### query txn_acc_seq
 
 ```bash
-libra% query txn_acc_seq 0 0 false
+libra% query txn_acc_seq 0 0 true
 >> Getting committed transaction by account and sequence number
 Committed transaction: SignedTransaction {
  { raw_txn: RawTransaction {
-    sender: f69146bc8fb77fe98b241341a7734e1a71f45d6715aec3689dbdc87c9455fd64,
+    sender: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8,
     sequence_number: 0,
     payload: Program(
         Program {
-            code: "LIBRAVM\n\u{1}\u{0}\u{7}\u{1}J\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{3}N\u{0}\u{0}\u{0}\u{6}\u{0}\u{0}\u{0}\u{c}T\u{0}\u{0}\u{0}\u{5}\u{0}\u{0}\u{0}\rY\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{5}]\u{0}\u{0}\u{0}$\u{0}\u{0}\u{0}\u{4}�\u{0}\u{0}\u{0} \u{0}\u{0}\u{0}\u{7}�\u{0}\u{0}\u{0}\r\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{0}\u{2}\u{0}\u{1}\u{3}\u{0}\u{2}\u{0}\u{2}\u{4}\u{2}\u{3}\u{2}\u{4}\u{2}\u{6}<SELF>\u{7}Account\u{4}main\u{f}pay_from_sender\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{2}\u{0}\u{4}\u{0}\u{c}\u{0}\u{c}\u{1}\u{11}\u{1}\u{2}",
+            code: "LIBRAVM\n\u{1}\u{0}\u{7}\u{1}J\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{3}N\u{0}\u{0}\u{0}\u{6}\u{0}\u{0}\u{0}\u{c}T\u{0}\u{0}\u{0}\u{5}\u{0}\u{0}\u{0}\rY\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{5}]\u{0}\u{0}\u{0})\u{0}\u{0}\u{0}\u{4}�\u{0}\u{0}\u{0} \u{0}\u{0}\u{0}\u{7}�\u{0}\u{0}\u{0}\r\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{0}\u{2}\u{0}\u{1}\u{3}\u{0}\u{2}\u{0}\u{2}\u{4}\u{2}\u{3}\u{2}\u{4}\u{2}\u{6}<SELF>\u{c}LibraAccount\u{4}main\u{f}pay_from_sender\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{2}\u{0}\u{4}\u{0}\u{c}\u{0}\u{c}\u{1}\u{11}\u{1}\u{2}",
             args: [
-                {ADDRESS: 6337a51e6c9ef28fc6107381ebe778c77f5b9552d5c92ab042f4bfbb6d947c68},
+                {ADDRESS: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7},
                 {U64: 10000000},
             ],
         },
     ),
-    note: "{\"creation_time\":1559941072042}",
     max_gas_amount: 10000,
     gas_unit_price: 0,
-    expiration_time: 1559941172s,
+    expiration_time: 1560466424s,
 },
- public_key: 30ce0d1e0fe8321c4b769f1aaced0da86c452a02fd8c9e213b364b703f4fcadd,
- signature: Signature( R: CompressedEdwardsY: [142, 232, 49, 46, 109, 18, 197, 140, 38, 22, 188, 32, 24, 93, 5, 255, 242, 192, 7, 176, 74, 218, 113, 48, 251, 0, 153, 194, 15, 139, 226, 26], s: Scalar{
-    bytes: [101, 17, 216, 10, 42, 0, 135, 246, 228, 179, 234, 252, 104, 196, 59, 110, 32, 138, 52, 32, 102, 204, 14, 58, 169, 38, 93, 29, 119, 57, 168, 3],
+ public_key: 55af3fe3f28550a2f1e5ebf073ef193feda44344d94c463b48be202aa0b3255d,
+ signature: Signature( R: CompressedEdwardsY: [210, 23, 214, 62, 228, 179, 64, 147, 81, 159, 180, 138, 100, 211, 111, 139, 178, 148, 81, 1, 240, 135, 148, 145, 104, 234, 227, 239, 198, 153, 13, 199], s: Scalar{
+  bytes: [203, 76, 105, 49, 64, 130, 162, 81, 22, 237, 159, 26, 80, 181, 111, 94, 84, 6, 152, 126, 181, 192, 62, 103, 130, 94, 246, 174, 139, 214, 3, 15],
 } ),
  }
  }
+Events:
+ContractEvent { access_path: AccessPath { address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/sent_events_count/" } , index: 0, event_data: AccountEvent { account: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, amount: 10000000 } }
+ContractEvent { access_path: AccessPath { address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/received_events_count/" } , index: 0, event_data: AccountEvent { account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, amount: 10000000 } }
 ```
 
 ### Query account_state
 
 ```bash
-libra% query account_state 0
 >> Getting latest account state
 Latest account state is:
- Account: 66e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462
- Version: 126423
+ Account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
  State: Some(
     AccountStateBlob {
-     Raw: 0x01000000210000000116936b87fea31a928a402fa0b57dce9d79c0c47e1a9188d67b3aa2b3d9e6a91a440000002000000066e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462804a5d0500000000000000000000000002000000000000000200000000000000
+     Raw: 0x010000002100000001217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc9744000000200000003ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a800e1f50500000000000000000000000001000000000000000100000000000000
      Decoded: Ok(
         AccountResource {
-            balance: 90000000,
-            sequence_number: 2,
-            authentication_key: 0x66e3667aee04a6326218c2e55055e7c7aba840c27e37d954a5ef5f0256b4e462,
-            sent_events_count: 2,
+            balance: 100000000,
+            sequence_number: 1,
+            authentication_key: 0x3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8,
+            sent_events_count: 1,
             received_events_count: 0,
         },
     )
      },
 )
+ Blockchain Version: 3
 ```
 
 ## Run A Local Validator Node
