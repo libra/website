@@ -69,7 +69,7 @@ class HomeSplash extends React.Component {
           <PromoSection>
             <Button href={docUrl('welcome')}>Welcome to the Developer Site</Button>
             <Button href={docUrl('papers/the-libra-blockchain-paper.html')}>Libra Blockchain Technical Paper</Button>
-            <Button href={docUrl('move-getting-started.html')}>Getting Started With Move</Button>
+            <Button href={docUrl('move-overview.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
       </SplashContainer>

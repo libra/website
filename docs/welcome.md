@@ -26,7 +26,7 @@ Move takes insights from past security incidents with smart contracts and create
 
 Move makes the development of critical transaction code easier. It enables the secure implementation of the Libra ecosystem's governance policies, such as the management of the Libra currency and the network of validator nodes. We anticipate that the ability for developers to create contracts will be available over time. This will support the evolution and validation of Move. 
 
-Refer to [Getting Started With Move](move-getting-started.md) for further information.
+Refer to [Getting Started With Move](move-overview.md) for further information.
 
 ## The Testnet
 
@@ -72,7 +72,7 @@ This site is intended for developers.
 
 * [Libra Protocol - Key Concepts](libra-protocol.md) - Introduces you to the fundamental concepts of the Libra protocol.
 * [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Getting Started With Move](move-overview.md) - Introduces you to a new blockchain programming language called Move.
 * [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens "under the hood" when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands of the Libra CLI client and their usage.

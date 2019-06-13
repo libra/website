@@ -1,5 +1,5 @@
 ---
-id: libra-open-source
+id: libra-open-source-paper
 title: Libra Open Source
 ---
 

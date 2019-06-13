@@ -65,7 +65,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **6** - As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
 
-**7** - The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2)). Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
+**7** - The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2)). Refer to our technical paper [State Machine Replication in the Libra Blockchain](state-machine-replication-paper.md) for details of our proposed consensus protocol LibraBFT.
 
 ### Executing Block and Reaching Consensus
 
@@ -141,7 +141,7 @@ For implementation details, repository structure, and APIs of the admission cont
 ![Figure 1.3 Virtual Machine](assets/illustrations/virtual-machine.svg)
 <small>Figure 1.3 Virtual Machine</small>
 
-The [Move virtual machine](move-getting-started.md) (VM) verifies and executes transaction scripts written in Move bytecode.
+The [Move virtual machine](move-overview.md) (VM) verifies and executes transaction scripts written in Move bytecode.
 
 ### AC → VM (VM.1)
 
@@ -299,11 +299,11 @@ For implementation details, repository structure, and APIs of the storage crate 
 
 ## Reference
 
-* [Welcome page](welcome.md).
+* [Welcome page](welcome-to-libra.md).
 * [Libra Protocol - Key Concepts](libra-protocol.md) - Introduces you to the fundamental concepts of the Libra protocol.
 * [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started With Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Getting Started With Move](move-overview.md) - Introduces you to a new blockchain programming language called Move.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
-* [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) - Provides a detailed look into our consensus protocol **LibraBFT**.
+* [State Machine Replication in the Libra Blockchain](state-machine-replication-paper.md) - Provides a detailed look into our consensus protocol **LibraBFT**.

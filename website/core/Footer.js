@@ -68,7 +68,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('welcome')}>Welcome to Libra</a>
             <a href={this.docUrl('my-first-transaction')}>My First Transaction</a>
             <a href={this.docUrl('life-of-a-transaction')}>Life of a Transaction</a>
-            <a href={this.docUrl('move-getting-started')}>Getting Started With Move</a>
+            <a href={this.docUrl('move-overview')}>Getting Started With Move</a>
             <a href={this.docUrl('libra-protocol')}>Libra Protocol</a>
           </div>
           <div className="footerSection">

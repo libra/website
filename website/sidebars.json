@@ -1,7 +1,7 @@
 {
   "docs": {
     "Learn About Libra": [
-    	"welcome",
+    	"welcome-to-libra",
     	"libra-protocol",
         "life-of-a-transaction",
         {
@@ -9,17 +9,17 @@
             "label": "Technical Papers",
             "ids": [
                 "the-libra-blockchain-paper",
-                "papers/the-move-language",
-                "papers/state-machine-replication"
+                "move-paper",
+                "state-machine-replication-paper"
             ]
         }
     ],
     "Try Libra": [
     	"my-first-transaction",
-    	"move-getting-started"
+    	"move-overview"
     ],
     "Community" : [
-    	"community/libra-open-source",
+    	"libra-open-source-paper",
     	"community/governance",
         "community/contributing",
         "community/coding-guidelines"

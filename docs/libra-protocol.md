@@ -27,7 +27,7 @@ Figure 1.1 represents change of state of the Libra Blockchain, when a transactio
 * **F** is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
-The Libra protocol uses the [Move language](move-getting-started.md) to implement the deterministic execution function F.
+The Libra protocol uses the [Move language](move-overview.md) to implement the deterministic execution function F.
 
 ### Transactions
 
@@ -125,9 +125,9 @@ For information on interactions of each validator component with other component
 
 ## Reference
 
-* [Welcome Page](welcome.md).
+* [Welcome Page](welcome-to-libra.md).
 * [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started with Move](move-getting-started.md) - Introduces you to a new blockchain programming language called Move.
+* [Getting Started with Move](move-overview.md) - Introduces you to a new blockchain programming language called Move.
 * [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens "under the hood" when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
