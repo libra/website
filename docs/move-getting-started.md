@@ -38,15 +38,15 @@ Move modules define the rules for updating the global state of the Libra Blockch
 ### Move Has First Class Resources
 
 * The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital  assets with rich programmability.
-* Resources are ordinary values in the language --- they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
-* However, the __Move type system provides special safety guarantees for resources__. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine-mvm) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
+* Resources are ordinary values in the language, they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
+* However, the Move type system provides special safety guarantees for resources. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine-mvm) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
 * The Libra currency is implemented as a resource type named `LibraCoin.T`. `LibraCoin.T` has no special status in the language; every Move resource enjoys the same protections.
 
 ## Move: Under the Hood
 
 ### Move Intermediate Representation
 
-This section describes how to write [transaction scripts](#writing-transaction-scripts) and [modules](#writing-modules) in the Move intermediate representation (IR). We caution the reader that the IR is an early (and unstable) precursor to a forthcoming Move source language (see [Future Developer Experience](#future-developer-experience) for more details). Move IR is a thin syntactic layer over Move bytecode that we use to test the bytecode verifier and virtual machine, and is thus not particularly developer-friendly. It is high-level enough to write human-readable code, yet low-level enough to compile directly to Move bytecode. Nevertheless, we are excited about the Move language and hope that developers will give the IR a try despite the rough edges. 
+This section describes how to write [transaction scripts](#writing-transaction-scripts) and [modules](#writing-modules) in the Move intermediate representation (IR). We caution the reader that the IR is an early (and unstable) precursor to a forthcoming Move source language (see [Future Developer Experience](#future-developer-experience) for more details). Move IR is a thin syntactic layer over Move bytecode that we use to test the bytecode verifier and virtual machine, and is not particularly developer-friendly. It is high-level enough to write human-readable code, yet low-level enough to compile directly to Move bytecode. Nevertheless, we are excited about the Move language and hope that developers will give the IR a try despite the rough edges. 
 
 We will proceed by presenting snippets of heavily-commented Move IR. We encourage readers to follow along with the examples by compiling, running, and modifying them locally. The README files under `libra/language/README.md` and `libra/language/ir_to_bytecode/README.md` explain how to do this.
 
