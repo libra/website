@@ -23,7 +23,7 @@ The following options are available:
 
 ### Invocation
 
-CLI is invoked as an interactive shell. User can enter commands to interact with the Libra chain.
+CLI is invoked as an interactive shell. A user can enter commands to interact with the Libra Blockchain.
 
 ### Command
 

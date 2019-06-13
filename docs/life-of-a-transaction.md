@@ -169,7 +169,7 @@ When mempool receives a transaction from other validators via shared mempool, me
 
 ### VM README
 
-For implementation details, repository structure, and external API for the virtual machine module refet to the [Virtual Machine README](crates/vm.md).
+For implementation details, repository structure, and external API for the virtual machine component refer to the [Virtual Machine README](crates/vm.md).
 
 ## Mempool
 
@@ -199,7 +199,7 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### Mempool README
 
-For implementation details,  repository, and API of the mempool crate refer to the [Mempool README](crates/mempool).
+For implementation details,  repository, and APIs of the mempool crate refer to the [Mempool README](crates/mempool).
 
 ## Consensus
 
@@ -224,11 +224,11 @@ If V~X~ is a proposer/leader, its consensus replicates the proposed block of tra
 
 ### Consensus → Execution (CO.4)
 
-If enough validators vote for the same root hash, the consensus component of V~X~ informs execution via `Execution::CommitBlock()` that this block is ready to be committed.
+If enough validators vote for the same execution result, the consensus component of V~X~ informs execution via `Execution::CommitBlock()` that this block is ready to be committed.
 
 ### Consensus README
 
-For implementation details, repository structure, and API of the consensus crate refer to the [Consensus README](crates/consensus.md).
+For implementation details, repository structure, and APIs of the consensus crate refer to the [Consensus README](crates/consensus.md).
 
 ## Execution
 
@@ -246,31 +246,28 @@ Execution's job is to coordinate the execution of a block of transactions and ma
 
 ### Execution → VM (EX.2)
 
-When Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock(),`
-execution uses the VM to determine the changes to the current state.
+When Consensus requests execution to execute a block of transactions via `Execution::ExecuteBlock()`, execution uses the VM to determine the results of executing the block of transactions.
 
 ### Consensus → Execution (EX.3)
 
-* If enough nodes vote for the same root hash, consensus of V~X~ informs its execution module via `Execution::CommitBlock() `that this block is ready to be committed.
-* `Execution::CommitBlock()`will include the signatures of the validators who voted for this block (the signatures that signed the root hash of the accumulator).
+If a quorum of validators agree on the block execution results, consensus of each validator informs its execution component via `Execution::CommitBlock()` that this block is ready to be committed.  This call to the execution component will include the signatures of the agreeing validators to provide proof of their agreement.
 
 ### Execution → Storage (EX.4)
 
-* Execution takes the values from scratchpad and sends them to storage for persistence via: `Storage::SaveTransactions()`.
-* Execution clears the old values from the scratchpad that are no longer needed (for example, parallel blocks that are not going to be committed).
+Execution takes the values from its "scratchpad" and sends them to storage for persistence via `Storage::SaveTransactions()`.  Execution then prunes the old values from the "scratchpad" that are no longer needed (for example, parallel blocks that can not be committed).
 
 ### Execution README
 
-For implementation details, repository structure, and API of the execution crate refer to the [Execution README](crates/execution).
+For implementation details, repository structure, and APIs of the execution crate refer to the [Execution README](crates/execution).
 
 ## Storage
 
 ![Figure 1.7 Storage](assets/illustrations/storage.svg)
 <small>Figure 1.7 Storage</small>
 
-The storage persists agreed upon blocks of transactions and their execution results. A block/set of transactions (which includes transaction T~N~) will be saved to the storage when:
+The storage component persists agreed upon blocks of transactions and their execution results. A block/set of transactions (which includes transaction T~N~) will be saved via storage when:
 
-* There is agreement between more than 2/3rd of the validators (participating in consensus) on all of the following:
+* There is agreement between more than 2f+1 of the validators participating in consensus on all of the following:
     * The transactions to include in a block.
     * The order of the transactions.
     * The execution results of the transactions to be included in the block.
@@ -279,18 +276,18 @@ Refer to [Merkle accumulators](reference/glossary.md#merkle-accumulators) for in
 
 ### VM → Storage (ST.1)
 
-When AC or mempool invoke `VM::ValidateTransaction()`to validate a transaction, `VM::ValidateTransaction()` loads the sender's account from the storage and performs the read-only validity checks.
+When AC or mempool invoke `VM::ValidateTransaction()` to validate a transaction, `VM::ValidateTransaction()` loads the sender's account from storage and performs the read-only validity checks on the transaction.
 
 ### Execution → Storage (ST.2)
 
-When consensus calls Execution::ExecuteBlock(), execution reads the current state from storage and uses that to determine the execution results.
+When consensus calls `Execution::ExecuteBlock()`, execution reads the current state from storage combined with the in-memory "scratchpad" data to determine the execution results.
 
 ### Execution → Storage (ST.3)
 
-* Once consensus is reached on a block of transactions, execution calls storage via: `Storage::SaveTransactions()` to save the block of transactions and permanently record them. This will also store the signatures from the validator nodes who agreed on this block of transactions.
-* The data in the cache of the VM is passed to storage and the storage is updated (transactions are committed).
-* When the storage is updated, the sequence numbers of all resources modified by transaction T~N~ are updated to the transaction's sequence number.
-* Note: The sequence number of an account on the Libra Blockchain increases by one for each transaction committed on that account.
+* Once consensus is reached on a block of transactions, execution calls storage via `Storage::SaveTransactions()` to save the block of transactions and permanently record them. This will also store the signatures from the validator nodes who agreed on this block of transactions.
+* The in-memory data in "scratchpad" for this block is passed to updated storage and persist the transactions.
+* When storage is updated, the sequence numbers of all resources modified by each transaction are updated accordingly.
+* Note: The sequence number of an account on the Libra Blockchain increases by one for each committed transaction originating from that account.
 
 ### AC → Storage (ST.4)
 
@@ -298,7 +295,7 @@ For any read queries by a client (to read information from the blockchain), AC d
 
 ### Storage README
 
-For implementation details, repository structure, and API of the storage crate refer to the [Storage README](crates/storage.md).
+For implementation details, repository structure, and APIs of the storage crate refer to the [Storage README](crates/storage.md).
 
 ## Appendix
 
@@ -313,8 +310,8 @@ main(payee: address, amount: uint) {
 }
 ```
 
-* `payee`, is an input to the script is the recipient Bob's account address.
-* `amount`, is an input to the script is the number of Libra to be transferred to Bob's account (10 for our example).
+* `payee`, is an input to the script and represents the recipient Bob's account address.
+* `amount`, is an input to the script and represents the number of microlibra to be transferred to Bob's account (10 * 10^6 for our example).
 * `withdraw_from_sender` and `deposit`are procedures of the Move module `0x0.Currency`, where `0x0` is the address of the `Currency` module.
 * `coin` is a value returned by the procedure `withdraw_from_sender`. It is a linear Move resource of type `0x0.Currency.Coin`.
 
@@ -343,16 +340,16 @@ In the sample transaction script provided above:
 * Our proposed consensus protocol, **LibraBFT**, is based on HotStuff, a Byzantine fault-tolerant (BFT) protocol.
 * LibraBFT guarantees agreement on the final order of transactions (the **safety** property), provided the set of nodes deviating from the protocol (malicious nodes) is comprised of no more than a third of the total voting rights.
 * LibraBFT also guarantees that blocks of transactions never stop being finalized, (the **liveness** property), as long as the network delivers consensus messages in a timely manner (in addition to satisfying the voting rights necessary for safety).
-* The design of our consensus protocol is mostly independent of how clients interact with the Libra Blockchain. Transactions submitted by clients are first shared between validators by the mempool component.
-* LibraBFT works by electing and rotating special nodes called leaders (validators). When its round becomes active, a leader pulls transactions from the mempool to propose a block of transactions. It is then responsible for the coordination and agreement between all validators on the proposed block to be executed (and eventually finalized).
-* The Libra blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
+* The design of our consensus protocol is independent of how clients interact with the Libra Blockchain.
+* LibraBFT works by electing and rotating special nodes called leaders from the set of validators. When its round becomes active, a leader pulls transactions from its mempool to propose a block of transactions. The leader is then responsible for the coordination and agreement between all validators on the proposed block to be executed (and eventually finalized).
+* The Libra blockchain is formed with these agreed-upon transactions and their corresponding execution results.
 * Refer to our technical paper [State Machine Replication in the Libra Blockchain](papers/state-machine-replication.md) for details of our proposed consensus protocol LibraBFT.
 
-For further information refer to the [Consensus technical paper](papers/state-machine-replication.md)
+For further information, refer to the [Consensus technical paper](papers/state-machine-replication.md)
 
 ### Merkle Accumulators
 
-The storage is used to persist **agreed upon** blocks of transaction and their execution results. All the data in the Libra Blockchain is stored in a single versioned database. The blockchain is represented as an ever-growing Merkle tree of transactions. A “leaf” is appended to the tree, for each transaction executed on the blockchain.
+The storage component is used to persist **agreed upon** blocks of transaction and their execution results. All of the data in the Libra Blockchain is stored in a single versioned database. The blockchain is represented as an ever-growing Merkle tree of transactions. A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 ![Figure 1.8 Merkle Accumulator](assets/illustrations/merkle-accumulators.svg)
 <small>Figure 1.8 Merkle Accumulator</small>
@@ -367,8 +364,8 @@ The storage is used to persist **agreed upon** blocks of transaction and their e
     * The root hash of the final state the accumulator (after the transaction is applied).
     * Other metadata.
 * When validators reach **consensus** on a new [block](reference/glossary.md#block) of transactions and agree on their ordering and execution results:
-    * The validators append all the transactions in the block, one-by-one, to the previous accumulator and compute the new root hash of the accumulator.
-    * All validators sign the root hash of the new tree.
+    * The validators append all the transactions in the block, one-by-one, to the previous accumulator and compute the new state.
+    * All validators sign and agree upon the resultant state.
 
 For further information refer to [Blockchain Technical Paper](papers/the-libra-blockchain.md)
 

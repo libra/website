@@ -3,16 +3,18 @@ id: contributing
 title: Contribution Guide
 ---
 
-# Contributing to the Libra project
-
 Our goal is to make contributing to the Libra project easy and transparent.
+
+
+
+> **Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
 
 ## On Contributing
 
 
-### Core Libra
+### Libra Core
 
-To contribute to the core Libra implementation, first start with the proper development copy.
+To contribute to the Libra Core implementation, first start with the proper development copy.
 
 To get the development installation with all the necessary dependencies for linting, testing, and building the documentation, run the following:
 ```bash
@@ -31,11 +33,10 @@ Refer to our [Coding Guidelines](coding-guidelines.md) for detailed guidance aro
 #### Documentation
 
 Libra's website is also open source (the
-code can be found in this [repo](https://github.com/libra/libra.github.io/)).
+code can be found in this [repository](https://github.com/libra/libra.github.io/)).
 It is built using [Docusaurus](https://docusaurus.io/):
 
-If you know Markdown, you can
-   already contribute!). This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
+If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
 
 To build the documentation you will need [Node](https://nodejs.org/en/) >= 8.x
 and [Yarn](https://yarnpkg.com/en/) >= 1.5.
@@ -44,7 +45,7 @@ The following command will both build the docs and serve the site locally:
 ```bash
 cd libra.github.io
 cd scripts
-./scripts/build_docs.sh
+./build_docs.sh
 ```
 
 ## Pull Requests
@@ -59,17 +60,10 @@ During intial phase of heavy development we plan to only audit and review pull r
 6. If you haven't already, complete the Contributor License Agreement ("CLA").
 7. Submit your Pull Request.
 
-## Contributor License Agreement ("CLA")
+## Contributor License Agreement
 
-For pull request to be accepted by any Libra projects an invididual or corporate CLA
-must be submitted. You will only need to do this once to work on any of Libra's open source projects. You can complete CLAs here: [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf) [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf)
+For pull request to be accepted by any Libra projects, a Contributor License Agreement (CLA) must be signed. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Issues
 
-Libra uses Github issues to track bugs. Please include necessary information and instructions to reproduce your issue.
-
-
-## License
-
-By contributing to Libra, you agree that your contributions will be licensed
-under the LICENSE file in the root directory of this source tree.
+Libra uses [GitHub issues](https://github.com/libra/libra/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.
