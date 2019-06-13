@@ -21,9 +21,9 @@ In the second part of this guide, we will "lift up the hood" and show you how to
 
 ### Move Transaction Scripts Enable Programmable Transactions
 
-* Each Libra transaction includes a **Move transaction script** which encodes the logic a validator should perform on the client's behalf (for example, move Libra from Alice's account to Bob's account). 
+* Each Libra transaction includes a **Move transaction script** that encodes the logic a validator should perform on the client's behalf (for example, to move Libra from Alice's account to Bob's account). 
 * The transaction script interacts with [Move resources](#move-has-first-class-resources) published in the global storage of the Libra Blockchain by calling the procedures of one or more [Move modules](#move-modules-allow-composable-smart-contracts). 
-* A transaction script is not stored in the global state and it cannot be invoked by other transaction scripts. It is a single-use program.
+* A transaction script is not stored in the global state, and it cannot be invoked by other transaction scripts. It is a single-use program.
 * We present several examples of transaction scripts in [Writing Transaction Scripts](#writing-transaction-scripts).
 
 ### Move Modules Allow Composable Smart Contracts
@@ -46,7 +46,7 @@ Move modules define the rules for updating the global state of the Libra Blockch
 
 ### Move Intermediate Representation
 
-This section describes how to write [transaction scripts](#writing-transaction-scripts) and [modules](#writing-modules) in the Move intermediate representation (IR). We caution the reader that the IR is an early (and unstable) precursor to a forthcoming Move source language (see [Future Developer Experience](#future-developer-experience) for more details). Move IR is a thin syntactic layer over Move bytecode that we use to test the bytecode verifier and virtual machine, and is not particularly developer-friendly. It is high-level enough to write human-readable code, yet low-level enough to compile directly to Move bytecode. Nevertheless, we are excited about the Move language and hope that developers will give the IR a try despite the rough edges. 
+This section describes how to write [transaction scripts](#writing-transaction-scripts) and [modules](#writing-modules) in the Move intermediate representation (IR). We caution the reader that the IR is an early (and unstable) precursor to a forthcoming Move source language (see [Future Developer Experience](#future-developer-experience) for more details). Move IR is a thin syntactic layer over Move bytecode that we use to test the bytecode verifier and virtual machine, and it is not particularly developer-friendly. It is high level enough to write human-readable code, yet low level enough to compile directly to Move bytecode. Nevertheless, we are excited about the Move language and hope that developers will give the IR a try, despite the rough edges. 
 
 We will proceed by presenting snippets of heavily-commented Move IR. We encourage readers to follow along with the examples by compiling, running, and modifying them locally. The README files under `libra/language/README.md` and `libra/language/ir_to_bytecode/README.md` explain how to do this.
 
@@ -54,7 +54,7 @@ We will proceed by presenting snippets of heavily-commented Move IR. We encourag
 
 As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount.T` and `LibraCoin.T` resource types. `LibraAccount` is the name of the module, and `T` is the name of a resource declared by that module. This is a common naming convention in Move; the “main” type declared by a module is typically named `T`. 
 
-When we say that a user "has an account at address `0xff` on the Libra blockchain", what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
+When we say that a user "has an account at address `0xff` on the Libra Blockchain", what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data, such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
 
 The account balance is a resource of type `LibraCoin.T`. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this is the type of a Libra coin. This type is a "first-class citizen" in the language just like any other Move resource. Resources of type `LibraCoin.T` can be stored in program variables, passed between procedures, and so on.
 
@@ -93,7 +93,7 @@ main(payee: address, amount: u64) {
 }
 ```
 
-This transaction script has an unfortunate problem, it will fail if the there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
+This transaction script has an unfortunate problem &mdash; it will fail if the there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
 
 ```rust
 // A small variant of the peer-peer payment example that creates a fresh account if one does not
@@ -153,7 +153,7 @@ This concludes our "tour" of transaction scripts. For more examples, including t
 
 ### Writing Modules
 
-We will now turn our attention to writing our own Move modules, instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. Consider this situation:
+We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `LibraCoin` modules. Consider this situation:
 Bob is going to create an account at address *a* at some point in the future. Alice wants to "earmark" some funds for Bob so that he can pull them into his account once it is created. But she also wants to be able to reclaim the funds for herself if Bob never creates the account.
 
 To solve this problem for Alice, we will write a module `EarmarkedLibraCoin` which:
