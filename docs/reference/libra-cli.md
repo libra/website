@@ -36,15 +36,17 @@ major_command sub_command [options]
 If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:
 
  `account** | a` -  Account related operations. Sub commands include:
-    * `create | c` -  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
-    * `save | s` - Save all accounts information, including newly created ones, to file.
-    * `load | l` - Load accounts from file.
-    * `list | la`- Print all accounts that were created or loaded.
-    * `<mint | m> | <mintb| mb>` - Mint coins to the account. Suffix 'b' is for blocking.
-        * Usage:  `mint|mint|m|b <account_address_to>|<account_ref_id_to> <mint_balance>`. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub commands.
-        * Arguments:
-            * `account_address|account_reference_id` - The receiver account to mint the coins to. If the receiver account does not exist, it will be created first. Either `account_address` or `account_ref_id` (an internal index of the account in CLI) can be used to specify receiver account (same in other sub commands). The account that sent this mint transaction (currently preloaded genesis account) pays for the gas.
-            * `mint_balance` - The balance of coin minted to the receiver account.
+ 
+  * `create | c` -  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
+  * `save | s` - Save all accounts information, including newly created ones, to file.
+  * `load | l` - Load accounts from file.
+  * `list | la`- Print all accounts that were created or loaded.
+  * `<mint | m> | <mintb| mb>` - Mint coins to the account. Suffix 'b' is for blocking.
+      * Usage:  `mint|mint|m|b <account_address_to>|<account_ref_id_to> <mint_balance>`. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub commands.
+      * Arguments:
+          * `account_address|account_reference_id` - The receiver account to mint the coins to. If the receiver account does not exist, it will be created first. Either `account_address` or `account_ref_id` (an internal index of the account in CLI) can be used to specify receiver account (same in other sub commands). The account that sent this mint transaction (currently preloaded genesis account) pays for the gas.
+          * `mint_balance` - The balance of coin minted to the receiver account.
+          
 * `transfer | transferb | t | tb` - Transfer coins from account to another. Suffix 'b' is for blocking.
     * Usage: transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>
     * Arguments:
