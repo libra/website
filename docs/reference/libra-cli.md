@@ -57,13 +57,13 @@ If you enter only the major command, it will show the help information for that 
         
 **`query | q`** - Query data from destination chain. All query operations are blocking. Sub commands include:
 
-  * `balance | b`     Get the current balance of an account
+  * `balance | b` - Get the current balance of an account
   
-     * Usage: balance | b <account_ref_id>|<account_address>
+     * Usage: `balance | b <account_ref_id>|<account_address>`
      * Arguments:
-         * account_ref_id|account_address, the account to query balance for.
-         * assert_balance | a    Assert that balance is equal to the specified value, CLI will panic if the value from storage does not equal to expected value.
-     * Usage: assert_balance | a <account_ref_id>|<account_address> <expected_value>
+         * `account_ref_id|account_address` - The account to query balance for.
+         * `assert_balance | a` - Assert that balance is equal to the specified value, CLI will panic if the value from storage does not equal to expected value.
+     * Usage: `assert_balance | a <account_ref_id>|<account_address> <expected_value>`
      * Arguments:
          * `account_ref_id | account_address` - The account to assert balance.
          * `expected_value` - The expected value to assert to.
@@ -94,16 +94,16 @@ If you enter only the major command, it will show the help information for that 
   
       * Usage: event | `ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>`.
       * Arguments:
-          * `account_ref_id | account_address` - The account to query events.
-          * path, the path of the events to query.
-          * star_sequence_number, the sequence number of event to query from.
-          * ascending, the direction of query from star_sequence_number.
-          * limit, the maximal number of events to query.
+          * `account_ref_id | account_address` - The account to query events from.
+          * `path` - The path of the events to query.
+          * `star_sequence_number` - The sequence number of event to query from.
+          * `ascending` - The direction of query from `star_sequence_number`.
+          * `limit` - The maximum number of events to query.
 **`quit | q!`** - Exits the CLI. No sub command is required.
  
 **`help | h`** - Prints help. No sub command is required.
 
-**`debug | d`** - Retrievea debug information. Sub commands include:
+**`debug | d`** - Retrieve debug information. Sub commands include:
 
    * `metrics | metrics?| m | m?` - Print node metrics. (? for json output)
 
