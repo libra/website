@@ -31,10 +31,6 @@ Join us on the [Libra Discourse](https://community.libra.org)
 
 Get the latest updates to our project by signing up to our [newsletter](https://developers.libra.org/newsletter_form).
 
-## Contributing
-
-See the CONTRIBUTING (https://github.com/libra/libra/blob/master/CONTRIBUTING.md) file for how to help out.
-
 ## License
 
 [Apache 2.0](https://github.com/libra/libra/blob/master/LICENSE)
