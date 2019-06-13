@@ -29,7 +29,7 @@ The **client signs transaction** T~5~raw with Alice's private key. The signed tr
 
 ### Assumptions
 
-To describe the lifecycle of transaction T~5~ we will assume that:
+To describe the lifecycle of transaction T~5~, we will assume that:
 
 * Alice and Bob have [accounts](reference/glossary.md#accounts) on the Libra Blockchain.
 * Alice's account has 110 Libra.
@@ -40,7 +40,7 @@ To describe the lifecycle of transaction T~5~ we will assume that:
 
 ## Lifecycle Of The Transaction
 
-In this section, we will describe the lifecycle of transaction T~5~ from being submitted by the client to being committed into the Libra Blockchain.
+In this section, we will describe the lifecycle of transaction T~5~, from being submitted by the client to being committed into the Libra Blockchain.
 
 Where relevant, and following a numbered step in the lifecycle, we have provided a link to the corresponding inter-component interaction(s) of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interaction(s) for each step.
 
@@ -51,7 +51,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **1** - The client submits transaction T~5~ to validator V~1~ whose admission control (AC) component receives the transaction. (Client → AC [AC.1](#client-ac-ac1))
 
-**2** - AC will use the virtual machine (VM) component to perform validation checks such as signature verification, checking if Alice's account has sufficient balance, checking that transaction T~5~ is not being replayed, etc. (AC → VM [AC.2](#ac-vm-ac2), [VM.1](#ac-vm-vm1))
+**2** - AC will use the virtual machine (VM) component to perform validation checks, such as signature verification, checking if Alice's account has sufficient balance, checking that transaction T~5~ is not being replayed, etc. (AC → VM [AC.2](#ac-vm-ac2), [VM.1](#ac-vm-vm1))
 
 **3** - When T~5~ passes the validation checks, AC sends T~5~ to V~1~'s mempool. (AC → Mempool [AC.3](#ac-mempool-ac3), [MP.1](#ac-mempool-mp1))
 
@@ -79,9 +79,9 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ### Committing The Block
 
-**12** - If the block's execution result is agreed upon and signed by a set of validators which have the super-majority of votes, validator V~1~'s execution component reads the result of the block execution from the speculative execution cache and commits all the transactions in the block to persistent storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
+**12** - If the block's execution result is agreed upon and signed by a set of validators that have the super-majority of votes, validator V~1~'s execution component reads the result of the block execution from the speculative execution cache and commits all the transactions in the block to persistent storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
 
-**13** - Alice's account will now have 100 Libra and its sequence number will be 6. If T~5~ is replayed by Bob it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
+**13** - Alice's account will now have 100 Libra and its sequence number will be 6. If T~5~ is replayed by Bob, it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
 
 ## Validator Component Interactions
 
@@ -90,7 +90,7 @@ In the [previous section](#lifecycle-of-a-transaction), we described the typical
 * You would like to get an overall idea of how the system works under the covers.
 * You are interested in eventually contributing to the Libra Core software.
 
-For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (to query for existing information on the blockchain).
+For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (to query for existing information on the blockchain).
 
  Let us look at the core logical components of a validator node:
 
@@ -130,7 +130,7 @@ Once `VM::ValidateTransaction()` returns without errors, AC forwards the transac
 
 ### AC → Storage (AC.4)
 
-When the client performs a read query on the Libra Blockchain, (for example, to get the balance of Alice's account) AC interacts with the storage component directly to obtain the requested information.
+When the client performs a read query on the Libra Blockchain (for example, to get the balance of Alice's account) AC interacts with the storage component directly to obtain the requested information.
 
 ### Admission Control README
 
@@ -169,7 +169,7 @@ When mempool receives a transaction from other validators via shared mempool, me
 
 ### VM README
 
-For implementation details, repository structure, and external API for the virtual machine component refer to the [Virtual Machine README](crates/vm.md).
+For implementation details, repository structure, and external APIs for the virtual machine component, refer to the [Virtual Machine README](crates/vm.md).
 
 ## Mempool
 
