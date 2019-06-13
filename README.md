@@ -5,51 +5,39 @@
 <hr/>
 
 [![CircleCI](https://circleci.com/gh/libra/libra.svg?style=shield)](https://circleci.com/gh/libra/libra)
-[![Crates.io]()]()
 [![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE.md)
 
-Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people. [https://libra.org](https://libra.org)
 
-*Libra Core is currently under heavy development!*
+Libra tagline...
 
-### Table of Contents
+Lots of bullet points about the project.
 
-#### Guides
+[https://libra.org](https://libra.org)
 
-#### Component READMEs
+## Network
 
-#### CLI
-
-#### Technical Papers
-
-### Building and Running this Site Locally
-
-```
-git clone git@github.com:libra/libra.git
-cd libra
-sh 
-```
-
-## Installation
-
-**Installation Requirements**
-- Rust >= z.z
-
-
-#### Installing the latest release
-
-#### Installing from latest master
-
-
-## Getting Started
-
-To get started 
-
+Testnet is live!
 
 ## Contributing
 
-See the CONTRIBUTING (https://github.com/calibra/website/blob/master/CONTRIBUTING.md) file for how to help out.
+Read our [Contrbuting guide][https://developers.libra.org/docs/community/contributing]. Find out what's coming on our [blog](https://developers.libra.org/blog/2019/06/18/The-Path-Forward).
+
+## Getting Started
+
+[Learn about how Libra Core works.](https://developers.libra.org/docs/welcome-to-libra)
+
+[Try out the Libra testnet.](https://developers.libra.org/docs/my-first-transaction)
+
+## Community
+
+Join us on the [Libra Discourse](https://community.libra.org)
+
+Get the latest updates to our project by signing up to our [newsletter](https://developers.libra.org/newsletter_form).
+
+## Contributing
+
+See the CONTRIBUTING (https://github.com/libra/libra/blob/master/CONTRIBUTING.md) file for how to help out.
 
 ## License
 
-Libra is Apache licensed, as found in the LICENSE (https://github.com/calibra/website/blob/master/LICENSE) file.
+[Apache 2.0](https://github.com/libra/libra/blob/master/LICENSE)
