@@ -1,5 +1,5 @@
 ---
-id: state-machine-replication
+id: state-machine-replication-paper
 title: State Machine Replication in the Libra Blockchain
 ---
 

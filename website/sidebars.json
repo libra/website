@@ -1,31 +1,30 @@
 {
   "docs": {
     "Learn About Libra": [
-    	"welcome",
+    	"welcome-to-libra",
     	"libra-protocol",
-    	"move-getting-started",
         "life-of-a-transaction",
         {
             "type": "subcategory",
             "label": "Technical Papers",
             "ids": [
-                "papers/the-libra-blockchain",
-                "papers/the-move-language",
-                "papers/state-machine-replication"
+                "the-libra-blockchain-paper",
+                "move-paper",
+                "state-machine-replication-paper"
             ]
         }
     ],
-    "Try Libra": [
-    	"installation",
-    	"my-first-transaction"
+    "Try Libra Core": [
+    	"my-first-transaction",
+    	"move-overview"
     ],
     "Community" : [
-    	"community/libra-open-source",
+    	"libra-open-source-paper",
     	"community/governance",
         "community/contributing",
         "community/coding-guidelines"
     ],
-    "Libra Code Base": [
+    "Libra Codebase": [
         "libra-core-overview",
     {
         "type": "subcategory",
@@ -43,9 +42,7 @@
             "crates/storage",
             "crates/vm"
         ]
-      },
-
-        "reference/rustdoc"
+      }
 	],
     "Reference": [
         "reference/libra-cli",

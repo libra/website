@@ -41,19 +41,23 @@
                 <tspan x="51.7045898" y="116">Control</tspan>
             </text>
         </g>
-        <text id="A" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="259.4729" y="227">A</tspan>
+        <text id="AC.1" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="251.520996" y="227">AC.</tspan>
+            <tspan x="291.575195" y="227">1</tspan>
         </text>
-        <text id="B" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="259.4729" y="361">B</tspan>
+        <text id="AC.2" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="231.520996" y="361">AC.</tspan>
+            <tspan x="271.575195" y="361">2</tspan>
         </text>
-        <text id="C" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="513.4729" y="222">C</tspan>
+        <text id="AC.3" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="485.520996" y="222">AC.</tspan>
+            <tspan x="525.575195" y="222">3</tspan>
         </text>
-        <text id="D" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="513.4729" y="361">D</tspan>
+        <text id="AC.4" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="505.520996" y="361">AC.</tspan>
+            <tspan x="545.575195" y="361">4</tspan>
         </text>
-        <text id="Admission-Control" font-family="Helvetica-Bold, Helvetica" font-size="40" font-weight="bold" fill="#FFFFFF">
+        <text id="Admission-Control" font-family="Helvetica" font-size="40" font-weight="normal" fill="#FFFFFF">
             <tspan x="30" y="61">Admission Control</tspan>
         </text>
     </g>

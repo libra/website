@@ -67,9 +67,9 @@ class HomeSplash extends React.Component {
           <Logo img_src={baseUrl + 'img/libra-header-logo-white.png'} />
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('welcome')}>Welcome to the Developer Site</Button>
-            <Button href={docUrl('papers/the-libra-blockchain.html')}>Libra Blockchain White Paper</Button>
-            <Button href={docUrl('move-getting-started.html')}>Getting Started With Move</Button>
+            <Button href={docUrl('welcome-to-libra')}>Welcome to the Developer Site</Button>
+            <Button href={docUrl('the-libra-blockchain-paper.html')}>Libra Blockchain Technical Paper</Button>
+            <Button href={docUrl('move-overview.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -134,7 +134,7 @@ class Index extends React.Component {
         id="quickstart"
         style={{textAlign: 'center'}}>
         <h2>Try Libra</h2>
-        <p>Currently available for MacOS and Linux.</p>
+        <p>Currently available for macOS and Linux.</p>
         <Container>
           <ol>
             <li>
@@ -145,7 +145,7 @@ cd libra`}</MarkdownBlock>
             </li>
             <li>
               <h4>Install dependencies:</h4>
-              <MarkdownBlock>{bash`setup_scripts/dev_setup_mac.sh`}</MarkdownBlock>
+              <MarkdownBlock>{bash`setup_scripts/dev_setup.sh`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run CLI:</h4>
@@ -157,6 +157,9 @@ cd libra`}</MarkdownBlock>
             </li>
           </ol>
         </Container>
+        <div>
+          <p>Spot a security or privacy issue? Please email <a href="mailto:security@libra.org">security@libra.org</a>.</p>
+        </div>
       </div>
     );
 

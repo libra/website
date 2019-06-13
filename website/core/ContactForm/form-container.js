@@ -1,9 +1,8 @@
 /**
- * A container for the partner and newsletter form. It adds the background
- * images for the pages.
- *
- * TODO: Figure out how to import the CompLibrary from here
+ * Copyright (c) The Libra Core Contributors
+ * SPDX-License-Identifier: Apache-2.0
  */
+
 const React = require('react');
 
 const FieldSet = require(`${process.cwd()}/core/ContactForm/fieldset.js`);

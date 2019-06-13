@@ -1,5 +1,5 @@
 ---
-id: the-move-language
+id: move-paper
 title: Move: a Language for Managing Access to Scarce Resources
 ---
 

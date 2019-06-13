@@ -1,6 +1,6 @@
 ---
 name: "\U0001F41B Bug report"
-about: Create a bug report to help us improve Libra
+about: Create a bug report to help improve the Libra Website
 title: "[Bug]"
 labels: bug
 assignees: ''
@@ -9,19 +9,17 @@ assignees: ''
 
 # 🐛 Bug
 
+If you're looking to report an issue with the Libra Core project go to https://github.com/libra/libra
+
 <!-- A clear and concise description of what the bug is.
 
-If you've uncovered a security issue, please follow our Security Issue Report protocol -->
+If you've uncovered a security issue, please email security@libra.org -->
 
-## To reproduce
+## Steps to reproduce
 
-** Code snippet to reproduce **
-```rust
-# Your code goes here
-# Please make sure it does not require any external dependencies
-```
+<!-- Please include all steps to reproduce the issue -->
 
-** Stack trace/error message **
+** Error message or problem **
 ```
 // Paste the output here
 ```
@@ -33,11 +31,9 @@ If you've uncovered a security issue, please follow our Security Issue Report pr
 ## System information
 
 **Please complete the following information:**
-- <!-- Libra Version -->
-- <!-- Rust Version -->
-- <!-- Computer OS -->
+- <!-- Browser type and version -->
 
 
 ## Additional context
 
-Add any other context about the problem here.
+<!-- Add any other context about the problem here. -->

@@ -101,6 +101,9 @@
         <text id="2" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
             <tspan x="759.048096" y="626">2</tspan>
         </text>
+        <text id="2" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
+            <tspan x="503.048096" y="393">2</tspan>
+        </text>
         <text id="12" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1.29999995" fill="#15112C">
             <tspan x="849.396191" y="637">12</tspan>
         </text>

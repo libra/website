@@ -8,18 +8,27 @@
 [![Crates.io]()]()
 [![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE.md)
 
-Libra is a simple, borderless global currency and financial ecosystem designed to empower billions of people.
+Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people. [https://libra.org](https://libra.org)
 
-*Libra is currently under heavy development!*
+*Libra Core is currently under heavy development!*
 
-#### Why Libra
+### Table of Contents
 
+#### Guides
 
+#### Component READMEs
 
-#### Target Audience
+#### CLI
 
+#### Technical Papers
 
+### Building and Running this Site Locally
 
+```
+git clone git@github.com:libra/libra.git
+cd libra
+sh 
+```
 
 ## Installation
 
@@ -27,23 +36,20 @@ Libra is a simple, borderless global currency and financial ecosystem designed t
 - Rust >= z.z
 
 
-##### Installing the latest release
+#### Installing the latest release
 
-##### Installing from latest master
-
+#### Installing from latest master
 
 
 ## Getting Started
 
-## Folder Structure
-
-Cargo.tom
+To get started 
 
 
 ## Contributing
-See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
 
+See the CONTRIBUTING (https://github.com/calibra/website/blob/master/CONTRIBUTING.md) file for how to help out.
 
 ## License
 
-Libra is licensed under the Apache 2 license as found in the [LICENSE](LICENSE) file.
+Libra is Apache licensed, as found in the LICENSE (https://github.com/calibra/website/blob/master/LICENSE) file.

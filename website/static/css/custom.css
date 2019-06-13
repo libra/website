@@ -78,7 +78,7 @@ nav {
 }
 
 div.productShowcaseSection {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .productShowcaseSection > h2 {
@@ -92,6 +92,8 @@ div.productShowcaseSection {
 .productShowcaseSection h4 {
   font-size: 1.5rem;
   color: #39298C !important;
+  padding-top: 0em;
+  margin-top: 0em;
 }
 
 .productShowcaseSection p {
@@ -99,7 +101,7 @@ div.productShowcaseSection {
 }
 
 .productShowcaseSection div.container {
-  padding: 40px 0px;
+  padding: 0px 0px;
 }
 
 .productShowcaseSection div.blockImage {
@@ -172,8 +174,16 @@ sub {
   color: #222222;
 }
 
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle { 
+  .color: #24292e;
+}
+
+.onPageNav a {
+  color: #24292e;
+}
+
 .toc .toggleNav ul li a {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .toc .toggleNav ul li a:hover {
@@ -189,7 +199,7 @@ sub {
 }
 
 .mainContainer {
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .mainContainer .wrapper .post .postHeaderTitle {
@@ -204,7 +214,7 @@ sub {
 }
 
 .mainContainer .wrapper .post {
-  color: #6c6c6c;
+  color: #24292e;
 }
 
 .mainContainer .wrapper .post strong {

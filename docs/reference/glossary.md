@@ -92,10 +92,10 @@ A **client** is a piece of software that has the capability to interact with the
 
 ### Consensus Protocol
 
-* A** consensus protocol** is collectively executed by n validator nodes, to accept or reject a transaction, and agree on the ordering of transactions and [execution results](#execution-results).
+* A **consensus protocol** is collectively executed by n validator nodes, to accept or reject a transaction, and agree on the ordering of transactions and [execution results](#execution-results).
 * See [BFT](#byzantine-fault-tolerance-bft)
 
-### Custodial Wallet**
+### Custodial Wallet
 
 * In a **custodial wallet** model, the  wallet product takes custody of customers' funds and private keys. 
 
@@ -153,7 +153,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Faucet
 
-* **Faucet** is the way to create Libra currency with no real world value, only on our testnet*.*
+* **Faucet** is the way to create Libra currency with no real world value, only on our testnet.
 * The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet.
 * You can use faucet by sending a request to create coins and transfer them into a given account on your behalf.
 
@@ -212,7 +212,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The Association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
 * The Association is created by the validator nodes who will run on the Libra Network.
-* Refer to the [whitepaper]() for the mission, vision, and purview of the Libra Association.
+* Refer to the [whitepaper](https://libra.org/en-us/whitepaper) for the mission, vision, and purview of the Libra Association.
 
 ### Libra Association Council
 
@@ -296,7 +296,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * **Move** is a new programming language that implements all the transactions on the Libra Blockchain. 
 * It has two different kinds of code - [transaction scripts](#transaction-script) and [Move modules](#move-module).
-* For further information on “Move” refer to the [Move Technical Paper]()
+* For further information on “Move” refer to the [Move Technical Paper](https://developers.libra.org/docs/move-paper)
 
 ### Move Bytecode
 

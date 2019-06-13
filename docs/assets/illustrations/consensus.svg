@@ -26,8 +26,9 @@
                 <tspan x="29.4633789" y="100">Consensus</tspan>
             </text>
         </g>
-        <text id="A" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" fill="#15112C">
-            <tspan x="254.4729" y="315">A</tspan>
+        <text id="CO.1" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="241.825195" y="315">CO.</tspan>
+            <tspan x="283.270996" y="315">1</tspan>
         </text>
         <text id="Consensus" font-family="Helvetica" font-size="40" font-weight="normal" fill="#FFFFFF">
             <tspan x="29" y="60">Consensus</tspan>
@@ -52,12 +53,14 @@
         <text id="Other-Validators" font-family="Helvetica" font-size="25" font-weight="normal" fill="#FFFFFF">
             <tspan x="446.101807" y="96">Other Validators</tspan>
         </text>
-        <text id="C-&amp;-D" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" line-spacing="30" letter-spacing="-2" fill="#15112C">
-            <tspan x="497.4729" y="317">C &amp; </tspan>
-            <tspan x="539.4729" y="317">D</tspan>
+        <text id="CO.3-&amp;-CO.4" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" line-spacing="30" letter-spacing="-1" fill="#15112C">
+            <tspan x="487.825195" y="292">CO.3 &amp;</tspan>
+            <tspan x="498.825195" y="325">CO.</tspan>
+            <tspan x="540.270996" y="325">4</tspan>
         </text>
-        <text id="B-&amp;-C" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" line-spacing="30" letter-spacing="-2" fill="#15112C">
-            <tspan x="323.4729" y="209">B &amp; C</tspan>
+        <text id="CO.2-&amp;-CO.4" font-family="Helvetica-Bold, Helvetica" font-size="25" font-weight="bold" letter-spacing="-1" fill="#15112C">
+            <tspan x="413.17749" y="210">CO.2 &amp; CO.</tspan>
+            <tspan x="537.918701" y="210">4</tspan>
         </text>
     </g>
 </svg>
