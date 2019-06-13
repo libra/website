@@ -12,7 +12,7 @@ cargo run -p client --bin client -- [-a host] [-p port] [-f accounts] [-d debug_
 
 ### Description
 
-Libra CLI (client) is the user interface (interactive shell) to interact with the Libra Blockchain. It provides basic commands for a user to create accounts, mint coins, perform transfers, and query the blockchain. It can be used to interact with the testnet, a local Libra Blockchain, or any other remote blockchain chain by specifying a validator host.
+Libra CLI (client) is the command line user interface (interactive shell) for interacting with the Libra Blockchain. It provides basic commands for a user to create accounts, mint coins, perform transfers, and query the blockchain. It can be used to interact with the testnet, a local Libra Blockchain, or any other remote blockchain chain by specifying a validator host.
 
 The following options are available:
 
