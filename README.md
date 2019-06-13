@@ -15,8 +15,11 @@ Libra's mission is to enable a simple global currency and financial infrastructu
 ### Table of Contents
 
 #### Guides
+
 #### Component READMEs
+
 #### CLI
+
 #### Technical Papers
 
 ### Building and Running this Site Locally

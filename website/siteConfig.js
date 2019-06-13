@@ -36,7 +36,7 @@ const siteConfig = {
 
   // links that will be used in the header navigation bar
   headerLinks: [
-    {doc: 'welcome', label: 'Documentation'},
+    {doc: 'welcome-to-libra', label: 'Documentation'},
     {href: 'https://libra.trydiscourse.com', label: 'Community'},
     {blog: true, label: "Blog" },
     {href: 'https://libra.org', label: 'libra.org'},

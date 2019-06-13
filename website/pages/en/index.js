@@ -67,8 +67,8 @@ class HomeSplash extends React.Component {
           <Logo img_src={baseUrl + 'img/libra-header-logo-white.png'} />
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href={docUrl('welcome')}>Welcome to the Developer Site</Button>
-            <Button href={docUrl('papers/the-libra-blockchain-paper.html')}>Libra Blockchain Technical Paper</Button>
+            <Button href={docUrl('welcome-to-libra')}>Welcome to the Developer Site</Button>
+            <Button href={docUrl('the-libra-blockchain-paper.html')}>Libra Blockchain Technical Paper</Button>
             <Button href={docUrl('move-overview.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
