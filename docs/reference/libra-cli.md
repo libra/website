@@ -100,7 +100,7 @@ Enter major command only will show the help information under this major command
 Account creation provided by the CLI generates a local keypair, but nothing is created on the blockchain.  To create an account on the blockchain:
 
 * Transfer coins to the address you wish to create. If the recipient account does not exist, the receiver account will be created first and then coins will be transferred. The sender pays for both account creation and transfer.
-* Send a mint transaction to mint coins to an account. The account will be created first and coins will then be minted. Unlike other transactions, a non-existing account itself can request a mint transaction.  For test net, there is NO explicit limit for how many coins an account can mint. It will be utilized as the method for users to receive coins to being experimenting with the testnet.
+* Send a mint transaction to mint coins to an account. The account will be created first and the coins wil be minted later. Unlike other transactions, a non-existent account itself can request a mint transaction.  For the testnet, there is no explicit limit on how many coins an account can mint. It will be utilized as the method for users to receive coins to being experimenting with the testnet.
 
 
 
