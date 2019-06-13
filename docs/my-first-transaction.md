@@ -304,7 +304,7 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 ### Check The Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
 ```bash
 libra% query balance 0
@@ -334,7 +334,7 @@ If you are experiencing build failures, try to remove the cargo lock file from t
 
 If your client did not connect to the testnet:
 
-* Check your Internet connection.
+* Check your internet connection.
 * Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
@@ -356,7 +356,7 @@ If your client did not connect to the testnet:
 
 ### The Transfer Command
 
-If the testnet validator node (your client was connected to) is unavailable, or your connection to testnet has timed-out, you will see this error:
+If the testnet validator node (your client was connected to) is unavailable or your connection to testnet has timed-out, you will see this error:
 
 ```bash
 libra% transfer 0 1 10
@@ -368,7 +368,7 @@ To troubleshoot transfer errors:
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-* You can try quitting the client using `quit` or `q!`  and run the following command again to connect to the testnet:
+* You can try quitting the client using `quit` or `q!`,  and run the following command again to connect to the testnet:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
 ## Sample Outputs
@@ -430,14 +430,14 @@ Latest account state is:
 
 ## Run A Local Validator Node
 
-To start a validator node locally on your computer that creates its own blockchain network (not connected to the Libra testnet), change to the libra folder of your Libra Core installation and run libra_swarm as instructed below:
+To start a validator node locally on your computer that creates its own blockchain network (not connected to the Libra testnet), change to the libra folder of your Libra Core installation, and run libra_swarm as instructed below:
 
 ```bash
 $ cd ~/libra
 $ cargo run -p libra_swarm -- -s
 ```
 
-`-p libra_swarm` - causes cargo to run the libra_swarm package which starts a local blockchain consisting of one node.
+`-p libra_swarm` - causes cargo to run the libra_swarm package, which starts a local blockchain consisting of one node.
 
 `-s` option starts a local client to connect to the local blockchain.
 
@@ -451,8 +451,8 @@ The cargo run command may take a while to run. If the execution of this command 
 
 Once you have executed your first transaction, you may refer to the document [Life of a Transaction](life-of-a-transaction.md) for:
 
-* A look under the hood at the lifecycle of a transaction from submission to execution.
-* An understanding of the interactions between each logical component of a Libra validator, as transactions get submitted and executed in the Libra ecosystem.
+* A look "under the hood" at the lifecycle of a transaction from submission to execution.
+* An understanding of the interactions between each logical component of a Libra validator as transactions get submitted and executed in the Libra ecosystem.
 
 ## Reference
 
