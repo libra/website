@@ -132,6 +132,3 @@ For information on interactions of each validator component with other component
 * [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
-
-> **Note**: In this document the term "state" or "ledger state" refers to the global state of the distributed-database that persists the Libra Blockchain. “User” refers to an end-user who uses a Libra client to interact with the blockchain. “Blockchain” or “blockchain” refers to the Libra Blockchain.
-
