@@ -27,13 +27,13 @@ The options for the `Cargo run` command are:
 
 ### Commands
 
-The CLI commands are in the following format:
+The CLI commands are in this format:
 
 ```rust
 major_command sub_command [options]
 ```
 
-Entering only the major command will show the help information for that major command. Major commands can be one of the following:
+If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:
 
 * **account** | **a**, account related operations. Sub commands include:
     * **create** | **c**,  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
