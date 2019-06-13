@@ -13,12 +13,12 @@ Libra is built on a secure, scalable, and reliable blockchain. It is backed by a
 
 _"The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability."_&mdash; Libra White Paper
 
-The Libra currency is built on the “Libra Blockchain.” This site documents Libra Core, an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
+The Libra currency is built on the Libra Blockchain. This site documents Libra Core, an open-source implementation of the Libra protocol, which powers this new Blockchain. The documentation discusses:
 * How to try the testnet, a demonstration of this new system. 
 * Where to learn about new technology such as the Libra protocol, the Move Language, and LibraBFT.
 * How to be part of the community built around this new ecosystem.
 
-## Move - A New Blockchain Programming Language
+## Move &mdash; A New Blockchain Programming Language
 
 “Move” is a new programming language for implementing custom transaction logic and "smart contracts" on the Libra Blockchain. Because of Libra's goal to serve billions of people one day, Move is designed with safety and security as the highest priorities. 
 
