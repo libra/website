@@ -68,7 +68,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href={docUrl('welcome')}>Welcome to the Developer Site</Button>
-            <Button href={docUrl('papers/the-libra-blockchain.html')}>Libra Blockchain White Paper</Button>
+            <Button href={docUrl('papers/the-libra-blockchain.html')}>Libra Blockchain Technical Paper</Button>
             <Button href={docUrl('move-getting-started.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
