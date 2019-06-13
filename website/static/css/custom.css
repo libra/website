@@ -9,6 +9,13 @@ html body {
   font-size: 16px;
 }
 
+small.figure {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10pt;
+  margin: 0 auto;
+}
+
 body { padding: 0px !important; }
 nav { 
   border: 0px !important; 
