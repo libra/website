@@ -1,7 +1,5 @@
 <!--
 Thank you for sending a PR. We appreciate you spending time to help improve the Libra project.
-
-The project is undergoing daily changes. Pull Requests will be reviewed and responded to as time permits.
 -->
 
 ## Motivation

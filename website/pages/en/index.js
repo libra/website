@@ -134,7 +134,7 @@ class Index extends React.Component {
         id="quickstart"
         style={{textAlign: 'center'}}>
         <h2>Try Libra</h2>
-        <p>Currently available for MacOS and Linux.</p>
+        <p>Currently available for macOS and Linux.</p>
         <Container>
           <ol>
             <li>
@@ -158,7 +158,7 @@ cd libra`}</MarkdownBlock>
           </ol>
         </Container>
         <div>
-          <p>Spot a security or privacy issue? Please email <img src={baseUrl + "img/securityemail.png"} className="security" />.</p>
+          <p>Spot a security or privacy issue? Please email <a href="mailto:security@libra.org">security@libra.org</a>.</p>
         </div>
       </div>
     );

@@ -3,9 +3,9 @@ author: Libra Engineering Team
 title: The Path Forward
 ---
 
-Today we are announcing the **Libra testnet**, a live demonstration of an early prototype of the Libra Blockchain software  — **Libra Core** — that will power the **Libra cryptocurrency.  *****_[#NEEDS LINK]_*** 
+Today we are announcing the **Libra testnet**, a live demonstration of an early prototype of the Libra Blockchain software  — **Libra Core** — that will power the [Libra cryptocurrency](https://libra.org/en-us/whitepaper). 
 
-**Libra Core **is the open-source implementation of the** Libra protocol** *[#NEEDS LINK]* (the specification of how transactions are submitted, ordered, executed, and recorded within the Libra ecosystem) that is published by the** Libra Association _*[#NEEDS LINK]*_**. This is the first implementation of the Libra protocol and the **Move language** **_*[#NEEDS LINK]*_**, and it includes both the validator and client code. 
+**Libra Core** is the open-source implementation of the **Libra protocol** (the specification of how transactions are submitted, ordered, executed, and recorded within the Libra ecosystem) that is published by the [Libra Association](https://libra.org/en-us/association-council-principles). This is the first implementation of the Libra protocol and the [Move language](https://developers.libra.org/docs/move-overview), and it includes both the validator and client code. 
 
 ### Design Philosophy
 

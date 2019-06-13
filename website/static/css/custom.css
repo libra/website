@@ -92,6 +92,8 @@ div.productShowcaseSection {
 .productShowcaseSection h4 {
   font-size: 1.5rem;
   color: #39298C !important;
+  padding-top: 0em;
+  margin-top: 0em;
 }
 
 .productShowcaseSection p {
@@ -99,7 +101,7 @@ div.productShowcaseSection {
 }
 
 .productShowcaseSection div.container {
-  padding: 40px 0px;
+  padding: 0px 0px;
 }
 
 .productShowcaseSection div.blockImage {
@@ -193,7 +195,7 @@ sub {
 }
 
 .mainContainer {
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .mainContainer .wrapper .post .postHeaderTitle {
