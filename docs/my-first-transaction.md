@@ -133,7 +133,7 @@ libra%
 
 Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair.
 
-To create Alice's account enter this command:
+To create Alice's account, enter this command:
 
 `libra% account create`
 
@@ -159,16 +159,14 @@ Sample output on success:
 Created account #1 address 8cb38077e0af0ff77c0da7f6ea1acc9585c98c40443b5ea2ffaa8f1507ba9608
 ```
 
-#1 - is the index for Bob's account and the hex number is the address of Bob's account.
+#1 is the index for Bob's account and the hex string is the address of Bob's account.
 For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (optional) - List Accounts
 
-To list the accounts you have created
-Enter this command:
+To list the accounts you have created, enter this command:
 
 `libra% account list`
-
 
 Sample output on success:
 ```bash
@@ -176,7 +174,6 @@ User account index: 0, address: 578560b3d71b86fab5f434a83b51bab1b753dde4c995ef74
 User account index: 1, address: 277abee863eae6d266cc3a63827379ea6f4c1191ffd8fcc3286a2ba203495f24, sequence number: 0
 Faucet account address: 0000000000000000000000000000000000000000000000000000000000000000, sequence_number: 5
 ```
-
 Faucet account address is the address of the Faucet account used for minting Libra coins. To learn more about the Faucet service refer to [Add Libra Coins to Alice's and Bob's Accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary.md#sequence-number).
 
 ## Add Libra Coins to Alice's and Bob's Accounts
@@ -185,9 +182,7 @@ Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a 
 
 ### Step 1 - Add 110 Libra to Alice's account
 
-To mint Libra and add to Alice's account
-
-Enter this command:
+To mint Libra and add to Alice's account, enter this command:
 
 `libra% account mint 0 110`
 
@@ -202,16 +197,14 @@ Sample output on success:
 >> Minting coins
 Mint request submitted
 ```
-
 Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully completed. Later, we will query the account balance to confirm if minting was successful.
+
 If your account mint command did not submit your request successfully, refer to
-[Troubleshooting - minting and adding coins.](#minting-and-adding-money-to-account)
+[Troubleshooting](#minting-and-adding-money-to-account)
 
 ### Step 2 - Add 52 Libra to BOB's account
 
-To mint Libra and add to Bob's account
-
-Enter this command:
+To mint Libra and add to Bob's account, enter this command:
 
 `libra% account mint 1 52`
 
@@ -226,13 +219,11 @@ Sample output on success:
 Mint request submitted
 ```
 If your account mint command did not submit your request successfully, refer to
-[Troubleshoot - minting and adding coins.](#minting-and-adding-money-to-account)
+[Troubleshooting](#minting-and-adding-money-to-account)
 
 ### Step 3 - Check the balance
 
-To check the balance in Alice's account:
-
-Enter this command:
+To check the balance in Alice's account, enter this command:
 
 `libra% query balance 0`
 
@@ -240,11 +231,12 @@ Sample output on success:
 
 `Balance is: 110`
 
-To check the balance in Bob's account:
+To check the balance in Bob's account, enter this command:
 
-Enter this command:
 `libra% query balance 1`
+
 Sample output on success:
+
 `Balance is: 52`
 
 ## Submit a Transaction
@@ -266,9 +258,7 @@ In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0
 
 ### Transfer Money
 
-To submit a transaction to transfer 10 Libra from Alice's account to Bob's account
-
-Enter this command:
+To submit a transaction to transfer 10 Libra from Alice's account to Bob's account, enter this command:
 
 `libra% transfer 0 1 10`
 
@@ -287,11 +277,11 @@ To query for transaction status, run:
 
 `query txn_acc_seq 0 0 true`
 
-You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [the Sample outputs - query txn_acc_seq](#query-txn_acc_seq).
+You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-txn_acc_seq).
 
-You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample outputs - query account_state](#query-account_state) section
+You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-account_state) section
 
-To troubleshoot the transfer command refer to [Troubleshooting - transfer command](#the-transfer-command).
+To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-command).
 
 The Blocking Transfer Command: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
@@ -314,7 +304,7 @@ The sequence number of 1 for Alice's account (index 0) indicates that one transa
 
 ### Check The Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
 
 ```bash
 libra% query balance 0
@@ -344,7 +334,7 @@ If you are experiencing build failures, try to remove the cargo lock file from t
 
 If your client did not connect to the testnet:
 
-* Check your Internet connection.
+* Check your internet connection.
 * Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
@@ -366,7 +356,7 @@ If your client did not connect to the testnet:
 
 ### The Transfer Command
 
-If the testnet validator node (your client was connected to) is unavailable, or your connection to testnet has timed-out, you will see this error:
+If the testnet validator node (your client was connected to) is unavailable or your connection to testnet has timed-out, you will see this error:
 
 ```bash
 libra% transfer 0 1 10
@@ -378,7 +368,7 @@ To troubleshoot transfer errors:
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-* You can try quitting the client using `quit` or `q!`  and run the following command again to connect to the testnet:
+* You can try quitting the client using `quit` or `q!`,  and run the following command again to connect to the testnet:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
 ## Sample Outputs
@@ -440,14 +430,14 @@ Latest account state is:
 
 ## Run A Local Validator Node
 
-To start a validator node locally on your computer that creates its own blockchain network (not connected to the Libra testnet), change to the libra folder of your Libra Core installation and run libra_swarm as instructed below:
+To start a validator node locally on your computer that creates its own blockchain network (not connected to the Libra testnet), change to the libra folder of your Libra Core installation, and run libra_swarm as instructed below:
 
 ```bash
 $ cd ~/libra
 $ cargo run -p libra_swarm -- -s
 ```
 
-`-p libra_swarm` - causes cargo to run the libra_swarm package which starts a local blockchain consisting of one node.
+`-p libra_swarm` - causes cargo to run the libra_swarm package, which starts a local blockchain consisting of one node.
 
 `-s` option starts a local client to connect to the local blockchain.
 
@@ -461,8 +451,8 @@ The cargo run command may take a while to run. If the execution of this command 
 
 Once you have executed your first transaction, you may refer to the document [Life of a Transaction](life-of-a-transaction.md) for:
 
-* A look under the hood at the lifecycle of a transaction from submission to execution.
-* An understanding of the interactions between each logical component of a Libra validator, as transactions get submitted and executed in the Libra ecosystem.
+* A look "under the hood" at the lifecycle of a transaction from submission to execution.
+* An understanding of the interactions between each logical component of a Libra validator as transactions get submitted and executed in the Libra ecosystem.
 
 ## Reference
 
