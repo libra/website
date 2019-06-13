@@ -33,17 +33,17 @@ The Libra protocol uses the [Move language](move-overview.md) to implement the d
 
 Clients of the Libra Blockchain submit transactions to request updates to the ledger state. A signed transaction on the  blockchain contains:
 
-* **Sender address** - Account address of the sender of the transaction.
-* **Sender public key** - The public key that corresponds to the private key used to sign the transaction.
-* **Program**  - The program is comprised of the following:
+* **Sender address** &mdash; Account address of the sender of the transaction.
+* **Sender public key** &mdash; The public key that corresponds to the private key used to sign the transaction.
+* **Program** &mdash; The program is comprised of the following:
     * A Move bytecode transaction script.
     * An optional list of inputs to the script. For a peer-to-peer transaction, the inputs will contain the information about the recipient and the amount transferred to the recipient.
     * An optional list of Move bytecode modules to publish. 
-* **Gas price** (in microlibra/gas units) - The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas) to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
-* **Maximum gas amount** - The maximum units of gas the transaction is allowed to consume.
-* **Sequence number** - An unsigned integer that must be equal to the sequence number stored under the sender's account.
-* **Expiration time** - The time after which the transaction ceases to be valid.
-* **Signature** - The digital signature of the sender.
+* **Gas price** (in microlibra/gas units) &mdash; The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas) to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
+* **Maximum gas amount** &mdash; The maximum units of gas the transaction is allowed to consume.
+* **Sequence number** &mdash; An unsigned integer that must be equal to the sequence number stored under the sender's account.
+* **Expiration time** &mdash; The time after which the transaction ceases to be valid.
+* **Signature** &mdash; The digital signature of the sender.
 
 The transaction script is an arbitrary program that encodes the logic of a transaction and interacts with resources published in the distributed database of the Libra blockchain. 
 
@@ -126,9 +126,9 @@ For information on interactions of each validator component with other component
 ## Reference
 
 * [Welcome Page](welcome-to-libra.md).
-* [My First Transaction](my-first-transaction.md) - Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
-* [Getting Started with Move](move-overview.md) - Introduces you to a new blockchain programming language called Move.
-* [Life of a Transaction](life-of-a-transaction.md) - Provides a look at what happens "under the hood" when a transaction is submitted and executed.
-* [Libra Core Overview](libra-core-overview.md) - Provides the concept and implementation details of the Libra Core components through READMEs.
-* [CLI Guide](reference/libra-cli.md) - Lists the commands (and their usage) of the Libra CLI client.
+* [My First Transaction](my-first-transaction.md) &mdash; Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
+* [Getting Started with Move](move-overview.md) &mdash; Introduces you to a new blockchain programming language called Move.
+* [Life of a Transaction](life-of-a-transaction.md) &mdash; Provides a look at what happens "under the hood" when a transaction is submitted and executed.
+* [Libra Core Overview](libra-core-overview.md) &mdash; Provides the concept and implementation details of the Libra Core components through READMEs.
+* [CLI Guide](reference/libra-cli.md) &mdash; Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) - Provides a quick reference to Libra terminology.
