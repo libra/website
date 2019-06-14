@@ -362,9 +362,11 @@ To troubleshoot transfer errors:
 * You can try quitting the client using `quit` or `q!`,  and run the following command again to connect to the testnet:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
-## Sample Outputs
+## Sample Outputs of Additional Query Commands
 
-### Query txn_acc_seq
+### Query Transaction by Account and Sequence Number
+
+This example will query for a single transaction's details using the account and sequence number.
 
 ```bash
 libra% query txn_acc_seq 0 0 true
@@ -397,7 +399,70 @@ ContractEvent { access_path: AccessPath { address: 8337aac709a41fe6be03cad8878a0
 
 Note that the transaction amount is shown in microlibra.
 
-### Query account_state
+### Query Events
+
+In the following example, we will query for "sent" events from account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return "limit" events.
+
+```bash
+libra% query event 0 sent 0 true 10
+>> Getting events by account and event type.
+EventWithProof {
+  transaction_version: 3,
+  event_index: 0,
+  event: ContractEvent { access_path: AccessPath { address: e7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/sent_events_count/" } , index: 0, event_data: AccountEvent { account: 46efbad798a739c088e0e98dd9d592c27c7eb45ba1f8ccbdfc00bd4d7f2947f3, amount: 10000000 } },
+  proof: EventProof { ledger_info_to_transaction_info_proof: AccumulatorProof { siblings: [HashValue(62570ae9a994bcb20c03c055667a4966fa50d0f17867dd5819465072fd2c58ba), HashValue(cce2cf325714511e7d04fa5b48babacd5af943198e6c1ac3bdd39c53c87cb84c)] }, transaction_info: TransactionInfo { signed_transaction_hash: HashValue(69bed01473e0a64140d96e46f594bc4b463e88e244b694e962b7e19fde17f30d), state_root_hash: HashValue(5809605d5eed94c73e57f615190c165b11c5e26873012285cc6b131e0817c430), event_root_hash: HashValue(645df3dee8f53a0d018449392b8e9da814d258da7346cf64cd96824f914e68f9), gas_used: 0 }, transaction_info_to_event_proof: AccumulatorProof { siblings: [HashValue(5d0e2ebf0952f0989cb5b38b2a9b52a09e8d804e893cb99bf9fa2c74ab304bb1)] } }
+}
+Last event state: Some(
+    AccountStateWithProof {
+        version: 3,
+        blob: Some(
+            AccountStateBlob {
+             Raw: 0x010000002100000001217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc974400000020000000e7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b00e1f50500000000000000000000000001000000000000000100000000000000
+             Decoded: Ok(
+                AccountResource {
+                    balance: 100000000,
+                    sequence_number: 1,
+                    authentication_key: 0xe7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b,
+                    sent_events_count: 1,
+                    received_events_count: 0,
+                },
+            )
+             },
+        ),
+        proof: AccountStateProof {
+            ledger_info_to_transaction_info_proof: AccumulatorProof {
+                siblings: [
+                    HashValue(62570ae9a994bcb20c03c055667a4966fa50d0f17867dd5819465072fd2c58ba),
+                    HashValue(cce2cf325714511e7d04fa5b48babacd5af943198e6c1ac3bdd39c53c87cb84c),
+                ],
+            },
+            transaction_info: TransactionInfo {
+                signed_transaction_hash: HashValue(69bed01473e0a64140d96e46f594bc4b463e88e244b694e962b7e19fde17f30d),
+                state_root_hash: HashValue(5809605d5eed94c73e57f615190c165b11c5e26873012285cc6b131e0817c430),
+                event_root_hash: HashValue(645df3dee8f53a0d018449392b8e9da814d258da7346cf64cd96824f914e68f9),
+                gas_used: 0,
+            },
+            transaction_info_to_account_proof: SparseMerkleProof {
+                leaf: Some(
+                    (
+                        HashValue(c0fbd63b0ae4abfe57c8f24f912f164ba0537741e948a65f00d3fae0f9373981),
+                        HashValue(fc45057fd64606c7ca40256b48fbe486660930bfef1a9e941cafcae380c25871),
+                    ),
+                ),
+                siblings: [
+                    HashValue(4136803b3ba779bb2c1daae7360f3f839e6fef16ae742590a6698b350a5fc376),
+                    HashValue(5350415253455f4d45524b4c455f504c414345484f4c4445525f484153480000),
+                    HashValue(a9a6bda22dd6ee78ddd3a42da152b9bd39797b7da738e9d6023f407741810378),
+                ],
+            },
+        },
+    },
+)
+```
+
+### Query Account State
+
+In this example, we will query for the state of a single account.
 
 ```bash
 >> Getting latest account state
