@@ -6,7 +6,7 @@ title: Contribution Guide
 Our goal is to make contributing to the Libra project easy and transparent.
 
 <blockquote class="block_note">
-The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the [Discourse forum]() to ensure that they fit into the project roadmap.
+The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the Discourse forum to ensure that they fit into the project roadmap.
 </blockquote>
 
 ## Contributing to Libra Core
@@ -21,15 +21,13 @@ cargo test
 
 ## Our Development Process
 
-#### Code Style, Hints, and Testing
-
 Refer to our [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines) for detailed guidance about how to contribute to the project.
 
-#### Documentation
+## Documentation
 
-Libra's website is also open source (the
-code can be found in this [repository](https://github.com/libra/libra.github.io/)).
-It is built using [Docusaurus](https://docusaurus.io/):
+Libra's developer site is open source. You can find the 
+code for building the site in this [repository](https://github.com/libra/libra.github.io/)).
+The developer site is built using [Docusaurus](https://docusaurus.io/):
 
 If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
 
