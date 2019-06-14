@@ -3,8 +3,6 @@ id: life-of-a-transaction
 title: Life of a Transaction
 ---
 
-## Overview
-
 To get a deeper understanding of the lifecycle of a Libra transaction, we will follow a transaction on its journey from being submitted to a Libra validator to being committed into the Libra Blockchain. We will then “zoom-in” on each logical component of a validator and take a look at its interactions with other components.
 
 ## Client Submits a Transaction
