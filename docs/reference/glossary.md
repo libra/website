@@ -69,7 +69,7 @@ title: Glossary
 * The Libra Blockchain uses LibraBFT, a consensus protocol based on [HotStuff.](#hotstuff)
 * BFT algorithms typically operate with a number of entities, collectively holding N votes (which are called “validators” in the Libra application of the system). 
 * N is chosen to withstand some number of validators holding f votes, which might be malicious.
-* In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty — offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
+* In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty &mdash; offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
 * This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validator nodes that are compromised, or fail.
 
 ## C
@@ -326,7 +326,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Node
 
 * A **node** is a peer entity of the Libra ecosystem that tracks the state of the Libra Blockchain.
-* A Libra node comprises of logical components.  [Mempool](#mempool),  [consensus](#consensus), and [virtual machine](#virtual-machine) are examples of node components. 
+* A Libra node comprises of logical components. [Mempool](#mempool), [consensus](#consensus), and [virtual machine](#virtual-machine) are examples of node components. 
 
 ## O
 
