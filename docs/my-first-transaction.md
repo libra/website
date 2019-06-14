@@ -29,7 +29,7 @@ In this example, we'll download the necessary Libra components and execute a tra
 Perform the following steps to submit a transaction to a validator node on the Libra testnet:
 
 1. [Clone and build Libra Core](#clone-and-build-libra-core).
-2. [Build the Libra CLI client and connect to the testnet](#build-libra-cli-client-and-connect-to-testnet).
+2. [Build the Libra CLI client and connect to the testnet](#build-libra-cli-client-and-connect-to-the-testnet).
 3. [Create Alice's and Bob's account](#create-alice-s-and-bob-s-account).
 4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
 5. [Submit a transaction](#submit-a-transaction).
@@ -268,9 +268,9 @@ Transaction submitted to validator
 To query for transaction status, run: query txn_acc_seq 0 0 <fetch_events=true|false>
 ```
 
-You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-txn_acc_seq).
+You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-transaction-by-account-and-sequence-number).
 
-You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-account_state) section
+You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-events) section
 
 To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-command).
 
