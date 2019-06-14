@@ -9,7 +9,7 @@ Libra Core is the official name for the open-source implementation of the Libra 
 
 * This software is the first implementation of the Libra protocol and the Move language.
 * Libra Core includes both validator and client functionalities.
-* Libra Core is written in Rust. Each logical component of Libra Core is a gRPC service
+* Libra Core is written in Rust.
 
 ## Component READMEs of Libra Core
 
