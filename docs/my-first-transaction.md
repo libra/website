@@ -364,7 +364,7 @@ To troubleshoot transfer errors:
 
 ## Sample Outputs
 
-### query txn_acc_seq
+### Query txn_acc_seq
 
 ```bash
 libra% query txn_acc_seq 0 0 true
@@ -373,15 +373,13 @@ Committed transaction: SignedTransaction {
  { raw_txn: RawTransaction {
     sender: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8,
     sequence_number: 0,
-    payload: Program(
-        Program {
-            code: "LIBRAVM\n\u{1}\u{0}\u{7}\u{1}J\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{3}N\u{0}\u{0}\u{0}\u{6}\u{0}\u{0}\u{0}\u{c}T\u{0}\u{0}\u{0}\u{5}\u{0}\u{0}\u{0}\rY\u{0}\u{0}\u{0}\u{4}\u{0}\u{0}\u{0}\u{5}]\u{0}\u{0}\u{0})\u{0}\u{0}\u{0}\u{4}�\u{0}\u{0}\u{0} \u{0}\u{0}\u{0}\u{7}�\u{0}\u{0}\u{0}\r\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{0}\u{2}\u{0}\u{1}\u{3}\u{0}\u{2}\u{0}\u{2}\u{4}\u{2}\u{3}\u{2}\u{4}\u{2}\u{6}<SELF>\u{c}LibraAccount\u{4}main\u{f}pay_from_sender\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{1}\u{2}\u{0}\u{4}\u{0}\u{c}\u{0}\u{c}\u{1}\u{11}\u{1}\u{2}",
-            args: [
-                {ADDRESS: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7},
-                {U64: 10000000},
-            ],
-        },
-    ),
+    payload: {,
+      transaction: peer_to_peer_transaction,
+      args: [
+        {ADDRESS: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7},
+        {U64: 10000000},
+      ]
+    },
     max_gas_amount: 10000,
     gas_unit_price: 0,
     expiration_time: 1560466424s,
@@ -396,6 +394,8 @@ Events:
 ContractEvent { access_path: AccessPath { address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/sent_events_count/" } , index: 0, event_data: AccountEvent { account: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, amount: 10000000 } }
 ContractEvent { access_path: AccessPath { address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/received_events_count/" } , index: 0, event_data: AccountEvent { account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, amount: 10000000 } }
 ```
+
+Note that the transaction amount is shown in microlibra.
 
 ### Query account_state
 
