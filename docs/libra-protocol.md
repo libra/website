@@ -2,7 +2,7 @@
 id: libra-protocol
 title: Libra Protocol - Key Concepts
 ---
-
+## Overview
 
 The Libra Blockchain is a cryptographically authenticated distributed database, and it is based on the Libra protocol. This document briefly describes the key concepts of the Libra protocol. For a detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper](https://libra.org/en-us/whitepaper).
 
