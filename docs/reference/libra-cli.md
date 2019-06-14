@@ -34,7 +34,7 @@ cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file
 
 #### Options
 
-The options for this command are:
+The options for the "Run a CLI client to connect to any Libra network" command are:
 
 * `-m | --faucet_key_file_path` - Path to the generated keypair for the faucet account. The faucet account can be used to mint coins. If not passed, a new keypair will be generated for you and placed in a temporary directory. To manually generate a keypair, use generate_keypair: `cargo run -p generate_keypair -- -o <output_file_path>`.
 * `-f | --faucet_server` - The host that operates a faucet service. If not passed, this will be derived from the host parameter.
@@ -53,80 +53,128 @@ major_command sub_command [options]
 
 If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:
 
- **`account | a`** -  Account related operations. Sub commands include:
+---
 
-  * `create | c` -  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
-  * `save | s` - Save all accounts information, including newly created ones, to file.
-  * `load | l` - Load accounts from file.
-  * `list | la`- Print all accounts that were created or loaded.
-  * `<mint | m> | <mintb| mb>` - Mint coins to the account. Suffix 'b' is for blocking.
-      * Usage:  `mint|mint|m|b <account_address_to>|<account_ref_id_to> <mint_balance>`. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub commands.
-      * Arguments:
-          * `account_address|account_reference_id` - The receiver account to mint the coins to. If the receiver account does not exist, it will be created first. Either `account_address` or `account_ref_id` (an internal index of the account in CLI) can be used to specify receiver account (same in other sub commands). The account that sent this mint transaction (currently preloaded genesis account) pays for the gas.
-          * `mint_balance` - The balance of coin minted to the receiver account.
+ #### `account | a` -  Account related operations. Sub commands include:
 
-**`transfer | transferb | t | tb`** - Transfer coins from account to another. Suffix 'b' is for blocking.
+  `create | c` -  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
 
-* Usage: `transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>`
-* Arguments:
-   * `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction is sent. The sender account pays for the gas.
-   * `receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins. If the receiver account does not exist, it will be created first. The sender will pay for gas required for both account creation and coin transfer.
+       Usage:
+        create|c
+
+  `list | la`- Print all accounts that were created or loaded.
+
+     Usage:
+        list|la
+
+  `recover | r <file_path>`- Recover all accounts that were written to a file via the `account write` command.
+
+     Usage:
+        recover|r <file_path>
+     Arguments:
+         `file_path`- File path from which to load mnemonic recover seed.  Must have been written via 'account write'
+
+  `write | w <file path>`- Save Libra Wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
+
+     Usage:
+        write|w <file_path>
+     Arguments:
+         `file_path`- File path at which to save the mnemonic recovery seed to disk.
+
+
+  `<mint | m> | <mintb| mb>` - Mint coins to the account. Suffix 'b' is for blocking. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub "blocking" commands.
+
+      Usage:
+        mint|mint|m|b <receiver_account_ref_id>|<receiver_account_address> <number_of_coins>
+      Arguments:
+          `receiver_account_ref_id|receiver_account_address` - The receiver account to mint the coins to.
+                If the receiver account does not exist, it will be created first.
+                Either `receiver_account_address` or `receiver_account_ref_id` (an internal index of
+                the account in the CLI client) can be used to specify receiver account (identical to
+                other commands). If gas is being charged, the account that sent this mint transaction
+                (currently preloaded genesis account) pays for the gas.
+          `number_of_coins` - The number of coins to be minted to the receiver account.
+
+---
+
+#### `transfer | transferb | t | tb` - Transfer coins from account to another. Suffix 'b' is for blocking.
+
+    Usage:
+        `transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>`
+    Arguments:
+        `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction is sent. The sender account pays for the gas.
+
+`receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins. If the receiver account does not exist, it will be created first. The sender will pay for gas required for both account creation and coin transfer.
       * `number_of_coins` - The number of coins transferred to receiver account.
 
-**`query | q`** - Query data from destination chain. All query operations are blocking. Sub commands include:
+---
 
-  * `balance | b` - Get the current balance of an account
+#### `query | q` - Query data from destination chain. All query operations are blocking. Sub commands include:
 
-     * Usage: `balance | b <account_ref_id>|<account_address>`
-     * Arguments:
-         * `account_ref_id|account_address` - The account to query balance for.
-         * `assert_balance | a` - Assert that balance is equal to the specified value, CLI will panic if the value from storage does not equal to expected value.
-     * Usage: `assert_balance | a <account_ref_id>|<account_address> <expected_value>`
-     * Arguments:
-         * `account_ref_id | account_address` - The account to assert balance.
-         * `expected_value` - The expected value to assert to.
+`balance | b` - Get the current balance of an account
 
-  * `sequence | s` - Get the current sequence number for an account.
+     Usage:
+        balance|b <account_ref_id>|<account_address>
+     Arguments:
+         `account_ref_id|account_address` - The account to query balance for.
 
-      * Usage: `sequence | s <account_ref_id>|<account_address>`.
-      * Arguments:
-          * `<account_ref_id>|<account_address>` - The account to get current/latest sequence number.
-  * `account_state | as` - Get the latest state for an account.
+`assert_balance | a` - Assert that balance is equal to the specified value.
+    CLI will panic if the value from storage does not equal to expected value.
 
-      * Usage: `account_state | as <account_ref_id>|<account_address>`.
-      * Arguments:
-          * `account_ref_id | account_address` - The account to query latest state.
-  * `txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
+     Usage:
+        assert_balance|a <account_ref_id>|<account_address> <expected_value>
+     Arguments:
+         `account_ref_id | account_address` - The account to assert balance.
+         `expected_value` - The expected value to assert to.
 
-      * Usage: `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number>`
-      * Arguments:
-          * `account_ref_id | account_address` - The account to query committed transaction.
-          * `sequence_number` - The sequence number of committed transaction.
-  * `txn_range | tr` - Get the committed transaction by range
+`sequence | s` - Get the current sequence number for an account.
 
-      * Usage: `txn_range | tr <start_version> <limit>`
-      * Arguments:
-          * `start_version` - The version to query the transaction from.
-          * `limit` - The maximum number of transactions to query.
-  * `event | ev` - Get event by account and path.
+      Usage:
+        `sequence | s <account_ref_id>|<account_address>`.
+      Arguments:
+          `<account_ref_id>|<account_address>` - The account to get current/latest sequence number.
 
-      * Usage: event | `ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>`.
-      * Arguments:
-          * `account_ref_id | account_address` - The account to query events from.
-          * `path` - The path of the events to query.
-          * `star_sequence_number` - The sequence number of event to query from.
-          * `ascending` - The direction of query from `star_sequence_number`.
-          * `limit` - The maximum number of events to query.
+`account_state | as` - Get the latest state for an account.
+
+      Usage:
+        `account_state | as <account_ref_id>|<account_address>`.
+      Arguments:
+          `account_ref_id | account_address` - The account to query latest state.
+
+`txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
+
+      Usage:
+        `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number>`
+      Arguments:
+          `account_ref_id | account_address` - The account to query committed transaction.
+          `sequence_number` - The sequence number of committed transaction.
+
+`txn_range | tr` - Get the committed transaction by range
+
+      Usage:
+        `txn_range | tr <start_version> <limit>`
+      Arguments:
+          `start_version` - The version to query the transaction from.
+          `limit` - The maximum number of transactions to query.
+
+`event | ev` - Get event by account and path.
+
+      Usage:
+        event | `ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>`.
+      Arguments:
+          `account_ref_id | account_address` - The account to query events from.
+          `path` - The path of the events to query.
+          `star_sequence_number` - The sequence number of event to query from.
+          `ascending` - The direction of query from `star_sequence_number`.
+          `limit` - The maximum number of events to query.
+
+---
 
 **`quit | q!`** - Exits the CLI. No sub command is required.
 
+---
+
 **`help | h`** - Prints help. No sub command is required.
-
-**`debug | d`** - Retrieve debug information. Sub commands include:
-
-   * `metrics | metrics?| m | m?` - Print node metrics. (? for json output)
-
-   * `dump | d` - Dump node heap profile
 
 ### Account Creation/Mint(Faucet) for testnet
 
