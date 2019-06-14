@@ -25,7 +25,7 @@ For detailed guidance on how to contribute to the Libra Core codebase refer to [
 
 ## Documentation
 
-Libra's developer site is also open source. The code for building the site is located in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/):
+All developer documentation is published on the Libra developer site. The developer site is open source, and the code for building the site is located in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/).
 
 If you are familiar with Markdown, you can start contributing!
 
