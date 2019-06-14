@@ -79,7 +79,7 @@ Thd README.md should contain:
 
 You can refer to this sample README `libra/network/README.md` which describes the network crate.
 
-Here is a template for READMEs:
+Here is a template for a README.md:
 
 ```
 # Component Name
@@ -102,6 +102,8 @@ Here is a template for READMEs:
 For the external API of this crate refer to the API documentation.
 
 For a top-level directory, link to the most important APIs within. 
+
+```
 
 ## Code Suggestions
 
