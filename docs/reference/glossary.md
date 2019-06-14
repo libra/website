@@ -210,9 +210,9 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Libra Association
 
-* The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The Association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
-* The Association is created by the validator nodes who will run on the Libra network.
-* Refer to the [whitepaper](https://libra.org/en-us/whitepaper) for the mission, vision, and purview of the Libra Association.
+* The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
+* The association is created by the validator nodes who will run on the Libra network.
+* Refer to the [Libra white paper](https://libra.org/en-us/whitepaper) for the a description of the mission, vision, and purview of the Libra Association.
 
 ### Libra Association Council
 
