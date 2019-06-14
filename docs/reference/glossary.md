@@ -139,11 +139,11 @@ A **client** is a piece of software that has the capability to interact with the
 
 ### Expiration Time
 
-A transaction ceases to be valid after its **expiration time**. If we assume that:
+A transaction ceases to be valid after its **expiration time**. If it assumed that:
 
 * Time_C is the current time that is agreed upon between validators (Time_C is not the local time of the client);
 * Time_E is the expiration time of a transaction T_N; and
-* Time_C > Time_E and transaction T_N has not been included in the blockchain.
+* Time_C > Time_E and transaction T_N has not been included in the blockchain,
 
 then there is a guarantee that T_N will never be included in the blockchain.
 
