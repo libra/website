@@ -440,7 +440,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Version
 
 * A **version** is also called “height” in blockchain literature. 
-* In the Libra Blockchain, we don't have an explicit notion of a block &mdash; we only use blocks for batching and executing transactions.  
+* The Libra Blockchain doesn't have an explicit notion of a block &mdash; it only uses blocks for batching and executing transactions.  
 * A transaction at height 0 is the first transaction (genesis transaction), and a transaction at height 100 is the 101th transaction in the transaction store.
 
 ## W
