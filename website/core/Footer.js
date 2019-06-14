@@ -24,6 +24,19 @@ function SocialFooter(props) {
           {props.config.projectName}
         </a>
       </div>
+      <div className="social">
+        <a
+          href={"https://twitter.com/libradev?ref_src=twsrc%5Etfw"}
+          class={"twitter-follow-button"}
+          data-show-count={false}>
+            Follow @libradev
+        </a>
+        <script
+          async
+          src={"https://platform.twitter.com/widgets.js"}
+          charset={"utf-8"}
+        />
+      </div>
     </div>
   );
 }
