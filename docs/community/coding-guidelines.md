@@ -169,19 +169,19 @@ Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang
 
 *Panic*
 
-* `panic!()` - Runtime panic! should only be used when the resulting state cannot be processed going forward.  It should not be used for any recoverable errors.
-* `unwrap()` - Unwrap should only be used for mutexes (e.g., `lock().unwrap()`) and test code.  For all other use cases, we prefer `expect()`. The only exception is if the error message is custom-generated, in which case use `.unwrap_or_else(|| panic!("error: {}", foo))`
-* `expect()` - Expect should be invoked when a system invariant is expected to be preserved.  It is preferred over unwrap() and should have a detailed error message on failure in most cases.
-* `assert!()` - This macro is kept in both debug/release and should be used to protect invariants of the system as necessary.
-* `unreachable!()` - This macro is will panic on code that should not be reached (violating an invariant) and can be used as appropriate.
+* `panic!()` - Runtime panic! should only be used when the resulting state cannot be processed going forward. It should not be used for any recoverable errors.
+* `unwrap()` - Unwrap should only be used for mutexes (e.g. `lock().unwrap()`) and test code. For all other use cases, prefer `expect()`. The only exception is if the error message is custom-generated, in this case use `.unwrap_or_else(|| panic!("error: {}", foo))`
+* `expect()` - Expect should be invoked when a system invariant is expected to be preserved. expect() is preferred over unwrap() and it should have a detailed error message on failure in most cases.
+* `assert!()` - This macro is kept in both debug/release and should be used to protect invariants of the system as necessary
+* `unreachable!()` - This macro will panic on code that should not be reached (violating an invariant), and it can be used where appropriate.
 
 ### Generics
 
-Generics allow dynamic behavior (similar to [`trait`](https://doc.rust-lang.org/book/ch10-02-traits.html) methods) with static dispatch.  Consider that as the number of generic type parameters increase, the difficulty of using the type/method also increases (e.g., what combination of trait bounds is required for this type, duplicate trait bounds on related types, etc.).  In order to avoid this complexity, we generally try to avoid using a large number of generic type parameters.  We have found that converting code with a large number of generic objects to trait objects with dynamic dispatch often simplifies our code.
+Generics allow dynamic behavior (similar to [`trait`](https://doc.rust-lang.org/book/ch10-02-traits.html) methods) with static dispatch. As the number of generic type parameters increase, the difficulty of using the type/method also increases (e.g. you have to consider the combination of trait bounds required for this type, duplicate trait bounds on related types, etc.). To avoid this complexity, we generally try to avoid using a large number of generic type parameters. We have found that converting code with a large number of generic objects to trait objects with dynamic dispatch often simplifies our code.
 
 ### Getters and Setters
 
-Excluding test code, set field visibility to "private" as much as possible. Private fields allow constructors to enforce internal invariants. Implement getters for data that consumers may need, but avoid setters unless mutable state is necessary.
+Exclude test code and set field visibility to private as much as possible. Private fields allow constructors to enforce internal invariants. Implement getters for data that consumers may need, but avoid setters unless mutable state is necessary.
 
 Public fields are most appropriate for [`struct`](https://doc.rust-lang.org/book/ch05-00-structs.html) types in the C spirit: compound, passive data structures without internal invariants.  Naming suggestions follow the guidance [here](https://rust-lang-nursery.github.io/api-guidelines/naming.html#getter-names-follow-rust-convention-c-getter) as shown below.
 
@@ -220,17 +220,17 @@ impl Foo {
 
 We currently use [slog](https://docs.rs/slog/) for logging.
 
-* [error!](https://docs.rs/slog/2.4.1/slog/macro.error.html) - Error-level messages have the highest urgency in [slog](https://docs.rs/slog/).  An unexpected error has occurred (e.g., exceeded the maximum number of retries to complete an RPC or inability to store data to local storage).
-* [warn!](https://docs.rs/slog/2.4.1/slog/macro.warn.html) - Warn-level messages help notify admins about automatically handled issues (e.g., retrying a failed network connection or receiving the same message multiple times, etc.).
-* [info!](https://docs.rs/slog/2.4.1/slog/macro.info.html) - Info-level messages are well suited for "one time" events (such as logging state on one-time startup and shutdown) or periodic events that are not frequently occurring (e.g., changing the validator set every day).
+* [error!](https://docs.rs/slog/2.4.1/slog/macro.error.html) - Error-level messages have the highest urgency in [slog](https://docs.rs/slog/). They are used for unexpected errors (e.g. exceeded the maximum number of retries to complete an RPC or inability to store data to local storage).
+* [warn!](https://docs.rs/slog/2.4.1/slog/macro.warn.html) - Warn-level messages help notify admins about automatically handled issues (e.g. retrying a failed network connection or receiving the same message multiple times, etc.).
+* [info!](https://docs.rs/slog/2.4.1/slog/macro.info.html) - Info-level messages are well suited for "one time" events (such as logging state on one-time startup and shutdown) or periodic events that are not frequently occurring - e.g. changing the validator set every day. 
 * [debug!](https://docs.rs/slog/2.4.1/slog/macro.debug.html) - Debug-level messages are frequently occurring (i.e. potentially > 1 message per second) and are not typically expected to be enabled in production.
-* [trace!](https://docs.rs/slog/2.4.1/slog/macro.trace.html) - Trace-level logging is typically only used for function entry/exit. 
+* [trace!](https://docs.rs/slog/2.4.1/slog/macro.trace.html) - Trace-level logging is typically only used for function entry/exit.
 
 ### Testing
 
 *Unit tests*
 
-Ideally, all code will be unit tested.  Unit test files should exist in the same directory as `mod.rs`, and their file names should end in `_test.rs`.  A module to be tested should have the test modules annotated with `#[cfg(test)]`.  For example, if in a crate there is a db module, the expected directory structure is as follows:
+Ideally, all code will be unit tested. Unit test files should exist in the same directory as `mod.rs,` and their file names should end in `_test.rs`. A module to be tested should have the test modules annotated with `#[cfg(test)]`. For example, if in a crate there is a db module, the expected directory structure is as follows:
 
 ```
 src/db                        -> directory of db module
@@ -245,19 +245,17 @@ src/db/access/access_test.rs  -> test of access submodule
 
 Libra contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called *properties*, hold about the code under test.
 
-Some examples of properties tested in Libra:
+Some examples of properties tested in Libra Core:
 
-* Every serializer and deserializer pair is tested for correctness with random inputs to the serializer. Any pair of functions that are inverses of each other can be tested this way.
-* The results of executing common transactions through the VM are tested using randomly generated scenarios and a simplified model as an *oracle*.
+* Every serializer and deserializer pair is tested for correctness, with random inputs to the serializer. A pair of functions that are inverse of each other can be tested this way.
+* The results of executing common transactions through the VM are tested using randomly generated scenarios, and a simplified model as an *oracle*.
 
-A tutorial for `proptest` can be found in the [`proptest` book](https://altsysrq.github.io/proptest-book/proptest/getting-started.html).
+A tutorial for `proptest` can be found in the [`proptest` book](https://altsysrq.github.io/proptest-book/proptest/getting-started.html). For further information on property testing refer to:
 
-References:
-
-* [What is Property Based Testing?](https://hypothesis.works/articles/what-is-property-based-testing/) (Includes a comparison with fuzzing.)
+* [What is Property Based Testing?](https://hypothesis.works/articles/what-is-property-based-testing/) (includes a comparison with fuzzing)
 * [An introduction to property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing/)
 * [Choosing properties for property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing-2/)
 
 *Fuzzing*
 
-Libra contains harnesses for fuzzing crash-prone code like deserializers, using [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more, see the `testsuite/libra_fuzzer` directory.
+Libra contains harnesses for fuzzing crash-prone code like deserializers, which use [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more, see the `testsuite/libra_fuzzer` directory.
