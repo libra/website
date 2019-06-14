@@ -3,8 +3,6 @@ id: coding-guidelines
 title: Coding Guidelines
 ---
 
-
-
 This document describes the coding guidelines for the Libra Core Rust codebase.  
 
 ## Code Formatting
