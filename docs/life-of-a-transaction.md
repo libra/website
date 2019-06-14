@@ -63,7 +63,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ### Proposing The Block
 
-**6** - As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
+**6** &mdash; As validator V~1~ is a proposer/leader, it will pull a block of transactions from its mempool and replicate this block as a proposal to other validators via its consensus component. (Consensus → Mempool [MP.3](#consensus-mempool-mp3), [CO.1](#consensus-mempool-co1))
 
 **7** &mdash; The consensus component of V~1~ is responsible for coordinating agreement among all validators on the order of transactions in the proposed block. (Consensus → Other Validators [CO.2](#consensus-other-validators-co2)). Refer to our technical paper [State Machine Replication in the Libra Blockchain](state-machine-replication-paper.md) for details of our proposed consensus protocol LibraBFT.
 
@@ -130,7 +130,7 @@ Once `VM::ValidateTransaction()` returns without errors, AC forwards the transac
 
 ### AC → Storage (AC.4)
 
-When the client performs a read query on the Libra Blockchain (for example, to get the balance of Alice's account) AC interacts with the storage component directly to obtain the requested information.
+When the client performs a read query on the Libra Blockchain (for example, to get the balance of Alice's account), AC interacts with the storage component directly to obtain the requested information.
 
 ### Admission Control README
 
@@ -191,7 +191,7 @@ Mempool is a shared buffer that holds the transactions that are "waiting" to be 
 ### Consensus → Mempool (MP.3)
 
 * When validator V~X~ becomes the leader, its consensus will pull a block of transactions from its mempool and replicate the block to other validators. It does this to arrive at a consensus on the ordering of transactions and the execution results of the transactions in the block.
-* Note that just because a transaction T~N~ was included in a consensus block it does not guarantee that T~N~ will eventually be persisted in the distributed database of the blockchain.
+* Note that just because a transaction T~N~ was included in a consensus block, it does not guarantee that T~N~ will eventually be persisted in the distributed database of the blockchain.
 
 ### Mempool → VM (MP.4)
 
@@ -199,7 +199,7 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### Mempool README
 
-For implementation details,  repository, and APIs of the mempool crate refer to the [Mempool README](crates/mempool).
+For implementation details,  repository, and APIs of the mempool crate, refer to the [Mempool README](crates/mempool).
 
 ## Consensus
 
@@ -286,7 +286,7 @@ When consensus calls `Execution::ExecuteBlock()`, execution reads the current st
 
 * Once consensus is reached on a block of transactions, execution calls storage via `Storage::SaveTransactions()` to save the block of transactions and permanently record them. This will also store the signatures from the validator nodes who agreed on this block of transactions.
 * The in-memory data in "scratchpad" for this block is passed to updated storage and persist the transactions.
-* When storage is updated, the sequence numbers of all resources modified by each transaction are updated accordingly.
+* When the storage is updated, the sequence numbers of all resources modified by each transaction are updated accordingly.
 * Note: The sequence number of an account on the Libra Blockchain increases by one for each committed transaction originating from that account.
 
 ### AC → Storage (ST.4)
