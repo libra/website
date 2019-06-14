@@ -179,11 +179,11 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-`quit | q!` &mdash; Exits the CLI. No sub command is required.
+**`quit | q!` &mdash; Exits the CLI. No sub command is required.**
 
 ---
 
-`help | h` &mdash; Prints help. No sub command is required.
+**`help | h` &mdash; Prints help. No sub command is required.**
 
 ### Account Creation/Mint(Faucet) for Testnet
 
