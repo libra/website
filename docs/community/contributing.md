@@ -11,7 +11,7 @@ The Libra Core project is currently an early-stage prototype, it is undergoing r
 
 ## Contributing to Libra Core
 
-To contribute to the Libra Core implementation, ensure that you have the latest version of the codebase. To setup Libra Core with all the necessary dependencies for linting, testing, and building the documentation, run the following:
+To contribute to Libra Core, ensure that you have the latest version of the codebase. To setup Libra Core with all the necessary dependencies for linting, testing, and building the documentation, run the following:
 ```bash
 git clone https://github.com/libra/libra.git
 cd libra
@@ -19,13 +19,13 @@ cargo install
 cargo test
 ```
 
-## Our Development Process
+## Coding Guidelines
 
-Refer to our [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines) for detailed guidance about how to contribute to the project.
+For detailed guidance on how to contribute to the Libra Core codebase refer to [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines).
 
 ## Documentation
 
-Libra's developer site is also open source. You can find the code for building the site in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/):
+Libra's developer site is also open source. The code for building the site is located in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/):
 
 If you are familiar with Markdown, you can start contributing!
 
