@@ -13,10 +13,10 @@ The Libra Core project is currently an early-stage prototype, it is undergoing r
 
 To contribute to Libra Core, ensure that you have the latest version of the codebase. To setup Libra Core with all the necessary dependencies for linting, testing, and building the documentation, run the following:
 ```bash
-git clone https://github.com/libra/libra.git
-cd libra
-cargo install
-cargo test
+$ git clone https://github.com/libra/libra.git
+$ cd libra
+$ cargo install
+$ cargo test
 ```
 
 ## Coding Guidelines
@@ -25,27 +25,30 @@ For detailed guidance on how to contribute to the Libra Core codebase refer to [
 
 ## Documentation
 
-All developer documentation is published on the Libra developer site. The developer site is open source, and the code for building the site is located in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/).
+All developer documentation is published on the Libra developer site. The developer site is open source, and the code for building the site is located in this [repository](https://github.com/libra/libra.github.io/). The developer site is built using [Docusaurus](https://docusaurus.io/).
 
 If you are familiar with Markdown, you can start contributing!
 
 ## Pull Requests
-During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be able to accept pull requests from the community.
+
+During the initial phase of development, we plan to only audit and review the pull requests. As the codebase stabilizes, we will be able to accept pull requests from the community.
 
 To submit your pull request:
 
-1. Fork the repo and create your branch from `master`.
+1. Fork the `libra` repo and create your branch from `master`.
 2. If you have added code that should be tested, add unit tests.
-3. If you have changed APIs, update the documentation. Make sure the
-   documentation builds.
-4. Ensure the test suite passes.
+3. If you have made changes to APIs, update the relevant documentation, and build and test the developer site.
+4. Verify and ensure that the test suite passes.
 5. Make sure your code passes both linters.
-6. If you haven't already, complete the Contributor License Agreement (CLA).
+6. Complete the Contributor License Agreement (CLA), if you haven't already done so.
 7. Submit your pull request.
 
 ## Contributor License Agreement
 
-For pull request to be accepted by any Libra projects, a CLA must be signed. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
+For your pull requests to be accepted by any Libra project, you will need to sign a CLA. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
+
+## Code of Conduct
+Please refer to the [Code of Conducts] for guidelines on interacting with the community.
 
 ## Issues
 
