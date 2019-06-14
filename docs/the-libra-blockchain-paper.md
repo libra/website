@@ -3,6 +3,8 @@ id: the-libra-blockchain-paper
 title: The Libra Blockchain
 ---
 
+<!-- hide the table of contents --><style>.toc-headings {display: none !important; visibility: hidden !important;}</style>
+
 ## Abstract
 
 The Libra Blockchain is a decentralized, programmable database designed to support a low-volatility cryptocurrency that will have the ability to serve as an efficient medium of exchange for billions of people around the world. We present a proposal for the Libra protocol, which implements the Libra Blockchain and aims to create a financial infrastructure that can foster innovation, lower barriers to entry, and improve access to financial services. To validate the design of the Libra protocol, we have built an open-source prototype implementation — *Libra Core* — in anticipation of a global collaborative effort to advance this new ecosystem.

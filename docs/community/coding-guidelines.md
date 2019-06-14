@@ -3,8 +3,6 @@ id: coding-guidelines
 title: Coding Guidelines
 ---
 
-
-
 This document describes the coding guidelines for the Libra Core Rust codebase.  
 
 ## Code Formatting
@@ -17,13 +15,13 @@ libra/libra$ cargo fmt
 
 ## Code Analysis
 
-[Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration.  Before submitting your code for review, you can run clippy with our configuration: 
+[Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration. Before submitting your code for review, you can run clippy with our configuration: 
 
 ```
 libra$ ../setup_scripts/clippy.sh 
 ```
 
-In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html).  The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
+In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html). The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
 
 
 ## Code Documentation
@@ -39,7 +37,7 @@ Any public fields, functions, and methods should be documented with [Rustdoc](ht
  [Attributes] If attributes exist, add after Rustdoc
  ```
 
-Example below:
+Here is an example:
 
 ```
 /// Represents (x, y) of a 2-dimensional grid
@@ -64,7 +62,7 @@ Document the following for each function:
 * The action the method performs — “This method *adds* a new transaction to the mempool.” Use *active voice* and *present tense* (i.e., adds/creates/checks/updates/deletes).
 * Describe how and why to use this method.
 * Any condition that must be met _before_ calling the method.
-* State conditions under which the function will `panic!()` or returns an `Error`
+* State conditions under which the method will `panic!()` or returns an `Error`
 * Provide a brief description of return values.
 * Clearly state any special behavior that is not obvious in the code itself.
 
@@ -76,12 +74,12 @@ Each major component of the system needs to have a `README.md` file. Major compo
 
 Thd README.md should contain:
 
- * The *conceptual* *documentation* of the component.
+ * The conceptual documentation of the component.
  * A link to external API documentation for the component.
- * A link to the master license of the project.
- * A link to the master contributing guide for the project. 
 
-A template for READMEs:
+You can refer to this sample README `libra/network/README.md` which describes the network crate.
+
+Here is a template for a README.md:
 
 ```
 # Component Name
@@ -90,9 +88,9 @@ A template for READMEs:
 
 ## Overview
 
-* Describe its purpose and how the code in this directory works.
+* Describe the purpose of this component and how the code in this directory works.
 * Describe the interaction of code in this directory with other components.
-* Describe the security model and assumptions about the crates in this directory.  Examples of how to describe the security assumptions will be added in the future.
+* Describe the security model and assumptions about the crates in this directory. 
 
 ## Implementation Details
 
@@ -101,20 +99,11 @@ A template for READMEs:
 
 ## API Documentation
 
-For the external API of this crate refer to [Link to rustdoc API].
+For the external API of this crate refer to the API documentation.
 
-[For a top-level directory, link to the most important APIs within.] 
+For a top-level directory, link to the most important APIs within. 
 
-## Contributing
-
-Refer to the Libra Project contributing guide [LINK].
-
-## License
-
-Refer to the Libra Project License [LINK].
 ```
-
-A good example of README.md is `libra/network/README.md` which describes the network crate.
 
 ## Code Suggestions
 
@@ -134,7 +123,7 @@ Use appropriate attributes for handling dead code:
 
 ### Avoid Deref Polymorphism
 
-Don't abuse the Deref trait to emulate inheritance between structs, and reuse methods.  For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
+Don't abuse the Deref trait to emulate inheritance between structs, and reuse methods. For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
 
 ### Comments
 
@@ -155,19 +144,19 @@ pub struct Foo(Arc<FooInner>);
 
 Concurrent types such as [`CHashMap`](https://docs.rs/crate/chashmap), [`AtomicUsize`](https://doc.rust-lang.org/std/sync/atomic/struct.AtomicUsize.html), etc. have an immutable borrow on self, i.e. `fn foo_mut(&self,...),` to support concurrent access on interior mutating methods. Good practices (such as those in the examples mentioned) avoid exposing synchronization primitives externally (e.g. `Mutex`, `RwLock`) and document the method semantics and invariants clearly.
 
-*When to use channels versus concurrent types?*
+**When to use channels versus concurrent types?**
 
-Below are high-level suggestions for the distinction based on experience.
+Here are some high-level suggestions:
 
 * Channels are for ownership transfer, decoupling of types, and coarse grained messages. They fit well for transferring ownership of data, distributing units of work, and communicating async results. Furthermore, they help break circular dependencies (e.g. `struct Foo` contains an `Arc<Bar>` and `struct Bar` contains an `Arc<Foo>` that leads to complex initialization).
 
-* Concurrent types (e.g., such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
+* Concurrent types (such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
 
 ### Error Handling
 
-Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html).  Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
+Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html). Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
 
-*Panic*
+**Panic**
 
 * `panic!()` - Runtime panic! should only be used when the resulting state cannot be processed going forward. It should not be used for any recoverable errors.
 * `unwrap()` - Unwrap should only be used for mutexes (e.g. `lock().unwrap()`) and test code. For all other use cases, prefer `expect()`. The only exception is if the error message is custom-generated, in this case use `.unwrap_or_else(|| panic!("error: {}", foo))`
@@ -228,7 +217,7 @@ We currently use [slog](https://docs.rs/slog/) for logging.
 
 ### Testing
 
-*Unit tests*
+#### Unit tests
 
 Ideally, all code will be unit tested. Unit test files should exist in the same directory as `mod.rs,` and their file names should end in `_test.rs`. A module to be tested should have the test modules annotated with `#[cfg(test)]`. For example, if in a crate there is a db module, the expected directory structure is as follows:
 
@@ -241,7 +230,7 @@ src/db/access/mod.rs          -> directory of access submodule
 src/db/access/access_test.rs  -> test of access submodule
 ```
 
-*Property-based tests*
+#### Property-based tests
 
 Libra contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called *properties*, hold about the code under test.
 
@@ -256,6 +245,6 @@ A tutorial for `proptest` can be found in the [`proptest` book](https://altsysrq
 * [An introduction to property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing/)
 * [Choosing properties for property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing-2/)
 
-*Fuzzing*
+**Fuzzing**
 
 Libra contains harnesses for fuzzing crash-prone code like deserializers, which use [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more, see the `testsuite/libra_fuzzer` directory.
