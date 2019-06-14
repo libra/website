@@ -16,11 +16,11 @@ We provide a command line interface (CLI) client to interact with the blockchain
 
 All commands in this document assume that:
 
-* You are running on a `Linux` (Red Hat or Debian-based) or `macOS` system.
+* You are running on a Linux (Red Hat or Debian-based) or macOS system.
 * You have a stable connection to the internet.
-* `Git` is installed on your system.
-* `Homebrew` is installed on a `macOS` system.
-* `yum`or `apt-get` are installed on a `Linux` system.
+* `git` is installed on your system.
+* Homebrew is installed on a macOS system.
+* `yum`or `apt-get` is installed on a Linux system.
 
 ## Steps to Submit a Transaction
 
@@ -36,10 +36,10 @@ Perform the following steps to submit a transaction to a validator node on the L
 
 ## Clone and Build Libra Core
 
-### Clone the Libra Core repo
+### Clone the Libra Core repository
 
 ```bash
-$ git clone https://github.com/libra/libra.git
+git clone https://github.com/libra/libra.git
 ```
 
 ### Setup Libra Core
@@ -51,11 +51,11 @@ To setup Libra Core, change to the `libra` directory and run the setup script to
 ```
 The setup script performs these actions:
 
-* Installs rustup &mdash; rustup is an installer for the Rust programming language Libra Core is implemented in.
+* Installs rustup &mdash; rustup is an installer for the Rust programming language, which Libra Core is implemented in.
 * Installs the required versions of the rust-toolchain.
 * Installs CMake &mdash; to manage the build process.
 * Installs protoc &mdash; a compiler for protocol buffers.
-* Installs Go (for building protocol buffers).
+* Installs Go &mdash; for building protocol buffers.
 
 If your setup fails, see [Troubleshooting](#setup)
 
@@ -102,7 +102,7 @@ If you have problems building the client and connecting to the testnet, refer to
 
 Once your client is connected to the testnet, you can run CLI commands to create new accounts.  We will walk you through creating accounts for two users (let's call them Alice and Bob).
 
-### Step 1 - Check if the CLI client is running on your system
+### Step 1: Check if the CLI client is running on your system
 
 A **libra%** command line prompt indicates that your Libra CLI client is running. To see the help information for the `account` command enter “account” as shown below:
 
@@ -124,7 +124,7 @@ mint | mintb | m | mb <receiver account> <number of coins>
   Mint coins to the account. Suffix 'b' is for blocking
 ```
 
-### Step 2 - Create Alice's account
+### Step 2: Create Alice's account
 
 Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair.
 
@@ -141,7 +141,7 @@ Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaa
 
 #0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
-### Step 3 - Create Bob's account
+### Step 3: Create Bob's account
 
 To create Bob's account, repeat the account creation command:
 
@@ -157,7 +157,7 @@ Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f
 #1 is the index for Bob's account and the hex string is the address of Bob's account.
 For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
 
-### Step 4 (optional) - List Accounts
+### Step 4 (optional): List Accounts
 
 To list the accounts you have created, enter this command:
 
@@ -174,7 +174,7 @@ The sequence number for an account indicates the number of transactions that hav
 
 Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
-### Step 1 - Add 110 Libra to Alice's account
+### Step 1: Add 110 Libra to Alice's account
 
 To mint Libra and add to Alice's account, enter this command:
 
@@ -196,7 +196,7 @@ Note that when the request is submitted, it means that it has been added to the 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
 
-### Step 2 - Add 52 Libra to BOB's account
+### Step 2: Add 52 Libra to BOB's account
 
 To mint Libra and add to Bob's account, enter this command:
 
@@ -215,7 +215,7 @@ Mint request submitted
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
 
-### Step 3 - Check the balance
+### Step 3: Check the balance
 
 To check the balance in Alice's account, enter this command:
 
@@ -422,7 +422,7 @@ Latest account state is:
 
 ## Run A Local Validator Node
 
-To start a validator node locally on your computer that creates its own blockchain network (not connected to the Libra testnet), change to the libra folder of your Libra Core installation, and run libra_swarm as instructed below:
+To start a validator node locally on your computer and create your own blockchain network (not connected to the Libra testnet), change to the root directory of the Libra Core repository , and run `libra_swarm` as shown below:
 
 ```bash
 $ cd ~/libra
