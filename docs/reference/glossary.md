@@ -10,12 +10,12 @@ title: Glossary
 
 ### Accumulator Root Hash
 
-* An **accumulator root hash** is the root hash of a [Merkle Accumulator.](https://eprint.iacr.org/2009/625.pdf) 
+* An **accumulator root hash** is the root hash of a [Merkle accumulator.](https://eprint.iacr.org/2009/625.pdf) 
 
 ### Access path
 
 * An **access path** specifies the location of a resource or a Move module, within a specific account.
-* In a state of the Libra Blockchain an account is represented as a map of access paths to values. The Move VM deserializes this representation into modules and resources.
+* In a state of the Libra Blockchain, an account is represented as a map of access paths to values. The Move VM deserializes this representation into modules and resources.
 * Clients can use access paths to request a resource, or a specific piece of data stored inside a resource.
 
 ### Account
@@ -50,27 +50,27 @@ title: Glossary
 
 ### Block
 
-* A **block** is an ordered list of one or more transactions, it is used by validators to reach consensus on the ordering and execution results of the transactions. 
+* A **block** is an ordered list of one or more transactions. It is used by validators to reach consensus on the ordering and execution results of the transactions. 
 * Blocks are an internal implementation concept in the Libra Blockchain, i.e., they are not visible to the client. All transactions that are committed to the Libra ledger were part of a block at some point in time, however the blockchain is represented as a sequence of transactions.
 
 ### Blockchain
 
 * A **blockchain** is a distributed public ledger.
-* The Libra Blockchain is formed with approved transactions and the execution-results of those transactions.
+* The Libra Blockchain is formed with approved transactions and the execution results of those transactions.
 
 ### Byzantine (Validator)
 
 * A **validator** that does not follow the specification of the consensus protocol, and wishes to compromise the correct execution of the protocol.
-* BFT algorithms traditionally support up to 1/3rd of the algorithm's voting power being held by Byzantine validators.
+* BFT algorithms traditionally support up to one-third of the algorithm's voting power being held by Byzantine validators.
 
 ### Byzantine Fault Tolerance (BFT)
 
-* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator)”,  members below a certain threshold. 
+* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator),"  members below a certain threshold. 
 * The Libra Blockchain uses LibraBFT, a consensus protocol based on [HotStuff.](#hotstuff)
 * BFT algorithms typically operate with a number of entities, collectively holding N votes (which we call “validators” in the Libra application of the system). 
 * N is chosen to withstand some number of validators holding f votes, which might be malicious.
-* In this configuration N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty — offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
-* This implies that BFT consensus protocols can function correctly, even if up-to one-third of the voting power is held by validator nodes that are compromised, or fail.
+* In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty — offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
+* This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validator nodes that are compromised, or fail.
 
 ## C
 
@@ -80,19 +80,19 @@ title: Glossary
 
 A **client** is a piece of software that has the capability to interact with the Libra Blockchain.
 
-* It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node
+* It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node.
 * It can issue queries to the Libra Blockchain and request the status of a transaction or account.
 * A client can be run by the end-user, or on behalf of the end user (for example, for a custodial wallet). 
 
 ### Consensus
 
-* **Consensus** is a component of a Validator Node.  
+* **Consensus** is a component of a validator node.  
 * The consensus component is responsible for coordination and agreement amongst all validators on the block of transactions to be executed, their order, and the execution results.
-* The Libra Blockchain is formed with these agreed-upon transactions, and their corresponding execution-results.
+* The Libra Blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
 
 ### Consensus Protocol
 
-* A **consensus protocol** is collectively executed by n validator nodes, to accept or reject a transaction, and agree on the ordering of transactions and [execution results](#execution-results).
+* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction, and to agree on the ordering of transactions and [execution results](#execution-results).
 * See [BFT](#byzantine-fault-tolerance-bft)
 
 ### Custodial Wallet
@@ -125,7 +125,7 @@ A **client** is a piece of software that has the capability to interact with the
 ### Event
 
 * An **event** is the user-facing representation of the effects of executing a transaction.
-* A transaction may be designed to emit any number of events, as a list. For example, a peer to peer payment transaction emits a `SentPaymentEvent` for the sender account, and a `ReceivedPaymentEvent` for the recipient account. 
+* A transaction may be designed to emit any number of events as a list. For example, a peer-to-peer payment transaction emits a `SentPaymentEvent` for the sender account and a `ReceivedPaymentEvent` for the recipient account. 
 * In the Libra protocol, events provide evidence that the successful execution of a transaction resulted in a specific effect. The `ReceivedPaymentEvent` (in the above example) allows the recipient to confirm that a payment was received into their account. 
 * Events are persisted on the blockchain and are used to answer queries by [clients](#client).  
 
