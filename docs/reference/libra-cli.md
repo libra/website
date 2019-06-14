@@ -61,19 +61,19 @@ If you enter only the major command, it will show the help information for that 
        Usage:
         create|c
 
-  `list | la` &mdash; Print all accounts that were created or loaded.
+  `list | la` - Print all accounts that were created or loaded.
 
      Usage:
         list|la
 
-  `recover | r <file_path>` &mdash; Recover all accounts that were written to a file via the `account write` command.
+  `recover | r <file_path>` - Recover all accounts that were written to a file via the `account write` command.
 
      Usage:
         recover|r <file_path>
      Arguments:
          file_path &mdash; File path from which to load mnemonic recover seed.  Must have been written via `account write`
 
-  `write | w <file path>` &mdash; Save Libra wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
+  `write | w <file path>` - Save Libra wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
 
      Usage:
         write|w <file_path>
