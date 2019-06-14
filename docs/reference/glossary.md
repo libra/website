@@ -211,7 +211,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Libra Association
 
 * The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The Association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
-* The Association is created by the validator nodes who will run on the Libra Network.
+* The Association is created by the validator nodes who will run on the Libra network.
 * Refer to the [whitepaper](https://libra.org/en-us/whitepaper) for the mission, vision, and purview of the Libra Association.
 
 ### Libra Association Council
@@ -422,7 +422,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * Each transaction submitted by a user includes a **transaction script**.
 * It represents the operation a client submits to a validator node.  
 * The operation could be a request to move coins from user A to user B, or it could involve interactions with published [Move modules](#move-modules)/smart contracts.
-* The transaction script is an arbitrary program that interacts with resources published in the global storage of the Libra blockchain by calling the procedures of a module. It encodes the logic for a transaction.
+* The transaction script is an arbitrary program that interacts with resources published in the global storage of the Libra Blockchain by calling the procedures of a module. It encodes the logic for a transaction.
 * A single transaction script can send funds to multiple recipients and invoke procedures from several different modules.
 * A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
 

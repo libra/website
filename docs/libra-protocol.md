@@ -45,7 +45,7 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Expiration time** &mdash; The time after which the transaction ceases to be valid.
 * **Signature** &mdash; The digital signature of the sender.
 
-The transaction script is an arbitrary program that encodes the logic of a transaction and interacts with resources published in the distributed database of the Libra blockchain. 
+The transaction script is an arbitrary program that encodes the logic of a transaction and interacts with resources published in the distributed database of the Libra Blockchain. 
 
 ### Ledger State
 

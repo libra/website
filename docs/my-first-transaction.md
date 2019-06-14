@@ -117,9 +117,9 @@ create | c
 list | la
   Print all accounts that were created or loaded
 recover | r <file path>
-  Recover Libra Wallet from the file path
+  Recover Libra wallet from the file path
 write | w <file name>
-  Save Libra Wallet mnemonic recovery seed to disk
+  Save Libra wallet mnemonic recovery seed to disk
 mint | mintb | m | mb <receiver account> <number of coins>
   Mint coins to the account. Suffix 'b' is for blocking
 ```

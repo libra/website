@@ -74,7 +74,7 @@ If you enter only the major command, it will show the help information for that 
      Arguments:
          file_path- File path from which to load mnemonic recover seed.  Must have been written via 'account write'
 
-  `write | w <file path>`- Save Libra Wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
+  `write | w <file path>`- Save Libra wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
 
      Usage:
         write|w <file_path>

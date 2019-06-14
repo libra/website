@@ -14,7 +14,7 @@ The Move language component consists of two main parts:
    in the Move intermediate representation to Move bytecode format.
 * The Move [virtual machine](./vm/)(VM) which:
    * Defines the bytecode format.
-   * Defines the genesis state for the Libra blockchain.
+   * Defines the genesis state for the Libra Blockchain.
    * Contains a bytecode verifier that performs static structural and
      semantic verification of the bytecode format.
    * Implements a bytecode interpreter for the bytecode format.
