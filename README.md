@@ -7,17 +7,20 @@
 [![CircleCI](https://circleci.com/gh/libra/libra.svg?style=shield)](https://circleci.com/gh/libra/libra)
 [![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE.md)
 
-Libra Core implements a decentralized, programmable database which provides a financial infrastructure that can empower billions of people
+Libra Core implements a decentralized, programmable database which provides a financial infrastructure that can empower billions of people.
 
-## Network
-
-Testnet is live!
+## Note to Developers
+* Libra Core is a prototype.
+* The APIs are constantly evolving and designed to demonstrate types of functionality. Expect substantial changes before the release.
+* We've launched a testnet that is an example of how the technology will perform and to help inform the protocol.
 
 ## Contributing
 
 Read our [Contrbuting guide](https://developers.libra.org/docs/community/contributing). Find out what's coming on our [blog](https://developers.libra.org/blog/2019/06/18/The-Path-Forward).
 
 ## Getting Started
+
+
 
 ### Learn About Libra
 * [Welcome](https://developers.libra.org/docs/welcome-to-libra)
@@ -60,4 +63,4 @@ Get the latest updates to our project by signing up to our [newsletter](https://
 
 ## License
 
-[Apache 2.0](https://github.com/libra/libra/blob/master/LICENSE)
+Libra Core is licensed as [Apache 2.0](https://github.com/libra/libra/blob/master/LICENSE)
