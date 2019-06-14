@@ -71,14 +71,14 @@ If you enter only the major command, it will show the help information for that 
      Usage:
         recover|r <file_path>
      Arguments:
-         file_path &mdash; File path from which to load mnemonic recover seed.  Must have been written via `account write`
+         file_path - File path from which to load mnemonic recover seed.  Must have been written via `account write`
 
-  `write | w <file path>` - Save Libra wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
+  `write | w <file path>` &mdash; Save Libra wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
 
      Usage:
         write|w <file_path>
      Arguments:
-         file_path &mdash; File path at which to save the mnemonic recovery seed to disk.
+         file_path - File path at which to save the mnemonic recovery seed to disk.
 
 
   `<mint | m> | <mintb| mb>` &mdash; Mint coins to the account. Suffix 'b' is for blocking. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub "blocking" commands.
@@ -96,7 +96,7 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-#### `transfer | transferb | t | tb` - Transfer coins from account to another. Suffix 'b' is for blocking.
+#### `transfer | transferb | t | tb` &mdash; Transfer coins from account to another. Suffix 'b' is for blocking.
 
     Usage:
         transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)]
@@ -112,16 +112,16 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-#### `query | q` - Query data from destination chain. All query operations are blocking. Sub commands include:
+#### `query | q` &mdash; Query data from destination chain. All query operations are blocking. Sub commands include:
 
-`balance | b` - Get the current balance of an account
+`balance | b` &mdash; Get the current balance of an account
 
      Usage:
         balance | b <account_ref_id>|<account_address>
      Arguments:
          account_ref_id | account_address - The account to query balance for.
 
-`assert_balance | a` - Assert that balance is equal to the specified value.
+`assert_balance | a` &mdash; Assert that balance is equal to the specified value.
     CLI will panic if the value from storage does not equal to expected value.
 
      Usage:
@@ -130,7 +130,7 @@ If you enter only the major command, it will show the help information for that 
          account_ref_id | account_address - The account to assert balance for.
          expected_value - The expected value to assert against.
 
-`sequence | s` - Get the current sequence number for an account.
+`sequence | s` &mdash; Get the current sequence number for an account.
 
       Usage:
         sequence | s <account_ref_id>|<account_address> [reset_sequence_number=true|false]
@@ -140,14 +140,14 @@ If you enter only the major command, it will show the help information for that 
                 value known on chain, this will reset the local sequence number to to on-chain
                 value.  This is useful when a user encounters an invalid sequence number error.
 
-`account_state | as` - Get the latest state for an account.
+`account_state | as` &mdash; Get the latest state for an account.
 
       Usage:
         account_state | as <account_ref_id>|<account_address>
       Arguments:
           account_ref_id | account_address - The account to query latest state.
 
-`txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
+`txn_acc_seq | ts` &mdash; Get the committed transaction by account and sequence number.
 
       Usage:
         txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number> <fetch_events=true|false>
@@ -156,7 +156,7 @@ If you enter only the major command, it will show the help information for that 
           sequence_number - The sequence number of committed transaction.
           fetch_events - Set to true to fetch events emitted by this transaction.
 
-`txn_range | tr` - Get the committed transaction by range
+`txn_range | tr` &mdash; Get the committed transaction by range
 
       Usage:
         txn_range | tr <start_version> <limit> <fetch_events=true|false>
@@ -165,7 +165,7 @@ If you enter only the major command, it will show the help information for that 
           limit - The maximum number of transactions to query.
           fetch_events - Set to true to fetch events emitted by each transaction.
 
-`event | ev` - Get event by account and path.
+`event | ev` &mdash; Get event by account and path.
 
       Usage:
         event | ev <account_ref_id>|<account_address> <sent|received> <start_sequence_number> <ascending=true|false> <limit>
@@ -179,11 +179,11 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-**`quit | q!`** - Exits the CLI. No sub command is required.
+`quit | q!` &mdash; Exits the CLI. No sub command is required.
 
 ---
 
-**`help | h`** - Prints help. No sub command is required.
+`help | h` &mdash; Prints help. No sub command is required.
 
 ### Account Creation/Mint(Faucet) for Testnet
 
