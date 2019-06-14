@@ -100,14 +100,16 @@ If you enter only the major command, it will show the help information for that 
 #### `transfer | transferb | t | tb` - Transfer coins from account to another. Suffix 'b' is for blocking.
 
     Usage:
-        `transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>`
+        `transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)]`
     Arguments:
         `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction
             is sent. The sender account pays for the gas.
         `receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins.
             If the receiver account does not exist, it will be created first. The sender will pay for
             gas required for both account creation and coin transfer.
-      `number_of_coins` - The number of coins transferred to receiver account.
+        `number_of_coins` - The number of coins transferred to receiver account.
+        `gas_unit_price` - The unit price to pay for gas.
+        `max_gas_amount` - Max units of gas user is willing to pay for this transaction.
 
 ---
 
@@ -126,15 +128,18 @@ If you enter only the major command, it will show the help information for that 
      Usage:
         assert_balance|a <account_ref_id>|<account_address> <expected_value>
      Arguments:
-         `account_ref_id | account_address` - The account to assert balance.
-         `expected_value` - The expected value to assert to.
+         `account_ref_id | account_address` - The account to assert balance for.
+         `expected_value` - The expected value to assert against.
 
 `sequence | s` - Get the current sequence number for an account.
 
       Usage:
-        `sequence | s <account_ref_id>|<account_address>`.
+        `sequence | s <account_ref_id>|<account_address> [reset_sequence_number=true|false]`.
       Arguments:
-          `<account_ref_id>|<account_address>` - The account to get current/latest sequence number.
+          `account_ref_id | account_address` - The account to get current/latest sequence number.
+          `reset_sequence_number` - If the sequence number known locally by the CLI differs from the
+                value known on chain, this will reset the local sequence number to to on-chain
+                value.  This is useful when a user encounters an invalid sequence number error.
 
 `account_state | as` - Get the latest state for an account.
 
@@ -146,28 +151,31 @@ If you enter only the major command, it will show the help information for that 
 `txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
 
       Usage:
-        `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number>`
+        `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number> <fetch_events=true|false>`
       Arguments:
           `account_ref_id | account_address` - The account to query committed transaction.
           `sequence_number` - The sequence number of committed transaction.
+          `fetch_events` - Set to true to fetch events emitted by this transaction.
 
 `txn_range | tr` - Get the committed transaction by range
 
       Usage:
-        `txn_range | tr <start_version> <limit>`
+        `txn_range | tr <start_version> <limit> <fetch_events=true|false>`
       Arguments:
           `start_version` - The version to query the transaction from.
           `limit` - The maximum number of transactions to query.
+          `fetch_events` - Set to true to fetch events emitted by each transaction.
 
 `event | ev` - Get event by account and path.
 
       Usage:
-        event | `ev <account_ref_id>|<account_address> <path> <star_sequence_number> <ascending> <limit>`.
+        event | `ev <account_ref_id>|<account_address> <sent|received> <start_sequence_number> <ascending=true|false> <limit>`.
       Arguments:
           `account_ref_id | account_address` - The account to query events from.
-          `path` - The path of the events to query.
-          `star_sequence_number` - The sequence number of event to query from.
-          `ascending` - The direction of query from `star_sequence_number`.
+          `sent | received` - Fetch sent or received events for this account.
+                Note that this will later evolve into selecting any event path.
+          `start_sequence_number` - The sequence number of events to query starting from.
+          `ascending` - The direction of query from `start_sequence_number`.
           `limit` - The maximum number of events to query.
 
 ---
