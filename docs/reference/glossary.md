@@ -14,9 +14,9 @@ title: Glossary
 
 ### Access path
 
-* An **access path** specifies the location of a resource or a Move module, within a specific account.
+* An **access path** specifies the location of a resource or Move module within a specific account.
 * In a state of the Libra Blockchain, an account is represented as a map of access paths to values. The Move VM deserializes this representation into modules and resources.
-* Clients can use access paths to request a resource, or a specific piece of data stored inside a resource.
+* Clients can use access paths to request a resource or a specific piece of data stored inside a resource.
 
 ### Account
 
@@ -65,7 +65,7 @@ title: Glossary
 
 ### Byzantine Fault Tolerance (BFT)
 
-* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator),"  members below a certain threshold. 
+* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator),”  members below a certain threshold. 
 * The Libra Blockchain uses LibraBFT, a consensus protocol based on [HotStuff.](#hotstuff)
 * BFT algorithms typically operate with a number of entities, collectively holding N votes (which are called “validators” in the Libra application of the system). 
 * N is chosen to withstand some number of validators holding f votes, which might be malicious.
