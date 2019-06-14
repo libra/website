@@ -35,8 +35,8 @@ Move modules define the rules for updating the global state of the Libra Blockch
 
 ### Move Has First Class Resources
 
-* The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital  assets with rich programmability.
-* Resources are ordinary values in the language, they can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
+* The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital assets with rich programmability.
+* Resources are ordinary values in the language. They can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on. 
 * However, the Move type system provides special safety guarantees for resources. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine-mvm) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
 * The Libra currency is implemented as a resource type named `LibraCoin.T`. `LibraCoin.T` has no special status in the language; every Move resource enjoys the same protections.
 
@@ -52,7 +52,7 @@ We will proceed by presenting snippets of heavily-commented Move IR. We encourag
 
 As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount.T` and `LibraCoin.T` resource types. `LibraAccount` is the name of the module, and `T` is the name of a resource declared by that module. This is a common naming convention in Move; the “main” type declared by a module is typically named `T`. 
 
-When we say that a user "has an account at address `0xff` on the Libra Blockchain", what we actually mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data, such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
+When we say that a user "has an account at address `0xff` on the Libra Blockchain", what we mean is that the address `0xff` holds an instance of the `LibraAccount.T` resource. Every nonempty address has a `LibraAccount.T` resource. This resource stores account data, such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount.T` resource or invoking procedures of the `LibraAccount` module.
 
 The account balance is a resource of type `LibraCoin.T`. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this is the type of a Libra coin. This type is a "first-class citizen" in the language just like any other Move resource. Resources of type `LibraCoin.T` can be stored in program variables, passed between procedures, and so on.
 
@@ -76,7 +76,7 @@ main(payee: address, amount: u64) {
   let coin: R#LibraCoin.T;
   // the R# part of the type above is one of two *kind annotation* R# and V# (shorthand for
   // "Resource" and "unrestricted Value"). These annotations must match the kind of the type
-  // declaration (e.g, does the LibraCoin module declare `resource T` or `struct T`?).
+  // declaration (e.g., does the LibraCoin module declare `resource T` or `struct T`?).
 
   // Acquire a LibraCoin.T resource with value `amount` from the sender's account
   // This will fail if the sender's balance is less than `amount`.
@@ -91,7 +91,7 @@ main(payee: address, amount: u64) {
 }
 ```
 
-This transaction script has an unfortunate problem &mdash; it will fail if the there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
+This transaction script has an unfortunate problem &mdash; it will fail if there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
 
 ```rust
 // A small variant of the peer-peer payment example that creates a fresh account if one does not
@@ -165,13 +165,13 @@ To solve this problem for Alice, we will write a module `EarmarkedLibraCoin` whi
 module EarmarkedLibraCoin {
   import 0x0.LibraCoin;
 
-  // Wrapper containing a Libra coin and the address of the recipient the coin is earmarked for.
+  // A wrapper containing a Libra coin and the address of the recipient the coin is earmarked for.
   resource T {
     coin: R#LibraCoin.T,
     recipient: address
   }
 
-  // Create a new earked coin with the given `recipient`.
+  // Create a new earmarked coin with the given `recipient`.
   // Publish the coin under the transaction sender's account address.
   public create(coin: R#LibraCoin.T, recipient: address) {
     let t: R#Self.T;
@@ -244,6 +244,6 @@ The observant reader may have noticed that the code in this module is agnostic t
 
 ### Future Developer Experience
 
-In the near future, the IR will stabilize and compiling and verifying programs will become more user-friendly. Additionally, location information from the IR source will be tracked and passed to the verifier to make error messages easier to debug. However, the IR will continue to remain a tool for testing Move bytecode. It is meant to be a semantically transparent representation of the underlying bytecode. To allow effective tests, the IR compiler must produce bad code that will be rejected by the bytecode verifier or fail at runtime in the compiler. A user-friendly source language would make different choices; it should refuse to compile code that will fail at a subsequent step in the pipeline.
+In the near future, the IR will stabilize, and compiling and verifying programs will become more user-friendly. Additionally, location information from the IR source will be tracked and passed to the verifier to make error messages easier to debug. However, the IR will continue to remain a tool for testing Move bytecode. It is meant to be a semantically transparent representation of the underlying bytecode. To allow effective tests, the IR compiler must produce bad code that will be rejected by the bytecode verifier or fail at runtime in the compiler. A user-friendly source language would make different choices; it should refuse to compile code that will fail at a subsequent step in the pipeline.
 
-In the future, we will have a higher-level Move source language. This source language will be designed to express common Move idioms and programming patterns safely and easily. Since Move bytecode is a new language and the blockchain is a new programming environment, our understanding of the idioms and patterns we should support is still evolving. The source language is in the early stages of development and we do not have a timetable for its release yet.
+In the future, we will have a higher-level Move source language. This source language will be designed to express common Move idioms and programming patterns safely and easily. Since Move bytecode is a new language and the blockchain is a new programming environment, our understanding of the idioms and patterns we should support is still evolving. The source language is in the early stages of development, and we do not have a timetable for its release yet.
