@@ -9,14 +9,14 @@ title: Welcome
 
 Libra is built on a secure, scalable, and reliable blockchain. It is backed by a reserve of assets designed to give it intrinsic value and is governed by the independent Libra Association tasked with evolving the ecosystem.
 
-_“The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability.”_&mdash; Libra White Paper
+> _“The goal of the Libra Blockchain is to serve as a solid foundation for financial services, including a new global currency, which could meet the daily financial needs of billions of people. The blockchain has been built from the ground up to prioritize scalability, security, efficiency in storage and throughput, and future adaptability.”_&mdash; Libra White Paper
 
 The Libra currency is built on the Libra Blockchain. This site documents Libra Core, an open-source implementation of the Libra protocol, which powers this new blockchain. The documentation discusses:
 * How to try the testnet, a demonstration of this new system. 
 * Where to learn about new technology, such as the Libra protocol, the Move language, and LibraBFT.
 * How to be part of the community built around this new ecosystem.
 
-> **Note:** This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
+**Note:** This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
 
 ## Move &mdash; A New Blockchain Programming Language
 
