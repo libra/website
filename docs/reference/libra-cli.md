@@ -33,7 +33,7 @@ cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file
 
 #### Options
 
-The options for the command for running a CLI client command are:
+The options for running the CLI client command to connect to any Libra network are:
 
 * `-m | --faucet_key_file_path` &mdash; Path to the generated key-pair for the faucet account. The faucet account can be used to mint coins. If not passed, a new key-pair will be generated for you and placed in a temporary directory. To manually generate a keypair, use generate_keypair: `cargo run -p generate_keypair -- -o <output_file_path>`.
 * `-f | --faucet_server` &mdash; The host that operates a faucet service. If not passed, this will be derived from the host parameter.
