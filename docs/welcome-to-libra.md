@@ -3,7 +3,7 @@ id: welcome-to-libra
 title: Welcome
 ---
 
-Welcome to the Libra developer site! Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
+**Welcome to the Libra developer site!** Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.
 
 _"The world truly needs a reliable digital currency and infrastructure that together can deliver on the promise of 'the internet of money.' Securing your financial assets on your mobile device should be simple and intuitive. Moving money around globally should be as easy and cost-effective as — and even more safe and secure than — sending a text message or sharing a photo, no matter where you live, what you do, or how much you earn.”_ &mdash; Libra White Paper
 
