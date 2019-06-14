@@ -11,13 +11,13 @@ There are three ways to invoke the Libra CLI client.
 ### Connect to the Testnet via the CLI Client
 To connect to the testnet through the CLI, a convenience script can be used to invoke the CLI without needing to specify parameters.  To invoke this, navigate to `libra/scripts/cli` and use:
 
-```
+```bash
 ./start_cli_testnet.sh
 ```
 
 ### Run a Local Libra Network and Spawn a CLI Client
 To start a local Libra network and spawn a CLI client that connects to this local network, use:
-```rust
+```bash
 cargo run -p libra_swarm -- -s
 
 ```
@@ -26,7 +26,7 @@ The `-s` option causes the CLI to be run after the local Libra network is launch
 ### Run a CLI Client to Connect to Any Libra Network
 To invoke the CLI client and configure it yourself, use:
 
-```rust
+```bash
 cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
 
 ```
@@ -46,7 +46,7 @@ The options for running the CLI client command to connect to any Libra network a
 
 Once started with any of the three commands previously mentioned, the following CLI commands are available:
 
-```rust
+```plaintext
 major_command sub_command [options]
 ```
 

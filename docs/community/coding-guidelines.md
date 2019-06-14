@@ -29,7 +29,7 @@ In general, we follow the recommendations from [rust-lang-nursery](https://rust-
 Any public fields, functions, and methods should be documented with [Rustdoc](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments). Follow the conventions described below for modules, structs, enums, and functions. The content on the *[single line]* shown in the following example is used as a preview in the generated rust documentation. Refer to the 'Structs' and 'Enums' sections in the [collections](https://doc.rust-lang.org/std/collections/index.html) Rustdoc, for examples.
 
 
- ```
+ ```rust
  /// [Single line] One line summary description
  ///
  /// [Longer description] Multiple lines, inline code 
@@ -39,7 +39,7 @@ Any public fields, functions, and methods should be documented with [Rustdoc](ht
 
 Here is an example:
 
-```
+```rust
 /// Represents (x, y) of a 2-dimensional grid
 ///
 /// A line is defined by 2 instances.
@@ -81,7 +81,7 @@ You can refer to this sample README `libra/network/README.md` which describes th
 
 Here is a template for a README.md:
 
-```
+```markdown
 # Component Name
 
 [Summary line: Start with one sentence about this component.]
@@ -113,7 +113,7 @@ In the following sections we have suggested some best practices for a uniform co
 
 Use appropriate attributes for handling dead code:
 
-```
+```rust
 // For code that is intended for production usage in the future
 #[allow(dead_code)]
 // For code that is only intended for testing and 
@@ -135,7 +135,7 @@ If `x` is reference counted, prefer [`Arc::clone(x)`](https://doc.rust-lang.org/
 
 Also, if you are passing around [`Arc<T>`](https://doc.rust-lang.org/std/sync/struct.Arc.html) types, consider using a newtype wrapper:
 
-```
+```rust
 #[derive(Clone, Debug)]
 pub struct Foo(Arc<FooInner>);
 ```
@@ -174,7 +174,7 @@ Exclude test code and set field visibility to private as much as possible. Priva
 
 Public fields are most appropriate for [`struct`](https://doc.rust-lang.org/book/ch05-00-structs.html) types in the C spirit: compound, passive data structures without internal invariants.  Naming suggestions follow the guidance [here](https://rust-lang-nursery.github.io/api-guidelines/naming.html#getter-names-follow-rust-convention-c-getter) as shown below.
 
-```
+```rust
 struct Foo {
     size: usize,
     key_to_value: HashMap<u32, u32>
@@ -221,7 +221,7 @@ We currently use [slog](https://docs.rs/slog/) for logging.
 
 Ideally, all code will be unit tested. Unit test files should exist in the same directory as `mod.rs,` and their file names should end in `_test.rs`. A module to be tested should have the test modules annotated with `#[cfg(test)]`. For example, if in a crate there is a db module, the expected directory structure is as follows:
 
-```
+```plaintext
 src/db                        -> directory of db module
 src/db/mod.rs                 -> code of db module
 src/db/read_test.rs           -> db test 1

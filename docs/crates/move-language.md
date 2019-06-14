@@ -89,7 +89,7 @@ technical information on each of the components can be found in the READMEs for 
     Move script---in the high-level Move IR. The Move IR compiler
     translates this into the Move bytecode format. For example, the
     programmer inputs this transaction script to the IR compiler:
-    ```
+    ```move
     import 0x0.LibraAccount;
     main () {
       LibraAccount.pay_from_sender(0xDEADBEEF, 10);

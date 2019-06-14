@@ -69,7 +69,7 @@ This command builds and runs the client utilizing cargo (Rust’s package manage
 
 Once the client connects to a node on the testnet, you will see the following output.  To quit the client at any time, use the `quit` command.
 
-```bash
+```
 usage: <command> <args>
 
 Use the following commands:
@@ -104,7 +104,7 @@ Once your client is connected to the testnet, you can run CLI commands to create
 
 A **libra%** command line prompt indicates that your Libra CLI client is running. To see the help information for the `account` command enter “account” as shown below:
 
-```bash
+```plaintext
 libra% account
 usage: account <arg>
 
@@ -132,7 +132,7 @@ To create Alice’s account, enter this command:
 
 Sample output on success:
 
-```bash
+```plaintext
 >> Creating/retrieving next account from wallet
 Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
@@ -147,7 +147,7 @@ To create Bob’s account, repeat the account creation command:
 
 Sample output on success:
 
-```bash
+```plaintext
 >> Creating/retrieving next account from wallet
 Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
 ```
@@ -162,7 +162,7 @@ To list the accounts you have created, enter this command:
 `libra% account list`
 
 Sample output on success:
-```bash
+```plaintext
 User account index: 0, address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, sequence number: 0
 User account index: 1, address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, sequence number: 0
 ```
@@ -185,7 +185,7 @@ A successful account mint command will also create Alice’s account on the bloc
 
 Sample output on success:
 
-```bash
+```plaintext
 >> Minting coins
 Mint request submitted
 ```
@@ -206,7 +206,7 @@ To mint Libra and add to Bob’s account, enter this command:
 
 Sample output on success:
 
-```bash
+```plaintext
 >> Minting coins
 Mint request submitted
 ```
@@ -237,7 +237,7 @@ Before we submit a transaction to transfer Libra from Alice’s account to Bob�
 
 ### Query the Accounts’ Sequence Numbers
 
-```bash
+```plaintext
 libra% query sequence 0
 >> Getting current sequence number
 Sequence number is: 0
@@ -260,7 +260,7 @@ To submit a transaction to transfer 10 Libra from Alice’s account to Bob’s a
 
 Sample output on success:
 
-```bash
+```plaintext
 >> Transferring
 Transaction submitted to validator
 To query for transaction status, run: query txn_acc_seq 0 0 <fetch_events=true|false>
@@ -280,7 +280,7 @@ Refer to [Life of a Transaction](life-of-a-transaction.md) for an understanding 
 
 ### Query Sequence Number After Transfer
 
-```bash
+```plaintext
 libra% query sequence 0
 >> Getting current sequence number
 Sequence number is: 1
@@ -295,7 +295,7 @@ The sequence number of 1 for Alice’s account (index 0) indicates that one tran
 
 To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice’s account and 62 Libra in Bob’s account.
 
-```bash
+```plaintext
 libra% query balance 0
 Balance is: 100
 libra% query balance 1
@@ -332,7 +332,7 @@ If your client did not connect to the testnet:
 
 * If the validator node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:
 
-  ```bash
+  ```plaintext
   libra% account mint 0 110
   >> Minting coins
   [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to the client is running
@@ -347,7 +347,7 @@ If your client did not connect to the testnet:
 
 If the testnet validator node (your client was connected to) is unavailable or your connection to testnet has timed-out, you will see this error:
 
-```bash
+```plaintext
 libra% transfer 0 1 10
 >> Transferring
 [ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to the client is running
@@ -366,7 +366,7 @@ To troubleshoot transfer errors:
 
 This example will query for a single transaction's details using the account and sequence number.
 
-```bash
+```plaintext
 libra% query txn_acc_seq 0 0 true
 >> Getting committed transaction by account and sequence number
 Committed transaction: SignedTransaction {
@@ -401,7 +401,7 @@ Note that the transaction amount is shown in microlibra.
 
 In the following example, we will query for “sent” events from the account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return “limit” events.
 
-```bash
+```plaintext
 libra% query event 0 sent 0 true 10
 >> Getting events by account and event type.
 EventWithProof {
@@ -462,7 +462,7 @@ Last event state: Some(
 
 In this example, we will query for the state of a single account.
 
-```bash
+```plaintext
 >> Getting latest account state
 Latest account state is:
  Account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8

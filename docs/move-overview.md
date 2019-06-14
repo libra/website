@@ -60,7 +60,7 @@ We encourage the interested reader to examine the Move IR definitions of these t
 
 Now let us see how a programmer can interact with these modules and resources in a transaction script.
 
-```rust
+```move
 // Simple peer-peer payment example.
 
 // Use LibraAccount module published on the blockchain at account address 0x0...0 (with 64 zeroes).
@@ -93,7 +93,7 @@ main(payee: address, amount: u64) {
 
 This transaction script has an unfortunate problem &mdash; it will fail if there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
 
-```rust
+```move
 // A small variant of the peer-peer payment example that creates a fresh account if one does not
 // already exist.
 
@@ -123,7 +123,7 @@ main(payee: address, amount: u64) {
 
 Let us look at a more complex example. In this example, we will use a transaction script to pay multiple recipients instead of just one.
 
-```rust
+```move
 // Multiple payee example. This is written in a slightly verbose way to emphasize the ability to
 // split a `LibraCoin.T` resource. The more concise way would be to use multiple calls to
 // `LibraAccount.withdraw_from_sender`.
@@ -160,7 +160,7 @@ To solve this problem for Alice, we will write a module `EarmarkedLibraCoin` whi
 * Allows Bob to claim the resource (the `claim_for_recipient` procedure).
 * Allows anyone with an `EarmarkedLibraCoin.T` to destroy it and acquire the underlying coin (the `unwrap` procedure).
 
-```rust
+```move
 // A module for earmarking a coin for a specific recipient
 module EarmarkedLibraCoin {
   import 0x0.LibraCoin;
