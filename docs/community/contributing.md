@@ -48,7 +48,7 @@ To submit your pull request:
 For your pull requests to be accepted by any Libra project, you will need to sign a CLA. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Code of Conduct
-Please refer to the [Code of Conduct]() for guidelines on interacting with the community.
+Please refer to the [Code of Conduct](https://github.com/libra/libra/blob/master/CODE_OF_CONDUCT.md) for guidelines on interacting with the community.
 
 ## Issues
 
