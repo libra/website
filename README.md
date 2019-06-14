@@ -33,7 +33,7 @@ Read our [Contrbuting guide](https://developers.libra.org/docs/community/contrib
 
 ### Technical Papers
 * [The Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-paper)
-* [Move: a Language for Managing Access to Scarce Resources](https://developers.libra.org/docs/move-paper)
+* [Move: A Language With Programmable Resources](https://developers.libra.org/docs/move-paper)
 * [State Machine Replication in the Libra Blockchain](https://developers.libra.org/docs/state-machine-replication-paper)
 
 ### Blog
