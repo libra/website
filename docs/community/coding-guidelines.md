@@ -156,7 +156,7 @@ Here are some high-level suggestions:
 
 Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html). Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
 
-*Panic*
+**Panic**
 
 * `panic!()` - Runtime panic! should only be used when the resulting state cannot be processed going forward. It should not be used for any recoverable errors.
 * `unwrap()` - Unwrap should only be used for mutexes (e.g. `lock().unwrap()`) and test code. For all other use cases, prefer `expect()`. The only exception is if the error message is custom-generated, in this case use `.unwrap_or_else(|| panic!("error: {}", foo))`
@@ -217,7 +217,7 @@ We currently use [slog](https://docs.rs/slog/) for logging.
 
 ### Testing
 
-*Unit tests*
+#### Unit tests
 
 Ideally, all code will be unit tested. Unit test files should exist in the same directory as `mod.rs,` and their file names should end in `_test.rs`. A module to be tested should have the test modules annotated with `#[cfg(test)]`. For example, if in a crate there is a db module, the expected directory structure is as follows:
 
@@ -230,7 +230,7 @@ src/db/access/mod.rs          -> directory of access submodule
 src/db/access/access_test.rs  -> test of access submodule
 ```
 
-*Property-based tests*
+#### Property-based tests
 
 Libra contains [property-based tests](https://blog.jessitron.com/2013/04/25/property-based-testing-what-is-it/) written in Rust using the [`proptest` framework](https://github.com/AltSysrq/proptest). Property-based tests generate random test cases and assert that invariants, also called *properties*, hold about the code under test.
 
@@ -245,6 +245,6 @@ A tutorial for `proptest` can be found in the [`proptest` book](https://altsysrq
 * [An introduction to property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing/)
 * [Choosing properties for property-based testing](https://fsharpforfunandprofit.com/posts/property-based-testing-2/)
 
-*Fuzzing*
+**Fuzzing**
 
 Libra contains harnesses for fuzzing crash-prone code like deserializers, which use [`libFuzzer`](https://llvm.org/docs/LibFuzzer.html) through [`cargo fuzz`](https://rust-fuzz.github.io/book/cargo-fuzz.html). For more, see the `testsuite/libra_fuzzer` directory.
