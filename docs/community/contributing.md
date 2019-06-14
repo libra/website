@@ -6,7 +6,7 @@ title: Contribution Guide
 Our goal is to make contributing to the Libra project easy and transparent.
 
 <blockquote class="block_note">
-The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the Discourse forum to ensure that they fit into the project roadmap.
+The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the Discourse forum to ensure that it fits into the project roadmap.
 </blockquote>
 
 ## Contributing to Libra Core
@@ -48,7 +48,7 @@ To submit your pull request:
 For your pull requests to be accepted by any Libra project, you will need to sign a CLA. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Code of Conduct
-Please refer to the [Code of Conducts] for guidelines on interacting with the community.
+Please refer to the [Code of Conduct]() for guidelines on interacting with the community.
 
 ## Issues
 
