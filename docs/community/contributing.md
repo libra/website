@@ -6,7 +6,7 @@ title: Contribution Guide
 Our goal is to make contributing to the Libra project easy and transparent.
 
 <blockquote class="block_note">
-The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
+The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the [Discourse forum]() to ensure that they fit into the project roadmap.
 </blockquote>
 
 ## Contributing to Libra Core
