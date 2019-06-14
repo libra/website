@@ -10,10 +10,10 @@ This guide describes how to use the Libra command line interface (CLI) client to
 There are three main options to invoke the Libra CLI client.
 
 ### Connect to the testnet via the CLI client
-To connect to the testnet through the CLI, a convenience script can be used to invoke the CLI without needing to specify parameters.  To invoke this, navigate to `libra/scripts` and use:
+To connect to the testnet through the CLI, a convenience script can be used to invoke the CLI without needing to specify parameters.  To invoke this, navigate to `libra/scripts/cli` and use:
 
 ```
-./scripts/dev-setup.sh
+./start_cli_testnet.sh
 ```
 
 ### Run a local Libra network and spawn a CLI client
