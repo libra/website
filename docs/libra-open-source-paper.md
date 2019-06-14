@@ -7,7 +7,7 @@ The [Libra Blockchain](https://developers.libra.org/docs/the-libra-blockchain-pa
 
 Open-source software is software that anyone can use, inspect, and modify. Building Libra Core on open-source software means that people can use the Libra Blockchain in new and creative ways. It means that developers can build new applications that support the blockchain and run those applications on any kind of device. It means that the public can inspect how the blockchain works, giving everyone equal knowledge of the inner workings of the code. It also means that the community of security researchers can work together to make the blockchain more secure. The Libra Association is committed to ensuring that the Libra protocol specification and Libra Core are and always will be open source.
 
-The invention of open-source software sparked a practice of engineers working across countries and across companies to collaborate on the development of ambitious software projects. Projects of this type build a community of developers who work together to make tough technical decisions about the evolution of the project. Because Libra is a platform that will serve many people, this type of community-focused decision making will be essential in making sure that everybody has a fair chance to contribute to the evolution of the platform. 
+The invention of open-source software sparked a practice of engineers working across countries and across companies to collaborate on the development of ambitious software projects. Projects of this type build a community of developers who work together to make tough technical decisions about the evolution of the project. Because Libra is a platform that will serve many people, this type of community-focused decision making will be essential to make sure that everybody has a fair chance to contribute to the evolution of the platform. 
 
 ## Libra's Engineering Principles
 
@@ -33,7 +33,7 @@ The role of the association will be to:
 
 ## Where Are We Now?
 
-Over the past year, engineers from Facebook's Calibra team have designed a blockchain from the ground up to meet the needs of the Libra ecosystem. Facebook has consciously open sourced a prototype of Libra Core early so that the community can influence its direction. Facebook has irrevocably contributed its rights and code to the association under the terms of the Apache License and Apache Contributor License Agreement, just as any other contributor to Libra Core would. The development of Libra is now under the governance of the Libra Association.
+Over the past year, engineers from Facebook's Calibra team have designed a blockchain from the ground up to meet the needs of the Libra ecosystem. Facebook has consciously open sourced a prototype of Libra Core early so that the community can influence its direction. Facebook has irrevocably contributed its rights and code to the association under the terms of the Apache License and Apache Contributor License Agreement — just as any other contributor to Libra Core would. The development of Libra is now under the governance of the Libra Association.
 
 Because Libra Core was open sourced early in its life, there remains much to build before the Libra Blockchain can be launched. Most open-source projects begin with a small set of core developers and a simple governance process, which allows the rapid development of the project in its early phases. The association is following this established practice and has asked Calibra to manage the evolution of Libra Core over the coming months.
 
