@@ -9,7 +9,7 @@ This document describes the coding guidelines for the Libra Core Rust codebase.
 
 ## Code Formatting
 
-All code formatting is enforced with [rustfmt](https://github.com/rust-lang/rustfmt) using a project specific configuration.  Below is an example command to adhere to the project conventions.
+All code formatting is enforced with [rustfmt](https://github.com/rust-lang/rustfmt) using a project specific configuration.  Here is a sample command to run `rustfmt` and adhere to the project conventions:
 
 ```
 libra/libra$ cargo fmt
@@ -23,14 +23,13 @@ libra/libra$ cargo fmt
 libra$ ../setup_scripts/clippy.sh 
 ```
 
-In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html).  The remainder of the guide is to provide more detailed guidance on specific areas in order to provide as much uniformity as possible.
+In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html).  The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
 
 
 ## Code Documentation
 
-Any public fields, functions, and methods should be documented with [Rustdoc](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments).
+Any public fields, functions, and methods should be documented with [Rustdoc](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments). Follow the conventions described below for modules, structs, enums, and functions. The content on the *[single line]* shown in the following example is used as a preview in the generated rust documentation. Refer to the 'Structs' and 'Enums' sections in the [collections](https://doc.rust-lang.org/std/collections/index.html) Rustdoc, for examples.
 
- Please follow the conventions as detailed below for modules, structs, enums, and functions.  The *single line* is used as a preview when navigating Rustdoc.  As an example, see the "Structs" and "Enums" sections in the [collections](https://doc.rust-lang.org/std/collections/index.html) Rustdoc.
 
  ```
  /// [Single line] One line summary description
@@ -56,7 +55,7 @@ struct Point {
 
 ### Constants and Fields
 
-Describe the purpose and definition of this data.
+Describe the purpose and definition of the constants and fields in the code.
 
 ### Functions and Methods
 
@@ -66,8 +65,8 @@ Document the following for each function:
 * Describe how and why to use this method.
 * Any condition that must be met _before_ calling the method.
 * State conditions under which the function will `panic!()` or returns an `Error`
-* Brief description of return values.
-* Any special behavior that is not obvious.
+* Provide a brief description of return values.
+* Clearly state any special behavior that is not obvious in the code itself.
 
 ### README.md for Top-Level Directories and Other Major Components
 
@@ -75,7 +74,7 @@ Each major component of the system needs to have a `README.md` file. Major compo
 * Top-level directories (e.g., `libra/network`, `libra/language`).
 * The most important crates in the system (e.g., `vm_runtime`).
 
-This file should contain:
+Thd README.md should contain:
 
  * The *conceptual* *documentation* of the component.
  * A link to external API documentation for the component.
@@ -115,15 +114,15 @@ Refer to the Libra Project contributing guide [LINK].
 Refer to the Libra Project License [LINK].
 ```
 
-A good example of README.md is `libra/network/README.md` which describes the networking crate.
+A good example of README.md is `libra/network/README.md` which describes the network crate.
 
 ## Code Suggestions
 
-Below are suggested best practices for a uniform codebase that will evolve and improve over time.  We will be investigating what can be enforced by clippy, and will update this section in the future.
+In the following sections we have suggested some best practices for a uniform codebase. We will investigate and identify the practices that can be enforced using Clippy. This information will evolve and improve over time.
 
 ### Attributes
 
-Make sure to use the appropriate attributes for handling dead code:
+Use appropriate attributes for handling dead code:
 
 ```
 // For code that is intended for production usage in the future
@@ -135,15 +134,15 @@ Make sure to use the appropriate attributes for handling dead code:
 
 ### Avoid Deref Polymorphism
 
-Don't abuse the Deref trait to emulate inheritance between structs, and thus reuse methods.  For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
+Don't abuse the Deref trait to emulate inheritance between structs, and reuse methods.  For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
 
 ### Comments
 
-Prefer `//` and `///` comments rather than block comments `/* ... */` for uniformity and simpler grepping.  
+We recommend that you use  `//` and `///` comments rather than block comments `/* ... */` for uniformity and easier grepping.  
 
 ### Cloning
 
-If `x` is reference counted, prefer [`Arc::clone(x)`](https://doc.rust-lang.org/std/sync/struct.Arc.html) rather than `x.clone()`, as it is more explicit that we are cloning `x` in the former case. This avoids confusion about whether we are performing an expensive clone of a `struct`, `enum` or other type or a cheap reference copy.
+If `x` is reference counted, prefer [`Arc::clone(x)`](https://doc.rust-lang.org/std/sync/struct.Arc.html) over `x.clone(). `Arc::clone(x) explicitly indicates that we are cloning `x`. This avoids confusion about whether we are performing an expensive clone of a `struct`, `enum,` or other type, or just a cheap reference copy.
 
 Also, if you are passing around [`Arc<T>`](https://doc.rust-lang.org/std/sync/struct.Arc.html) types, consider using a newtype wrapper:
 
@@ -152,15 +151,15 @@ Also, if you are passing around [`Arc<T>`](https://doc.rust-lang.org/std/sync/st
 pub struct Foo(Arc<FooInner>);
 ```
 
-### Concurrent types
+### Concurrent Types
 
-Concurrent types, such as [`CHashMap`](https://docs.rs/crate/chashmap), [`AtomicUsize`](https://doc.rust-lang.org/std/sync/atomic/struct.AtomicUsize.html), etc., have an immutable borrow on self (i.e., `fn foo_mut(&self,...)`) in order to support concurrent access on interior mutating methods. Good practices (such as those in the examples mentioned) avoid exposing synchronization primitives externally (e.g., `Mutex`, `RwLock`) and document the method semantics and invariants clearly.
+Concurrent types such as [`CHashMap`](https://docs.rs/crate/chashmap), [`AtomicUsize`](https://doc.rust-lang.org/std/sync/atomic/struct.AtomicUsize.html), etc. have an immutable borrow on self, i.e. `fn foo_mut(&self,...),` to support concurrent access on interior mutating methods. Good practices (such as those in the examples mentioned) avoid exposing synchronization primitives externally (e.g. `Mutex`, `RwLock`) and document the method semantics and invariants clearly.
 
 *When to use channels versus concurrent types?*
 
 Below are high-level suggestions for the distinction based on experience.
 
-* Channels are for ownership transfer, decoupling of types, and coarse grained messages.  They fit well for transferring ownership of data, distributing units of work, and communicating async results.  Furthermore, they help break circular dependencies (e.g. `struct Foo` contains an `Arc<Bar>` and `struct Bar` contains an `Arc<Foo>` that leads to complex initialization).
+* Channels are for ownership transfer, decoupling of types, and coarse grained messages. They fit well for transferring ownership of data, distributing units of work, and communicating async results. Furthermore, they help break circular dependencies (e.g. `struct Foo` contains an `Arc<Bar>` and `struct Bar` contains an `Arc<Foo>` that leads to complex initialization).
 
 * Concurrent types (e.g., such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
 
