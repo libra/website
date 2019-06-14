@@ -15,12 +15,13 @@ some data associated with each account.
 The execution component takes the totally ordered transactions, computes the
 output for each transaction via the Move virtual machine, applies the output on
 the previous state, and generates the new state. The execution system cooperates
-with the consensus algorithm &mdash; HotStuff, a leader-based algorithm — to help it
-agree on a proposed set of transactions and their execution. Such a group of
-transactions is a block. Unlike in other blockchain systems, blocks have no
-significance other than being a batch of transactions — every transaction is
-identified by its version, its position within the ledger. Each consensus
-participant builds a tree of blocks like the following:
+with the consensus algorithm &mdash; HotStuff, a leader-based algorithm — to
+help it agree on a proposed set of transactions and their execution. Such a
+group of transactions is a block. Unlike in other blockchain systems, blocks
+have no significance other than being a batch of transactions &mdash; every
+transaction is identified by its position within the ledger, which is also
+referred to as its "version". Each consensus participant builds a tree of blocks
+like the following:
 
 ```
                    ┌-- C
