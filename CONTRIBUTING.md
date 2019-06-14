@@ -2,10 +2,11 @@
 
 Our goal is to make contributing to the Libra project easy and transparent.
 
-> **Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
+<blockquote class="block_note">
+**Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
+</blockquote>
 
 ## On Contributing
-
 
 ### Libra Core
 

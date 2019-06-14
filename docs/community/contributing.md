@@ -6,7 +6,6 @@ title: Contribution Guide
 Our goal is to make contributing to the Libra project easy and transparent.
 
 <blockquote class="block_note">
-
 **Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
 </blockquote>
 
@@ -29,7 +28,7 @@ cargo test
 
 #### Code Style, Hints, and Testing
 
-Refer to our [Coding Guidelines](coding-guidelines.md) for detailed guidance about how to contribute to the project.
+Refer to our [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines) for detailed guidance about how to contribute to the project.
 
 #### Documentation
 
@@ -38,16 +37,6 @@ code can be found in this [repository](https://github.com/libra/libra.github.io/
 It is built using [Docusaurus](https://docusaurus.io/):
 
 If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
-
-To build the documentation you will need [Node](https://nodejs.org/en/) >= 8.x
-and [Yarn](https://yarnpkg.com/en/) >= 1.5.
-
-The following command will both build the docs and serve the site locally:
-```bash
-cd libra.github.io
-cd scripts
-./build_docs.sh
-```
 
 ## Pull Requests
 During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be better able to accept pull requests from the community.
