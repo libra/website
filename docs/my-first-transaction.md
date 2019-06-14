@@ -137,7 +137,7 @@ Sample output on success:
 Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
 
-#0 is the index of Alice’s account and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
+#0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
 ### Step 3: Create Bob’s Account
 
@@ -152,7 +152,7 @@ Sample output on success:
 Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
 ```
 
-#1 is the index for Bob’s account and the hex string is the address of Bob’s account.
+#1 is the index for Bob’s account, and the hex string is the address of Bob’s account.
 For more details on index refer to [Create Alice’s Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (Optional): List Accounts
@@ -170,7 +170,7 @@ The sequence number for an account indicates the number of transactions that hav
 
 ## Add Libra Coins to Alice’s and Bob’s Accounts
 
-Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
+Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real-world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
 ### Step 1: Add 110 Libra to Alice’s Account
 
@@ -189,7 +189,7 @@ Sample output on success:
 >> Minting coins
 Mint request submitted
 ```
-Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully completed. Later, we will query the account balance to confirm if minting was successful.
+Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully be completed. Later, we will query the account balance to confirm if minting was successful.
 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
@@ -202,7 +202,7 @@ To mint Libra and add to Bob’s account, enter this command:
 
 * 1 is the index of Bob’s account
 * 52 is the amount of Libra to be added to Bob’s account.
-* A successful account mint command will also create Bob’s account on the blockchain. Another way to create Bob’s account on the blockchain is to simply transfer money from Alice’s account to Bob’s account.
+* A successful account mint command will also create Bob’s account on the blockchain. Another way to create Bob’s account on the blockchain is to transfer money from Alice’s account to Bob’s account.
 
 Sample output on success:
 
@@ -266,13 +266,13 @@ Transaction submitted to validator
 To query for transaction status, run: query txn_acc_seq 0 0 <fetch_events=true|false>
 ```
 
-You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-transaction-by-account-and-sequence-number).
+You can use the command `query txn_acc_seq 0 0 true` (transaction by account and sequence number) to retrieve the information about the transaction you just submitted. The first parameter is the local index of the sender account, and the second parameter is the sequence number of the account. To see a sample output of this command refer to [Sample Outputs](#query-transaction-by-account-and-sequence-number).
 
-You just submitted your transaction to a validator node on testnet and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system was slow or overloaded, it would take some time to see the results and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-events) section
+You just submitted your transaction to a validator node on testnet, and it was included in the [mempool](reference/glossary.md#mempool) of the validator. This doesn't necessarily mean your transaction has been executed. In theory, if the system were slow or overloaded, it would take some time to see the results, and you may have to check multiple times by querying the accounts. To query an account with index 0, you can use the command  `query account_state 0.` The expected output is shown in the [Sample Outputs](#query-events) section
 
 To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-command).
 
-**The Blocking Transfer Command**: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
+**The Blocking Transfer Command**: You can use the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
 `libra% transferb 0 1 10`
 
@@ -289,7 +289,7 @@ libra% query sequence 1
 Sequence number is: 0
 ```
 
-The sequence number of 1 for Alice’s account (index 0) indicates that one transaction has been sent from Alice’s account so far. The sequence number of 0 for Bob’s account (index 1) indicates that no transaction has been sent from Bob’s account so far. Every time a transaction is sent from an account the sequence number is incremented by 1.
+The sequence number of 1 for Alice’s account (index 0) indicates that one transaction has been sent from Alice’s account so far. The sequence number of 0 for Bob’s account (index 1) indicates that no transaction has been sent from Bob’s account so far. Every time a transaction is sent from an account, the sequence number is incremented by 1.
 
 ### Check the Balance in Both Accounts After Transfer
 
@@ -324,7 +324,7 @@ If you are experiencing build failures, try to remove the cargo lock file from t
 If your client did not connect to the testnet:
 
 * Check your internet connection.
-* Ensure that you are using the latest version of the client. Pull the latest Libra Core and run the client again:
+* Ensure that you are using the latest version of the client. Pull the latest Libra Core and rerun the client:
     * `./start_cli_testnet.sh`
 
 
@@ -335,7 +335,7 @@ If your client did not connect to the testnet:
   ```bash
   libra% account mint 0 110
   >> Minting coins
-  [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to   client is running
+  [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to the client is running
   ```
 * If your balance was not updated after submitting a transaction, wait a moment and query the balance again.  It may take a moment if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
 
@@ -350,14 +350,14 @@ If the testnet validator node (your client was connected to) is unavailable or y
 ```bash
 libra% transfer 0 1 10
 >> Transferring
-[ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to client is running
+[ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to the client is running
 ```
 To troubleshoot transfer errors:
 
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-* You can try quitting the client using `quit` or `q!`,  and run the following command again to connect to the testnet:
+* You can try quitting the client using `quit` or `q!`,  and rerun the following command to connect to the testnet:
     * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
 
 ## Sample Outputs of Additional Query Commands
@@ -399,7 +399,7 @@ Note that the transaction amount is shown in microlibra.
 
 ### Query Events
 
-In the following example, we will query for “sent” events from account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return “limit” events.
+In the following example, we will query for “sent” events from the account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return “limit” events.
 
 ```bash
 libra% query event 0 sent 0 true 10
@@ -485,7 +485,7 @@ Latest account state is:
 
 ## Run A Local Validator Node
 
-To start a validator node locally on your computer and create your own blockchain network (not connected to the Libra testnet), change to the root directory of the Libra Core repository , and run `libra_swarm` as shown below:
+To start a validator node locally on your computer and create your own blockchain network (not connected to the Libra testnet), change to the root directory of the Libra Core repository, and run `libra_swarm` as shown below:
 
 ```bash
 $ cd ~/libra
