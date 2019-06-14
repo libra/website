@@ -3,11 +3,11 @@ id: coding-guidelines
 title: Coding Guidelines
 ---
 
-# Libra Core coding guidelines
+
 
 This document describes the coding guidelines for the Libra Core Rust codebase.  
 
-## Code formatting
+## Code Formatting
 
 All code formatting is enforced with [rustfmt](https://github.com/rust-lang/rustfmt) using a project specific configuration.  Below is an example command to adhere to the project conventions.
 
@@ -15,7 +15,7 @@ All code formatting is enforced with [rustfmt](https://github.com/rust-lang/rust
 libra/libra$ cargo fmt
 ```
 
-## Code analysis
+## Code Analysis
 
 [Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration.  Before submitting your code for review, you can run clippy with our configuration: 
 
@@ -25,13 +25,13 @@ libra$ ../setup_scripts/clippy.sh
 
 In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html).  The remainder of the guide is to provide more detailed guidance on specific areas in order to provide as much uniformity as possible.
 
- 
-## Code documentation
- 
+
+## Code Documentation
+
 Any public fields, functions, and methods should be documented with [Rustdoc](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments).
- 
+
  Please follow the conventions as detailed below for modules, structs, enums, and functions.  The *single line* is used as a preview when navigating Rustdoc.  As an example, see the "Structs" and "Enums" sections in the [collections](https://doc.rust-lang.org/std/collections/index.html) Rustdoc.
- 
+
  ```
  /// [Single line] One line summary description
  ///
@@ -54,11 +54,11 @@ struct Point {
 }
 ```
 
-### Constants and fields
+### Constants and Fields
 
 Describe the purpose and definition of this data.
 
-### Functions and methods
+### Functions and Methods
 
 Document the following for each function:
 
@@ -68,15 +68,15 @@ Document the following for each function:
 * State conditions under which the function will `panic!()` or returns an `Error`
 * Brief description of return values.
 * Any special behavior that is not obvious.
- 
-### README.md for top-level directories and other major components
+
+### README.md for Top-Level Directories and Other Major Components
 
 Each major component of the system needs to have a `README.md` file. Major components are:
 * Top-level directories (e.g., `libra/network`, `libra/language`).
 * The most important crates in the system (e.g., `vm_runtime`).
 
 This file should contain:
- 
+
  * The *conceptual* *documentation* of the component.
  * A link to external API documentation for the component.
  * A link to the master license of the project.
@@ -117,7 +117,7 @@ Refer to the Libra Project License [LINK].
 
 A good example of README.md is `libra/network/README.md` which describes the networking crate.
 
-## Code suggestions
+## Code Suggestions
 
 Below are suggested best practices for a uniform codebase that will evolve and improve over time.  We will be investigating what can be enforced by clippy, and will update this section in the future.
 
@@ -133,7 +133,7 @@ Make sure to use the appropriate attributes for handling dead code:
 #[cfg(test)]
 ```
 
-### Avoid Deref polymorphism
+### Avoid Deref Polymorphism
 
 Don't abuse the Deref trait to emulate inheritance between structs, and thus reuse methods.  For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
 
@@ -164,7 +164,7 @@ Below are high-level suggestions for the distinction based on experience.
 
 * Concurrent types (e.g., such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
 
-### Error handling
+### Error Handling
 
 Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html).  Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
 
@@ -180,7 +180,7 @@ Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang
 
 Generics allow dynamic behavior (similar to [`trait`](https://doc.rust-lang.org/book/ch10-02-traits.html) methods) with static dispatch.  Consider that as the number of generic type parameters increase, the difficulty of using the type/method also increases (e.g., what combination of trait bounds is required for this type, duplicate trait bounds on related types, etc.).  In order to avoid this complexity, we generally try to avoid using a large number of generic type parameters.  We have found that converting code with a large number of generic objects to trait objects with dynamic dispatch often simplifies our code.
 
-### Getters/setters
+### Getters and Setters
 
 Excluding test code, set field visibility to "private" as much as possible. Private fields allow constructors to enforce internal invariants. Implement getters for data that consumers may need, but avoid setters unless mutable state is necessary.
 
