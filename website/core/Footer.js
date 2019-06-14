@@ -27,14 +27,14 @@ function SocialFooter(props) {
       <div className="social">
         <a
           href={"https://twitter.com/libradev?ref_src=twsrc%5Etfw"}
-          class={"twitter-follow-button"}
+          className={"twitter-follow-button"}
           data-show-count={false}>
             Follow @libradev
         </a>
         <script
           async
           src={"https://platform.twitter.com/widgets.js"}
-          charset={"utf-8"}
+          charSet={"utf-8"}
         />
       </div>
     </div>
