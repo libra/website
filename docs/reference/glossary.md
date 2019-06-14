@@ -82,17 +82,17 @@ A **client** is a piece of software that has the capability to interact with the
 
 * It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node.
 * It can issue queries to the Libra Blockchain and request the status of a transaction or account.
-* A client can be run by the end-user, or on behalf of the end user (for example, for a custodial wallet). 
+* A client can be run by the end-user or on behalf of the end user (for example, for a custodial wallet). 
 
 ### Consensus
 
 * **Consensus** is a component of a validator node.  
 * The consensus component is responsible for coordination and agreement amongst all validators on the block of transactions to be executed, their order, and the execution results.
-* The Libra Blockchain is formed with these agreed-upon transactions, and their corresponding execution results.
+* The Libra Blockchain is formed with these agreed-upon transactions and their corresponding execution results.
 
 ### Consensus Protocol
 
-* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction, and to agree on the ordering of transactions and [execution results](#execution-results).
+* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction and to agree on the ordering of transactions and [execution results](#execution-results).
 * See [BFT](#byzantine-fault-tolerance-bft)
 
 ### Custodial Wallet
@@ -274,8 +274,8 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Mempool
 
-* **Mempool** is one of the components of the validator node. It holds an in-memory buffer of transactions that have been submitted, but not yet agreed upon and executed. Mempool receives transactions from [admission control](#admission-control).
-* Transactions in the mempool of a validator are added from the admission control (AC) of the current validator, and from the mempool of other validators.
+* **Mempool** is one of the components of the validator node. It holds an in-memory buffer of transactions that have been submitted but not yet agreed upon and executed. Mempool receives transactions from [admission control](#admission-control).
+* Transactions in the mempool of a validator are added from the admission control (AC) of the current validator and from the mempool of other validators.
 * When the current validator is the leader, its consensus pulls the transactions from its mempool and proposes the order of the transactions that form a block. The validator quorum then votes on the proposal. 
 
 ### Merkle Trees
@@ -345,7 +345,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * Permissioned and permissionless are attributes of the way by which nodes join the set of validators in a blockchain.
 * If only the nodes chosen by a single entity or organization are allowed to join the committee, it's a **permissioned** system.
 * If any node can join the committee, it's a **permissionless** system.
-* Libra starts as a permissioned system and transitions to permissionless.
+* Libra starts as a permissioned system and will transition to permissionless.
 
 ### Proof
 
