@@ -2,15 +2,16 @@
 
 Our goal is to make contributing to the Libra project easy and transparent.
 
+> **Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
+
 ## On Contributing
 
 
-### The Libra Project
+### Libra Core
 
-To contribute to the core Libra project, first start with the proper development copy.
+To contribute to the Libra Core implementation, first start with the proper development copy.
 
-To get the development installation with all the necessary dependencies for
-linting, testing, and building the documentation, run the following:
+To get the development installation with all the necessary dependencies for linting, testing, and building the documentation, run the following:
 ```bash
 git clone https://github.com/libra/libra.git
 cd libra
@@ -18,92 +19,46 @@ cargo install
 cargo test
 ```
 
-
 ## Our Development Process
 
-#### Code Style
+#### Code Style, Hints, and Testing
 
-Libra uses the Rust `fmt` code formatter to enforce a common code style across the code base. _____ is installed easily via cargo using `cargo install ____`, and run locally by calling
-```bash
-cargo fmt
-```
-from the repository root. No additional configuration should be needed (see the
-[_____ documentation](https://xxxx)
-for advanced usage).
-
-We feel strongly that having a consistent code style is extremely important, so
-CircleCI will fail on your PR if it does not adhere to the _____ formatting style.
-
-
-#### Type Hints
-
-Libra is fully typed using Rust vx.x.
-We expect any contributions to also use proper type annotations. While we
-currently do not enforce full consistency of these in our continuous integration
-test, you should strive to type check your code locally. For this we recommend
-using [====](https://====.com).
-
-
-#### Unit Tests
-
-To run the unit tests, you can either use `cargo test` (if installed):
-```bash
-cargo test
-```
-
-To get coverage reports we recommend using the `cargo test-report` plugin:
-```bash
-cargo test --report
-```
-
+Refer to our [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines) for detailed guidance about how to contribute to the project.
 
 #### Documentation
 
 Libra's website is also open source (the
-code can be found in this [repo](https://github.com/libra/libra.github.io/)).
-It is built using [Docusaurus](https://docusaurus.io/), and consists of three
-main elements:
+code can be found in this [repository](https://github.com/libra/libra.github.io/)).
+It is built using [Docusaurus](https://docusaurus.io/):
 
-1. The documentation in Docusaurus itself (if you know Markdown, you can
-   already contribute!). This lives in the [docs](/docs/).
-2. The API reference, auto-generated from [rustdoc](https://rustdoc.org), [protogen](httpa://protogen.org) and embedded into the Docusaurus website.
+If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
 
 To build the documentation you will need [Node](https://nodejs.org/en/) >= 8.x
 and [Yarn](https://yarnpkg.com/en/) >= 1.5.
 
 The following command will both build the docs and serve the site locally:
 ```bash
+cd libra.github.io
 cd scripts
-./scripts/build_docs.sh
+./build_docs.sh
 ```
 
 ## Pull Requests
-During intial phase of heavy development we plan to audit pull requests. As the codebase stablizes we will be better able to accept pull requests from the community.
+During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be better able to accept pull requests from the community.
 
 1. Fork the repo and create your branch from `master`.
 2. If you have added code that should be tested, add unit tests.
 3. If you have changed APIs, update the documentation. Make sure the
    documentation builds.
 4. Ensure the test suite passes.
-5. Make sure your code passes both `----` and `====` formatting checks.
-6. If you haven't already, complete the Contributor License Agreement ("CLA").
+5. Make sure your code passes both linters.
+6. If you haven't already, complete the Contributor License Agreement (CLA).
+7. Submit your pull request.
 
+## Contributor License Agreement
 
-## Contributor License Agreement ("CLA")
-
-For pull request to be accepted by any Libra projects an invididual or corporate CLA
-must be submitted. You will only need to do this once to work on any of Libra's open source projects. You can complete CLAs here: [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf) [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf)
-
+For pull request to be accepted by any Libra projects, a CLA must be signed. You will only need to do this once to work on any of Libra's open source projects. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Issues
 
-The Libra project uses Github issues to track bugs. Please include necessary information and instructions to reproduce your issue.
-
-Security issues should be submitted to the Libra Bug Bounty program. More information
-about this program will be released in the coming days.
-
-
-## License
-
-By contributing to the Libra project, you agree that your contributions will be licensed
-under the LICENSE file in the root directory of this source tree.
+Libra uses [GitHub issues](https://github.com/libra/libra/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.
