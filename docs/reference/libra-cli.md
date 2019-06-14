@@ -102,10 +102,12 @@ If you enter only the major command, it will show the help information for that 
     Usage:
         `transfer | transferb | t | tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins>`
     Arguments:
-        `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction is sent. The sender account pays for the gas.
-
-`receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins. If the receiver account does not exist, it will be created first. The sender will pay for gas required for both account creation and coin transfer.
-      * `number_of_coins` - The number of coins transferred to receiver account.
+        `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction
+            is sent. The sender account pays for the gas.
+        `receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins.
+            If the receiver account does not exist, it will be created first. The sender will pay for
+            gas required for both account creation and coin transfer.
+      `number_of_coins` - The number of coins transferred to receiver account.
 
 ---
 
