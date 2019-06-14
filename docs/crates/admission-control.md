@@ -3,7 +3,6 @@ id: admission-control
 title: Admission Control
 custom_edit_url: https://github.com/libra/libra/edit/master/admission_control/README.md
 ---
-# Admission Control
 
 Admission Control (AC) is the public API endpoint for Libra and it takes public gRPC requests from clients.
 
