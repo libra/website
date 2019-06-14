@@ -25,14 +25,14 @@ Refer to our [Coding Guidelines](https://developers.libra.org/docs/coding-guidel
 
 ## Documentation
 
-Libra's developer site is open source. You can find the 
-code for building the site in this [repository](https://github.com/libra/libra.github.io/)).
-The developer site is built using [Docusaurus](https://docusaurus.io/):
+Libra's developer site is also open source. You can find the code for building the site in this [repository](https://github.com/libra/libra.github.io/)). The developer site is built using [Docusaurus](https://docusaurus.io/):
 
-If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
+If you are familiar with Markdown, you can start contributing!
 
 ## Pull Requests
-During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be better able to accept pull requests from the community.
+During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be able to accept pull requests from the community.
+
+To submit your pull request:
 
 1. Fork the repo and create your branch from `master`.
 2. If you have added code that should be tested, add unit tests.
