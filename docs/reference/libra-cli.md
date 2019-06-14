@@ -61,12 +61,12 @@ If you enter only the major command, it will show the help information for that 
        Usage:
         create|c
 
-  `list | la` - Print all accounts that were created or loaded.
+  `list | la` &mdash; Print all accounts that were created or loaded.
 
      Usage:
         list|la
 
-  `recover | r <file_path>` - Recover all accounts that were written to a file via the `account write` command.
+  `recover | r <file_path>` &mdash; Recover all accounts that were written to a file via the `account write` command.
 
      Usage:
         recover|r <file_path>
@@ -86,9 +86,9 @@ If you enter only the major command, it will show the help information for that 
       Usage:
         mint|mint|m|b <receiver_account_ref_id>|<receiver_account_address> <number_of_coins>
       Arguments:
-          receiver_account_ref_id | receiver_account_address &mdash; The receiver account to mint the coins to.
+          receiver_account_ref_id | receiver_account_address - The receiver account to mint the coins to.
                 If the receiver account does not exist, it will be created first.
-                Either `receiver_account_address` or `receiver_account_ref_id` (an internal index of
+                Either receiver_account_address or receiver_account_ref_id (an internal index of
                 the account in the CLI client) can be used to specify receiver account (identical to
                 other commands). If gas is being charged, the account that sent this mint transaction
                 (currently preloaded genesis account) pays for the gas.
@@ -174,7 +174,7 @@ If you enter only the major command, it will show the help information for that 
           sent | received - Fetch sent or received events for this account.
                 Note that this will later evolve into selecting any event path.
           start_sequence_number - The sequence number of events to query starting from.
-          ascending - The direction of query from `start_sequence_number`.
+          ascending - The direction of query from start_sequence_number.
           limit - The maximum number of events to query.
 
 ---
@@ -190,7 +190,7 @@ If you enter only the major command, it will show the help information for that 
 Account creation provided by the CLI generates a local keypair, but nothing is created on the blockchain. To create an account on the blockchain:
 
 * Transfer coins to the address you wish to create. If the recipient account does not exist, the recipient account will be created first and then coins will be transferred. The sender pays for both account creation and transfer.
-* Send a mint transaction to mint coins to an account. If the account does not exist, the account will be created first and the coins wil be minted later. Unlike other transactions, a non-existent account itself can request a mint transaction.  For the testnet, there is no explicit limit on how many coins an account can mint. It's designed to allow the users to create coins to experiment on the testnet.
+* Send a mint transaction to mint coins to an account. If the account does not exist, the account will be created first and the coins wil be minted later. Unlike other transactions, a nonexistent account itself can request a mint transaction.  For the testnet, there is no explicit limit on how many coins an account can mint. It's designed to allow the users to create coins to experiment on the testnet.
 
 
 
