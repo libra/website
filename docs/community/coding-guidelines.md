@@ -17,13 +17,13 @@ libra/libra$ cargo fmt
 
 ## Code Analysis
 
-[Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration.  Before submitting your code for review, you can run clippy with our configuration: 
+[Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration. Before submitting your code for review, you can run clippy with our configuration: 
 
 ```
 libra$ ../setup_scripts/clippy.sh 
 ```
 
-In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html).  The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
+In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html). The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
 
 
 ## Code Documentation
@@ -39,7 +39,7 @@ Any public fields, functions, and methods should be documented with [Rustdoc](ht
  [Attributes] If attributes exist, add after Rustdoc
  ```
 
-Example below:
+Here is an example:
 
 ```
 /// Represents (x, y) of a 2-dimensional grid
@@ -64,7 +64,7 @@ Document the following for each function:
 * The action the method performs — “This method *adds* a new transaction to the mempool.” Use *active voice* and *present tense* (i.e., adds/creates/checks/updates/deletes).
 * Describe how and why to use this method.
 * Any condition that must be met _before_ calling the method.
-* State conditions under which the function will `panic!()` or returns an `Error`
+* State conditions under which the method will `panic!()` or returns an `Error`
 * Provide a brief description of return values.
 * Clearly state any special behavior that is not obvious in the code itself.
 
@@ -76,12 +76,12 @@ Each major component of the system needs to have a `README.md` file. Major compo
 
 Thd README.md should contain:
 
- * The *conceptual* *documentation* of the component.
+ * The conceptual documentation of the component.
  * A link to external API documentation for the component.
- * A link to the master license of the project.
- * A link to the master contributing guide for the project. 
 
-A template for READMEs:
+You can refer to this sample README `libra/network/README.md` which describes the network crate.
+
+Here is a template for READMEs:
 
 ```
 # Component Name
@@ -90,9 +90,9 @@ A template for READMEs:
 
 ## Overview
 
-* Describe its purpose and how the code in this directory works.
+* Describe the purpose of this component and how the code in this directory works.
 * Describe the interaction of code in this directory with other components.
-* Describe the security model and assumptions about the crates in this directory.  Examples of how to describe the security assumptions will be added in the future.
+* Describe the security model and assumptions about the crates in this directory. 
 
 ## Implementation Details
 
@@ -101,20 +101,9 @@ A template for READMEs:
 
 ## API Documentation
 
-For the external API of this crate refer to [Link to rustdoc API].
+For the external API of this crate refer to the API documentation.
 
-[For a top-level directory, link to the most important APIs within.] 
-
-## Contributing
-
-Refer to the Libra Project contributing guide [LINK].
-
-## License
-
-Refer to the Libra Project License [LINK].
-```
-
-A good example of README.md is `libra/network/README.md` which describes the network crate.
+For a top-level directory, link to the most important APIs within. 
 
 ## Code Suggestions
 
