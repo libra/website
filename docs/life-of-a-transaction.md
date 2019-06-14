@@ -3,7 +3,7 @@ id: life-of-a-transaction
 title: Life of a Transaction
 ---
 
-To get a deeper understanding of the lifecycle of a Libra transaction, we will follow a transaction on its journey from being submitted to a Libra validator to being committed into the Libra Blockchain. We will then “zoom-in” on each logical component of a validator and take a look at its interactions with other components.
+To get a deeper understanding of the lifecycle of a Libra transaction, we will follow a transaction on its journey from being submitted to a Libra validator to being committed to the Libra Blockchain. We will then “zoom-in” on each logical component of a validator and take a look at its interactions with other components.
 
 ## Client Submits a Transaction
 
@@ -16,7 +16,7 @@ A Libra **client constructs a raw transaction** (let us call it T~5~raw) to tran
 * [Gas price](reference/glossary.md#gas-price) (in microlibra/gas units) &mdash; The amount Alice is willing to pay per unit of gas, to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * [Maximum gas amount](reference/glossary.md#maximum-gas-amount) Alice is willing to pay for this transaction.
 * [Expiration time](reference/glossary.md#expiration-time) of the transaction.
-* [Sequence number](reference/glossary.md#sequence-numnber) &mdash; 5
+* [Sequence number](reference/glossary.md#sequence-number) &mdash; 5
     * A transaction with sequence number 5 can only be applied to an account with sequence number 5.
 
 The **client signs transaction** T~5~raw with Alice's private key. The signed transaction T~5~ includes the following:
@@ -38,7 +38,7 @@ To describe the lifecycle of transaction T~5~, we will assume that:
 
 ## Lifecycle of the Transaction
 
-In this section, we will describe the lifecycle of transaction T~5~, from being submitted by the client to being committed into the Libra Blockchain.
+In this section, we will describe the lifecycle of transaction T~5~, from being submitted by the client to being committed to the Libra Blockchain.
 
 Where relevant, and following a numbered step in the lifecycle, we have provided a link to the corresponding inter-component interactions of the validator node. After you are familiar with all the steps in the lifecycle of the transaction, you may want to refer to the information on the corresponding inter-component interactions for each step.
 
@@ -69,7 +69,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **8** &mdash; As part of reaching agreement, the block of transactions (containing T~5~) is passed to the execution component. (Consensus → Execution [CO.3](#consensus-execution-consensus-other-validators-co3), [EX.1](#consensus-execution-ex1))
 
-**9** &mdash; The execution component manages the execution of transactions in the virtual machine (VM). Note that this execution happens speculatively, before the transactions in the block have been agreed upon. (Execution → VM [EX.2](#execution-vm-ex2), [VM.3](#execution-vm-vm3))
+**9** &mdash; The execution component manages the execution of transactions in the virtual machine (VM). Note that this execution happens speculatively before the transactions in the block have been agreed upon. (Execution → VM [EX.2](#execution-vm-ex2), [VM.3](#execution-vm-vm3))
 
 **10** &mdash; After executing the transactions in the block, the execution component appends the transactions in the block (including T~5~) to the [Merkle accumulator](#merkle-accumulators) (of the ledger history). This is an in-memory/temporary version of the Merkle accumulator. The (proposed/speculative) result of executing these transactions is returned to the consensus component. (Consensus → Execution [CO.3](#consensus-execution-consensus-other-validators-co3), [EX.1](#consensus-execution-ex1))
 
@@ -79,11 +79,11 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **12** &mdash; If the block's execution result is agreed upon and signed by a set of validators that have the super-majority of votes, validator V~1~'s execution component reads the result of the block execution from the speculative execution cache and commits all the transactions in the block to persistent storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
 
-**13** &mdash; Alice's account will now have 100 Libra and its sequence number will be 6. If T~5~ is replayed by Bob, it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
+**13** &mdash; Alice's account will now have 100 Libra, and its sequence number will be 6. If T~5~ is replayed by Bob, it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
 
 ## Validator Component Interactions
 
-In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted, to being committed, to the blockchain/distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries.  This information is useful to you if:
+In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted and committed to the blockchain. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries.  This information is useful to you if:
 
 * You would like to get an overall idea of how the system works under the covers.
 * You are interested in eventually contributing to the Libra Core software.
@@ -150,8 +150,8 @@ When admission control of validator V~X~ receives a transaction from a client, i
 When AC or mempool request VM to validate a transaction via `VM::ValidateTransaction()`, VM loads the transaction sender's account from storage and performs the following verifications:
 
 * Checks that the input signature on the signed transaction is correct (to reject incorrectly signed transactions).
-* Checks that the sender's account authentication key is same as the hash of the public key (corresponding to the private key used to sign the transaction).
-* Verifies that the sequence number for the transaction is not less than the current sequence number for the sender's account.  Doing this check prevents replay of the same transaction against the sender's account.
+* Checks that the sender's account authentication key is the same as the hash of the public key (corresponding to the private key used to sign the transaction).
+* Verifies that the sequence number for the transaction is not less than the current sequence number for the sender's account.  Doing this check prevents the replay of the same transaction against the sender's account.
 * Verifies that the program in the signed transaction is not malformed, as a malformed program cannot be executed by the VM.
 * Verifies that there is sufficient balance in the sender's account to support the max gas amount specified in the transaction, which ensures that the transaction can pay for the resources it uses.
 
@@ -167,7 +167,7 @@ When mempool receives a transaction from other validators via shared mempool, me
 
 ### VM README
 
-For implementation details, repository structure, and external APIs for the virtual machine component, refer to the [Virtual Machine README](crates/vm.md).
+For implementation details, repository structure, and external APIs for the virtual machine component refer to the [Virtual Machine README](crates/vm.md).
 
 ## Mempool
 
@@ -197,14 +197,14 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### Mempool README
 
-For implementation details,  repository, and APIs of the mempool crate, refer to the [Mempool README](crates/mempool).
+For implementation details,  repository, and APIs of the mempool crate refer to the [Mempool README](crates/mempool).
 
 ## Consensus
 
 ![Figure 1.5 Consensus](assets/illustrations/consensus.svg)
 <small class="figure">Figure 1.5 Consensus</small>
 
-The consensus component is responsible for ordering blocks of transactions, and agreeing on the results of execution by participating in the [consensus protocol](#consensus-protocol) with other validators in the network.
+The consensus component is responsible for ordering blocks of transactions and agreeing on the results of execution by participating in the [consensus protocol](#consensus-protocol) with other validators in the network.
 
 ### Consensus → Mempool (CO.1)
 
@@ -226,7 +226,7 @@ If enough validators vote for the same execution result, the consensus component
 
 ### Consensus README
 
-For implementation details, repository structure, and APIs of the consensus crate, refer to the [Consensus README](crates/consensus.md).
+For implementation details, repository structure, and APIs of the consensus crate refer to the [Consensus README](crates/consensus.md).
 
 ## Execution
 
@@ -238,8 +238,8 @@ Execution's job is to coordinate the execution of a block of transactions and ma
 ### Consensus → Execution (EX.1)
 
 *  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
-* Execution maintains a “scratchpad,” which holds in memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
-* The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data, this ensures that no state or transaction is stored until agreement is reached by a quorum of validators.
+* Execution maintains a “scratchpad,” which holds in-memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
+* The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data and ensures that no state or transaction is stored until agreement is reached by a quorum of validators.
 * Execution computes the speculative root hash and then consensus of V~X~ signs this root hash and attempts to reach agreement on this root hash with other validators.
 
 ### Execution → VM (EX.2)
@@ -248,15 +248,15 @@ When Consensus requests execution to execute a block of transactions via `Execut
 
 ### Consensus → Execution (EX.3)
 
-If a quorum of validators agree on the block execution results, consensus of each validator informs its execution component via `Execution::CommitBlock()` that this block is ready to be committed.  This call to the execution component will include the signatures of the agreeing validators to provide proof of their agreement.
+If a quorum of validators agrees on the block execution results, consensus of each validator informs its execution component via `Execution::CommitBlock()` that this block is ready to be committed.  This call to the execution component will include the signatures of the agreeing validators to provide proof of their agreement.
 
 ### Execution → Storage (EX.4)
 
-Execution takes the values from its  “scratchpad” and sends them to storage for persistence via `Storage::SaveTransactions()`.  Execution then prunes the old values from the “scratchpad” that are no longer needed (for example, parallel blocks that can not be committed).
+Execution takes the values from its  “scratchpad” and sends them to storage for persistence via `Storage::SaveTransactions()`.  Execution then prunes the old values from the “scratchpad” that are no longer needed (for example, parallel blocks that cannot be committed).
 
 ### Execution README
 
-For implementation details, repository structure, and APIs of the execution crate, refer to the [Execution README](crates/execution).
+For implementation details, repository structure, and APIs of the execution crate refer to the [Execution README](crates/execution).
 
 ## Storage
 
@@ -293,7 +293,7 @@ For client queries that read information from the blockchain, AC directly intera
 
 ### Storage README
 
-For implementation details, repository structure, and APIs of the storage crate, refer to the [Storage README](crates/storage.md).
+For implementation details, repository structure, and APIs of the storage crate refer to the [Storage README](crates/storage.md).
 
 ## Reference
 
