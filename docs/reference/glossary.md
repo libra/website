@@ -67,7 +67,7 @@ title: Glossary
 
 * **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator),"  members below a certain threshold. 
 * The Libra Blockchain uses LibraBFT, a consensus protocol based on [HotStuff.](#hotstuff)
-* BFT algorithms typically operate with a number of entities, collectively holding N votes (which we call “validators” in the Libra application of the system). 
+* BFT algorithms typically operate with a number of entities, collectively holding N votes (which are called “validators” in the Libra application of the system). 
 * N is chosen to withstand some number of validators holding f votes, which might be malicious.
 * In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty — offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
 * This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validator nodes that are compromised, or fail.
