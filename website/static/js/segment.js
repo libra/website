@@ -22,6 +22,7 @@ script.innerHTML = `
          var e = analytics.methods[t];
          analytics[e] = analytics.factory(e) 
        } 
+       // // We've removed this snippet and load the script from our server instead
        // analytics.load = function(t, e) { 
        //   var n = document.createElement("script");
        //   n.type = "text/javascript";
@@ -100,7 +101,7 @@ function addOrganization(data) {
   analytics.group(groupId, groupData);
 }
 
-function addUser(data) {
+function addUser(data, form) {
   const fields = [
     'email',
     'firstName',
@@ -136,15 +137,18 @@ function trackFormData(form) {
     analytics.track('Form Submitted', data)
 
     if (form.id === 'newsletterForm') {
-      // A name is required for adding users
+      // A name is required for adding users to Zendesk
       data.name = data.email;
     }
     
-    addUser(data);
+    addUser(data, form);
 
     if (data.organizationId) {
       addOrganization(data);
     }
-    
+    // FIXME: 
+    //   1) We should only change location after the data successfully submits
+    //   2) What's the new location?
+    // window.location.replace('/form-thanks')
   })
 }
