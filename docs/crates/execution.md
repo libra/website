@@ -2,7 +2,6 @@
 id: execution
 title: Execution
 ---
-
 ## Overview
 
 The Libra Blockchain is a replicated state machine. Each validator is a replica

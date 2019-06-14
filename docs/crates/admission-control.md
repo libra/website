@@ -2,7 +2,6 @@
 id: admission-control
 title: Admission Control
 ---
-# Admission Control
 
 Admission Control (AC) is the public API endpoint for Libra and it takes public gRPC requests from clients.
 
