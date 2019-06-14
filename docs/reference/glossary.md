@@ -432,24 +432,24 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Validator Node
 
-* *Alternate name*: Validators
-* A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. It receives requests from clients, and runs consensus, execution, and storage.
+* *Alternate name*: Validators.
+* A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. It receives requests from clients and runs consensus, execution, and storage.
 * A validator maintains the history of all the transactions on the blockchain.
 * Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. 
 
 ### Version
 
 * A **version** is also called “height” in blockchain literature. 
-* In the Libra Blockchain, we don't have an explicit notion of a block, we only use blocks for batching and executing transactions.  
-* A transaction at height 0 is the 1st transaction (genesis transaction), and a transaction at height 100 is the 101st transaction in the transaction store.
+* In the Libra Blockchain, we don't have an explicit notion of a block &mdash; we only use blocks for batching and executing transactions.  
+* A transaction at height 0 is the first transaction (genesis transaction), and a transaction at height 100 is the 101th transaction in the transaction store.
 
 ## W
 
 * * *
 
-### Well-Formed Transaction
+### Well Formed Transaction
 
-A Libra transaction is **well-formed** if each of the following conditions are true for the transaction:
+A Libra transaction is **well formed** if each of the following conditions are true for the transaction:
 * The transaction has a valid signature.
 * An account exists at the sender address.
 * It includes a public key, and the hash of the public key matches the sender account's authentication key. 
