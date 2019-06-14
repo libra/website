@@ -67,13 +67,15 @@ function getFormFields(form) {
 }
 
 /**
- * Filter an object by an array of fields passed in.
+ * Filter an object by an array of fields passed in. If a mapping
+ * is passed in we change the key.
  */
-function filterFields(data, fields) {
+function filterFields(data, fields, mapping) {
   const filtered = Object.keys(data)
     .filter(key => fields.includes(key))
     .reduce((obj, key) => {
-      obj[key] = data[key];
+      const mapKey = (mapping && mapping[key]) || key;
+      obj[mapKey] = data[key];
       return obj;
     }, {});
 
@@ -89,10 +91,10 @@ function addOrganization(data) {
     'organizationWebsite',
   ];
   const filteredData = filterFields(data, fields);  
-  const groupId = data.organizationId;
+  const groupId = filteredData.organizationId;
   const groupData = {
     ...filteredData,
-    name: filteredData.organizationId,
+    name: groupId,
   };
  
   analytics.group(groupId, groupData);
@@ -108,7 +110,12 @@ function addUser(data) {
     'formId', 
     'organizationId',
   ];
-  const filteredData = filterFields(data, fields);
+
+  const mapping = {
+    organizationId: 'orgName'
+  };
+
+  const filteredData = filterFields(data, fields, mapping);
   analytics.identify(filteredData.email, filteredData);
 }
 
@@ -132,10 +139,12 @@ function trackFormData(form) {
       // A name is required for adding users
       data.name = data.email;
     }
+    
+    addUser(data);
 
     if (data.organizationId) {
       addOrganization(data);
     }
-    addUser(data);
+    
   })
 }
