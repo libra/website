@@ -123,7 +123,7 @@ Use appropriate attributes for handling dead code:
 
 ### Avoid Deref Polymorphism
 
-Don't abuse the Deref trait to emulate inheritance between structs, and reuse methods.  For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
+Don't abuse the Deref trait to emulate inheritance between structs, and reuse methods. For more information, read [here](https://github.com/rust-unofficial/patterns/blob/master/anti_patterns/deref.md).
 
 ### Comments
 
@@ -144,17 +144,17 @@ pub struct Foo(Arc<FooInner>);
 
 Concurrent types such as [`CHashMap`](https://docs.rs/crate/chashmap), [`AtomicUsize`](https://doc.rust-lang.org/std/sync/atomic/struct.AtomicUsize.html), etc. have an immutable borrow on self, i.e. `fn foo_mut(&self,...),` to support concurrent access on interior mutating methods. Good practices (such as those in the examples mentioned) avoid exposing synchronization primitives externally (e.g. `Mutex`, `RwLock`) and document the method semantics and invariants clearly.
 
-*When to use channels versus concurrent types?*
+**When to use channels versus concurrent types?**
 
-Below are high-level suggestions for the distinction based on experience.
+Here are some high-level suggestions:
 
 * Channels are for ownership transfer, decoupling of types, and coarse grained messages. They fit well for transferring ownership of data, distributing units of work, and communicating async results. Furthermore, they help break circular dependencies (e.g. `struct Foo` contains an `Arc<Bar>` and `struct Bar` contains an `Arc<Foo>` that leads to complex initialization).
 
-* Concurrent types (e.g., such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
+* Concurrent types (such as [`CHashMap`](https://docs.rs/crate/chashmap) or structs that have interior mutability building on [`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), [`RwLock`](https://doc.rust-lang.org/std/sync/struct.RwLock.html), etc.) are better suited for caches and states.
 
 ### Error Handling
 
-Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html).  Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
+Error handling suggestions follow the [Rust book guidance](https://doc.rust-lang.org/book/ch09-00-error-handling.html). Rust groups errors into two major categories: recoverable and unrecoverable errors. Recoverable errors should be handled with [Result](https://doc.rust-lang.org/std/result/).  For our suggestions on unrecoverable errors, see below:
 
 *Panic*
 
