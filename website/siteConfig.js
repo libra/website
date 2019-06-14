@@ -48,10 +48,10 @@ const siteConfig = {
   users,
 
   // search integration w/ algolia
-  algolia: {
-    apiKey: '7c82db8b8ceae28c1601f34346452f65',
-    indexName: 'libra.github.io',
-  },
+  // algolia: {
+  //   apiKey: '7c82db8b8ceae28c1601f34346452f65',
+  //   indexName: 'libra.github.io',
+  // },
 
   // colors for website
   colors: {
@@ -69,7 +69,7 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     // Copy-to-clipboard button for code blocks
     `${baseUrl}js/code_block_buttons.js`,
-    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    '${baseUrl}js/clipboardjs.2.0.0.min.js',
   ],
 
   // CSS sources to load
@@ -85,7 +85,7 @@ const siteConfig = {
   onPageNav: 'separate',
 
   // enable scroll to top button a the bottom of the site
-  scrollToTop: true,
+  // scrollToTop: true,
 
   // if true, expand/collapse links & subcategories in sidebar
   docsSideNavCollapsible: false,
