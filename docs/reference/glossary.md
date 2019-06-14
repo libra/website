@@ -154,8 +154,8 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Faucet
 
 * **Faucet** is the way to create Libra currency with no real world value, only on our testnet.
-* The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet.
-* You can use faucet by sending a request to create coins and transfer them into a given account on your behalf.
+* The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for the testnet.
+* You can use the Faucet by sending a request to create coins and transfer them into a given account on your behalf.
 
 ## G
 
@@ -199,7 +199,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * A **leader** is a validator node that proposes a block of transactions for the consensus protocol.
 * In leader-based protocols, nodes must agree on a leader to make progress.
-* Leaders are selected by a function which takes the current [round number](https://fb.quip.com/LkbMAEBIVNbh#ffYACAO6CzD) as input. 
+* Leaders are selected by a function that takes the current [round number](https://fb.quip.com/LkbMAEBIVNbh#ffYACAO6CzD) as input. 
 
 ### Libra (The Currency)
 
@@ -210,7 +210,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Libra Association
 
-* The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
+* The **Libra Association** is an independent, not-for-profit membership organization, headquartered in Geneva, Switzerland. The association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
 * The association is created by the validator nodes who will run on the Libra network.
 * Refer to the [Libra white paper](https://libra.org/en-us/whitepaper) for the a description of the mission, vision, and purview of the Libra Association.
 
@@ -221,7 +221,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### LibraBFT
 
-* LibraBFT is the Libra protocol's BFT consensus algorithm
+* LibraBFT is the Libra protocol's BFT consensus algorithm.
 * LibraBFT is based on HotStuff.
 
 ### Libra Blockchain
@@ -245,13 +245,13 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### LibraAccount.T
 
-* A **`LibraAccount.T`** is a Move resource that holds all the administrative data associated with an account, like sequence number, balance, and authentication key.
+* A **`LibraAccount.T`** is a Move resource that holds all the administrative data associated with an account, such as sequence number, balance, and authentication key.
 *  A **`LibraAccount.T`** is the only resource that every account is guaranteed to contain.
 
 ### LibraAccount module
 
 * **The LibraAccount module** is a Move module that contains the code for manipulating the administrative data held in a particular `LibraAccount.T` resource.
-* Code for checking or incrementing sequence numbers, withdrawing or depositing currency, and extracting gas deposits, is included in the LibraAccount module. 
+* Code for checking or incrementing sequence numbers, withdrawing or depositing currency, and extracting gas deposits is included in the LibraAccount module. 
 
 ### Libra testnet 
 
@@ -270,7 +270,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * The **Maximum Gas Amount**  of a transaction is the maximum amount of gas the sender is ready to pay for the transaction.
 * The gas charged is equal to the gas price multiplied by units of work required to process this transaction. If the result is less than the max gas amount, the transaction has been successfully executed.
-* If the transaction runs out of gas while it is being executed, or the account runs out of balance during execution, then the sender will be charged for gas used and the transaction will fail. 
+* If the transaction runs out of gas while it is being executed or the account runs out of balance during execution, then the sender will be charged for gas used and the transaction will fail. 
 
 ### Mempool
 
@@ -281,7 +281,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Merkle Trees
 
 * **Merkle tree** is a type of authenticated data structure that allows for efficient verification of data integrity and updates.
-* Libra network treats the entire blockchain as a single data structure, that records the history of transactions and states over time.
+* Libra network treats the entire blockchain as a single data structure that records the history of transactions and states over time.
 * The Merkle tree implementation simplifies the work of apps accessing the blockchain. It allows apps to:
     * Read any data from any point in time. 
     * Verify the integrity of the data using a unified framework.
@@ -290,13 +290,13 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * The [Merkle Accumulator](https://www.usenix.org/legacy/event/sec09/tech/full_papers/crosby.pdf) is an _append-only_ Merkle tree that the Libra Blockchain uses to store the ledger.
 * Merkle accumulators can provide proofs that a transaction was included in the chain (“proof of inclusion”).
-* They are also called [history trees](http://people.cs.vt.edu/danfeng/courses/cs6204/sp10-papers/crosby.pdf)in literature.
+* They are also called [history trees](http://people.cs.vt.edu/danfeng/courses/cs6204/sp10-papers/crosby.pdf) in literature.
 
 ### Move
 
 * **Move** is a new programming language that implements all the transactions on the Libra Blockchain. 
-* It has two different kinds of code - [transaction scripts](#transaction-script) and [Move modules](#move-module).
-* For further information on “Move” refer to the [Move Technical Paper](https://developers.libra.org/docs/move-paper)
+* It has two different kinds of code &mdash; [transaction scripts](#transaction-script) and [Move modules](#move-module).
+* For further information on “Move,” refer to the [Move Technical Paper](https://developers.libra.org/docs/move-paper)
 
 ### Move Bytecode
 
@@ -325,7 +325,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Node
 
-* A **node** is a peer entity of the Libra ecosystem which tracks the state of the Libra Blockchain.
+* A **node** is a peer entity of the Libra ecosystem that tracks the state of the Libra Blockchain.
 * A Libra node comprises of logical components.  [Mempool](#mempool),  [consensus](#consensus), and [virtual machine](#virtual-machine) are examples of node components. 
 
 ## O
@@ -343,8 +343,8 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Permissioned vs. Permissionless 
 
 * Permissioned and permissionless are attributes of the way by which nodes join the set of validators in a blockchain.
-* If only the nodes chosen by a single entity or organization are allowed to join the committee, it's a **Permissioned** system.
-* If any node can join the committee, it's a **Permissionless** system.
+* If only the nodes chosen by a single entity or organization are allowed to join the committee, it's a **permissioned** system.
+* If any node can join the committee, it's a **permissionless** system.
 * Libra starts as a permissioned system and transitions to permissionless.
 
 ### Proof
@@ -372,19 +372,19 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Sequence Number
 
 * The **sequence number** for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain.
-* A transaction is executed only if it matches the current sequence number for the sender account. This helps sequence multiple transactions from the same sender, and prevents replay attacks.
-* If the current sequence number of an account A is X then a transaction T on account A will only be executed if T's sequence number is X. 
-* These transactions will be held in mempool until they are the next sequence number for that account (or until they expire)
+* A transaction is executed only if it matches the current sequence number for the sender account. This helps sequence multiple transactions from the same sender and prevents replay attacks.
+* If the current sequence number of an account A is X, then a transaction T on account A will only be executed if T's sequence number is X. 
+* These transactions will be held in mempool until they are the next sequence number for that account (or until they expire).
 * When the transaction is applied, the sequence number of the account will become X+1. The account has a strictly increasing sequence number.
 
 ### Sender
 
-* *Alternate name*: Sender Address
+* *Alternate name*: Sender address.
 * **Sender** is the address of the originator account for a transaction. A transaction must be signed by the originator.
 
 ### Smart Contract
 
-* See [Move Module](#move-module)
+* See [Move Module](#move-module).
 
 ### State
 
@@ -393,7 +393,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### State Root Hash
 
-* **State Root Hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Libra Blockchain at a given version.
+* **State root hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Libra Blockchain at a given version.
 
 ## T
 
