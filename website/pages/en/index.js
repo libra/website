@@ -149,7 +149,7 @@ cd libra`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run CLI:</h4>
-              <MarkdownBlock>{bash`cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`}</MarkdownBlock>
+              <MarkdownBlock>{bash`cd scripts/cli && ./start_cli_testnet.sh`}</MarkdownBlock>
             </li>
             <li>
               <h4>Run your first transaction</h4>
