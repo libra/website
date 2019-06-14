@@ -134,16 +134,16 @@ A **client** is a piece of software that has the capability to interact with the
 * Execution result of a transaction is a combination of:
     * The new state of the set of accounts affected by the transaction.
     * The events emitted by executing the transaction.
-    * The exit code, which indicates either successful or a specific error.
+    * The exit code, which indicates either success or a specific error.
     * The number of gas units consumed while executing the transaction.
 
 ### Expiration Time
 
 A transaction ceases to be valid after its **expiration time**. If we assume that:
 
-* Time_C - is the current time that is agreed upon between validators (Time_C is not the local time of the client).
-* Time_E - is the expiration time of a transaction T_N.
-* Time_C > Time_E and transaction T_N has not been included in the blockchain
+* Time_C is the current time that is agreed upon between validators (Time_C is not the local time of the client);
+* Time_E is the expiration time of a transaction T_N; and
+* Time_C > Time_E and transaction T_N has not been included in the blockchain.
 
 then there is a guarantee that T_N will never be included in the blockchain.
 
