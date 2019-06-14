@@ -17,12 +17,12 @@ At the heart of the Libra protocol are two fundamental concepts &mdash; transact
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small class="figure">Figure 1.1 Transactions change state.</small>
 
-Figure 1.1 represents change of state of the Libra Blockchain, when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 Libra and Bob has a balance of 52 Libra. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice's balance to be reduced by 10 Libra and Bob's balance to be increased by 10 Libra. The new state S~N~ now shows these updated balances. In figure 1.1:
+Figure 1.1 represents the change of state of the Libra Blockchain when a transaction is executed.  For example, at state S~N-1~, Alice has a balance of 110 Libra, and Bob has a balance of 52 Libra. When a transaction is applied to the blockchain, it generates a new state. To transition from S~N-1~ to S~N~, transaction T~N~ is applied against the state S~N-1~. This causes Alice’s balance to be reduced by 10 Libra and Bob’s balance to be increased by 10 Libra. The new state S~N~ now shows these updated balances. In figure 1.1:
 
-* **A** and **B** represent Alice's and Bob's account in the blockchain.
+* **A** and **B** represent Alice’s and Bob’s account in the blockchain.
 * **S~N-1~** represents the (n-1)-th state of the blockchain.
 * **T~N~** is the n-th transaction executed on the blockchain.  
-    * In this example, T~N~ is - “send 10 Libra from person A's account to person B's account.”
+    * In this example, T~N~ is - “send 10 Libra from person A’s account to person B’s account.”
 * **F** is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
 
@@ -36,11 +36,11 @@ Clients of the Libra Blockchain submit transactions to request updates to the le
 * **Sender public key** &mdash; The public key that corresponds to the private key used to sign the transaction.
 * **Program** &mdash; The program is comprised of the following:
     * A Move bytecode transaction script.
-    * An optional list of inputs to the script. For a peer-to-peer transaction, the inputs will contain the information about the recipient and the amount transferred to the recipient.
+    * An optional list of inputs to the script. For a peer-to-peer transaction, the inputs contain the information about the recipient and the amount transferred to the recipient.
     * An optional list of Move bytecode modules to publish. 
 * **Gas price** (in microlibra/gas units) &mdash; The amount the sender is willing to pay per unit of [gas](reference/glossary.md#gas) to execute the transaction. Gas is a way to pay for computation and storage. A gas unit is an abstract measurement of computation with no inherent real-world value.
 * **Maximum gas amount** &mdash; The maximum units of gas the transaction is allowed to consume.
-* **Sequence number** &mdash; An unsigned integer that must be equal to the sequence number stored under the sender's account.
+* **Sequence number** &mdash; An unsigned integer that must be equal to the sequence number stored under the sender’s account.
 * **Expiration time** &mdash; The time after which the transaction ceases to be valid.
 * **Signature** &mdash; The digital signature of the sender.
 
@@ -70,7 +70,7 @@ An account may contain an arbitrary number of Move resources and Move modules.
 
 #### Account Address
 
-The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user's public verification key. To sign a transaction sent from their account address, the user (or the custodial client representing the user) must use the private key corresponding to that account.
+The address of a Libra account is a 256-bit value. Users can claim addresses using digital signatures. The account address is a cryptographic hash of a user’s public verification key. To sign a transaction sent from their account address, the user (or the custodial client representing the user) must use the private key corresponding to that account.
 
 There is no limit on the number of addresses a Libra user can claim. To claim an account address, a transaction should be sent from an account that holds sufficient Libra to pay the account creation fee.
 
@@ -79,13 +79,13 @@ There is no limit on the number of addresses a Libra user can claim. To claim an
 All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary.md#merkle-trees). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
-* Every operation stored on the blockchain can be verified cryptographically, and the resultant proof will also prove that no data has been omitted. For example, if the client queried the latest _n_ transactions from an account, the proof will verify that no transactions are omitted from the query response.
+* Every operation stored on the blockchain can be verified cryptographically, and the resultant proof also proves that no data has been omitted. For example, if the client queried the latest _n_ transactions from an account, the proof verifies that no transactions are omitted from the query response.
 
 In a blockchain, the client does not need to trust the entity from which it is receiving data. A client could query for the balance of an account, ask whether a specific transaction was processed, and so on. Like other Merkle trees, the ledger history can provide an O(log n)-sized proof of a specific transaction object, where _n_ is the total number of transactions processed.
 
 ## Validator Node (Validator)
 
-Clients of the Libra Blockchain create transactions and submit them to a validator node. A validator node runs a consensus protocol (together with other validator nodes), executes the transactions, and stores the transactions and the execution results in the the blockchain. Validator nodes decide which transactions will be added to the blockchain and in which order.
+Clients of the Libra Blockchain create transactions and submit them to a validator node. A validator node runs a consensus protocol (together with other validator nodes), executes the transactions, and stores the transactions and the execution results in the blockchain. Validator nodes decide which transactions will be added to the blockchain and in which order.
 ![Figure 1.1 Logical components of a validator.](assets/illustrations/validator.svg)
 <small class="figure">Figure 1.2 Logical components of a validator.</small>
 
@@ -98,8 +98,8 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 
 **Mempool**
 
-* Mempool is a buffer that holds the transactions that are "waiting" to be executed. 
-* When a new transaction is added to a validator node's mempool, this validator node's mempool shares this transaction with the mempools of other validators in the system. 
+* Mempool is a buffer that holds the transactions that are “waiting” to be executed. 
+* When a new transaction is added to a validator node’s mempool, this validator node’s mempool shares this transaction with the mempools of other validators in the system. 
 
 **Consensus**
 
@@ -108,7 +108,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 **Execution**
 
 * The execution component utilizes the virtual machine (VM) to execute transactions.
-* Execution's job is to coordinate execution of a block of transactions and maintain a transient state that can be voted upon by consensus.
+* Execution’s job is to coordinate execution of a block of transactions and maintain a transient state that can be voted upon by consensus.
 * Execution maintains an in-memory representation of the results of execution until consensus commits the block to the distributed database.
 
 **Virtual Machine (VM)**
@@ -127,7 +127,7 @@ For information on interactions of each validator component with other component
 * [Welcome Page](welcome-to-libra.md).
 * [My First Transaction](my-first-transaction.md) &mdash; Guides you through executing your very first transaction on the Libra Blockchain using the Libra CLI client.
 * [Getting Started with Move](move-overview.md) &mdash; Introduces you to a new blockchain programming language called Move.
-* [Life of a Transaction](life-of-a-transaction.md) &mdash; Provides a look at what happens "under the hood" when a transaction is submitted and executed.
+* [Life of a Transaction](life-of-a-transaction.md) &mdash; Provides a look at what happens “under the hood” when a transaction is submitted and executed.
 * [Libra Core Overview](libra-core-overview.md) &mdash; Provides the concept and implementation details of the Libra Core components through READMEs.
 * [CLI Guide](reference/libra-cli.md) &mdash; Lists the commands (and their usage) of the Libra CLI client.
 * [Libra Glossary](reference/glossary.md) &mdash; Provides a quick reference to Libra terminology.
