@@ -1,32 +1,36 @@
 ---
 id: ir-to-bytecode
 title: Move IR Compiler
+custom_edit_url: https://github.com/libra/libra/edit/master/language/compiler/README.md
 ---
 
 ## Summary
 
-The Move IR compiler is the tool that compiles the Move IR down to its
-bytecode representation.
+The Move IR compiler compiles the Move IR down to its bytecode representation. 
 
 ## Overview
 
-The Move IR compiler compiles modules and scripts written in Move, down to
+The Move IR compiler compiles modules and scripts written in Move down to
 their respective bytecode representations. The two data types used to
 represent these outputs are `CompiledModule` and `CompiledScript`. These
-data types are defined in [file_format.rs](../vm/src/file_format.rs).
+data types are defined in [file_format.rs](https://github.com/libra/libra/blob/master/language/vm/src/file_format.rs).
 
-The compiler's job is to output bytecode that corresponds as closely as
-possible to the input IR. Optimization and advanced semantic checks are not
-part of the scope of this tool. On the other hand, the compiler
-command-line automatically calls the [bytecode
-verifier](../bytecode_verifier) to perform semantic checks on the generated
-bytecode.
+Beyond translating Move IR to Move bytecode, the compiler's purpose is as a
+testing tool for the bytecode verifier. Because of this, its job is to
+output bytecode programs that correspond as closely as possible to the
+input IR; optimizations and advanced semantic checks are specifically not
+performed during the compilation process. In fact, the compiler goes out of
+its way to push these semantic checks into the bytecode, and compile
+semantically invalid code in the Move IR to equivalent---semantically
+invalid---bytecode programs. The semantics of the compiled bytecode is
+then verified by the [bytecode verifier](https://github.com/libra/libra/blob/master/language/bytecode_verifier/README.md). The compiler command-line
+automatically calls the bytecode verifer at the end of compilation.
 
 ## Command-line options
 
 ```text
 USAGE:
-    ir_to_bytecode [FLAGS] [OPTIONS] <source_path>
+    compiler [FLAGS] [OPTIONS] <source_path>
 
 FLAGS:
     -h, --help         Prints help information
@@ -46,17 +50,17 @@ ARGS:
 
 To compile a `*.mvir` file
 
-> cargo build --bin ir_to_bytecode
+> cargo build -—bin compiler
 
 * This will build the compiler+verifier binary
-* The binary can be found at `libra/target/debug/ir_to_bytecode`
-* Alternatively the binary can be run directly with `cargo run -p ir_to_bytecode`
+* The binary can be found at `libra/target/debug/compiler`
+* Alternatively the binary can be run directly with `cargo run -p compiler`
 
 To compile and verify a `*.mvir` module file
-> `ir_to_bytecode a.mvir`
+> `compiler a.mvir`
 
 To compile and verify a `*.mvir` transaction script file
-> `ir_to_bytecode -s *.mvir`
+> `compiler -s *.mvir`
 
 ## Folder Structure
 

@@ -1,6 +1,7 @@
 ---
 id: crypto
 title: Crypto
+custom_edit_url: https://github.com/libra/libra/edit/master/crypto/legacy_crypto/README.md
 ---
 
 The crypto component hosts all the implementations of cryptographic primitives we use in Libra: hashing, signing, and key derivation/generation. The NextGen directory contains implementations of cryptographic primitives that will be used in the upcoming versions: new crypto API Enforcing type safety, verifiable random functions, BLS signatures.

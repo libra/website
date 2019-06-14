@@ -1,9 +1,10 @@
 ---
 id: bytecode-verifier
 title: Bytecode Verifier
+custom_edit_url: https://github.com/libra/libra/edit/master/language/bytecode_verifier/README.md
 ---
 
-### Bytecode verifier: checking safety of stack usage, types, resources, and references.
+### Bytecode verifier: checking safety of stack usage, types, resources, and references
 
 The body of each function in a compiled module is verified separately while trusting the correctness of function signatures in the module.  Checking that each function signature matches its definition is a separate responsibility.  The body of a function is a sequence of bytecode instructions.  This instruction sequence is checked in several phases described below.
 
@@ -29,7 +30,7 @@ Resources represent assets of the blockchain. As such, there are certain restric
 
 As mentioned above, this last rule around `Ret` implies that the resource *must* have been either:
 
-* Moved to global storage via `MoveToSender`
+* Moved to global storage via `MoveToSender`.
 * Destroyed via `Unpack`.
 
 Both of `MoveToSender` and `Unpack` are internal to the module in which the resource is declared.

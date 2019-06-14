@@ -1,7 +1,9 @@
 ---
 id: execution
 title: Execution
+custom_edit_url: https://github.com/libra/libra/edit/master/execution/README.md
 ---
+
 ## Overview
 
 The Libra Blockchain is a replicated state machine. Each validator is a replica
@@ -13,11 +15,11 @@ some data associated with each account.
 The execution component takes the totally ordered transactions, computes the
 output for each transaction via the Move virtual machine, applies the output on
 the previous state, and generates the new state. The execution system cooperates
-with the consensus algorithm — HotStuff, a leader-based algorithm — to help it
+with the consensus algorithm &mdash; HotStuff, a leader-based algorithm — to help it
 agree on a proposed set of transactions and their execution. Such a group of
 transactions is a block. Unlike in other blockchain systems, blocks have no
 significance other than being a batch of transactions — every transaction is
-identified by its version — its position within the ledger. Each consensus
+identified by its version, its position within the ledger. Each consensus
 participant builds a tree of blocks like the following:
 
 ```
@@ -88,7 +90,14 @@ be constructed, and the structure will look like the following:
          x   A                      z   B
 ```
 
-Using this structure, we are able to query the global state, taking into account the output of uncommitted transactions. For example, if we want to execute another transaction T<sub>i+1</sub><sup>'</sup>, we can use the tree S<sub>i</sub>. If we look for account A, we can find its new value in the tree. Otherwise, we know the account does not exist in the tree, and we can fall back to storage. As another example, if we want to execute transaction T<sub>i+2</sub>, we can use the tree S<sub>i+1</sub> that has updated values for both account `A` and `B`.
+Using this structure, we are able to query the global state, taking into account 
+the output of uncommitted transactions. For example, if we want to execute 
+another transaction T<sub>i+1</sub><sup>'</sup>, we can use the tree 
+S<sub>i</sub>. If we look for account A, we can find its new value in the tree. 
+Otherwise, we know the account does not exist in the tree, and we can fall back to 
+storage. As another example, if we want to execute transaction T<sub>i+2</sub>, 
+we can use the tree S<sub>i+1</sub> that has updated values for both account `A` 
+and `B`.
 
 ## How is this component organized?
 
@@ -97,3 +106,4 @@ Using this structure, we are able to query the global state, taking into account
             └── execution_proto    # All interfaces provided by the execution component.
             └── execution_service  # Execution component as a GRPC service.
             └── executor           # The main implementation of execution component.
+
