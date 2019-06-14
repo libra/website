@@ -9,11 +9,11 @@ The Libra Blockchain is a cryptographically authenticated distributed database, 
 
 The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary.md#validator-node), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary.md#consensus-protocol) to agree on a total ordering of transactions in the blockchain. 
 
-The Libra testnet is a demonstration of an early prototype of the Libra Blockchain software (Libra Core).
+The Libra testnet is a demonstration of an early prototype of the Libra Blockchain software — Libra Core.
 
 ## Transactions and States
 
-At the heart of the Libra protocol are two fundamental concepts &mdash; transactions and states. At any point in time, the blockchain has a "state". The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
+At the heart of the Libra protocol are two fundamental concepts &mdash; transactions and states. At any point in time, the blockchain has a “state.” The state (or ledger state) represents the current snapshot of data on the chain. Executing a transaction changes the state of the blockchain. 
 
 ![Figure 1.1 A transaction changes state.](assets/illustrations/transactions.svg)
 <small class="figure">Figure 1.1 Transactions change state.</small>
