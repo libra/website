@@ -72,14 +72,14 @@ If you enter only the major command, it will show the help information for that 
      Usage:
         recover|r <file_path>
      Arguments:
-         `file_path`- File path from which to load mnemonic recover seed.  Must have been written via 'account write'
+         file_path- File path from which to load mnemonic recover seed.  Must have been written via 'account write'
 
   `write | w <file path>`- Save Libra Wallet mnemonic recovery seed to disk.  This will allow accounts to be recovered via `account recover`.
 
      Usage:
         write|w <file_path>
      Arguments:
-         `file_path`- File path at which to save the mnemonic recovery seed to disk.
+         file_path- File path at which to save the mnemonic recovery seed to disk.
 
 
   `<mint | m> | <mintb| mb>` - Mint coins to the account. Suffix 'b' is for blocking. If blocking is specified (using suffix 'b'), CLI will query chain until the transaction is finalized/available. Same is true for other sub "blocking" commands.
@@ -87,29 +87,29 @@ If you enter only the major command, it will show the help information for that 
       Usage:
         mint|mint|m|b <receiver_account_ref_id>|<receiver_account_address> <number_of_coins>
       Arguments:
-          `receiver_account_ref_id|receiver_account_address` - The receiver account to mint the coins to.
+          receiver_account_ref_id | receiver_account_address - The receiver account to mint the coins to.
                 If the receiver account does not exist, it will be created first.
                 Either `receiver_account_address` or `receiver_account_ref_id` (an internal index of
                 the account in the CLI client) can be used to specify receiver account (identical to
                 other commands). If gas is being charged, the account that sent this mint transaction
                 (currently preloaded genesis account) pays for the gas.
-          `number_of_coins` - The number of coins to be minted to the receiver account.
+          number_of_coins - The number of coins to be minted to the receiver account.
 
 ---
 
 #### `transfer | transferb | t | tb` - Transfer coins from account to another. Suffix 'b' is for blocking.
 
     Usage:
-        `transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)]`
+        transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)]
     Arguments:
-        `sender_account_address | sender_account_ref_id` - The account from which this transfer transaction
+        sender_account_address | sender_account_ref_id - The account from which this transfer transaction
             is sent. The sender account pays for the gas.
-        `receive_account_address | receiver_account_ref_id` - The account to which this transaction sends coins.
+        receive_account_address | receiver_account_ref_id - The account to which this transaction sends coins.
             If the receiver account does not exist, it will be created first. The sender will pay for
             gas required for both account creation and coin transfer.
-        `number_of_coins` - The number of coins transferred to receiver account.
-        `gas_unit_price` - The unit price to pay for gas.
-        `max_gas_amount` - Max units of gas user is willing to pay for this transaction.
+        number_of_coins - The number of coins transferred to receiver account.
+        gas_unit_price - The unit price to pay for gas.
+        max_gas_amount - Max units of gas user is willing to pay for this transaction.
 
 ---
 
@@ -118,65 +118,65 @@ If you enter only the major command, it will show the help information for that 
 `balance | b` - Get the current balance of an account
 
      Usage:
-        balance|b <account_ref_id>|<account_address>
+        balance | b <account_ref_id>|<account_address>
      Arguments:
-         `account_ref_id|account_address` - The account to query balance for.
+         account_ref_id | account_address - The account to query balance for.
 
 `assert_balance | a` - Assert that balance is equal to the specified value.
     CLI will panic if the value from storage does not equal to expected value.
 
      Usage:
-        assert_balance|a <account_ref_id>|<account_address> <expected_value>
+        assert_balance | a <account_ref_id>|<account_address> <expected_value>
      Arguments:
-         `account_ref_id | account_address` - The account to assert balance for.
-         `expected_value` - The expected value to assert against.
+         account_ref_id | account_address - The account to assert balance for.
+         expected_value - The expected value to assert against.
 
 `sequence | s` - Get the current sequence number for an account.
 
       Usage:
-        `sequence | s <account_ref_id>|<account_address> [reset_sequence_number=true|false]`.
+        sequence | s <account_ref_id>|<account_address> [reset_sequence_number=true|false]
       Arguments:
-          `account_ref_id | account_address` - The account to get current/latest sequence number.
-          `reset_sequence_number` - If the sequence number known locally by the CLI differs from the
+          account_ref_id | account_address - The account to get current/latest sequence number.
+          reset_sequence_number - If the sequence number known locally by the CLI differs from the
                 value known on chain, this will reset the local sequence number to to on-chain
                 value.  This is useful when a user encounters an invalid sequence number error.
 
 `account_state | as` - Get the latest state for an account.
 
       Usage:
-        `account_state | as <account_ref_id>|<account_address>`.
+        account_state | as <account_ref_id>|<account_address>
       Arguments:
-          `account_ref_id | account_address` - The account to query latest state.
+          account_ref_id | account_address - The account to query latest state.
 
 `txn_acc_seq | ts` - Get the committed transaction by account and sequence number.
 
       Usage:
-        `txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number> <fetch_events=true|false>`
+        txn_acc_seq | ts <account_ref_id>|<account_address> <sequence_number> <fetch_events=true|false>
       Arguments:
-          `account_ref_id | account_address` - The account to query committed transaction.
-          `sequence_number` - The sequence number of committed transaction.
-          `fetch_events` - Set to true to fetch events emitted by this transaction.
+          account_ref_id | account_address - The account to query committed transaction.
+          sequence_number - The sequence number of committed transaction.
+          fetch_events - Set to true to fetch events emitted by this transaction.
 
 `txn_range | tr` - Get the committed transaction by range
 
       Usage:
-        `txn_range | tr <start_version> <limit> <fetch_events=true|false>`
+        txn_range | tr <start_version> <limit> <fetch_events=true|false>
       Arguments:
-          `start_version` - The version to query the transaction from.
-          `limit` - The maximum number of transactions to query.
-          `fetch_events` - Set to true to fetch events emitted by each transaction.
+          start_version - The version to query the transaction from.
+          limit - The maximum number of transactions to query.
+          fetch_events - Set to true to fetch events emitted by each transaction.
 
 `event | ev` - Get event by account and path.
 
       Usage:
-        event | `ev <account_ref_id>|<account_address> <sent|received> <start_sequence_number> <ascending=true|false> <limit>`.
+        event | ev <account_ref_id>|<account_address> <sent|received> <start_sequence_number> <ascending=true|false> <limit>
       Arguments:
-          `account_ref_id | account_address` - The account to query events from.
-          `sent | received` - Fetch sent or received events for this account.
+          account_ref_id | account_address - The account to query events from.
+          sent | received - Fetch sent or received events for this account.
                 Note that this will later evolve into selecting any event path.
-          `start_sequence_number` - The sequence number of events to query starting from.
-          `ascending` - The direction of query from `start_sequence_number`.
-          `limit` - The maximum number of events to query.
+          start_sequence_number - The sequence number of events to query starting from.
+          ascending - The direction of query from `start_sequence_number`.
+          limit - The maximum number of events to query.
 
 ---
 
