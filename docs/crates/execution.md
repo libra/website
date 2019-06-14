@@ -1,6 +1,7 @@
 ---
 id: execution
 title: Execution
+Path to file: libra/execution/README.md
 ---
 
 ## Overview
@@ -13,12 +14,12 @@ some data associated with each account.
 
 The execution component takes the totally ordered transactions, computes the
 output for each transaction via the Move virtual machine, applies the output on
-the previous state and generates the new state. The execution system cooperates
-with the consensus algorithm -- HotStuff, a leader based algorithm -- to help it
+the previous state, and generates the new state. The execution system cooperates
+with the consensus algorithm — HotStuff, a leader-based algorithm — to help it
 agree on a proposed set of transactions and their execution. Such a group of
-transactions is a block. Unlike in other Blockchain systems blocks have no
-significance other than being a batch of transactions -- every transaction is
-identified by its version -- its position within the ledger. Each consensus
+transactions is a block. Unlike in other blockchain systems, blocks have no
+significance other than being a batch of transactions — every transaction is
+identified by its version — its position within the ledger. Each consensus
 participant builds a tree of blocks like the following:
 
 ```
@@ -54,8 +55,8 @@ consensus algorithm, there are two possible operations on this tree:
    rules. Then we save all these blocks to permanent storage and also discard
    all the conflicting blocks at the same time.
 
-Therefore, the execution component provides two primary APIs -- `execute_block`
-and `commit_block` -- to support the above operations.
+Therefore, the execution component provides two primary APIs - `execute_block`
+and `commit_block` - to support the above operations.
 
 ## Implementation Details
 
@@ -74,9 +75,9 @@ we will end up having the following tree:
 ```
 
 where `A` has the new state of the account, and `y` and `x` are the siblings on
-the path from root to `A` in the tree.  If the next transaction T<sub>i+1</sub>
+the path from the root to `A` in the tree.  If the next transaction T<sub>i+1</sub>
 modified another account `B` that lives in the subtree at `y`, a new tree will
-be constructed and the structure will look like the following:
+be constructed, and the structure will look like the following:
 
 ```
                 S_i        S_{i+1}
@@ -89,14 +90,7 @@ be constructed and the structure will look like the following:
          x   A                      z   B
 ```
 
-Using this structure, we are able to query the global state, taking into account
-the output of uncommitted transactions. For example, if we want to execute
-another transaction T<sub>i+1</sub><sup>'</sup>, we can use the tree
-S<sub>i</sub>. If we look for account A, we can find its new value in the tree.
-Otherwise we know the account does not exist in the tree and we can fall back to
-storage. As another example, if we want to execute transaction T<sub>i+2</sub>,
-we can use the tree S<sub>i+1</sub> that has updated values for both account `A`
-and `B`.
+Using this structure, we are able to query the global state, taking into account the output of uncommitted transactions. For example, if we want to execute another transaction T<sub>i+1</sub><sup>'</sup>, we can use the tree S<sub>i</sub>. If we look for account A, we can find its new value in the tree. Otherwise, we know the account does not exist in the tree, and we can fall back to storage. As another example, if we want to execute transaction T<sub>i+2</sub>, we can use the tree S<sub>i+1</sub> that has updated values for both account `A` and `B`.
 
 ## How is this component organized?
 
@@ -105,7 +99,3 @@ and `B`.
             └── execution_proto    # All interfaces provided by the execution component.
             └── execution_service  # Execution component as a GRPC service.
             └── executor           # The main implementation of execution component.
-
-## Contribution
-
-## License
