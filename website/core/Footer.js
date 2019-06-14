@@ -77,6 +77,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('policies/privacy-policy')}>Privacy Policy</a>
             <a href={this.docUrl('policies/terms-of-use')}>Terms of Use</a>
             <a href={this.docUrl('policies/cookies-policy')}>Cookies Policy</a>
+            <a href={this.docUrl('policies/code-of-coduct')}>Code of Conduct</a>
           </div>
           <SocialFooter config={this.props.config} />
         </section>
