@@ -15,7 +15,7 @@ In the first part of this guide, we will provide a high-level introduction to th
 
 For the curious reader, the [Move technical paper](move-paper.md) contains much more detail about the language.
 
-In the second part of this guide, we will "lift up the hood" and show you how to write your own Move programs in the [Move intermediate representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available for you to try out locally.
+In the second part of this guide, we will “look under the hood” and show you how to write your own Move programs in the [Move intermediate representation](#move-intermediate-representation). Custom Move programs are not supported in the initial testnet release, but these features are available for you to try out locally.
 
 ## Key Features of Move
 

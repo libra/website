@@ -30,8 +30,8 @@ Perform the following steps to submit a transaction to a validator node on the L
 
 1. [Clone and build Libra Core](#clone-and-build-libra-core).
 2. [Build the Libra CLI client and connect to the testnet](#build-libra-cli-client-and-connect-to-the-testnet).
-3. [Create Alice's and Bob's account](#create-alice-s-and-bob-s-account).
-4. [Mint coins and add to Alice's and Bob's account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
+3. [Create Alice’s and Bob’s account](#create-alice-s-and-bob-s-account).
+4. [Mint coins and add to Alice’s and Bob’s account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
 5. [Submit a transaction](#submit-a-transaction).
 
 ## Clone and Build Libra Core
@@ -98,7 +98,7 @@ If you have problems building the client and connecting to the testnet, refer to
 
 **Note**: If you would like to run a validator node locally on your system, follow the instructions in [Run a Local Validator Node](#run-a-local-validator-node). The instructions for creating accounts, minting coins, and performing a transaction are the same as that for a node on testnet.
 
-## Create Alice's and Bob's Account
+## Create Alice’s and Bob’s Account
 
 Once your client is connected to the testnet, you can run CLI commands to create new accounts.  We will walk you through creating accounts for two users (let's call them Alice and Bob).
 
@@ -124,11 +124,11 @@ mint | mintb | m | mb <receiver account> <number of coins>
   Mint coins to the account. Suffix 'b' is for blocking
 ```
 
-### Step 2: Create Alice's account
+### Step 2: Create Alice’s account
 
 Note that creating an account using the CLI does not update the blockchain, it just creates a local key-pair.
 
-To create Alice's account, enter this command:
+To create Alice’s account, enter this command:
 
 `libra% account create`
 
@@ -139,11 +139,11 @@ Sample output on success:
 Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
 
-#0 is the index of Alice's account and the hex string is the address of Alice's account. The index is just a way to refer to Alice's account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice's account will be created on the blockchain only when either money is added to Alice's account via minting, or money is transferred to Alice's account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
+#0 is the index of Alice’s account and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
-### Step 3: Create Bob's account
+### Step 3: Create Bob’s account
 
-To create Bob's account, repeat the account creation command:
+To create Bob’s account, repeat the account creation command:
 
 `libra% account create`
 
@@ -154,8 +154,8 @@ Sample output on success:
 Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
 ```
 
-#1 is the index for Bob's account and the hex string is the address of Bob's account.
-For more details on index refer to [Create Alice's Account.](#step-2-create-alice-s-account)
+#1 is the index for Bob’s account and the hex string is the address of Bob’s account.
+For more details on index refer to [Create Alice’s Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (optional): List Accounts
 
@@ -170,20 +170,20 @@ User account index: 1, address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a815
 ```
 The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary.md#sequence-number).
 
-## Add Libra Coins to Alice's and Bob's Accounts
+## Add Libra Coins to Alice’s and Bob’s Accounts
 
-Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real world value. Assuming you have [created Alice's and Bob's account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
+Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
-### Step 1: Add 110 Libra to Alice's account
+### Step 1: Add 110 Libra to Alice’s account
 
-To mint Libra and add to Alice's account, enter this command:
+To mint Libra and add to Alice’s account, enter this command:
 
 `libra% account mint 0 110`
 
-* 0 is the index of Alice's account.
-* 110  is the amount of Libra to be added to Alice's account.
+* 0 is the index of Alice’s account.
+* 110  is the amount of Libra to be added to Alice’s account.
 
-A successful account mint command will also create Alice's account on the blockchain.
+A successful account mint command will also create Alice’s account on the blockchain.
 
 Sample output on success:
 
@@ -196,15 +196,15 @@ Note that when the request is submitted, it means that it has been added to the 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
 
-### Step 2: Add 52 Libra to BOB's account
+### Step 2: Add 52 Libra to Bob’s account
 
-To mint Libra and add to Bob's account, enter this command:
+To mint Libra and add to Bob’s account, enter this command:
 
 `libra% account mint 1 52`
 
-* 1 is the index of Bob's account
-* 52 is the amount of Libra to be added to Bob's account.
-* A successful account mint command will also create Bob's account on the blockchain. Another way to create Bob's account on the blockchain is to simply transfer money from Alice's account to Bob's account.
+* 1 is the index of Bob’s account
+* 52 is the amount of Libra to be added to Bob’s account.
+* A successful account mint command will also create Bob’s account on the blockchain. Another way to create Bob’s account on the blockchain is to simply transfer money from Alice’s account to Bob’s account.
 
 Sample output on success:
 
@@ -217,7 +217,7 @@ If your account mint command did not submit your request successfully, refer to
 
 ### Step 3: Check the balance
 
-To check the balance in Alice's account, enter this command:
+To check the balance in Alice’s account, enter this command:
 
 `libra% query balance 0`
 
@@ -225,7 +225,7 @@ Sample output on success:
 
 `Balance is: 110`
 
-To check the balance in Bob's account, enter this command:
+To check the balance in Bob’s account, enter this command:
 
 `libra% query balance 1`
 
@@ -235,9 +235,9 @@ Sample output on success:
 
 ## Submit a Transaction
 
-Before we submit a transaction to transfer Libra from Alice's account to Bob's account, we will query the sequence number of each account. This will help us understand how executing a transaction changes the sequence number of each account.
+Before we submit a transaction to transfer Libra from Alice’s account to Bob’s account, we will query the sequence number of each account. This will help us understand how executing a transaction changes the sequence number of each account.
 
-### Query Sequence Number
+### Query the Accounts’ Sequence Numbers
 
 ```bash
 libra% query sequence 0
@@ -248,17 +248,17 @@ libra% query sequence 1
 Sequence number is: 0
 ```
 
-In `query sequence 0`, 0 is the index of Alice's account. A sequence number of 0 for both Alice's and Bob's account indicates that no transactions from either Alice's or Bob's account have been executed so far.
+In `query sequence 0`, 0 is the index of Alice’s account. A sequence number of 0 for both Alice’s and Bob’s account indicates that no transactions from either Alice’s or Bob’s account have been executed so far.
 
 ### Transfer Money
 
-To submit a transaction to transfer 10 Libra from Alice's account to Bob's account, enter this command:
+To submit a transaction to transfer 10 Libra from Alice’s account to Bob’s account, enter this command:
 
 `libra% transfer 0 1 10`
 
-* 0 is the index of Alice's account.
-* 1 is the index of Bob's account.
-* 10 is the number of Libra to transfer from Alice's account to Bob's account.
+* 0 is the index of Alice’s account.
+* 1 is the index of Bob’s account.
+* 10 is the number of Libra to transfer from Alice’s account to Bob’s account.
 
 Sample output on success:
 
@@ -274,13 +274,13 @@ You just submitted your transaction to a validator node on testnet and it was in
 
 To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-command).
 
-The Blocking Transfer Command: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
+**The Blocking Transfer Command**: You can use  the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
 `libra% transferb 0 1 10`
 
 Refer to [Life of a Transaction](life-of-a-transaction.md) for an understanding of the lifecycle of a transaction from submission to execution and storage.
 
-### Query Sequence number After Transfer
+### Query Sequence Number After Transfer
 
 ```bash
 libra% query sequence 0
@@ -291,11 +291,11 @@ libra% query sequence 1
 Sequence number is: 0
 ```
 
-The sequence number of 1 for Alice's account (index 0) indicates that one transaction has been sent from Alice's account so far. The sequence number of 0 for Bob's account (index 1) indicates that no transaction has been sent from Bob's account so far. Every time a transaction is sent from an account the sequence number is incremented by 1.
+The sequence number of 1 for Alice’s account (index 0) indicates that one transaction has been sent from Alice’s account so far. The sequence number of 0 for Bob’s account (index 1) indicates that no transaction has been sent from Bob’s account so far. Every time a transaction is sent from an account the sequence number is incremented by 1.
 
-### Check The Balance in Both Accounts After Transfer
+### Check the Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice's account and 62 Libra in Bob's account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice’s account and 62 Libra in Bob’s account.
 
 ```bash
 libra% query balance 0
@@ -306,7 +306,7 @@ Balance is: 62
 
 ### Congratulations!
 
-You have successfully executed your transaction on the Libra testnet and transferred 10 Libra from Alice's account to Bob's account!
+You have successfully executed your transaction on the Libra testnet and transferred 10 Libra from Alice’s account to Bob’s account!
 
 ## Troubleshooting
 
@@ -401,7 +401,7 @@ Note that the transaction amount is shown in microlibra.
 
 ### Query Events
 
-In the following example, we will query for "sent" events from account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return "limit" events.
+In the following example, we will query for “sent” events from account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return “limit” events.
 
 ```bash
 libra% query event 0 sent 0 true 10
