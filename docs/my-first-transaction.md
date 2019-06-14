@@ -189,7 +189,7 @@ Sample output on success:
 >> Minting coins
 Mint request submitted
 ```
-Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will successfully be completed. Later, we will query the account balance to confirm if minting was successful.
+Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will be completed successfully. Later, we will query the account balance to confirm if minting was successful.
 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
