@@ -258,3 +258,23 @@ article p img.download {
 
 @media only screen and (min-width: 1500px) {
 }
+
+
+blockquote {
+
+/* FIG slate color */
+background-color: #EAEFF2;
+border-left: 8px solid #B9CAD2;
+padding: 15px 30px 15px 15px;
+color: #24292e;
+}
+
+
+blockquote.block_note {
+/* FIG lemon color */ 
+background-color: #FEF2D1;
+border-left: 8px solid #FCD872;
+padding: 15px 30px 15px 15px;
+
+color:#24292e;
+}
