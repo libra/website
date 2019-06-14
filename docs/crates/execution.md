@@ -1,7 +1,6 @@
 ---
 id: execution
 title: Execution
-Path to file: libra/execution/README.md
 ---
 
 ## Overview

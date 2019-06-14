@@ -1,6 +1,6 @@
 ---
 id: admission-control
-1title: Admission Control
+title: Admission Control
 ---
 # Admission Control
 
