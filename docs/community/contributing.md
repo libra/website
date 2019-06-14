@@ -6,17 +6,12 @@ title: Contribution Guide
 Our goal is to make contributing to the Libra project easy and transparent.
 
 <blockquote class="block_note">
-**Note**: As the Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
+The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. While we welcome contributions, before making substantial contributions be sure to discuss them in the Discourse forum to ensure that they fit into the project roadmap.
 </blockquote>
 
-## On Contributing
+## Contributing to Libra Core
 
-
-### Libra Core
-
-To contribute to the Libra Core implementation, first start with the proper development copy.
-
-To get the development installation with all the necessary dependencies for linting, testing, and building the documentation, run the following:
+To contribute to the Libra Core implementation, ensure that you have the latest version of the codebase. To setup Libra Core with all the necessary dependencies for linting, testing, and building the documentation, run the following:
 ```bash
 git clone https://github.com/libra/libra.git
 cd libra
