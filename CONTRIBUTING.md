@@ -15,7 +15,8 @@ To get the development installation with all the necessary dependencies for lint
 ```bash
 git clone https://github.com/libra/libra.git
 cd libra
-cargo install
+./scripts/dev-setup.sh
+cargo build
 cargo test
 ```
 
@@ -32,16 +33,6 @@ code can be found in this [repository](https://github.com/libra/libra.github.io/
 It is built using [Docusaurus](https://docusaurus.io/):
 
 If you know Markdown, you can already contribute! This lives in the the [libra.github.io repo](https://github.com/libra/libra.github.io).
-
-To build the documentation you will need [Node](https://nodejs.org/en/) >= 8.x
-and [Yarn](https://yarnpkg.com/en/) >= 1.5.
-
-The following command will both build the docs and serve the site locally:
-```bash
-cd libra.github.io
-cd scripts
-./build_docs.sh
-```
 
 ## Pull Requests
 During the initial phase of heavy development, we plan to only audit and review pull requests. As the codebase stabilizes, we will be better able to accept pull requests from the community.
