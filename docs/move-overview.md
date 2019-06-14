@@ -3,8 +3,6 @@ id: move-overview
 title: Getting Started With Move
 ---
 
-## Overview
-
 Move is a new programming language developed to provide a safe and programmable foundation for the Libra Blockchain. An account in the Libra Blockchain is a container for an arbitrary number of Move resources and Move modules. Every transaction submitted to the Libra Blockchain uses a transaction script written in Move to encode its logic. The transaction script can call procedures declared by a module to update the global state of the blockchain.
 
 In the first part of this guide, we will provide a high-level introduction to the key features of the Move language:
