@@ -128,7 +128,7 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection"
         id="quickstart"
-        style={{textAlign: 'center'}}>
+        style={{textAlign: 'center', marginBottom:'30px'}}>
         <h2>Try Libra</h2>
         <p>Currently available for macOS and Linux.</p>
         <Container>
@@ -151,9 +151,6 @@ cd libra`}</MarkdownBlock>
                 <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
           </div>
         </Container>
-        <div>
-          <p>Spot a security or privacy issue? Please email <a href="mailto:security@libra.org">security@libra.org</a>.</p>
-        </div>
       </div>
     );
 

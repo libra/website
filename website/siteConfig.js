@@ -19,7 +19,7 @@ const users = [];
 
 const siteConfig = {
   title: 'Libra',
-  tagline: "Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.",
+  tagline: "Libra’s mission is to enable a simple global currency and financial infrastructure that empowers billions of people.",
   url: 'https://developers.libra.org',
   baseUrl: baseUrl,
   cleanUrl: true, // No .html extensions for paths
