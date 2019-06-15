@@ -358,7 +358,7 @@ To troubleshoot transfer errors:
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
 * You can try quitting the client using `quit` or `q!`,  and rerun the following command to connect to the testnet:
-    * `cargo run -p client --bin client -- -a ac.stable.aws.hlw3truzy4ls.com -p 80`
+    * `./start_cli_testnet.sh` from the libra/scripts/cli directory
 
 ## Sample Outputs of Additional Query Commands
 
