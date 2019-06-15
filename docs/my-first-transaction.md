@@ -59,10 +59,10 @@ If your setup fails, see [Troubleshooting](#setup)
 
 ## Build Libra CLI Client and Connect to the Testnet
 
-To connect to a validator node running on the Libra testnet, change to the `scripts/cli` directory and run the client as shown below.
+To connect to a validator node running on the Libra testnet, run the client as shown below.
 
 ```bash
-./start_cli_testnet.sh
+./scripts/cli/start_cli_testnet.sh
 ```
 
 This command builds and runs the client utilizing cargo (Rust’s package manager) and connects the client to a validator node on the testnet.
@@ -313,7 +313,7 @@ You have successfully executed your transaction on the Libra testnet and transfe
 * Update Rust:
     * run `rustup update` from your libra directory
 * Re-run setup script from your libra directory:
-    * `setup/dev-setup.sh`
+    * `./scripts/dev-setup.sh`
 
 ### Client Build and Run
 
@@ -325,7 +325,7 @@ If your client did not connect to the testnet:
 
 * Check your internet connection.
 * Ensure that you are using the latest version of the client. Pull the latest Libra Core and rerun the client:
-    * `./start_cli_testnet.sh`
+    * `./scripts/cli/start_cli_testnet.sh`
 
 
 ### Minting and Adding Money to Account
@@ -358,7 +358,7 @@ To troubleshoot transfer errors:
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
 * You can try quitting the client using `quit` or `q!`,  and rerun the following command to connect to the testnet:
-    * `./start_cli_testnet.sh` from the libra/scripts/cli directory
+    * `./scripts/cli/start_cli_testnet.sh` from the libra directory
 
 ## Sample Outputs of Additional Query Commands
 
