@@ -12,6 +12,7 @@ const markdownPlugins = require(`${process.cwd()}/markdownPlugins.js`);
 
 // Define this so it can be easily modified in scripts (to host elsewhere)
 const baseUrl = '/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/';
+// const baseUrl = '/docs/';
 
 // List of projects/orgs using your project for the users page.
 const users = [];
@@ -19,7 +20,7 @@ const users = [];
 const siteConfig = {
   title: 'Libra',
   tagline: "Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.",
-  url: 'https://libra.org',
+  url: 'https://developers.libra.org',
   baseUrl: baseUrl,
   cleanUrl: true, // No .html extensions for paths
 
@@ -29,15 +30,12 @@ const siteConfig = {
 
   // used for publishing and more
   organizationName: 'libra',
-  projectName: 'libra',
-
-  // Page analytics
-  // gaTrackingId: 'UA-XXXXX-2',
+  projectName: 'website',
 
   // links that will be used in the header navigation bar
   headerLinks: [
     {doc: 'welcome-to-libra', label: 'Documentation'},
-    {href: 'https://libra.trydiscourse.com', label: 'Community'},
+    {href: 'https://community.libra.org', label: 'Community'},
     {blog: true, label: "Blog" },
     {href: 'https://libra.org', label: 'libra.org'},
     {href: 'https://github.com/libra/libra', label: 'GitHub'},
@@ -48,6 +46,9 @@ const siteConfig = {
   users,
 
   // search integration w/ algolia
+
+  // This website manually inserts the Algolia Search bar in Footer.js
+
   algolia: {
     apiKey: '7c82db8b8ceae28c1601f34346452f65',
     indexName: 'libra.github.io',
@@ -69,7 +70,7 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     // Copy-to-clipboard button for code blocks
     `${baseUrl}js/code_block_buttons.js`,
-    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    '${baseUrl}js/clipboardjs.2.0.0.min.js',
   ],
 
   // CSS sources to load
@@ -85,13 +86,13 @@ const siteConfig = {
   onPageNav: 'separate',
 
   // enable scroll to top button a the bottom of the site
-  scrollToTop: true,
+  // scrollToTop: true,
 
   // if true, expand/collapse links & subcategories in sidebar
   docsSideNavCollapsible: false,
 
   // URL for editing docs
-  editUrl: 'https://github.com/libra/libra.github.io/edit/master/docs/',
+  editUrl: 'https://github.com/libra/website/edit/master/docs/',
 
   // Open Graph and Twitter card images
   ogImage: 'img/libra.png',

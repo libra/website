@@ -27,14 +27,14 @@ function SocialFooter(props) {
       <div className="social">
         <a
           href={"https://twitter.com/libradev?ref_src=twsrc%5Etfw"}
-          class={"twitter-follow-button"}
+          className={"twitter-follow-button"}
           data-show-count={false}>
             Follow @libradev
         </a>
         <script
           async
           src={"https://platform.twitter.com/widgets.js"}
-          charset={"utf-8"}
+          charSet={"utf-8"}
         />
       </div>
     </div>
@@ -92,7 +92,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('policies/privacy-policy')}>Privacy Policy</a>
             <a href={this.docUrl('policies/terms-of-use')}>Terms of Use</a>
             <a href={this.docUrl('policies/cookies-policy')}>Cookies Policy</a>
-            <a href={this.docUrl('policies/code-of-coduct')}>Code of Conduct</a>
+            <a href={this.docUrl('policies/code-of-conduct')}>Code of Conduct</a>
           </div>
           <SocialFooter config={this.props.config} />
         </section>
