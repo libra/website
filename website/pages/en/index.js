@@ -1,10 +1,6 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @format
+ * Copyright (c) The Libra Core Contributors
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 const React = require('react');

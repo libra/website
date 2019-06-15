@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) The Libra Core Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 const React = require('react');
 const TextInput = require(`${process.cwd()}/core/ContactForm/text-input.js`);
 const SelectInput = require(`${process.cwd()}/core/ContactForm/select-input.js`);
