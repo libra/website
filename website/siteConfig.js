@@ -70,7 +70,7 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     // Copy-to-clipboard button for code blocks
     `${baseUrl}js/code_block_buttons.js`,
-    '${baseUrl}js/clipboardjs.2.0.0.min.js',
+    `${baseUrl}js/clipboardjs.2.0.0.min.js`,
   ],
 
   // CSS sources to load
