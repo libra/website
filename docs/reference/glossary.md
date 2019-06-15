@@ -296,7 +296,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * **Move** is a new programming language that implements all the transactions on the Libra Blockchain. 
 * It has two different kinds of code &mdash; [transaction scripts](#transaction-script) and [Move modules](#move-module).
-* For further information on “Move,” refer to the [Move Technical Paper](https://developers.libra.org/docs/move-paper)
+* For further information on “Move,” refer to the [Move technical paper](../move-paper.md)
 
 ### Move Bytecode
 

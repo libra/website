@@ -9,14 +9,14 @@ This guide describes how to use the Libra command line interface (CLI) client to
 There are three ways to invoke the Libra CLI client.
 
 ### Connect to the Testnet via the CLI Client
-To connect to the testnet through the CLI, a convenience script can be used to invoke the CLI without needing to specify parameters.  To invoke this, navigate to `libra/scripts/cli` and use:
+To connect to the testnet through the CLI, a convenience script can be used to invoke the CLI without needing to specify parameters.  To invoke this, change to the `libra` directory and run:
 
 ```bash
-./start_cli_testnet.sh
+./scripts/cli/start_cli_testnet.sh
 ```
 
 ### Run a Local Libra Network and Spawn a CLI Client
-To start a local Libra network and spawn a CLI client that connects to this local network, use:
+To start a local Libra network and spawn a CLI client that connects to this local network, run:
 ```bash
 cargo run -p libra_swarm -- -s
 
@@ -24,7 +24,7 @@ cargo run -p libra_swarm -- -s
 The `-s` option causes the CLI to be run after the local Libra network is launched.  Note that this may take a few minutes to build and then start.
 
 ### Run a CLI Client to Connect to Any Libra Network
-To invoke the CLI client and configure it yourself, use:
+To invoke the CLI client and configure it yourself, run:
 
 ```bash
 cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
@@ -47,14 +47,14 @@ The options for running the CLI client command to connect to any Libra network a
 Once started with any of the three commands previously mentioned, the following CLI commands are available:
 
 ```plaintext
-major_command sub_command [options]
+major_command subcommand [options]
 ```
 
 If you enter only the major command, it will show the help information for that command. Major commands can be any one of the following:
 
 ---
 
- #### `account | a` &mdash;  Account related operations. Sub commands include:
+ #### `account | a` &mdash;  Account related operations. Subcommands include:
 
   `create | c` &mdash;  Create a random account with private/public key pair. Account information will be held in memory only. The created account will not be saved to chain.
 
@@ -112,7 +112,7 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-#### `query | q` &mdash; Query data from destination chain. All query operations are blocking. Sub commands include:
+#### `query | q` &mdash; Query data from destination chain. All query operations are blocking. Subcommands include:
 
 `balance | b` &mdash; Get the current balance of an account
 
@@ -179,13 +179,13 @@ If you enter only the major command, it will show the help information for that 
 
 ---
 
-**`quit | q!` &mdash; Exits the CLI. No sub command is required.**
+**`quit | q!` &mdash; Exits the CLI. No subcommand is required.**
 
 ---
 
-**`help | h` &mdash; Prints help. No sub command is required.**
+**`help | h` &mdash; Prints help. No subcommand is required.**
 
-### Account Creation/Mint(Faucet) for Testnet
+### Account Creation/Minting (Faucet) for Testnet
 
 Account creation provided by the CLI generates a local keypair, but nothing is created on the blockchain. To create an account on the blockchain:
 
