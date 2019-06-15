@@ -135,8 +135,7 @@ class Index extends React.Component {
           <h4>1. Clone Libra:</h4>
           <div style={{marginLeft:"30px"}}>
             <MarkdownBlock>{
-bash`git clone git@github.com:libra/libra.git
-cd libra`}</MarkdownBlock>
+bash`git clone https://github.com/libra/libra.git && cd libra`}</MarkdownBlock>
           </div>
           <h4>2. Install Dependencies:</h4>
           <div style={{marginLeft:"30px"}}>
