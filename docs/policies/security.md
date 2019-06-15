@@ -5,11 +5,7 @@ title: Reporting Vulnerabilities
 
 This document outlines security procedures and general policies for the Libra project.
 
-  * [Reporting a Bug](#reporting-a-bug)
-  * [Disclosure Policy](#disclosure-policy)
-  * [Comments on this Policy](#comments-on-this-policy)
-
-> **Note**: As Libra Core is currently in a prototype state and does not power a blockchain with a currency that has real-world value, our security procedures are not fully in place. We will release a more complete disclosure policy prior to the launch of the mainnet.
+> **Note**: As Libra Core is currently in the prototype stage and does not power a blockchain with a currency that has real-world value, our security procedures are not fully in place. We will release a more complete disclosure policy prior to the launch of the mainnet.
 
 ## Reporting a Bug
 

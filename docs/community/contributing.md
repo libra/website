@@ -21,7 +21,7 @@ $ cargo test
 
 ## Coding Guidelines
 
-For detailed guidance on how to contribute to the Libra Core codebase refer to [Coding Guidelines](https://developers.libra.org/docs/coding-guidelines).
+For detailed guidance on how to contribute to the Libra Core codebase refer to [Coding Guidelines](coding-guidelines.md).
 
 ## Documentation
 
@@ -48,8 +48,8 @@ To submit your pull request:
 For your pull requests to be accepted by any Libra project, you will need to sign a CLA. You will need to do this only once to work on any Libra open source project. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Code of Conduct
-Please refer to the [Code of Conduct](https://github.com/libra/libra/blob/master/CODE_OF_CONDUCT.md) for guidelines on interacting with the community.
+Please refer to the [Code of Conduct](../policies/code-of-conduct.md), which describes the expectations for interactions within the community.
 
 ## Issues
 
-Libra uses [GitHub issues](https://github.com/libra/libra/issues) to track bugs. Please include necessary information and instructions to reproduce your issue.
+Libra uses [GitHub issues](https://github.com/libra/libra/issues) to track bugs. Please include necessary information and instructions to reproduce your issue. Security-related bugs should be reported using our [security procedures](../policies/security.md).
