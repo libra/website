@@ -11,4 +11,4 @@ This report presents LibraBFT, a robust and efficient state machine replication 
 
 ### Downloads
 
-[![State Machine Replication in the Libra Blockchain PDF Download](assets/illustrations/state-machine-pdf.png){: .download}]()
+[![State Machine Replication in the Libra Blockchain PDF Download](assets/illustrations/state-machine-pdf.png){: .download}](assets/papers/libra-consensus-state-machine-replication-in-the-libra-blockchain.pdf)

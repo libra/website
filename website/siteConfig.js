@@ -38,8 +38,8 @@ const siteConfig = {
     {href: 'https://community.libra.org', label: 'Community'},
     {blog: true, label: "Blog" },
     {href: 'https://libra.org', label: 'libra.org'},
-    {href: 'https://github.com/libra/libra', label: 'GitHub'},
-    {search: true}, // position search box to the very right
+    {href: 'https://github.com/libra/libra', label: 'GitHub'}
+    // {search: false}, // position search box to the very right
   ],
 
   // add users to the website
@@ -49,10 +49,10 @@ const siteConfig = {
 
   // This website manually inserts the Algolia Search bar in Footer.js
 
-  algolia: {
-    apiKey: '7c82db8b8ceae28c1601f34346452f65',
-    indexName: 'libra.github.io',
-  },
+  // algolia: {
+  //   apiKey: '7c82db8b8ceae28c1601f34346452f65',
+  //   indexName: 'libra.github.io',
+  // },
 
   // colors for website
   colors: {
