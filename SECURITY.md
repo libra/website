@@ -11,6 +11,8 @@ This document outlines security procedures and general policies for the Libra pr
   * [Disclosure Policy](#disclosure-policy)
   * [Comments on this Policy](#comments-on-this-policy)
 
+> **Note**: As Libra Core is currently in a prototype state and does not power a blockchain with a currency that has real-world value, our security procedures are not fully in place. Due to the current phase of the project it is acceptable to discuss potential security issues in public forums. We will release a more complete disclosure policy prior to the launch of the mainnet.
+
 ## Reporting a Bug
 
 The Libra team and community take all security bugs in the Libra project seriously.
@@ -20,7 +22,7 @@ contributions.
 
 Report security bugs by emailing [security@libra.org](mailto:security@libra.org).
 
-The lead maintainer will acknowledge your email. After the initial reply to your report is sent, the security team will try to keep you informed on the progress towards a fix and a full announcement. The security team may ask you for additional information or guidance.
+A member of the security team will acknowledge your email. After the initial reply to your report is sent, the security team will try to keep you informed on the progress towards a fix and a full announcement. The security team may ask you for additional information or guidance.
 
 ## Disclosure Policy
 
@@ -32,8 +34,8 @@ involves the following steps:
   * Audit code to find any potential similar problems.
   * Prepare fixes for all releases that are still under maintenance. 
 
-## Comments on this Policy
+## Comments on This Policy
 
-If you have suggestions on how this process could be improved please submit a
+If you have suggestions on how this process could be improved, please submit a
 pull request.
 
