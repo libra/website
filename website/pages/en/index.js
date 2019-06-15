@@ -132,26 +132,17 @@ class Index extends React.Component {
         <h2>Try Libra</h2>
         <p>Currently available for macOS and Linux.</p>
         <Container>
-          <ol>
-            <li>
-              <h4>Clone Libra:</h4>
+
+              <h4>1. Clone Libra:</h4>
               <MarkdownBlock>{
 bash`git clone git@github.com:libra/libra.git
 cd libra`}</MarkdownBlock>
-            </li>
-            <li>
-              <h4>Install Dependencies:</h4>
-              <MarkdownBlock>{bash`./scripts/dev-setup.sh`}</MarkdownBlock>
-            </li>
-            <li>
-              <h4>Run the CLI:</h4>
+              <h4>2. Install Dependencies:</h4>
+              <MarkdownBlock>{bash`./scripts/dev_setup.sh`}</MarkdownBlock>
+              <h4>3. Run the CLI:</h4>
               <MarkdownBlock>{bash`./scripts/cli/start_cli_testnet.sh`}</MarkdownBlock>
-            </li>
-            <li>
-              <h4>Run Your First Transaction:</h4>
+              <h4>4. Run Your First Transaction:</h4>
                 <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
-            </li>
-          </ol>
         </Container>
         <div>
           <p>Spot a security or privacy issue? Please email <a href="mailto:security@libra.org">security@libra.org</a>.</p>

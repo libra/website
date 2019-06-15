@@ -45,7 +45,7 @@ git clone https://github.com/libra/libra.git
 To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies, as shown below:
 
 ```
-./scripts/dev-setup.sh
+./scripts/dev_setup.sh
 ```
 The setup script performs these actions:
 
@@ -313,7 +313,7 @@ You have successfully executed your transaction on the Libra testnet and transfe
 * Update Rust:
     * run `rustup update` from your libra directory
 * Re-run setup script from your libra directory:
-    * `./scripts/dev-setup.sh`
+    * `./scripts/dev_setup.sh`
 
 ### Client Build and Run
 
