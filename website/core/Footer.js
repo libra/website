@@ -7,8 +7,9 @@ const PropTypes = require('prop-types');
 const React = require('react');
 
 function SocialFooter(props) {
+  const projectName = 'libra';
   const repoUrl = `https://github.com/${props.config.organizationName}/${
-    props.config.projectName
+    projectName
   }`;
   return (
     <div className="footerSection">
@@ -21,7 +22,7 @@ function SocialFooter(props) {
           data-show-count="true"
           data-count-aria-label="# stargazers on GitHub"
           aria-label="Star Libra on GitHub">
-          {props.config.projectName}
+          {projectName}
         </a>
       </div>
       <div className="social">
