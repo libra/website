@@ -16,4 +16,4 @@ Thank you for sending a PR. We appreciate you spending time to help improve the 
 
 ## Related PRs
 
-(If this PR adds or changes functionality, please take some time to update the docs at https://github.com/libra/libra.github.io, and link to your PR here.)
+(If this PR adds or changes functionality, please take some time to update the docs at https://github.com/libra/website, and link to your PR here.)

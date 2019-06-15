@@ -40,7 +40,7 @@ echo "-----------------------------------"
 #cd libracore/libra
 #git pull
 #cargo doc --no-deps
-#cd ../../libra.github.io
+#cd ../../website
 
 # manually copy crate README files from fixed directory
 ###
