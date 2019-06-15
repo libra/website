@@ -16,4 +16,4 @@ We use Move to define the core mechanisms of the blockchain, such as the currenc
 
 ### Downloads
 
-[![The Libra Blockchain PDF Download](assets/illustrations/libra-blockchain-pdf.png){: .download}](assets/papers/the-libra-blockchain-whitepaper.pdf)
+[![The Libra Blockchain PDF Download](assets/illustrations/libra-blockchain-pdf.png){: .download}](assets/papers/the-libra-blockchain.pdf)
