@@ -140,15 +140,15 @@ bash`git clone git@github.com:libra/libra.git
 cd libra`}</MarkdownBlock>
             </li>
             <li>
-              <h4>Install dependencies:</h4>
-              <MarkdownBlock>{bash`setup_scripts/dev_setup.sh`}</MarkdownBlock>
+              <h4>Install Dependencies:</h4>
+              <MarkdownBlock>{bash`./scripts/dev-setup.sh`}</MarkdownBlock>
             </li>
             <li>
-              <h4>Run CLI:</h4>
-              <MarkdownBlock>{bash`cd scripts/cli && ./start_cli_testnet.sh`}</MarkdownBlock>
+              <h4>Run the CLI:</h4>
+              <MarkdownBlock>{bash`./scripts/cli/start_cli_testnet.sh`}</MarkdownBlock>
             </li>
             <li>
-              <h4>Run your first transaction</h4>
+              <h4>Run Your First Transaction:</h4>
                 <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
             </li>
           </ol>
