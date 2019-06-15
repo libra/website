@@ -24,7 +24,7 @@ Read our [Contrbuting guide](https://developers.libra.org/docs/community/contrib
 
 ### Learn About Libra
 * [Welcome](https://developers.libra.org/docs/welcome-to-libra)
-* [Libra Protocol - Key Concepts](https://developers.libra.org/docs/libra-protocol)
+* [Libra Protocol: Key Concepts](https://developers.libra.org/docs/libra-protocol)
 * [Life of a Transaction](https://developers.libra.org/docs/life-of-a-transaction)
 
 ### Try Libra Core
