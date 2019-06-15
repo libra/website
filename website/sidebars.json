@@ -3,7 +3,7 @@
     "Learn About Libra": [
     	"welcome-to-libra",
     	"libra-protocol",
-        "life-of-a-transaction",
+      "life-of-a-transaction",
         {
             "type": "subcategory",
             "label": "Technical Papers",
@@ -21,8 +21,9 @@
     "Community" : [
     	"libra-open-source-paper",
     	"community/governance",
-        "community/contributing",
-        "community/coding-guidelines"
+      "community/contributing",
+      "community/coding-guidelines",
+      "policies/security"
     ],
     "Libra Codebase": [
         "libra-core-overview",
