@@ -77,6 +77,7 @@ const siteConfig = {
   stylesheets: [
     `${baseUrl}css/code_block_buttons.css`,
     `${baseUrl}css/fonts/NBInternationalProEditionWeb/stylesheet.css`,
+    `${baseUrl}katex-dist/katex.min.css`,
   ],
 
   // Custom markdown functions
