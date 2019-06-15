@@ -101,7 +101,7 @@ class Footer extends React.Component {
           {this.props.config.copyright && (
             <span>{this.props.config.copyright}</span>
           )}{' '}
-          &copy; Libra Association.
+          &copy; Libra Association
         </section>
       </footer>
     );
