@@ -278,3 +278,9 @@ padding: 15px 30px 15px 15px;
 
 color:#24292e;
 }
+.nav-home img {
+  width:57px;
+  height:57px;
+  /* override max width so logo isn't squashed */
+  max-width:none;
+}
