@@ -144,7 +144,7 @@ div#quickstart ol {
 }
 
 .nav-footer {
-  background-color: #222222;
+  background-color: #15112C;
 }
 
 .nav-footer .sitemap a {
@@ -182,7 +182,7 @@ sub {
 }
 
 .toc .toggleNav .navGroup .navGroupSubcategoryTitle {
-  .color: #24292e;
+  color: #24292e;
 }
 
 .onPageNav a {
@@ -259,20 +259,18 @@ article p img.download {
 @media only screen and (min-width: 1500px) {
 }
 
-
 blockquote {
   /* FIG slate color */
-  background-color: #EAEFF2;
-  border-left: 8px solid #B9CAD2;
+  background-color: #F8FAFB;
+  border-left: 8px solid #A8BBC3;
   padding: 15px 30px 15px 15px;
   color: #24292e;
 }
 
-
 blockquote.block_note {
   /* FIG lemon color */
-  background-color: #FEF2D1;
-  border-left: 8px solid #FCD872;
+  background-color: #FFFBF0;
+  border-left: 8px solid #F5C33B;
   padding: 15px 30px 15px 15px;
   color:#24292e;
 }
