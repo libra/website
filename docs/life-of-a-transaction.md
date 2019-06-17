@@ -133,7 +133,7 @@ When the client performs a read query on the Libra Blockchain (for example, to g
 
 ### Admission Control README
 
-For implementation details, repository structure, and APIs of the admission control crate, refer to the [Admission Control README](crates/admission-control.md).
+For implementation details refer to the [Admission Control README](crates/admission-control.md).
 
 ## Virtual Machine (VM)
 
@@ -168,7 +168,7 @@ When mempool receives a transaction from other validators via shared mempool, me
 
 ### VM README
 
-For implementation details, repository structure, and external APIs for the virtual machine component refer to the [Virtual Machine README](crates/vm.md).
+For implementation details refer to the [Virtual Machine README](crates/vm.md).
 
 ## Mempool
 
@@ -198,7 +198,7 @@ When mempool receives a transaction from other validators, mempool invokes [`VM:
 
 ### Mempool README
 
-For implementation details,  repository, and APIs of the mempool crate, refer to the [Mempool README](crates/mempool).
+For implementation details refer to the [Mempool README](crates/mempool).
 
 ## Consensus
 
@@ -227,7 +227,7 @@ If enough validators vote for the same execution result, the consensus component
 
 ### Consensus README
 
-For implementation details, repository structure, and APIs of the consensus crate, refer to the [Consensus README](crates/consensus.md).
+For implementation details refer to the [Consensus README](crates/consensus.md).
 
 ## Execution
 
@@ -257,7 +257,7 @@ Execution takes the values from its  “scratchpad” and sends them to storage 
 
 ### Execution README
 
-For implementation details, repository structure, and APIs of the execution crate, refer to the [Execution README](crates/execution).
+For implementation details refer to the [Execution README](crates/execution).
 
 ## Storage
 
@@ -294,7 +294,7 @@ For client queries that read information from the blockchain, AC directly intera
 
 ### Storage README
 
-For implementation details, repository structure, and APIs of the storage crate, refer to the [Storage README](crates/storage.md).
+For implementation details refer to the [Storage README](crates/storage.md).
 
 ## Reference
 
