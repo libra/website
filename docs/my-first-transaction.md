@@ -342,7 +342,7 @@ If your client did not connect to the testnet:
   >> Minting coins
   [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to the client is running
   ```
-* If your balance was not updated after submitting a transaction, wait a moment and query the balance again.  It may take a moment if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
+* If your balance was not updated after submitting a transaction, wait a moment and query the balance again. There may be a delay if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
 
 * To check if an account exists, query the account state. For an account with index 0 enter this:
 
@@ -350,7 +350,7 @@ If your client did not connect to the testnet:
 
 ### The Transfer Command
 
-If the testnet validator node (your client was connected to) is unavailable or your connection to testnet has timed-out, you will see this error:
+If the testnet validator node (your client was connected to) is unavailable or your connection to the testnet has timed-out, you will see this error:
 
 ```plaintext
 libra% transfer 0 1 10
@@ -362,7 +362,7 @@ To troubleshoot transfer errors:
 * Check the connection to testnet.
 * Query the sender account to make sure it exists. Use the following command for an account with index 0:
     * `query account_state 0`
-* You can try quitting the client using `quit` or `q!`,  and rerun the following command to connect to the testnet:
+* You can try quitting the client using `quit` or `q!`, and rerun the following command to connect to the testnet:
     * `./scripts/cli/start_cli_testnet.sh` from the libra directory
 
 ## Sample Outputs of Additional Query Commands
@@ -488,9 +488,9 @@ Latest account state is:
  Blockchain Version: 3
 ```
 
-## Run A Local Validator Node
+## Run a Local Validator Node
 
-To start a validator node locally on your computer and create your own blockchain network (not connected to the Libra testnet), change to the root directory of the Libra Core repository, and run `libra_swarm` as shown below:
+To start a validator node locally on your computer and create your own local blockchain network (not connected to the Libra testnet), change to the root directory of the Libra Core repository, and run `libra_swarm` as shown below:
 
 ```bash
 $ cd ~/libra
@@ -505,7 +505,7 @@ To see additional options for starting a node and connecting to the Libra Blockc
 
 `$ cargo run -p libra_swarm -- -h`
 
-The cargo run command may take a while to run. If the execution of this command completes without errors, an instance of the Libra CLI client and a Libra validator node is running on your system. Upon successful execution, you should see an output containing the CLI client menu and the `libra%` prompt.
+The cargo run command may take some time to run. If the execution of this command completes without errors, an instance of the Libra CLI client and a Libra validator node is running on your system. Upon successful execution, you should see an output containing the CLI client menu and the `libra%` prompt.
 
 ## Life of a Transaction
 
