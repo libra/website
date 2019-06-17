@@ -83,7 +83,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ## Validator Component Interactions
 
-In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted to being committed to the blockchain's distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries. This information will be most useful to those who:
+In the [previous section](#lifecycle-of-the-transaction), we described the typical lifecycle of a sample transaction from being submitted to being committed to the blockchain's distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries. This information will be most useful to those who:
 
 * Would like to get an overall idea of how the system works under the covers.
 * Are interested in eventually contributing to the Libra Core software.
