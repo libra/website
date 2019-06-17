@@ -20,7 +20,6 @@
     ],
     "Community" : [
     	"libra-open-source-paper",
-    	"community/governance",
       "community/contributing",
       "community/coding-guidelines",
       "policies/security"
