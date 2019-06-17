@@ -103,7 +103,7 @@ A link to the “README” of the [Libra Core](reference/glossary.md#libra-core)
 
 <blockquote class="block_note">
 
-**Note:** The arrows in the following graphics originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned
+**Note:** The arrows in the following graphics originate on the component initiating an interaction/action and terminate on the component on which the action is being performed. The arrows _do not represent_ data or information exchanged (read, written, or returned)
 </blockquote>
 
 ## Admission Control (AC)
