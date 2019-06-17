@@ -175,7 +175,7 @@ The sequence number for an account indicates the number of transactions that hav
 
 ## Add Libra Coins to Alice’s and Bob’s Accounts
 
-Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real-world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
+Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service that runs along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real-world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
 ### Step 1: Add 110 Libra to Alice’s Account
 
@@ -194,7 +194,7 @@ Sample output on success:
 >> Minting coins
 Mint request submitted
 ```
-Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will be completed successfully. Later, we will query the account balance to confirm if minting was successful.
+Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will be successfully completed. Later, we will query the account balance to confirm if minting was successful.
 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
@@ -205,7 +205,7 @@ To mint Libra and add to Bob’s account, enter this command:
 
 `libra% account mint 1 52`
 
-* 1 is the index of Bob’s account
+* 1 is the index of Bob’s account.
 * 52 is the amount of Libra to be added to Bob’s account.
 * A successful account mint command will also create Bob’s account on the blockchain. Another way to create Bob’s account on the blockchain is to transfer money from Alice’s account to Bob’s account.
 
@@ -251,7 +251,7 @@ libra% query sequence 1
 Sequence number is: 0
 ```
 
-In `query sequence 0`, 0 is the index of Alice’s account. A sequence number of 0 for both Alice’s and Bob’s account indicates that no transactions from either Alice’s or Bob’s account have been executed so far.
+In `query sequence 0`, 0 is the index of Alice’s account. A sequence number of 0 for both Alice’s and Bob’s accounts indicates that no transactions from either Alice’s or Bob’s account has been executed so far.
 
 ### Transfer Money
 
