@@ -135,6 +135,7 @@ const siteConfig = {
           'address',
           'u64',
           'move_to_sender',
+          'assert',
         ].join(' ');
         var LITERALS = [
           'true',

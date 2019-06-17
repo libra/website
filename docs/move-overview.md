@@ -63,30 +63,33 @@ Now let us see how a programmer can interact with these modules and resources in
 ```move
 // Simple peer-peer payment example.
 
-// Use LibraAccount module published on the blockchain at account address 0x0...0 (with 64 zeroes).
-// 0x0 is shorthand that the IR pads out to 256 bits (64 digits) by adding leading zeroes.
+// Use LibraAccount module published on the blockchain at account address
+// 0x0...0 (with 64 zeroes). 0x0 is shorthand that the IR pads out to
+// 256 bits (64 digits) by adding leading zeroes.
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
 main(payee: address, amount: u64) {
-  // The bytecode (and consequently, the IR) has typed locals.
-  // The scope of each local is the entire procedure.
-  // All local variable declarations must be at the beginning of the procedure.
-  // Declaration and initialization of variables are separate operations, but the bytecode verifier
-  // will prevent any attempt to use an uninitialized variable.
+  // The bytecode (and consequently, the IR) has typed locals.  The scope of
+  // each local is the entire procedure. All local variable declarations must
+  // be at the beginning of the procedure. Declaration and initialization of
+  // variables are separate operations, but the bytecode verifier will prevent
+  // any attempt to use an uninitialized variable.
   let coin: R#LibraCoin.T;
-  // the R# part of the type above is one of two *kind annotation* R# and V# (shorthand for
-  // "Resource" and "unrestricted Value"). These annotations must match the kind of the type
-  // declaration (e.g., does the LibraCoin module declare `resource T` or `struct T`?).
+  // The R# part of the type above is one of two *kind annotation* R# and V#
+  // (shorthand for "Resource" and "unrestricted Value"). These annotations
+  // must match the kind of the type declaration (e.g., does the LibraCoin
+  // module declare `resource T` or `struct T`?).
 
-  // Acquire a LibraCoin.T resource with value `amount` from the sender's account
-  // This will fail if the sender's balance is less than `amount`.
+  // Acquire a LibraCoin.T resource with value `amount` from the sender's
+  // account.  This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
   // Move the LibraCoin.T resource into the account of `payee`. If there is no
   // account at the address `payee`, this step will fail
   LibraAccount.deposit(move(payee), move(coin));
 
-  // Every procedure must end in a `return`. The IR compiler is very literal: it directly translates
-  // the source it is given. It will not do fancy things like inserting missing `return`s.
+  // Every procedure must end in a `return`. The IR compiler is very literal:
+  // it directly translates the source it is given. It will not do fancy
+  // things like inserting missing `return`s.
   return;
 }
 ```
@@ -94,8 +97,8 @@ main(payee: address, amount: u64) {
 This transaction script has an unfortunate problem &mdash; it will fail if there is no account under the address `payee`. We will fix this problem by modifying the script to create an account for `payee` if one does not already exist.
 
 ```move
-// A small variant of the peer-peer payment example that creates a fresh account if one does not
-// already exist.
+// A small variant of the peer-peer payment example that creates a fresh
+// account if one does not already exist.
 
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
@@ -103,16 +106,16 @@ main(payee: address, amount: u64) {
   let coin: R#LibraCoin.T;
   let account_exists: bool;
 
-  // Acquire a LibraCoin.T resource with value `amount` from the sender's account.
-  // This will fail if the sender's balance is less than `amount`.
+  // Acquire a LibraCoin.T resource with value `amount` from the sender's
+  // account.  This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
 
   account_exists = LibraAccount.exists(copy(payee));
 
   if (!move(account_exists)) {
-    // Creates a fresh account at the address `payee` by publishing a LibraAccount.T
-    // resource under this address. If theres is already a LibraAccount.T resource
-    // under the address, this will fail.
+    // Creates a fresh account at the address `payee` by publishing a
+    // LibraAccount.T resource under this address. If theres is already a
+    // LibraAccount.T resource under the address, this will fail.
     create_account(copy(payee));
   }
 
@@ -124,9 +127,9 @@ main(payee: address, amount: u64) {
 Let us look at a more complex example. In this example, we will use a transaction script to pay multiple recipients instead of just one.
 
 ```move
-// Multiple payee example. This is written in a slightly verbose way to emphasize the ability to
-// split a `LibraCoin.T` resource. The more concise way would be to use multiple calls to
-// `LibraAccount.withdraw_from_sender`.
+// Multiple payee example. This is written in a slightly verbose way to
+// emphasize the ability to split a `LibraCoin.T` resource. The more concise
+// way would be to use multiple calls to `LibraAccount.withdraw_from_sender`.
 
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
@@ -137,7 +140,8 @@ main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
 
   total = move(amount1) + copy(amount2);
   coin1 = LibraAccount.withdraw_from_sender(move(total));
-  // This mutates `coin1`, which now has value `amount1`. `coin2` has value `amount2`.
+  // This mutates `coin1`, which now has value `amount1`.
+  // `coin2` has value `amount2`.
   coin2 = LibraCoin.withdraw(&mut coin1, move(amount2));
 
   // Perform the payments
@@ -165,7 +169,8 @@ To solve this problem for Alice, we will write a module `EarmarkedLibraCoin` whi
 module EarmarkedLibraCoin {
   import 0x0.LibraCoin;
 
-  // A wrapper containing a Libra coin and the address of the recipient the coin is earmarked for.
+  // A wrapper containing a Libra coin and the address of the recipient the
+  // coin is earmarked for.
   resource T {
     coin: R#LibraCoin.T,
     recipient: address
@@ -176,16 +181,16 @@ module EarmarkedLibraCoin {
   public create(coin: R#LibraCoin.T, recipient: address) {
     let t: R#Self.T;
 
-    // Construct or "pack" a new resource of type T. Only procedures of the `EarmarkedCoin` module
-    // can create an `EarmarkedCoin.T`.
+    // Construct or "pack" a new resource of type T. Only procedures of the
+    // `EarmarkedCoin` module can create an `EarmarkedCoin.T`.
     t = T {
       coin: move(coin),
       recipient: move(recipient),
     };
 
-    // Publish the earmarked coin under the transaction sender's account address.
-    // Each account can contain at most one resource of a given type; this call will fail if the
-    // sender already has a resource of this type.
+    // Publish the earmarked coin under the transaction sender's account
+    // address. Each account can contain at most one resource of a given type; 
+    // this call will fail if the sender already has a resource of this type.
     move_to_sender<T>(move(t));
     return;
   }
@@ -203,9 +208,10 @@ module EarmarkedLibraCoin {
     t_ref = &t;
     // This is a builtin that returns the address of the transaction sender.
     sender = get_txn_sender();
-    // Ensure that the transaction sender is the recipient. If this assertion fails, the transaction
-    // will fail and none of its effects (e.g., removing the earmarked coin) will be committed.
-    // 99 is an error code that will be emitted in the transaction output if the assertion fails.
+    // Ensure that the transaction sender is the recipient. If this assertion
+    // fails, the transaction will fail and none of its effects (e.g.,
+    // removing the earmarked coin) will be committed.  99 is an error code
+    // that will be emitted in the transaction output if the assertion fails.
     assert(*(&move(t_ref).recipient) == move(sender), 99);
 
     return move(t);
@@ -229,8 +235,9 @@ module EarmarkedLibraCoin {
     let coin: R#LibraCoin.T;
     let recipient: address;
 
-    // This "unpacks" a resource type by destroying the outer resource, but returning its contents.
-    // Only the module that declares a resource type can unpack it.
+    // This "unpacks" a resource type by destroying the outer resource, but
+    // returning its contents. Only the module that declares a resource type
+    // can unpack it.
     T { coin, recipient } = move(t);
     return move(coin);
   }
