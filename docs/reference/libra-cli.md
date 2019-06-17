@@ -121,15 +121,6 @@ If you enter only the major command, it will show the help information for that 
      Arguments:
          account_ref_id | account_address - The account to query balance for.
 
-`assert_balance | a` &mdash; Assert that balance is equal to the specified value.
-    CLI will panic if the value from storage does not equal to expected value.
-
-     Usage:
-        assert_balance | a <account_ref_id>|<account_address> <expected_value>
-     Arguments:
-         account_ref_id | account_address - The account to assert balance for.
-         expected_value - The expected value to assert against.
-
 `sequence | s` &mdash; Get the current sequence number for an account.
 
       Usage:
