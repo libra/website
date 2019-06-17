@@ -99,7 +99,7 @@ For our narrative, we will assume that a client submits a  transaction T~N~ to a
 * [Virtual Machine](#virtual-machine-vm)
 * [Storage](#storage)
 
-At the end of each section we provide the link to the corresponding "README" of [Libra Core](libra-core-overview.md).
+At the end of each section, we provide the link to the corresponding "README" of [Libra Core](libra-core-overview.md).
 
 <blockquote class="block_note">
 
