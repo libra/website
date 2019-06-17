@@ -17,8 +17,8 @@ small.figure {
 }
 
 body { padding: 0px !important; }
-nav { 
-  border: 0px !important; 
+nav {
+  border: 0px !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -181,7 +181,7 @@ sub {
   color: #222222;
 }
 
-.toc .toggleNav .navGroup .navGroupSubcategoryTitle { 
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle {
   .color: #24292e;
 }
 
@@ -261,23 +261,22 @@ article p img.download {
 
 
 blockquote {
-
-/* FIG slate color */
-background-color: #EAEFF2;
-border-left: 8px solid #B9CAD2;
-padding: 15px 30px 15px 15px;
-color: #24292e;
+  /* FIG slate color */
+  background-color: #EAEFF2;
+  border-left: 8px solid #B9CAD2;
+  padding: 15px 30px 15px 15px;
+  color: #24292e;
 }
 
 
 blockquote.block_note {
-/* FIG lemon color */ 
-background-color: #FEF2D1;
-border-left: 8px solid #FCD872;
-padding: 15px 30px 15px 15px;
-
-color:#24292e;
+  /* FIG lemon color */
+  background-color: #FEF2D1;
+  border-left: 8px solid #FCD872;
+  padding: 15px 30px 15px 15px;
+  color:#24292e;
 }
+
 .nav-home img {
   width:57px;
   height:57px;
