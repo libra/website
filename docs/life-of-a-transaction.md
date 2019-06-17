@@ -49,7 +49,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **1** &mdash; The client submits transaction T~5~ to validator V~1~ whose admission control (AC) component receives the transaction. (Client → AC [AC.1](#client-ac-ac1))
 
-**2** &mdash; AC will use the virtual machine (VM) component to perform validation checks, such as signature verification, checking if Alice's account has sufficient balance, checking that transaction T~5~ is not being replayed, etc. (AC → VM [AC.2](#ac-vm-ac2), [VM.1](#ac-vm-vm1))
+**2** &mdash; AC will use the virtual machine (VM) component to perform validation checks, such as signature verification, checking that Alice's account has sufficient balance, checking that transaction T~5~ is not being replayed, etc. (AC → VM [AC.2](#ac-vm-ac2), [VM.1](#ac-vm-vm1))
 
 **3** &mdash; When T~5~ passes the validation checks, AC sends T~5~ to V~1~'s mempool. (AC → Mempool [AC.3](#ac-mempool-ac3), [MP.1](#ac-mempool-mp1))
 
@@ -83,12 +83,12 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 ## Validator Component Interactions
 
-In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted and committed to the blockchain. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries.  This information is useful to you if:
+In the [previous section](#lifecycle-of-a-transaction), we described the typical lifecycle of a sample transaction from being submitted to being committed to the blockchain's distributed database. Now let's look in more depth at the inter-component interactions of a validator as the validator processes transactions and responds to queries. This information will be most useful to those who:
 
-* You would like to get an overall idea of how the system works under the covers.
-* You are interested in eventually contributing to the Libra Core software.
+* Would like to get an overall idea of how the system works under the covers.
+* Are interested in eventually contributing to the Libra Core software.
 
-For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (to query for existing information on the blockchain).
+For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (queries for existing information on the blockchain).
 
  Let us look at the core logical components of a validator node:
 
@@ -99,7 +99,7 @@ For our narrative, we will assume that a client submits a  transaction T~N~ to a
 * [Virtual Machine](#virtual-machine-vm)
 * [Storage](#storage)
 
-A link to the “README” of the [Libra Core](reference/glossary.md#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
+A link to the [Libra Core README](reference/glossary.md#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
 
 <blockquote class="block_note">
 
