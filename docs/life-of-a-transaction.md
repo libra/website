@@ -99,7 +99,7 @@ For our narrative, we will assume that a client submits a  transaction T~N~ to a
 * [Virtual Machine](#virtual-machine-vm)
 * [Storage](#storage)
 
-A link to the [Libra Core README](reference/glossary.md#libra-core) crate that corresponds to each of these validator components is provided at the end of the corresponding section.
+At the end of each section we provide the link to the corresponding "README" of the [Libra Core](reference/glossary.md#libra-core) crate.
 
 <blockquote class="block_note">
 
