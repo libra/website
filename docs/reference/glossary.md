@@ -260,7 +260,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ## M
 
 * * *
-### MAINNET
+### mainnet
 
 * The Libra mainnet is the main network of the Libra Blockchain with a digital currency known as [Libra](#libra). 
 * The Libra currency on mainnet will be backed by a reserve of assets.
@@ -398,7 +398,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ## T
 
 * * *
-### TESTNET
+### testnet
 
 * The **testnet** is a live demonstration of an early prototype of the Libra Blockchain software, also known as **Libra Core**. 
 * The Libra testnet is comprised of test [validator nodes](#validator-node) running [Libra Core](#libra-core), the software which maintains the Libra cryptocurrency. 
