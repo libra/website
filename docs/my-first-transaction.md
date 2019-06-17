@@ -316,7 +316,7 @@ You have successfully executed your transaction on the Libra testnet and transfe
 ### Setup
 
 * Update Rust:
-    * run `rustup update` from your libra directory
+    * Run `rustup update` from your libra directory.
 * Re-run setup script from your libra directory:
     * `./scripts/dev_setup.sh`
 
