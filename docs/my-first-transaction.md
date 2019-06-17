@@ -28,8 +28,8 @@ Perform the following steps to submit a transaction to a validator node on the L
 
 1. [Clone and build Libra Core](#clone-and-build-libra-core).
 2. [Build the Libra CLI client and connect to the testnet](#build-libra-cli-client-and-connect-to-the-testnet).
-3. [Create Alice’s and Bob’s account](#create-alice-s-and-bob-s-account).
-4. [Mint coins and add to Alice’s and Bob’s account](#add-libra-coins-to-alice-s-and-bob-s-accounts).
+3. [Create Alice’s and Bob’s accounts](#create-alice-s-and-bob-s-account).
+4. [Mint coins and add to Alice’s and Bob’s accounts](#add-libra-coins-to-alice-s-and-bob-s-accounts).
 5. [Submit a transaction](#submit-a-transaction).
 
 ## Clone and Build Libra Core
@@ -142,7 +142,7 @@ Sample output on success:
 Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
 
-#0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
+#0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they have created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
 ### Step 3: Create Bob’s Account
 
