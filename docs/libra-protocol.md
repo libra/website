@@ -48,11 +48,11 @@ The transaction script is an arbitrary program that encodes the logic of a trans
 
 ### Ledger State
 
-The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. To execute transactions, each validator must know the global state of the latest version of the distributed database. See [versioned database](#versioned-database).
+The ledger state, or global state of the Libra Blockchain, is comprised of the state of all accounts in the blockchain. To execute transactions, each validator must know the global state of the latest version of the blockchain's distributed database. See [versioned database](#versioned-database).
 
 ## Versioned Database
 
-All data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer that corresponds to the number of transactions the system has executed.
+All of the data in the Libra Blockchain is persisted in a single-versioned distributed database. A version number is an unsigned 64-bit integer that corresponds to the number of transactions the system has executed.
 
 The versioned database allows validators to:
 
@@ -76,7 +76,7 @@ There is no limit on the number of addresses a Libra user can claim. To claim an
 
 ## Proof
 
-All of the data in the Libra Blockchain is stored in a single versioned database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary.md#merkle-trees). A “leaf” is appended to the tree for each transaction executed on the blockchain.
+All of the data in the Libra Blockchain is stored in a single versioned distributed database. The storage is used to persist agreed upon blocks of transactions and their execution results. The blockchain is represented as an ever-growing [Merkle tree of transactions](reference/glossary.md#merkle-trees). A “leaf” is appended to the tree for each transaction executed on the blockchain.
 
 * A proof is a way to verify the truth of data in the Libra Blockchain. 
 * Every operation stored on the blockchain can be verified cryptographically, and the resultant proof also proves that no data has been omitted. For example, if the client queried the latest _n_ transactions from an account, the proof verifies that no transactions are omitted from the query response.
@@ -108,7 +108,7 @@ Clients of the Libra Blockchain create transactions and submit them to a validat
 **Execution**
 
 * The execution component utilizes the virtual machine (VM) to execute transactions.
-* Execution’s job is to coordinate execution of a block of transactions and maintain a transient state that can be voted upon by consensus.
+* Execution’s job is to coordinate the execution of a block of transactions and maintain a transient state that can be voted upon by consensus.
 * Execution maintains an in-memory representation of the results of execution until consensus commits the block to the distributed database.
 
 **Virtual Machine (VM)**
