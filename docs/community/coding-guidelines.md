@@ -10,7 +10,7 @@ This document describes the coding guidelines for the Libra Core Rust codebase.
 All code formatting is enforced with [rustfmt](https://github.com/rust-lang/rustfmt) using a project specific configuration.  Here is a sample command to run `rustfmt` and adhere to the project conventions:
 
 ```
-libra/libra$ cargo fmt
+libra$ cargo fmt
 ```
 
 ## Code Analysis
@@ -18,7 +18,7 @@ libra/libra$ cargo fmt
 [Clippy](https://github.com/rust-lang/rust-clippy) is used to catch common mistakes and is run as a part of continuous integration. Before submitting your code for review, you can run clippy with our configuration: 
 
 ```
-libra$ ../setup_scripts/clippy.sh 
+libra$ ./scripts/clippy.sh
 ```
 
 In general, we follow the recommendations from [rust-lang-nursery](https://rust-lang-nursery.github.io/api-guidelines/about.html). The remainder of this guide provides detailed guidelines on specific topics, to achieve uniformity of the codebase.
