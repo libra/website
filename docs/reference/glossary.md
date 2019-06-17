@@ -10,13 +10,13 @@ title: Glossary
 
 ### Accumulator Root Hash
 
-* An **accumulator root hash** is the root hash of a [Merkle Accumulator.](https://eprint.iacr.org/2009/625.pdf) 
+* An **accumulator root hash** is the root hash of a [Merkle accumulator.](https://eprint.iacr.org/2009/625.pdf) 
 
 ### Access path
 
-* An **access path** specifies the location of a resource or a Move module, within a specific account.
-* In a state of the Libra Blockchain an account is represented as a map of access paths to values. The Move VM deserializes this representation into modules and resources.
-* Clients can use access paths to request a resource, or a specific piece of data stored inside a resource.
+* An **access path** specifies the location of a resource or Move module within a specific account.
+* In a state of the Libra Blockchain, an account is represented as a map of access paths to values. The Move VM deserializes this representation into modules and resources.
+* Clients can use access paths to request a resource or a specific piece of data stored inside a resource.
 
 ### Account
 
@@ -50,27 +50,27 @@ title: Glossary
 
 ### Block
 
-* A **block** is an ordered list of one or more transactions, it is used by validators to reach consensus on the ordering and execution results of the transactions. 
+* A **block** is an ordered list of one or more transactions. It is used by validators to reach consensus on the ordering and execution results of the transactions. 
 * Blocks are an internal implementation concept in the Libra Blockchain, i.e., they are not visible to the client. All transactions that are committed to the Libra ledger were part of a block at some point in time, however the blockchain is represented as a sequence of transactions.
 
 ### Blockchain
 
 * A **blockchain** is a distributed public ledger.
-* The Libra Blockchain is formed with approved transactions and the execution-results of those transactions.
+* The Libra Blockchain is formed with approved transactions and the execution results of those transactions.
 
 ### Byzantine (Validator)
 
 * A **validator** that does not follow the specification of the consensus protocol, and wishes to compromise the correct execution of the protocol.
-* BFT algorithms traditionally support up to 1/3rd of the algorithm's voting power being held by Byzantine validators.
+* BFT algorithms traditionally support up to one-third of the algorithm's voting power being held by Byzantine validators.
 
 ### Byzantine Fault Tolerance (BFT)
 
-* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator)”,  members below a certain threshold. 
+* **Byzantine Fault Tolerance** (BFT) is the ability of a distributed system to provide safety and liveness guarantees in the presence of faulty, or “[Byzantine](#byzantine-validator),”  members below a certain threshold. 
 * The Libra Blockchain uses LibraBFT, a consensus protocol based on [HotStuff.](#hotstuff)
-* BFT algorithms typically operate with a number of entities, collectively holding N votes (which we call “validators” in the Libra application of the system). 
+* BFT algorithms typically operate with a number of entities, collectively holding N votes (which are called “validators” in the Libra application of the system). 
 * N is chosen to withstand some number of validators holding f votes, which might be malicious.
-* In this configuration N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty — offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
-* This implies that BFT consensus protocols can function correctly, even if up-to one-third of the voting power is held by validator nodes that are compromised, or fail.
+* In this configuration, N is typically set to 3f+1. Validators holding up to f votes will be allowed to be faulty &mdash; offline, malicious, slow, etc. As long as 2f+1 votes are held by [honest](#honest-validator) validators, they will be able to reach consensus on consistent decisions.
+* This implies that BFT consensus protocols can function correctly, even if up to one-third of the voting power is held by validator nodes that are compromised, or fail.
 
 ## C
 
@@ -80,19 +80,19 @@ title: Glossary
 
 A **client** is a piece of software that has the capability to interact with the Libra Blockchain.
 
-* It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node
+* It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node.
 * It can issue queries to the Libra Blockchain and request the status of a transaction or account.
-* A client can be run by the end-user, or on behalf of the end user (for example, for a custodial wallet). 
+* A client can be run by the end-user or on behalf of the end user (for example, for a custodial wallet). 
 
 ### Consensus
 
-* **Consensus** is a component of a Validator Node.  
+* **Consensus** is a component of a validator node.  
 * The consensus component is responsible for coordination and agreement amongst all validators on the block of transactions to be executed, their order, and the execution results.
-* The Libra Blockchain is formed with these agreed-upon transactions, and their corresponding execution-results.
+* The Libra Blockchain is formed with these agreed-upon transactions and their corresponding execution results.
 
 ### Consensus Protocol
 
-* A **consensus protocol** is collectively executed by n validator nodes, to accept or reject a transaction, and agree on the ordering of transactions and [execution results](#execution-results).
+* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction and to agree on the ordering of transactions and [execution results](#execution-results).
 * See [BFT](#byzantine-fault-tolerance-bft)
 
 ### Custodial Wallet
@@ -125,7 +125,7 @@ A **client** is a piece of software that has the capability to interact with the
 ### Event
 
 * An **event** is the user-facing representation of the effects of executing a transaction.
-* A transaction may be designed to emit any number of events, as a list. For example, a peer to peer payment transaction emits a `SentPaymentEvent` for the sender account, and a `ReceivedPaymentEvent` for the recipient account. 
+* A transaction may be designed to emit any number of events as a list. For example, a peer-to-peer payment transaction emits a `SentPaymentEvent` for the sender account and a `ReceivedPaymentEvent` for the recipient account. 
 * In the Libra protocol, events provide evidence that the successful execution of a transaction resulted in a specific effect. The `ReceivedPaymentEvent` (in the above example) allows the recipient to confirm that a payment was received into their account. 
 * Events are persisted on the blockchain and are used to answer queries by [clients](#client).  
 
@@ -134,16 +134,16 @@ A **client** is a piece of software that has the capability to interact with the
 * Execution result of a transaction is a combination of:
     * The new state of the set of accounts affected by the transaction.
     * The events emitted by executing the transaction.
-    * The exit code, which indicates either successful or a specific error.
+    * The exit code, which indicates either success or a specific error.
     * The number of gas units consumed while executing the transaction.
 
 ### Expiration Time
 
-A transaction ceases to be valid after its **expiration time**. If we assume that:
+A transaction ceases to be valid after its **expiration time**. If it is assumed that:
 
-* Time_C - is the current time that is agreed upon between validators (Time_C is not the local time of the client).
-* Time_E - is the expiration time of a transaction T_N.
-* Time_C > Time_E and transaction T_N has not been included in the blockchain
+* Time_C is the current time that is agreed upon between validators (Time_C is not the local time of the client);
+* Time_E is the expiration time of a transaction T_N; and
+* Time_C > Time_E and transaction T_N has not been included in the blockchain,
 
 then there is a guarantee that T_N will never be included in the blockchain.
 
@@ -154,8 +154,8 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Faucet
 
 * **Faucet** is the way to create Libra currency with no real world value, only on our testnet.
-* The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for testnet.
-* You can use faucet by sending a request to create coins and transfer them into a given account on your behalf.
+* The Faucet is a service running along with the testnet. This service only exists to facilitate minting coins for the testnet.
+* You can use the Faucet by sending a request to create coins and transfer them into a given account on your behalf.
 
 ## G
 
@@ -199,7 +199,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * A **leader** is a validator node that proposes a block of transactions for the consensus protocol.
 * In leader-based protocols, nodes must agree on a leader to make progress.
-* Leaders are selected by a function which takes the current [round number](https://fb.quip.com/LkbMAEBIVNbh#ffYACAO6CzD) as input. 
+* Leaders are selected by a function that takes the current [round number](https://fb.quip.com/LkbMAEBIVNbh#ffYACAO6CzD) as input. 
 
 ### Libra (The Currency)
 
@@ -210,9 +210,9 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Libra Association
 
-* The **Libra Association** is an independent not-for-profit membership organization, headquartered in Geneva, Switzerland. The Association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
-* The Association is created by the validator nodes who will run on the Libra Network.
-* Refer to the [whitepaper](https://libra.org/en-us/whitepaper) for the mission, vision, and purview of the Libra Association.
+* The **Libra Association** is an independent, not-for-profit membership organization, headquartered in Geneva, Switzerland. The association's purpose is to coordinate and provide a framework for governance of the network and reserve. 
+* The association is created by the validator nodes who will run on the Libra network.
+* Refer to the [Libra white paper](https://libra.org/en-us/whitepaper) for the a description of the mission, vision, and purview of the Libra Association.
 
 ### Libra Association Council
 
@@ -221,7 +221,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### LibraBFT
 
-* LibraBFT is the Libra protocol's BFT consensus algorithm
+* LibraBFT is the Libra protocol's BFT consensus algorithm.
 * LibraBFT is based on HotStuff.
 
 ### Libra Blockchain
@@ -245,13 +245,13 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### LibraAccount.T
 
-* A **`LibraAccount.T`** is a Move resource that holds all the administrative data associated with an account, like sequence number, balance, and authentication key.
+* A **`LibraAccount.T`** is a Move resource that holds all the administrative data associated with an account, such as sequence number, balance, and authentication key.
 *  A **`LibraAccount.T`** is the only resource that every account is guaranteed to contain.
 
 ### LibraAccount module
 
 * **The LibraAccount module** is a Move module that contains the code for manipulating the administrative data held in a particular `LibraAccount.T` resource.
-* Code for checking or incrementing sequence numbers, withdrawing or depositing currency, and extracting gas deposits, is included in the LibraAccount module. 
+* Code for checking or incrementing sequence numbers, withdrawing or depositing currency, and extracting gas deposits is included in the LibraAccount module. 
 
 ### Libra testnet 
 
@@ -270,18 +270,18 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * The **Maximum Gas Amount**  of a transaction is the maximum amount of gas the sender is ready to pay for the transaction.
 * The gas charged is equal to the gas price multiplied by units of work required to process this transaction. If the result is less than the max gas amount, the transaction has been successfully executed.
-* If the transaction runs out of gas while it is being executed, or the account runs out of balance during execution, then the sender will be charged for gas used and the transaction will fail. 
+* If the transaction runs out of gas while it is being executed or the account runs out of balance during execution, then the sender will be charged for gas used and the transaction will fail. 
 
 ### Mempool
 
-* **Mempool** is one of the components of the validator node. It holds an in-memory buffer of transactions that have been submitted, but not yet agreed upon and executed. Mempool receives transactions from [admission control](#admission-control).
-* Transactions in the mempool of a validator are added from the admission control (AC) of the current validator, and from the mempool of other validators.
+* **Mempool** is one of the components of the validator node. It holds an in-memory buffer of transactions that have been submitted but not yet agreed upon and executed. Mempool receives transactions from [admission control](#admission-control).
+* Transactions in the mempool of a validator are added from the admission control (AC) of the current validator and from the mempool of other validators.
 * When the current validator is the leader, its consensus pulls the transactions from its mempool and proposes the order of the transactions that form a block. The validator quorum then votes on the proposal. 
 
 ### Merkle Trees
 
 * **Merkle tree** is a type of authenticated data structure that allows for efficient verification of data integrity and updates.
-* Libra network treats the entire blockchain as a single data structure, that records the history of transactions and states over time.
+* Libra network treats the entire blockchain as a single data structure that records the history of transactions and states over time.
 * The Merkle tree implementation simplifies the work of apps accessing the blockchain. It allows apps to:
     * Read any data from any point in time. 
     * Verify the integrity of the data using a unified framework.
@@ -290,13 +290,13 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 * The [Merkle Accumulator](https://www.usenix.org/legacy/event/sec09/tech/full_papers/crosby.pdf) is an _append-only_ Merkle tree that the Libra Blockchain uses to store the ledger.
 * Merkle accumulators can provide proofs that a transaction was included in the chain (“proof of inclusion”).
-* They are also called [history trees](http://people.cs.vt.edu/danfeng/courses/cs6204/sp10-papers/crosby.pdf)in literature.
+* They are also called [history trees](http://people.cs.vt.edu/danfeng/courses/cs6204/sp10-papers/crosby.pdf) in literature.
 
 ### Move
 
 * **Move** is a new programming language that implements all the transactions on the Libra Blockchain. 
-* It has two different kinds of code - [transaction scripts](#transaction-script) and [Move modules](#move-module).
-* For further information on “Move” refer to the [Move Technical Paper](https://developers.libra.org/docs/move-paper)
+* It has two different kinds of code &mdash; [transaction scripts](#transaction-script) and [Move modules](#move-module).
+* For further information on “Move,” refer to the [Move technical paper](../move-paper.md)
 
 ### Move Bytecode
 
@@ -325,8 +325,8 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Node
 
-* A **node** is a peer entity of the Libra ecosystem which tracks the state of the Libra Blockchain.
-* A Libra node comprises of logical components.  [Mempool](#mempool),  [consensus](#consensus), and [virtual machine](#virtual-machine) are examples of node components. 
+* A **node** is a peer entity of the Libra ecosystem that tracks the state of the Libra Blockchain.
+* A Libra node comprises of logical components. [Mempool](#mempool), [consensus](#consensus), and [virtual machine](#virtual-machine) are examples of node components. 
 
 ## O
 
@@ -343,9 +343,9 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Permissioned vs. Permissionless 
 
 * Permissioned and permissionless are attributes of the way by which nodes join the set of validators in a blockchain.
-* If only the nodes chosen by a single entity or organization are allowed to join the committee, it's a **Permissioned** system.
-* If any node can join the committee, it's a **Permissionless** system.
-* Libra starts as a permissioned system and transitions to permissionless.
+* If only the nodes chosen by a single entity or organization are allowed to join the committee, it's a **permissioned** system.
+* If any node can join the committee, it's a **permissionless** system.
+* Libra starts as a permissioned system and will transition to permissionless.
 
 ### Proof
 
@@ -372,19 +372,19 @@ then there is a guarantee that T_N will never be included in the blockchain.
 ### Sequence Number
 
 * The **sequence number** for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain.
-* A transaction is executed only if it matches the current sequence number for the sender account. This helps sequence multiple transactions from the same sender, and prevents replay attacks.
-* If the current sequence number of an account A is X then a transaction T on account A will only be executed if T's sequence number is X. 
-* These transactions will be held in mempool until they are the next sequence number for that account (or until they expire)
+* A transaction is executed only if it matches the current sequence number for the sender account. This helps sequence multiple transactions from the same sender and prevents replay attacks.
+* If the current sequence number of an account A is X, then a transaction T on account A will only be executed if T's sequence number is X. 
+* These transactions will be held in mempool until they are the next sequence number for that account (or until they expire).
 * When the transaction is applied, the sequence number of the account will become X+1. The account has a strictly increasing sequence number.
 
 ### Sender
 
-* *Alternate name*: Sender Address
+* *Alternate name*: Sender address.
 * **Sender** is the address of the originator account for a transaction. A transaction must be signed by the originator.
 
 ### Smart Contract
 
-* See [Move Module](#move-module)
+* See [Move Module](#move-module).
 
 ### State
 
@@ -393,7 +393,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### State Root Hash
 
-* **State Root Hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Libra Blockchain at a given version.
+* **State root hash** is a [Merkle hash](https://en.wikipedia.org/wiki/Merkle_tree) over all keys and values the state of the Libra Blockchain at a given version.
 
 ## T
 
@@ -422,7 +422,7 @@ then there is a guarantee that T_N will never be included in the blockchain.
 * Each transaction submitted by a user includes a **transaction script**.
 * It represents the operation a client submits to a validator node.  
 * The operation could be a request to move coins from user A to user B, or it could involve interactions with published [Move modules](#move-modules)/smart contracts.
-* The transaction script is an arbitrary program that interacts with resources published in the global storage of the Libra blockchain by calling the procedures of a module. It encodes the logic for a transaction.
+* The transaction script is an arbitrary program that interacts with resources published in the global storage of the Libra Blockchain by calling the procedures of a module. It encodes the logic for a transaction.
 * A single transaction script can send funds to multiple recipients and invoke procedures from several different modules.
 * A transaction script **is not** stored in the global state and cannot be invoked by other transaction scripts. It is a single-use program.
 
@@ -432,24 +432,24 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ### Validator Node
 
-* *Alternate name*: Validators
-* A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. It receives requests from clients, and runs consensus, execution, and storage.
+* *Alternate name*: Validators.
+* A **validator** is an entity of the Libra ecosystem that validates the Libra Blockchain. It receives requests from clients and runs consensus, execution, and storage.
 * A validator maintains the history of all the transactions on the blockchain.
 * Internally, a validator node needs to keep the current state, to execute transactions and to calculate the next state. 
 
 ### Version
 
 * A **version** is also called “height” in blockchain literature. 
-* In the Libra Blockchain, we don't have an explicit notion of a block, we only use blocks for batching and executing transactions.  
-* A transaction at height 0 is the 1st transaction (genesis transaction), and a transaction at height 100 is the 101st transaction in the transaction store.
+* The Libra Blockchain doesn't have an explicit notion of a block &mdash; it only uses blocks for batching and executing transactions.  
+* A transaction at height 0 is the first transaction (genesis transaction), and a transaction at height 100 is the 101th transaction in the transaction store.
 
 ## W
 
 * * *
 
-### Well-Formed Transaction
+### Well Formed Transaction
 
-A Libra transaction is **well-formed** if each of the following conditions are true for the transaction:
+A Libra transaction is **well formed** if each of the following conditions are true for the transaction:
 * The transaction has a valid signature.
 * An account exists at the sender address.
 * It includes a public key, and the hash of the public key matches the sender account's authentication key. 

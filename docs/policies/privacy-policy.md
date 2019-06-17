@@ -58,7 +58,10 @@ You may delete your information at any time by contacting us at [optout@libra.or
 ## Contact Information
  The data controller responsible for your information is Libra, which you can contact us at:
 
- Contact information to be provided.
+	Libra Association
+	Quai de l'Ile, 13
+	1204 Geneva
+	SWITZERLAND
 
  You also have the right to lodge a complaint with your local supervisory authority.
 

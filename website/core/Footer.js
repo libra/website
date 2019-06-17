@@ -7,8 +7,9 @@ const PropTypes = require('prop-types');
 const React = require('react');
 
 function SocialFooter(props) {
+  const projectName = 'libra';
   const repoUrl = `https://github.com/${props.config.organizationName}/${
-    props.config.projectName
+    projectName
   }`;
   return (
     <div className="footerSection">
@@ -21,8 +22,21 @@ function SocialFooter(props) {
           data-show-count="true"
           data-count-aria-label="# stargazers on GitHub"
           aria-label="Star Libra on GitHub">
-          {props.config.projectName}
+          {projectName}
         </a>
+      </div>
+      <div className="social">
+        <a
+          href={"https://twitter.com/libradev?ref_src=twsrc%5Etfw"}
+          className={"twitter-follow-button"}
+          data-show-count={false}>
+            Follow @libradev
+        </a>
+        <script
+          async
+          src={"https://platform.twitter.com/widgets.js"}
+          charSet={"utf-8"}
+        />
       </div>
     </div>
   );
@@ -58,8 +72,6 @@ class Footer extends React.Component {
                   this.props.config.footerIcon
                 }`}
                 alt={this.props.config.title}
-                width="66"
-                height="58"
               />
             </a>
           )}
@@ -67,8 +79,10 @@ class Footer extends React.Component {
             <h5>Learn About Libra</h5>
             <a href={this.docUrl('welcome-to-libra')}>Welcome to Libra</a>
             <a href={this.docUrl('libra-protocol')}>Libra Protocol</a>
+            <a href={this.docUrl('the-libra-blockchain-paper')}>Libra Blockchain</a>
             <a href={this.docUrl('life-of-a-transaction')}>Life of a Transaction</a>
-            <h5>Try Libra Core</h5>
+            <p />
+            <h5>Try Libra Core </h5>
             <a href={this.docUrl('my-first-transaction')}>My First Transaction</a>
             <a href={this.docUrl('move-overview')}>Getting Started With Move</a>
           </div>
@@ -77,6 +91,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('policies/privacy-policy')}>Privacy Policy</a>
             <a href={this.docUrl('policies/terms-of-use')}>Terms of Use</a>
             <a href={this.docUrl('policies/cookies-policy')}>Cookies Policy</a>
+            <a href={this.docUrl('policies/code-of-conduct')}>Code of Conduct</a>
           </div>
           <SocialFooter config={this.props.config} />
         </section>
@@ -84,7 +99,7 @@ class Footer extends React.Component {
           {this.props.config.copyright && (
             <span>{this.props.config.copyright}</span>
           )}{' '}
-          Copyright Libra Association.
+          &copy; Libra Association
         </section>
       </footer>
     );

@@ -9,9 +9,16 @@ html body {
   font-size: 16px;
 }
 
+small.figure {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10pt;
+  margin: 0 auto;
+}
+
 body { padding: 0px !important; }
-nav { 
-  border: 0px !important; 
+nav {
+  border: 0px !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -137,7 +144,7 @@ div#quickstart ol {
 }
 
 .nav-footer {
-  background-color: #222222;
+  background-color: #15112C;
 }
 
 .nav-footer .sitemap a {
@@ -174,8 +181,8 @@ sub {
   color: #222222;
 }
 
-.toc .toggleNav .navGroup .navGroupSubcategoryTitle { 
-  .color: #24292e;
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle {
+  color: #24292e;
 }
 
 .onPageNav a {
@@ -250,4 +257,27 @@ article p img.download {
 }
 
 @media only screen and (min-width: 1500px) {
+}
+
+blockquote {
+  /* FIG slate color */
+  background-color: #F8FAFB;
+  border-left: 8px solid #A8BBC3;
+  padding: 15px 30px 15px 15px;
+  color: #24292e;
+}
+
+blockquote.block_note {
+  /* FIG lemon color */
+  background-color: #FFFBF0;
+  border-left: 8px solid #F5C33B;
+  padding: 15px 30px 15px 15px;
+  color:#24292e;
+}
+
+.nav-home img {
+  width:57px;
+  height:57px;
+  /* override max width so logo isn't squashed */
+  max-width:none;
 }

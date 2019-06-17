@@ -9,7 +9,7 @@ Open-source software is software that anyone can use, inspect, and modify. Build
 
 The invention of open-source software sparked a practice of engineers working across countries and across companies to collaborate on the development of ambitious software projects. Projects of this type build a community of developers who work together to make tough technical decisions about the evolution of the project. Because Libra is a platform that will serve many people, this type of community-focused decision making will be essential to make sure that everybody has a fair chance to contribute to the evolution of the platform. 
 
-## Libra's Engineering Principles
+## Libra’s Engineering Principles
 
 * The technology behind the Libra Blockchain will be free for all to inspect, use, modify, and distribute, and this is understood by all.
 * Contributions are measured for technical merit and scrutinized for security.
@@ -17,9 +17,9 @@ The invention of open-source software sparked a practice of engineers working ac
 
 ## The Libra Blockchain: Built on Open Source
 
-After reviewing different open-source licenses, the association has chosen to open source the Libra Core under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.html). The license grants the user of the software the freedom to use the software for any purpose, to distribute it, and to modify it. Individuals and organizations who [contribute code](http://developers.libra.org/docs/community/contributing), documents, or ideas to Libra Core do so in the form a Contributor License Agreement (CLA). Libra will model its CLA on the [Apache CLA](https://www.apache.org/licenses/contributor-agreements.html). By asking contributors to agree to the CLA, the community can be confident that they are free to use the software.
+After reviewing different open-source licenses, the association has chosen to open source the Libra Core under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.html). The license grants the user of the software the freedom to use the software for any purpose, to distribute it, and to modify it. Individuals and organizations who [contribute code](community/contributing.md), documents, or ideas to Libra Core do so in the form a Contributor License Agreement (CLA). Libra will model its CLA on the [Apache CLA](https://www.apache.org/licenses/contributor-agreements.html). By asking contributors to agree to the CLA, the community can be confident that they are free to use the software.
 
-The Apache License and CLA have a long history in the open-source developer community. It is well understood and trusted by thousands of open-source projects from many of the world's largest technology companies. The license provides certainty and protection for contributors, maintainers, and all other participants in the open-source ecosystem that choose to invest in technology.
+The Apache License and CLA have a long history in the open-source developer community. It is well understood and trusted by thousands of open-source projects from many of the world’s largest technology companies. The license provides certainty and protection for contributors, maintainers, and all other participants in the open-source ecosystem that choose to invest in technology.
 
 ## The Libra Association and Technology Decisions 
 
@@ -37,8 +37,8 @@ Over the past year, engineers from Facebook's Calibra team have designed a block
 
 Because Libra Core was open sourced early in its life, there remains much to build before the Libra Blockchain can be launched. Most open-source projects begin with a small set of core developers and a simple governance process, which allows the rapid development of the project in its early phases. The association is following this established practice and has asked Calibra to manage the evolution of Libra Core over the coming months.
 
-## What's Next?
+## What’s Next?
 
-The Libra Association governs the technology behind the Libra Blockchain. The governance of the technology behind the Libra Blockchain will evolve over time. The association's first goal is to ready Libra Core for the launch of the Libra Blockchain and to create a formal Libra protocol specification. Before this launch, it is imperative that the community has a chance to review the decisions that have been made to ensure that the best technological choices have indeed been made. Before the launch of the network, the association is committed to establishing a fair and transparent process for accepting technical changes to the Libra Blockchain. No single company — including Facebook or Calibra — will have the ability to determine the future evolution of the blockchain. The association is committed to building a strong community that guides the development of the technology so that it can serve as a financial infrastructure for billions of people.
+The Libra Association governs the technology behind the Libra Blockchain. The governance of the technology behind the Libra Blockchain will evolve over time. The association’s first goal is to ready Libra Core for the launch of the Libra Blockchain and to create a formal Libra protocol specification. Before this launch, it is imperative that the community has a chance to review the decisions that have been made to ensure that the best technological choices have indeed been made. Before the launch of the network, the association is committed to establishing a fair and transparent process for accepting technical changes to the Libra Blockchain. No single company — including Facebook or Calibra — will have the ability to determine the future evolution of the blockchain. The association is committed to building a strong community that guides the development of the technology so that it can serve as a financial infrastructure for billions of people.
 
 As the project evolves, so will the governance of the ecosystem. The association may create processes so that important technical changes go through a more formal review process. The association will collaborate with the community to find ways to strengthen its commitment to open source and open governance.

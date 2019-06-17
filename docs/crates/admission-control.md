@@ -1,46 +1,41 @@
 ---
 id: admission-control
 title: Admission Control
+custom_edit_url: https://github.com/libra/libra/edit/master/admission_control/README.md
 ---
 
-Admission Control (AC) is the public API end point taking public gRPC requests from clients.
+Admission Control (AC) is the public API endpoint for Libra and it takes public gRPC requests from clients.
 
 ## Overview
-
-Admission Control (AC) serves two types of request from clients:
-
-1. SubmitTransaction, to submit transaction to associated validator.
-2. UpdateToLatestLedgerAndGetProofs, to query storage, e.g. account state, transaction log, etc.
+Admission Control (AC) serves two types of requests from clients:
+1. SubmitTransaction - To submit a transaction to the associated validator.
+2. UpdateToLatestLedgerAndGetProofs - To query storage, e.g., account state, transaction log, etc.
 
 ## Implementation Details
-
 Admission Control (AC) implements two public APIs:
-
 1. SubmitTransaction(SubmitTransactionRequest)
     * Multiple validations will be performed against the request:
-	   * Transaction signature will be checked first. If the check fails, AdmissionControlStatus::Rejected will be returned to client.
-	   * Transaction will be then validated by vm_validator. If it fails, corresponding VMStatus will be returned to client.
-	* Once all validations are passed, AC will query account balance and latest sequence number from storage and
-	send them along with the client request to Mempool.
-    * If Mempool returns MempoolAddTransactionStatus::Valid, AdmissionControlStatus::Accepted will be returned to
-    client indicating successful submission. Otherwise, corresponding AdmissionControlStatus will be returned to client.
+       * The Transaction signature is checked first. If this check fails, AdmissionControlStatus::Rejected is returned to client.
+       * The Transaction is then validated by vm_validator. If this fails, the corresponding VMStatus is returned to the client.
+    * Once the transaction passes all validations, AC queries the sender's account balance and the latest sequence number from storage and sends them to Mempool along with the client request.
+    * If Mempool returns MempoolAddTransactionStatus::Valid, AdmissionControlStatus::Accepted is returned to the client indicating successful submission. Otherwise, corresponding AdmissionControlStatus is returned to the client.
 2. UpdateToLatestLedgerAndGetProofs(UpdateToLatestLedgerAndGetProofsRequest). No extra processing is performed in AC.
-The request is directly passed to storage for query.
+* The request is directly passed to storage for query.
 
 ## Folder Structure
     .
-    └── src
-        ├── admission_control_node.rs           # Wrapper to run AC in a separate thread
-        ├── admission_control_service.rs        # gRPC service and main logic
-        ├── main.rs                             # Main entry to run AC as a binary                              
-        ├── proto                               # Protobuf definitions
-        └── unit_tests                          # Tests
+    ├── README.md
+    ├── admission_control_proto
+    │   └── src
+    │       └── proto                           # Protobuf definition files
+    └── admission_control_service
+        └── src                                 # gRPC service source files
+            ├── admission_control_node.rs       # Wrapper to run AC in a separate thread
+            ├── admission_control_service.rs    # gRPC service and main logic
+            ├── main.rs                         # Main entry to run AC as a binary
+            └── unit_tests                      # Tests
 
 
-## This module interacts with
-Mempool module to submit transactions from clients.
-Storage module to query validator storage.
-
-## Contributions
-
-## License
+## This module interacts with:
+The Mempool component, to submit transactions from clients.
+The Storage component, to query validator storage.

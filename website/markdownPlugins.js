@@ -1,4 +1,10 @@
+const remarkableKatex = require('remarkable-katex');
+
 module.exports = [
+  function enableKatex(md) {
+    md.use(remarkableKatex);
+  },
+
   /**
    * Enable some defaults on the Markdown class
    */

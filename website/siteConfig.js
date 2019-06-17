@@ -12,14 +12,15 @@ const markdownPlugins = require(`${process.cwd()}/markdownPlugins.js`);
 
 // Define this so it can be easily modified in scripts (to host elsewhere)
 const baseUrl = '/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/';
+// const baseUrl = '/docs/';
 
 // List of projects/orgs using your project for the users page.
 const users = [];
 
 const siteConfig = {
   title: 'Libra',
-  tagline: "Libra's mission is to enable a simple global currency and financial infrastructure that empowers billions of people.",
-  url: 'https://libra.org',
+  tagline: "Libra’s mission is to enable a simple global currency and financial infrastructure that empowers billions of people.",
+  url: 'https://developers.libra.org',
   baseUrl: baseUrl,
   cleanUrl: true, // No .html extensions for paths
 
@@ -29,29 +30,29 @@ const siteConfig = {
 
   // used for publishing and more
   organizationName: 'libra',
-  projectName: 'libra',
-
-  // Page analytics
-  // gaTrackingId: 'UA-XXXXX-2',
+  projectName: 'website',
 
   // links that will be used in the header navigation bar
   headerLinks: [
     {doc: 'welcome-to-libra', label: 'Documentation'},
-    {href: 'https://libra.trydiscourse.com', label: 'Community'},
+    {href: 'https://community.libra.org', label: 'Community'},
     {blog: true, label: "Blog" },
     {href: 'https://libra.org', label: 'libra.org'},
-    {href: 'https://github.com/libra/libra', label: 'GitHub'},
-    {search: true}, // position search box to the very right
+    {href: 'https://github.com/libra/libra', label: 'GitHub'}
+    // {search: false}, // position search box to the very right
   ],
 
   // add users to the website
   users,
 
   // search integration w/ algolia
-  algolia: {
-    apiKey: '7c82db8b8ceae28c1601f34346452f65',
-    indexName: 'libra.github.io',
-  },
+
+  // This website manually inserts the Algolia Search bar in Footer.js
+
+  // algolia: {
+  //   apiKey: '7c82db8b8ceae28c1601f34346452f65',
+  //   indexName: 'libra.github.io',
+  // },
 
   // colors for website
   colors: {
@@ -69,17 +70,18 @@ const siteConfig = {
     'https://buttons.github.io/buttons.js',
     // Copy-to-clipboard button for code blocks
     `${baseUrl}js/code_block_buttons.js`,
-    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
     // Segment analytics for the form data. Make sure to load the analytics 1st
     // Naming this segment.analytics.min.js gets blocked by ad blockers
     `${baseUrl}js/seg-analytics.js`,
     `${baseUrl}js/segment.js`,
+    `${baseUrl}js/clipboardjs.2.0.0.min.js`,
   ],
 
   // CSS sources to load
   stylesheets: [
     `${baseUrl}css/code_block_buttons.css`,
     `${baseUrl}css/fonts/NBInternationalProEditionWeb/stylesheet.css`,
+    `${baseUrl}katex-dist/katex.min.css`,
   ],
 
   // Custom markdown functions
@@ -89,19 +91,91 @@ const siteConfig = {
   onPageNav: 'separate',
 
   // enable scroll to top button a the bottom of the site
-  scrollToTop: true,
+  // scrollToTop: true,
 
   // if true, expand/collapse links & subcategories in sidebar
   docsSideNavCollapsible: false,
 
   // URL for editing docs
-  editUrl: 'https://github.com/libra/libra.github.io/edit/master/docs/',
+  editUrl: 'https://github.com/libra/website/edit/master/docs/',
 
   // Open Graph and Twitter card images
   ogImage: 'img/libra.png',
   twitterImage: 'img/libra.png',
 
-  usePrism: ['jsx'],
+  // custom highlighter for Move
+  highlight: {
+    // The name of the theme used by Highlight.js when highlighting code.
+    theme: 'default',
+
+    // Default language.
+    defaultLang: 'plaintext',
+
+    // Highlighting for Move.
+    // NB: This is not correct for the whole Move grammar but just for
+    // the examples on the site!
+    hljs: function(hljs) {
+      hljs.registerLanguage('move', function(hljs) {
+        var KEYWORDS = [
+          'public',
+          'module',
+          'import',
+          'else',
+          'if',
+          'let',
+          'return',
+          'copy',
+          'move',
+          'struct',
+          'resource',
+          'mut',
+        ].join(' ');
+        var BUILTINS = [
+          'bytearray',
+          'get_txn_sender',
+          'move_from',
+          'create_account',
+          'bool',
+          'address',
+          'u64',
+          'move_to_sender',
+          'assert',
+        ].join(' ');
+        var LITERALS = [
+          'true',
+          'false',
+        ].join(' ');
+        var TYPES = {
+          className: 'type',
+          begin: /[A-Z][a-zA-Z0-9_#]*/,
+        };
+        var NUMBERS = {
+          className: 'number',
+          variants: [
+            { begin: '\\b0x([A-Fa-f0-9_]+)' },
+            { begin: '\\b(\\d+)'}
+          ],
+        };
+        var STRUCTS = {
+          className: 'struct',
+          beginKeywords: 'struct resource', end: '{',
+        };
+        return {
+          keywords: {
+            keyword: KEYWORDS,
+            literal: LITERALS,
+            built_in: BUILTINS,
+          },
+          contains: [
+            TYPES,
+            NUMBERS,
+            STRUCTS,
+            hljs.C_LINE_COMMENT_MODE,
+          ]
+        };
+      });
+    },
+  },
 
   // show html docs generated by rustdoc
   wrapPagesHTML: true
