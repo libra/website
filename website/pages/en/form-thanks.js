@@ -10,12 +10,12 @@ const FormHeader = require(`${process.cwd()}/core/ContactForm/form-header.js`);
 
 const FormThanks = (props) => {
   return (
-    <FormContainer {...props} >
-      <FormHeader
-        title="Thank you!"
-        subtitle="You will hear from us soon"
-      />
-      <button className="button">Return</button>
+    <FormContainer
+      {...props}
+      title="Thank you!"
+      subtitle="You will hear from us soon"
+    >
+      <a className="button" href={props.config.baseUrl}>Return</a>
     </FormContainer>
   );
 };

@@ -28,8 +28,8 @@ const getForm = (formId, fields) => {
           <button className="button right" type="submit">Submit</button>
         </div>
       </form>
-    </div>    
-  );  
+    </div>
+  );
 }
 
 
@@ -65,8 +65,11 @@ const FormContainer = (props) => {
         <img {...getImageProps('bgCircleRight', 'bg-circle-whole.svg')} />
         <div className="mainContainer documentContainer postContainer">
           {getForm(formId, fields)}
+          {children}
         </div>
+
       </div>
+
     </div>
   );
 };

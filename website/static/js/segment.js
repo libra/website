@@ -10,34 +10,34 @@ script.innerHTML = `
      if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
      else { analytics.invoked = !0;
        analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
-       analytics.factory = function(t) { 
-         return function() { 
+       analytics.factory = function(t) {
+         return function() {
            var e = Array.prototype.slice.call(arguments);
            e.unshift(t);
-           analytics.push(e); 
-           return analytics; 
-         } 
-       }; 
-       for (var t = 0; t < analytics.methods.length; t++) { 
+           analytics.push(e);
+           return analytics;
+         }
+       };
+       for (var t = 0; t < analytics.methods.length; t++) {
          var e = analytics.methods[t];
-         analytics[e] = analytics.factory(e) 
-       } 
+         analytics[e] = analytics.factory(e)
+       }
        // // We've removed this snippet and load the script from our server instead
-       // analytics.load = function(t, e) { 
+       // analytics.load = function(t, e) {
        //   var n = document.createElement("script");
        //   n.type = "text/javascript";
        //   n.async = !0;
-       //   // n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; 
+       //   // n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
        //   n.src = "INTERNAL CDN";
        //   var a = document.getElementsByTagName("script")[0];
        //   a.parentNode.insertBefore(n, a);
-       //   analytics._loadOptions = e 
+       //   analytics._loadOptions = e
        //  };
        analytics.SNIPPET_VERSION = "4.1.0";
 
     // analytics.load("Llc3xSsbfceDLVBzwOJKoJSkSHMRoj8V");
     analytics.page();
-  }}();    
+  }}();
 `;
 document.getElementsByTagName('head')[0].appendChild(script);
 
@@ -51,6 +51,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
     trackFormData(form);
   }
 });
+
+function toggleEnabledFormButton(on) {
+  const button = document.querySelector("button[type='submit']")
+  if (on) {
+    button.setAttribute("disabled", "disabled");
+  } else {
+    button.removeAttribute("disabled");
+  }
+}
+
+/**
+ * Get the Segment event name by using the form's ID.
+ *
+ * Segment allows you to track by events and eventually retire an event name.
+ * Being specific with an event name will help us maintain the full lifecycle
+ * of events.
+ */
+function getTrackFormEventName(form) {
+  switch (form.id) {
+    case 'partnerForm':
+      return 'Partner Form Submit';
+    case 'newsletterForm':
+      return 'Newsletter Form Submit';
+    default:
+      return 'Form Submit';
+  }
+}
 
 /**
  * Get all the input and select fields from a form.
@@ -83,7 +110,7 @@ function filterFields(data, fields, mapping) {
   return filtered;
 }
 
-function addOrganization(data) {
+function addGroup(data) {
   const fields = [
     'organizationId',
     'organizationHQ',
@@ -91,27 +118,29 @@ function addOrganization(data) {
     'organizationType',
     'organizationWebsite',
   ];
-  const filteredData = filterFields(data, fields);  
+  const filteredData = filterFields(data, fields);
   const groupId = filteredData.organizationId;
   const groupData = {
     ...filteredData,
     name: groupId,
   };
- 
+
   analytics.group(groupId, groupData);
 }
 
-function addUser(data, form) {
+function addIndentity(data, form) {
   const fields = [
     'email',
     'firstName',
     'lastName',
     'phone',
     'title',
-    'formId', 
+    'formId',
     'organizationId',
   ];
 
+  // Using organizationId here will set off some automagic segment configuration
+  // causing the call to Zendesk to fail. organizationId needs to be an int.
   const mapping = {
     organizationId: 'orgName'
   };
@@ -124,8 +153,13 @@ function addUser(data, form) {
  * Sends the submitted form data to segment in a track call.
  */
 function trackFormData(form) {
+  // FIXME: This needs to be in sync with the siteConfig
+  const baseUrl = '/~ericnakagawa/lufdvtkvdknjluvfrnbrhgbrclkdnvir/libra/';
+
   form.addEventListener('submit', (e) => {
     e.preventDefault()
+    toggleEnabledFormButton(false);
+
     const fields = getFormFields(form);
     const data = {
       formId: form.id,
@@ -134,21 +168,25 @@ function trackFormData(form) {
       data[field.id] = field.value;
     });
 
-    analytics.track('Form Submitted', data)
+    const trackName = getTrackFormEventName(form);
+    // Dump the raw form data into the event.
+    analytics.track(trackName, data)
 
     if (form.id === 'newsletterForm') {
       // A name is required for adding users to Zendesk
       data.name = data.email;
     }
-    
-    addUser(data, form);
+
+    addIndentity(data, form);
 
     if (data.organizationId) {
-      addOrganization(data);
+      addGroup(data);
     }
-    // FIXME: 
-    //   1) We should only change location after the data successfully submits
-    //   2) What's the new location?
-    // window.location.replace('/form-thanks')
+
+    setTimeout(function() {
+      toggleEnabledFormButton(true);
+      window.location.replace(`${baseUrl}form-thanks`);
+    }, 500);
+
   })
 }

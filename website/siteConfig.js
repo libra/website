@@ -71,7 +71,8 @@ const siteConfig = {
     `${baseUrl}js/code_block_buttons.js`,
     'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
     // Segment analytics for the form data. Make sure to load the analytics 1st
-    `${baseUrl}js/segment.analytics.min.js`,
+    // Naming this segment.analytics.min.js gets blocked by ad blockers
+    `${baseUrl}js/seg-analytics.js`,
     `${baseUrl}js/segment.js`,
   ],
 
