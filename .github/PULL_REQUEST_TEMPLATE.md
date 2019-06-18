@@ -6,7 +6,7 @@ Thank you for sending a PR. We appreciate you spending time to help improve the 
 
 (Write your motivation for proposed changes here.)
 
-### Have you read the [Contributing Guidelines on pull requests](https://github.com/libra/libra/master/CONTRIBUTING.md#pull-requests)?
+### Have you read the [Contributing Guidelines on pull requests](https://github.com/libra/libra/blob/master/CONTRIBUTING.md#pull-requests)?
 
 (Write your answer here.)
 
