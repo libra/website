@@ -92,7 +92,7 @@ A **client** is a piece of software that has the capability to interact with the
 
 ### Consensus Protocol
 
-* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction and to agree on the ordering of transactions and [execution results](#execution-results).
+* A **consensus protocol** is collectively executed by n validator nodes to accept or reject a transaction and to agree on the ordering of transactions and [execution results](#execution-result).
 * See [BFT](#byzantine-fault-tolerance-bft)
 
 ### Custodial Wallet
