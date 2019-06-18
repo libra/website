@@ -19,7 +19,7 @@ If you've uncovered a security issue, please email security@libra.org -->
 
 <!-- Please include all steps to reproduce the issue -->
 
-** Error message or problem **
+**Error message or problem**
 ```
 // Paste the output here
 ```
