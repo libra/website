@@ -46,7 +46,7 @@ Move modules define the rules for updating the global state of the Libra Blockch
 
 This section describes how to write [transaction scripts](#writing-transaction-scripts) and [modules](#writing-modules) in the Move intermediate representation (IR). We caution the reader that the IR is an early (and unstable) precursor to a forthcoming Move source language (see [Future Developer Experience](#future-developer-experience) for more details). Move IR is a thin syntactic layer over Move bytecode that is used to test the bytecode verifier and virtual machine, and it is not particularly developer-friendly. It is high level enough to write human-readable code, yet low level enough to compile directly to Move bytecode. Nevertheless, we are excited about the Move language and hope that developers will give the IR a try, despite the rough edges. 
 
-We will proceed by presenting snippets of heavily-commented Move IR. We encourage readers to follow along with the examples by compiling, running, and modifying them locally. The README files under `libra/language/README.md` and `libra/language/ir_to_bytecode/README.md` explain how to do this.
+We will proceed by presenting snippets of heavily-commented Move IR. We encourage readers to follow along with the examples by compiling, running, and modifying them locally. The README files under `libra/language/README.md` and `libra/language/compiler/README.md` explain how to do this.
 
 ### Writing Transaction Scripts
 
