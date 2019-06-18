@@ -465,9 +465,10 @@ Last event state: Some(
 
 ### Query Account State
 
-In this example, we will query for the state of a single account.
+In this example, we will query for the state of a single account with index 0.
 
 ```plaintext
+libra% query account_state 0
 >> Getting latest account state
 Latest account state is:
  Account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
