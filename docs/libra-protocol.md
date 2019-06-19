@@ -64,7 +64,7 @@ The versioned database allows validators to:
 A Libra account is a container for Move modules and Move resources. It is identified by an [account address](reference/glossary.md#account-address). This essentially means that the state of each account is comprised of both code and data: 
 
 * **Move modules** contain code (type and procedure declarations), but they do not contain data. The procedures of a module encode the rules for updating the global state of the blockchain. Here is an example of [a Move module](reference/glossary.md#move-module).
-* **Move resources** contain data but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resource).
+* **Move resources** contain data but no code. Every resource value has a type that is declared in a module published in the distributed database of the blockchain. Here is an example of [a Move resource](reference/glossary.md#move-resources).
 
 An account may contain an arbitrary number of Move resources and Move modules.
 
