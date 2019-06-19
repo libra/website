@@ -317,6 +317,8 @@ You have successfully executed your transaction on the Libra testnet and transfe
 
 * Update Rust:
     * Run `rustup update` from your libra directory.
+* Update protoc:
+    * Update `protoc` to version 3.6.0 and above.
 * Re-run setup script from your libra directory:
     * `./scripts/dev_setup.sh`
 
