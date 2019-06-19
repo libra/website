@@ -69,7 +69,7 @@ Now let us see how a programmer can interact with these modules and resources in
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
 main(payee: address, amount: u64) {
-  // The bytecode (and consequently, the IR) has typed locals.  The scope of
+  // The bytecode (and consequently, the IR) has typed locals. The scope of
   // each local is the entire procedure. All local variable declarations must
   // be at the beginning of the procedure. Declaration and initialization of
   // variables are separate operations, but the bytecode verifier will prevent
@@ -81,7 +81,7 @@ main(payee: address, amount: u64) {
   // module declare `resource T` or `struct T`?).
 
   // Acquire a LibraCoin.T resource with value `amount` from the sender's
-  // account.  This will fail if the sender's balance is less than `amount`.
+  // account. This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
   // Move the LibraCoin.T resource into the account of `payee`. If there is no
   // account at the address `payee`, this step will fail
@@ -107,14 +107,14 @@ main(payee: address, amount: u64) {
   let account_exists: bool;
 
   // Acquire a LibraCoin.T resource with value `amount` from the sender's
-  // account.  This will fail if the sender's balance is less than `amount`.
+  // account. This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
 
   account_exists = LibraAccount.exists(copy(payee));
 
   if (!move(account_exists)) {
     // Creates a fresh account at the address `payee` by publishing a
-    // LibraAccount.T resource under this address. If theres is already a
+    // LibraAccount.T resource under this address. If there is already a
     // LibraAccount.T resource under the address, this will fail.
     create_account(copy(payee));
   }
@@ -202,7 +202,7 @@ module EarmarkedLibraCoin {
     let sender: address;
 
     // Remove the earmarked coin resource published under `earmarked_coin_address`.
-    // If there is resource of type T published under the address, this will fail.
+    // If there is a resource of type T published under the address, this will fail.
     t = move_from<T>(move(earmarked_coin_address));
 
     t_ref = &t;
@@ -210,7 +210,7 @@ module EarmarkedLibraCoin {
     sender = get_txn_sender();
     // Ensure that the transaction sender is the recipient. If this assertion
     // fails, the transaction will fail and none of its effects (e.g.,
-    // removing the earmarked coin) will be committed.  99 is an error code
+    // removing the earmarked coin) will be committed. 99 is an error code
     // that will be emitted in the transaction output if the assertion fails.
     assert(*(&move(t_ref).recipient) == move(sender), 99);
 
