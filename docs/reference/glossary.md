@@ -82,7 +82,7 @@ A **client** is a piece of software that has the capability to interact with the
 
 * It can allow the user to construct, sign, and submit new transactions to the admission control component of a validator node.
 * It can issue queries to the Libra Blockchain and request the status of a transaction or account.
-* A client can be run by the end-user or on behalf of the end user (for example, for a custodial wallet). 
+* A client can be run by the user or on behalf of the user (for example, for a custodial wallet). 
 
 ### Consensus
 
