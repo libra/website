@@ -47,11 +47,10 @@ const siteConfig = {
   // search integration w/ algolia
 
   // This website manually inserts the Algolia Search bar in Footer.js
-
-  // algolia: {
-  //   apiKey: '7c82db8b8ceae28c1601f34346452f65',
-  //   indexName: 'libra.github.io',
-  // },
+  algolia: {
+    apiKey: '0d48ee629d39ddc4916eeef7755a0c4c',
+    indexName: 'libra',
+  },
 
   // colors for website
   colors: {
@@ -78,9 +77,9 @@ const siteConfig = {
     `${baseUrl}js/segment.analytics.min.js`,
     `${baseUrl}js/segment.js`,
     `${baseUrl}js/clipboardjs.2.0.0.min.js`,
-    `${baseUrl}js/docsearch.min.js`,
-    `${baseUrl}js/search.js`,
     `${baseUrl}js/forms.js`,
+     // `${baseUrl}js/docsearch.min.js`,
+     // `${baseUrl}js/search.js`,
   ],
 
   // CSS sources to load
@@ -88,6 +87,7 @@ const siteConfig = {
     `${baseUrl}css/code_block_buttons.css`,
     `${baseUrl}css/fonts/NBInternationalProEditionWeb/stylesheet.css`,
     `${baseUrl}katex-dist/katex.min.css`,
+    `${baseUrl}css/search.css`,
   ],
 
   // Custom markdown functions

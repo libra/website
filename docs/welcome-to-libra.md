@@ -21,7 +21,7 @@ The documentation discusses:
 
 <blockquote class="block_note">
 
-**Note:** This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
+**Note:** This project is at an early prototype stage. The Libra protocol and Libra Core APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. Currently, our focus is on the infrastructure and building the CLI client. A public API and associated libraries are on our immediate roadmap. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our regular communication, we will publish our progress towards stable APIs.
 </blockquote>
 
 ## Move: A New Blockchain Programming Language
