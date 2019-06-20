@@ -80,6 +80,7 @@ const siteConfig = {
     `${baseUrl}js/clipboardjs.2.0.0.min.js`,
     `${baseUrl}js/docsearch.min.js`,
     `${baseUrl}js/search.js`,
+    `${baseUrl}js/forms.js`,
   ],
 
   // CSS sources to load
