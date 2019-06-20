@@ -17,11 +17,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', (event) => {
-    // Do not add search on form pages
-    if (document.forms.length) {
-      return;
-    }
-
     addSearchElements();
     const script = document.createElement('script');
     script.innerHTML = `
