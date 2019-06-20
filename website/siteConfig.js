@@ -81,14 +81,6 @@ const siteConfig = {
      // `${baseUrl}js/search.js`,
   ],
 
-  // CSS sources to load
-  stylesheets: [
-    `${baseUrl}css/code_block_buttons.css`,
-    `${baseUrl}css/fonts/NBInternationalProEditionWeb/stylesheet.css`,
-    `${baseUrl}katex-dist/katex.min.css`,
-    `${baseUrl}css/search.css`,
-  ],
-
   // Custom markdown functions
   markdownPlugins: markdownPlugins,
 
