@@ -1,10 +1,21 @@
 /**
  * See: https://github.com/samayo/country-json/blob/master/src/country-by-abbreviation.json
  */
-const countryCodes = [
+ {
+    "country": "Andorra",
+    "abbreviation": "AD"
+  },
+  {
+    "country": "United Arab Emirates",
+    "abbreviation": "AE"
+  },
   {
     "country": "Afghanistan",
     "abbreviation": "AF"
+  },
+ {
+    "country": "Angola",
+    "abbreviation": "AG"
   },
   {
     "country": "Albania",
@@ -57,6 +68,10 @@ const countryCodes = [
   {
     "country": "Austria",
     "abbreviation": "AT"
+  },
+ {
+    "country": "Aland Islands",
+    "abbreviation": "AX"
   },
   {
     "country": "Azerbaijan",
