@@ -13,3 +13,4 @@ website/yarn.lock
 website/build/
 website/i18n/
 website/node_modules/
+doc_tmp/
