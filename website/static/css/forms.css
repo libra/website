@@ -68,7 +68,7 @@
   margin-bottom: 1em;
   display: inline-block;
   vertical-align: top;
-  height: 72px;
+  height: auto;
 }
 
 .formPage form .formControlGroup {
@@ -92,7 +92,7 @@
 .formPage form label {
   color: #39298C;
   font-weight: bold;
-  width: 100%;
+  width: 95%;
   font-size: 0.8em;
   text-align: left;
   display: inline-block;
@@ -101,6 +101,7 @@
 }
 
 .formPage form input,
+.formPage form textarea,
 .formPage form select {
   background: #F3F4FB;
   display: block;
@@ -117,7 +118,19 @@
   transition: all 0.2s;
 }
 
+.formPage form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formPage form input::placeholder,
+.formPage form textarea::placeholder,
+.formPage form select::placeholder {
+  font-size: 0.9em;
+}
+
 .formPage form input:focus,
+.formPage form textarea:focus,
 .formPage form select:focus {
   outline: none !important;
   border-color: #39298C;
@@ -159,6 +172,7 @@
   .formPage .formWrapper,
   .formPage form .inputGroup,
   .formPage form input,
+  .formPage form textarea,
   .formPage form select {
     width: 100%;
   }

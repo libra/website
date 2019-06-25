@@ -97,7 +97,9 @@
     // Iterate over the form controls
     for (i = 0; i < form.elements.length; i++) {
       const el = form.elements[i];
-      if (el.nodeName === 'INPUT' || el.nodeName === 'SELECT') {
+      if (el.nodeName === 'INPUT' ||
+          el.nodeName === 'SELECT' ||
+          el.nodeName === 'TEXTAREA') {
         fields.push(el);
       }
     }

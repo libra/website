@@ -38,6 +38,34 @@ const formFields = [{
   }]
 },{
   items: [{
+    id: 'interestsAndExpertise',
+    label: 'Describe why you’re interested in joining Libra and the expertise you’d bring to the network (1000 characters max)',
+    type: 'textarea',
+    maxLength: '1000',
+    rows: '5',
+    required: true
+  }, {
+    id: 'projects',
+    label: 'Please provide a list of your current projects related to Blockchain, include links (1000 characters max)',
+    type: 'textarea',
+    maxLength: '1000',
+    rows: '5',
+    required: true
+  }, {
+    id: 'sip',
+    label: 'SIP',
+    type: 'select',
+    required: true,
+    options: [{
+      value: 'Yes',
+      text: 'Yes'
+    }, {
+      value: 'No',
+      text: 'No'
+    }]
+  }]
+},{
+  items: [{
     id: 'organizationId',
     label: 'Organization name',
     type: 'text',
