@@ -19,6 +19,7 @@ All commands in this document assume that:
 * `git` is installed on your system.
 * Homebrew is installed on a macOS system.
 * `yum`or `apt-get` is installed on a Linux system.
+* `curl` is installed on your system.
 
 ## Steps to Submit a Transaction
 
