@@ -15,7 +15,9 @@ To contribute to Libra Core, ensure that you have the latest version of the code
 ```
 $ git clone https://github.com/libra/libra.git
 $ cd libra
-$ cargo install
+$ ./scripts/dev_setup.sh
+$ source ~/.cargo/env
+$ cargo build
 $ cargo test
 ```
 
