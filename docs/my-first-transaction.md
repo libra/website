@@ -226,7 +226,7 @@ To check the balance in Alice’s account, enter this command:
 
 Sample output on success:
 
-`Balance is: 110`
+`Balance is: 110.000000`
 
 To check the balance in Bob’s account, enter this command:
 
@@ -234,7 +234,7 @@ To check the balance in Bob’s account, enter this command:
 
 Sample output on success:
 
-`Balance is: 52`
+`Balance is: 52.000000`
 
 ## Submit a Transaction
 
