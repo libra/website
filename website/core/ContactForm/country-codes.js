@@ -563,6 +563,10 @@ const countryCodes = [
     "abbreviation": "MN"
   },
   {
+    "country": "Montenegro",
+    "abbreviation": "ME"
+  },
+  {
     "country": "Montserrat",
     "abbreviation": "MS"
   },
@@ -837,6 +841,10 @@ const countryCodes = [
   {
     "country": "Tajikistan",
     "abbreviation": "TJ"
+  },
+  {
+    "country": "Taiwan",
+    "abbreviation": "TW"
   },
   {
     "country": "Tanzania",
