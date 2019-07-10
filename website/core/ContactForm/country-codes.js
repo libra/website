@@ -1,10 +1,15 @@
 /**
  * See: https://github.com/samayo/country-json/blob/master/src/country-by-abbreviation.json
+ * See: https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.json
  */
 const countryCodes = [
   {
     "country": "Afghanistan",
     "abbreviation": "AF"
+  },
+  {
+    "country": "Åland Islands",
+    "abbreviation": "AX"
   },
   {
     "country": "Albania",
@@ -105,6 +110,10 @@ const countryCodes = [
   {
     "country": "Bolivia",
     "abbreviation": "BO"
+  },
+  {
+    "country": "Bonaire, Sint Eustatius and Saba",
+    "abbreviation": "BQ"
   },
   {
     "country": "Bosnia and Herzegovina",
@@ -213,6 +222,10 @@ const countryCodes = [
   {
     "country": "Cuba",
     "abbreviation": "CU"
+  },
+  {
+    "country": "Curaçao",
+    "abbreviation": "CW"
   },
   {
     "country": "Cyprus",
@@ -351,6 +364,10 @@ const countryCodes = [
     "abbreviation": "GT"
   },
   {
+    "country": "Guernsey",
+    "abbreviation": "GG"
+  },
+  {
     "country": "Guinea",
     "abbreviation": "GN"
   },
@@ -411,6 +428,10 @@ const countryCodes = [
     "abbreviation": "IE"
   },
   {
+    "country": "Isle of Man",
+    "abbreviation": "IM"
+  },
+  {
     "country": "Israel",
     "abbreviation": "IL"
   },
@@ -429,6 +450,10 @@ const countryCodes = [
   {
     "country": "Japan",
     "abbreviation": "JP"
+  },
+  {
+    "country": "Jersey",
+    "abbreviation": "JE"
   },
   {
     "country": "Jordan",
@@ -719,6 +744,10 @@ const countryCodes = [
     "abbreviation": "RW"
   },
   {
+    "country": "Saint Barthélemy",
+    "abbreviation": "BL"
+  },
+  {
     "country": "Saint Helena",
     "abbreviation": "SH"
   },
@@ -729,6 +758,10 @@ const countryCodes = [
   {
     "country": "Saint Lucia",
     "abbreviation": "LC"
+  },
+  {
+    "country": "Saint Martin (French part)",
+    "abbreviation": "MF"
   },
   {
     "country": "Saint Pierre and Miquelon",
@@ -759,6 +792,10 @@ const countryCodes = [
     "abbreviation": "SN"
   },
   {
+    "country": "Serbia",
+    "abbreviation": "RS"
+  },
+  {
     "country": "Seychelles",
     "abbreviation": "SC"
   },
@@ -769,6 +806,10 @@ const countryCodes = [
   {
     "country": "Singapore",
     "abbreviation": "SG"
+  },
+  {
+    "country": "Sint Maarten (Dutch part)",
+    "abbreviation": "SX"
   },
   {
     "country": "Slovakia",
@@ -857,6 +898,10 @@ const countryCodes = [
   {
     "country": "The Democratic Republic of Congo",
     "abbreviation": "CD"
+  },
+  {
+    "country": "Timor-Leste",
+    "abbreviation": "TL"
   },
   {
     "country": "Togo",
