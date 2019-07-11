@@ -14,7 +14,7 @@ We provide a command line interface (CLI) client to interact with the blockchain
 
 All commands in this document assume that:
 
-* You are running on a Linux (Red Hat or Debian-based) or macOS system.
+* You are running on a Linux (Red Hat or Debian-based) or macOS system or Windows Subsystem for Linux. 
 * You have a stable connection to the internet.
 * `git` is installed on your system.
 * Homebrew is installed on a macOS system.
