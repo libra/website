@@ -182,7 +182,7 @@ module EarmarkedLibraCoin {
     let t: R#Self.T;
 
     // Construct or "pack" a new resource of type T. Only procedures of the
-    // `EarmarkedCoin` module can create an `EarmarkedCoin.T`.
+    // `EarmarkedLibraCoin` module can create an `EarmarkedLibraCoin.T`.
     t = T {
       coin: move(coin),
       recipient: move(recipient),
@@ -202,7 +202,7 @@ module EarmarkedLibraCoin {
     let sender: address;
 
     // Remove the earmarked coin resource published under `earmarked_coin_address`.
-    // If there is resource of type T published under the address, this will fail.
+    // If there is no resource of type T published under the address, this will fail.
     t = move_from<T>(move(earmarked_coin_address));
 
     t_ref = &t;
