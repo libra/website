@@ -137,15 +137,19 @@ class Index extends React.Component {
             <MarkdownBlock>{
 bash`git clone https://github.com/libra/libra.git && cd libra`}</MarkdownBlock>
           </div>
-          <h4>2. Install Dependencies:</h4>
+          <h4>2. Checkout the Testnet Branch:</h4>
+          <div style={{marginLeft:"30px"}}>
+            <MarkdownBlock>{bash`git checkout testnet`}</MarkdownBlock>
+          </div>
+          <h4>3. Install Dependencies:</h4>
           <div style={{marginLeft:"30px"}}>
             <MarkdownBlock>{bash`./scripts/dev_setup.sh`}</MarkdownBlock>
           </div>
-            <h4>3. Run the CLI:</h4>
+            <h4>4. Run the CLI:</h4>
           <div style={{marginLeft:"30px"}}>
             <MarkdownBlock>{bash`./scripts/cli/start_cli_testnet.sh`}</MarkdownBlock>
           </div>
-            <h4>4. Run Your First Transaction:</h4>
+            <h4>5. Run Your First Transaction:</h4>
           <div style={{marginLeft:"30px"}}>
                 <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
           </div>
