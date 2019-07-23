@@ -73,7 +73,7 @@ const formFields = [{
   }, {
     id: 'organizationWebsite',
     label: 'Organization website',
-    type: 'url',
+    type: 'text',
     required: true
   }, {
     id: 'organizationType',
