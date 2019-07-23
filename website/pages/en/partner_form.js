@@ -53,7 +53,7 @@ const formFields = [{
     required: true
   }, {
     id: 'sip',
-    label: 'SIP',
+    label: 'Social Impact Partner',
     type: 'select',
     required: true,
     options: [{
