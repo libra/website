@@ -142,7 +142,7 @@ Sample output on success:
 Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
 ```
 
-#0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they have created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
+0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they have created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
 
 ### Step 3: Create Bob’s Account
 
@@ -157,7 +157,7 @@ Sample output on success:
 Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
 ```
 
-#1 is the index for Bob’s account, and the hex string is the address of Bob’s account.
+1 is the index for Bob’s account, and the hex string is the address of Bob’s account.
 For more details on index refer to [Create Alice’s Account.](#step-2-create-alice-s-account)
 
 ### Step 4 (Optional): List Accounts
@@ -177,7 +177,7 @@ The sequence number for an account indicates the number of transactions that hav
 
 Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a service that runs along with the testnet. This service only exists to facilitate minting coins for testnet and will not exist for [mainnet](reference/glossary.md#mainnet). It creates Libra with no real-world value. Assuming you have [created Alice’s and Bob’s account](#create-alice-s-and-bob-s-account), with index 0 and index 1 respectively, you can follow the steps below to add Libra to both accounts.
 
-### Step 1: Add 110 Libra to Alice’s Account
+### Step 1: Add 110 LBR to Alice’s Account
 
 To mint Libra and add to Alice’s account, enter this command:
 
@@ -199,7 +199,7 @@ Note that when the request is submitted, it means that it has been added to the 
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
 
-### Step 2: Add 52 Libra to Bob’s Account
+### Step 2: Add 52 LBR to Bob’s Account
 
 To mint Libra and add to Bob’s account, enter this command:
 
@@ -255,7 +255,7 @@ In `query sequence 0`, 0 is the index of Alice’s account. A sequence number of
 
 ### Transfer Money
 
-To submit a transaction to transfer 10 Libra from Alice’s account to Bob’s account, enter this command:
+To submit a transaction to transfer 10 LBR from Alice’s account to Bob’s account, enter this command:
 
 `libra% transfer 0 1 10`
 
@@ -298,7 +298,7 @@ The sequence number of 1 for Alice’s account (index 0) indicates that one tran
 
 ### Check the Balance in Both Accounts After Transfer
 
-To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 Libra in Alice’s account and 62 Libra in Bob’s account.
+To check the final balance in both accounts, query the balance again for each account as you did in [this step](#step-3-check-the-balance). If your transaction (transfer) executed successfully, you should see 100 LBR in Alice’s account and 62 LBR in Bob’s account.
 
 ```plaintext
 libra% query balance 0
@@ -309,7 +309,7 @@ Balance is: 62
 
 ### Congratulations!
 
-You have successfully executed your transaction on the Libra testnet and transferred 10 Libra from Alice’s account to Bob’s account!
+You have successfully executed your transaction on the Libra testnet and transferred 10 LBR from Alice’s account to Bob’s account!
 
 ## Troubleshooting
 
