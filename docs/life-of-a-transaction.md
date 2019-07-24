@@ -7,7 +7,7 @@ To get a deeper understanding of the lifecycle of a Libra transaction, we will f
 
 ## Client Submits a Transaction
 
-A Libra **client constructs a raw transaction** (let us call it T~5~raw) to transfer 10 Libra from Alice’s account to Bob’s account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
+A Libra **client constructs a raw transaction** (let us call it T~5~raw) to transfer 10 LBR from Alice’s account to Bob’s account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
 * Alice's [account address](reference/glossary.md#account-address).
 * A program that indicates the actions to be performed on Alice's behalf. It contains:
@@ -30,7 +30,7 @@ The **client signs transaction** T~5~raw with Alice's private key. The signed tr
 To describe the lifecycle of transaction T~5~, we will assume that:
 
 * Alice and Bob have [accounts](reference/glossary.md#accounts) on the Libra Blockchain.
-* Alice's account has 110 Libra.
+* Alice's account has 110 LBR.
 * The current [sequence number](reference/glossary.md#sequence-number) of Alice's account is 5 (which indicates that 5 transactions have already been sent from Alice's account).
 * There are a total of 100 validators &mdash; V~1~ to V~100~ on the network.
 * The client submits transaction T~5~ to validator V~1~
@@ -84,7 +84,7 @@ Where relevant, and following a numbered step in the lifecycle, we have provided
 
 **12** &mdash; If the block's execution result is agreed upon and signed by a set of validators that have the super-majority of votes, validator V~1~'s execution component reads the result of the block execution from the speculative execution cache and commits all the transactions in the block to persistent storage. (Consensus → Execution [CO.4](#consensus-execution-co4), [EX.3](#consensus-execution-ex3)), (Execution → Storage [EX.4](#execution-storage-ex4), [ST.3](#execution-storage-st3))
 
-**13** &mdash; Alice's account will now have 100 Libra, and its sequence number will be 6. If T~5~ is replayed by Bob, it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
+**13** &mdash; Alice's account will now have 100 LBR, and its sequence number will be 6. If T~5~ is replayed by Bob, it will be rejected as the sequence number of Alice's account (6) is greater than the sequence number of the replayed transaction (5).
 
 ## Validator Component Interactions
 
