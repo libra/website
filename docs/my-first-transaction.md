@@ -55,6 +55,7 @@ The setup script performs these actions:
 * Installs CMake &mdash; to manage the build process.
 * Installs protoc &mdash; a compiler for protocol buffers.
 * Installs Go &mdash; for building protocol buffers.
+* Installs protobuf  v2.7 > 
 
 If your setup fails, see [Troubleshooting](#setup)
 
