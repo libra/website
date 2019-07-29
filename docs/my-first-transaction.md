@@ -319,6 +319,9 @@ You have successfully executed your transaction on the Libra testnet and transfe
     * Run `rustup update` from your libra directory.
 * Update protoc:
     * Update `protoc` to version 3.6.0 or above.
+* Install ssl development packages
+    * `apt install libssl-dev` (Debian, Ubuntu, etc)
+    * `yum install openssl-devel` (CentOS, Fedora, etc)
 * Re-run setup script from your libra directory:
     * `./scripts/dev_setup.sh`
 
