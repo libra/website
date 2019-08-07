@@ -167,7 +167,43 @@ If you enter only the major command, it will show the help information for that 
           start_sequence_number - The sequence number of events to query starting from.
           ascending - The direction of query from start_sequence_number.
           limit - The maximum number of events to query.
+          ---
+#### dev | d &mdash; Operations related to Move transaction scripts and modules.
 
+<blockquote class="block_note">
+
+ **Note:** This command can only be used on a local network, it cannot be used on testnet.
+
+ </blockquote>
+
+Subcommands include:
+
+`compile | c` &mdash; Compile a Move program.
+
+    Usage:
+      compile | c <sender_account_address>|<sender_account_ref_id> <file_path> <module|script> [output_file_path (compile into tmp file by default)]
+    Arguments:
+      sender_account_address|sender_account_ref_id - Address of the sender account|Local index of the sender account.
+      module|script - Distinguishes between move modules and move scripts.
+      file_path - Path to the source Move program written in Intermediate Representation (IR).
+      output_file_path - (Optional) Where the compiled module will be saved.
+
+`publish | p` &mdash; Publish a Move module on the local blockchain.
+
+    Usage:
+      publish | p <sender_account_address>|<sender_account_ref_id> <compiled_module_path>
+    Arguments:
+      sender_account_address|sender_account_ref_id - Address of the sender account|Local index of the sender account
+      compiled_module_path - Path to the compiled module.
+
+`execute | e` &mdash; Execute Move transaction script.
+
+    Usage:
+      execute|e <sender_account_address>|<sender_account_ref_id> <compiled_module_path> [script args]
+    Arguments:
+      sender_account_address|sender_account_ref_id - Address of sender account|Local index of the sender account.
+      compiled_module_path -  Path to the compiled transaction script.
+      script args - Arguments expected by the transaction script.
 ---
 
 **`quit | q!` &mdash; Exits the CLI. No subcommand is required.**
@@ -182,6 +218,3 @@ Account creation provided by the CLI generates a local keypair, but nothing is c
 
 * Transfer coins to the address you wish to create. If the recipient account does not exist, the recipient account will be created first and then coins will be transferred. The sender pays for both account creation and transfer.
 * Send a mint transaction to mint coins to an account. If the account does not exist, the account will be created first and the coins wil be minted later. Unlike other transactions, a nonexistent account itself can request a mint transaction.  For the testnet, there is no explicit limit on how many coins an account can mint. It's designed to allow the users to create coins to experiment on the testnet.
-
-
-
