@@ -39,6 +39,13 @@ Perform the following steps to submit a transaction to a validator node on the L
 ```bash
 git clone https://github.com/libra/libra.git
 ```
+
+### Change to the libra directory:
+
+```
+cd libra
+```
+
 ### Checkout the testnet Branch
 
 ```bash
@@ -47,10 +54,9 @@ git checkout testnet
 
 ### Install Dependencies
 
-To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies, as shown below:
+To setup Libra Core, run the setup script to install the dependencies, as shown below:
 
 ```
-cd libra
 ./scripts/dev_setup.sh
 ```
 The setup script performs these actions:
