@@ -1,5 +1,5 @@
 <a href="https://developers.libra.org">
-	<img width="200" src="./libra.png" alt="Libra Logo" />
+		<img width="200" src="./libra.png" alt="Libra Logo" />
 </a>
 
 <hr/>
