@@ -31,32 +31,33 @@ while getopts 'hb' flag; do
 done
 
 # Clone libra
-rm -rf doc_tmp
-mkdir doc_tmp
-git clone git@github.com:libra/libra.git doc_tmp/libra
+rm -rf libra
+mkdir libra
+git submodule update --init --recursive
+# git clone git@github.com:libra/libra.git libra/doc_tmp
 
 # manually copy crate README files from fixed directory
 ###
 echo "-----------------------------------"
 echo "Manually Copying READMEs to docs/crates"
 echo "-----------------------------------"
-sed -i.old '/^# /d' doc_tmp/libra/admission_control/README.md; cp doc_tmp/libra/admission_control/README.md docs/crates/admission-control.md
-sed -i.old '/^# /d' doc_tmp/libra/language/bytecode_verifier/README.md; cp doc_tmp/libra/language/bytecode_verifier/README.md docs/crates/bytecode-verifier.md
-sed -i.old '/^# /d' doc_tmp/libra/consensus/README.md; cp doc_tmp/libra/consensus/README.md docs/crates/consensus.md
-sed -i.old '/^# /d' doc_tmp/libra/crypto/legacy_crypto/README.md; cp doc_tmp/libra/crypto/legacy_crypto/README.md docs/crates/crypto.md
-sed -i.old '/^# /d' doc_tmp/libra/execution/README.md; cp doc_tmp/libra/execution/README.md docs/crates/execution.md
-sed -i.old '/^# /d' doc_tmp/libra/language/README.md; cp doc_tmp/libra/language/README.md docs/crates/move-language.md
-sed -i.old '/^# /d' doc_tmp/libra/language/compiler/README.md; cp doc_tmp/libra/language/compiler/README.md docs/crates/ir-to-bytecode.md
-sed -i.old '/^# /d' doc_tmp/libra/mempool/README.md; cp doc_tmp/libra/mempool/README.md docs/crates/mempool.md
-sed -i.old '/^# /d' doc_tmp/libra/network/README.md; cp doc_tmp/libra/network/README.md docs/crates/network.md
-sed -i.old '/^# /d' doc_tmp/libra/storage/README.md; cp doc_tmp/libra/storage/README.md docs/crates/storage.md
-sed -i.old '/^# /d' doc_tmp/libra/language/vm/README.md; cp doc_tmp/libra/language/vm/README.md docs/crates/vm.md
+sed -i.old '/^# /d' libra/admission_control/README.md; cp libra/admission_control/README.md docs/crates/admission-control.md
+sed -i.old '/^# /d' libra/language/bytecode_verifier/README.md; cp libra/language/bytecode_verifier/README.md docs/crates/bytecode-verifier.md
+sed -i.old '/^# /d' libra/consensus/README.md; cp libra/consensus/README.md docs/crates/consensus.md
+sed -i.old '/^# /d' libra/crypto/crypto/README.md; cp libra/crypto/crypto/README.md docs/crates/crypto.md
+sed -i.old '/^# /d' libra/execution/README.md; cp libra/execution/README.md docs/crates/execution.md
+sed -i.old '/^# /d' libra/language/README.md; cp libra/language/README.md docs/crates/move-language.md
+sed -i.old '/^# /d' libra/language/compiler/README.md; cp libra/language/compiler/README.md docs/crates/ir-to-bytecode.md
+sed -i.old '/^# /d' libra/mempool/README.md; cp libra/mempool/README.md docs/crates/mempool.md
+sed -i.old '/^# /d' libra/network/README.md; cp libra/network/README.md docs/crates/network.md
+sed -i.old '/^# /d' libra/storage/README.md; cp libra/storage/README.md docs/crates/storage.md
+sed -i.old '/^# /d' libra/language/vm/README.md; cp libra/language/vm/README.md docs/crates/vm.md
 
 echo "-----------------------------------"
 echo "Manually Copy Coding Guidelines"
 echo "-----------------------------------"
-sed -i.old '/^# Libra Core coding guidelines/d' doc_tmp/libra/documentation/coding_guidelines.md
-cp doc_tmp/libra/documentation/coding_guidelines.md docs/community/coding-guidelines.md
+sed -i.old '/^# Libra Core coding guidelines/d' libra/documentation/coding_guidelines.md
+cp libra/documentation/coding_guidelines.md docs/community/coding-guidelines.md
 
 # echo "-----------------------------------"
 # echo "Generating API reference via Rustdoc"
