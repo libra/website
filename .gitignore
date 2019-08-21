@@ -9,8 +9,11 @@
 # Unit test / coverage reports
 
 # Docusaurus
-website/yarn.lock
 website/build/
 website/i18n/
 website/node_modules/
-doc_tmp/
+
+# libra/libra is cloned from github and used to extract crate READMEs and Coding Guidelibnes
+libra
+docs/crates/*
+docs/community/coding-guidelines.md
