@@ -9,6 +9,9 @@ Libra Core is the official name for the open-source implementation of the Libra 
 * Libra Core includes both validator and client functionalities.
 * Libra Core is written in Rust.
 
+The overview picture for libra network architecture on docker development environment.
+![alt text](../website/static/img/docker_development_4nodes.png)
+
 ## Component READMEs of Libra Core
 
 * [Admission Control](crates/admission-control.md)
