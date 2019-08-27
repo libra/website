@@ -5,34 +5,20 @@ title: Reporting Vulnerabilities
 
 This document outlines security procedures and general policies for the Libra project.
 
-> **Note**: As Libra Core is currently in the prototype stage and does not power a blockchain with a currency that has real-world value, our security procedures are not fully in place. We will release a more complete disclosure policy prior to the launch of the mainnet.
+> **Note**: As Libra Core is currently in the prototype stage and does not power a blockchain with a cryptocurrency that has real-world value, our security procedures are not fully in place. We will release a more complete disclosure policy prior to the launch of the mainnet.
 
 ## Reporting a Bug
 
 The Libra team and community take all security bugs in the Libra project
-seriously. Thank you for improving the security of Libra. We appreciate your
-efforts and responsible disclosure. We will make every effort to acknowledge
-your contributions.
+seriously to ensure the security of the Libra Blockchain.
 
-Report security bugs by emailing
-[security@libra.org](mailto:security@libra.org).
 
-A member of the security team will acknowledge your email. After the initial
-reply to your report is sent, the security team will try to keep you informed
-on the progress towards a fix and a full announcement. The security team may
-ask you for additional information or guidance.
+Please report security bugs on [Libra’s Bug Bounty with HackerOne](https://hackerone.com/users/sign_in).
 
-## Disclosure Policy
+You can also report security bugs by emailing us directly at [security@libra.org](mailto:security@libra.org).
 
-When the security team receives a security bug report, they will assign it to a
-primary handler. The primary handler will coordinate the fix and release
-process which involves the following steps:
-
-  * Confirm the problem and determine the affected versions.
-  * Audit code to find any potential similar problems.
-  * Prepare fixes for all releases that are still under maintenance.
+Thank you for improving the security of the Libra Blockchain! Your efforts and responsible disclosure are appreciated, and every effort will be made to acknowledge your contributions in a timely manner.
 
 ## Comments on This Policy
 
-If you have suggestions on how this process could be improved, please submit a
-pull request.
+If you have suggestions on how this process could be improved, please submit a pull request.
