@@ -25,8 +25,9 @@ function Help(props) {
             <h1>Sorry we can't find that page.</h1>
           </header>
           <p>You will be redirected to our blog shortly.</p>
+          <p>You can go there manually by clicking <a href="https://developers.libra.org/blog">here</a>.</p>
           <script type = "text/javascript">
-          window.location = "https://developers.libra.org/blog";
+          window.location.replace = "https://developers.libra.org/blog";
           </script>
         </div>
       </Container>
