@@ -3,6 +3,14 @@ author: Michael Engle, Libra Association
 title: Libra Bug Bounty Open to All
 ---
 
+<script>
+	let items = document.getElementsByClassName("post-meta");	
+	for (var i = items.length - 1; i >= 0; i--) {
+		console.log(items[i], items[i].innerText);
+		if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">August 27, 2019</p>';
+	}
+</script>
+
 When we built the Libra Blockchain, security was top of mind. If people are going to rely on Libra for their everyday financial needs, it is critical that the infrastructure behind it be dependable and safe. This is one of the reasons we shared our plans well in advance of launch and open-sourced an early-stage version of the Libra Blockchain code, Libra Core, under an Apache 2.0 License. This testnet will help us gather feedback from the community about the direction of the project and work toward ensuring a scalable, reliable, and secure launch.
 
 Another way to gather feedback and reinforce the security of the Libra Blockchain is through a bug bounty. **Today we are excited to announce the launch of the Libra Bug Bounty program, which is open to security researchers around the world.** You can find more information about the program [here](https://hackerone.com/libra).
