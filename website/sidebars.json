@@ -15,10 +15,8 @@
         }
     ],
     "Try Libra Core": [
-    	"my-first-transaction",
-    	"move-overview",
-      "run-local-network",
-      "run-move-locally"
+        "my-first-transaction",
+        "move-overview"
     ],
     "Community" : [
     	"libra-open-source-paper",
