@@ -154,7 +154,7 @@ import 0x0.LibraCoin;
 import {{sender}}.MyModule;
 
 main(amount: u64) {
-  let coin: R#LibraCoin.T;
+  let coin: LibraCoin.T;
   coin = LibraAccount.withdraw_from_sender(move(amount));
   //calls the id procedure defined in our custom module
   LibraAccount.deposit(get_txn_sender(), MyModule.id(move(coin)));
