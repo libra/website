@@ -5,7 +5,6 @@ title: Libra Developer Spotlight
 <script>
     let items = document.getElementsByClassName("post-meta");   
     for (var i = items.length - 1; i >= 0; i--) {
-        console.log(items[i], items[i].innerText);
         if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">September 12, 2019</p>';
     }
 </script>
