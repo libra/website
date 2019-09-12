@@ -42,7 +42,9 @@ Those transacting on the testnet are building some of the earliest Libra applica
 
 For users that simply wish to try out Libra without setting up a client, a disposable web wallet created by [Kulap](https://www.kulap.io/) can be tried out [here](https://dev.kulap.io/libra/#/) – it even comes with [an extensive guide](https://medium.com/kulapofficial/the-first-libra-wallet-poc-building-your-own-wallet-and-apis-3cb578c0bd52) on building your own. Users can create their wallets (with 100 inactive Test Libra Coins) and just open a web page to send it to their friends via QR Code! 
 
-Nattapon Nimakul, Smart Contract Developer at Kulap.io said; _"This POC Libra wallet focusses on users to show how it works by allowing them to play it on their smartphone, laptop or desktop."_
+Nattapon Nimakul, Smart Contract Developer at Kulap.io said; 
+
+> _"This POC Libra wallet focusses on users to show how it works by allowing them to play it on their smartphone, laptop or desktop."_
 
 It is equally important to recognise the work done by talented developers to lower the barriers to entry for others – for those more comfortable programming in traditional languages, gRPC clients have surfaced ([JavaScript](https://community.libra.org/t/libra-grpc-the-libra-client-for-javascript-lovers/691), [Python](https://github.com/egorsmkv/libra-grpc-py), [Go](https://github.com/codemaveric/libra-go)), and Docker aficionados will be happy to hear that full-stack dev [Michael Pambo Ognana](https://twitter.com/_mikamboo) has [released an image](https://gist.github.com/mikamboo/2bc9ca3b756fd77c707e59033a475d2e) for running through your first Libra testnet transaction. 
 
