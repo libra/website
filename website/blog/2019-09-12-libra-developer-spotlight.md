@@ -52,7 +52,7 @@ Other notable mentions include the [first token launched on Libra](https://commu
 
 The gRPC endpoints exposed by the Libra Core client have allowed for great flexibility when it comes to programming. Members of the community have been quick to release implementations of clients in a range of languages, so that developers could rapidly start building Libra apps in [Go](http://github.com/philippgille/libra-sdk-go), [Python](http://github.com/bandprotocol/pylibra), [Java](http://github.com/ketola/jlibra), [PHP](http://github.com/connected-io/php-libra), [JavaScript](http://github.com/bandprotocol/libra-web) and [C#](http://github.com/Rio-dapp/libra-csharp-sdk).
 
-Need somewhere to spend your testnet coins? Try out Kulap’s [Libra Coffee](https://community.libra.org/) e-commerce prototype.  
+Need somewhere to spend your testnet coins? Try out Kulap’s [Libra Coffee](https://www.libracoffee.io/) e-commerce prototype.  
 
 ### How to Get Involved
 
