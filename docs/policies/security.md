@@ -13,7 +13,7 @@ The Libra team and community take all security bugs in the Libra project
 seriously to ensure the security of the Libra Blockchain.
 
 
-Please report security bugs on [Libra’s Bug Bounty with HackerOne](https://hackerone.com/users/sign_in).
+Please report security bugs on [Libra’s Bug Bounty with HackerOne](https://hackerone.com/libra).
 
 You can also report security bugs by emailing us directly at [security@libra.org](mailto:security@libra.org).
 
