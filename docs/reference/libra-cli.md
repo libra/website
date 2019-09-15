@@ -99,7 +99,7 @@ If you enter only the major command, it will show the help information for that 
 #### `transfer | transferb | t | tb` &mdash; Transfer coins from one account to another. Suffix 'b' is for blocking.
 
     Usage:
-        transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)]
+        transfer|transferb|t|tb <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 100000)]
     Arguments:
         sender_account_address | sender_account_ref_id - The account from which this transfer transaction
             is sent. The sender account pays for the gas.

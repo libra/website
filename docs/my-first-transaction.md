@@ -85,7 +85,7 @@ account | a
 query | q
   Query operations
 transfer | transferb | t | tb
-  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)] Suffix 'b' is for blocking.
+  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 100000)] Suffix 'b' is for blocking.
   Transfer coins from account to another.
 help | h
   Prints this help
