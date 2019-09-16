@@ -22,7 +22,7 @@ module MyModule {
   import 0x0.LibraCoin;
 
   // The identity function for coins: takes a LibraCoin.T as input and hands it back
-  public id(c: R#LibraCoin.T): R#LibraCoin.T {
+  public id(c: LibraCoin.T): LibraCoin.T {
     return move(c);
   }
 }
@@ -154,7 +154,7 @@ import 0x0.LibraCoin;
 import {{sender}}.MyModule;
 
 main(amount: u64) {
-  let coin: R#LibraCoin.T;
+  let coin: LibraCoin.T;
   coin = LibraAccount.withdraw_from_sender(move(amount));
   //calls the id procedure defined in our custom module
   LibraAccount.deposit(get_txn_sender(), MyModule.id(move(coin)));

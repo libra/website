@@ -74,12 +74,8 @@ main(payee: address, amount: u64) {
   // be at the beginning of the procedure. Declaration and initialization of
   // variables are separate operations, but the bytecode verifier will prevent
   // any attempt to use an uninitialized variable.
-  let coin: R#LibraCoin.T;
-  // The R# part of the type above is one of two *kind annotation* R# and V#
-  // (shorthand for "Resource" and "unrestricted Value"). These annotations
-  // must match the kind of the type declaration (e.g., does the LibraCoin
-  // module declare `resource T` or `struct T`?).
-
+  let coin: LibraCoin.T;
+  
   // Acquire a LibraCoin.T resource with value `amount` from the sender's
   // account.  This will fail if the sender's balance is less than `amount`.
   coin = LibraAccount.withdraw_from_sender(move(amount));
@@ -103,7 +99,7 @@ This transaction script has an unfortunate problem &mdash; it will fail if there
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
 main(payee: address, amount: u64) {
-  let coin: R#LibraCoin.T;
+  let coin: LibraCoin.T;
   let account_exists: bool;
 
   // Acquire a LibraCoin.T resource with value `amount` from the sender's
@@ -134,8 +130,8 @@ Let us look at a more complex example. In this example, we will use a transactio
 import 0x0.LibraAccount;
 import 0x0.LibraCoin;
 main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
-  let coin1: R#LibraCoin.T;
-  let coin2: R#LibraCoin.T;
+  let coin1: LibraCoin.T;
+  let coin2: LibraCoin.T;
   let total: u64;
 
   total = move(amount1) + copy(amount2);
@@ -172,14 +168,14 @@ module EarmarkedLibraCoin {
   // A wrapper containing a Libra coin and the address of the recipient the
   // coin is earmarked for.
   resource T {
-    coin: R#LibraCoin.T,
+    coin: LibraCoin.T,
     recipient: address
   }
 
   // Create a new earmarked coin with the given `recipient`.
   // Publish the coin under the transaction sender's account address.
-  public create(coin: R#LibraCoin.T, recipient: address) {
-    let t: R#Self.T;
+  public create(coin: LibraCoin.T, recipient: address) {
+    let t: Self.T;
 
     // Construct or "pack" a new resource of type T. Only procedures of the
     // `EarmarkedLibraCoin` module can create an `EarmarkedLibraCoin.T`.
@@ -189,16 +185,16 @@ module EarmarkedLibraCoin {
     };
 
     // Publish the earmarked coin under the transaction sender's account
-    // address. Each account can contain at most one resource of a given type; 
+    // address. Each account can contain at most one resource of a given type;
     // this call will fail if the sender already has a resource of this type.
     move_to_sender<T>(move(t));
     return;
   }
 
   // Allow the transaction sender to claim a coin that was earmarked for her.
-  public claim_for_recipient(earmarked_coin_address: address): R#Self.T {
-    let t: R#Self.T;
-    let t_ref: &R#Self.T;
+  public claim_for_recipient(earmarked_coin_address: address): Self.T acquires T {
+    let t: Self.T;
+    let t_ref: &Self.T;
     let sender: address;
 
     // Remove the earmarked coin resource published under `earmarked_coin_address`.
@@ -218,8 +214,8 @@ module EarmarkedLibraCoin {
   }
 
   // Allow the creator of the earmarked coin to reclaim it.
-  public claim_for_creator(): R#Self.T {
-    let t: R#Self.T;
+  public claim_for_creator(): Self.T acquires T {
+    let t: Self.T;
     let sender: address;
 
     sender = get_txn_sender();
@@ -229,8 +225,8 @@ module EarmarkedLibraCoin {
   }
 
   // Extract the Libra coin from its wrapper and return it to the caller.
-  public unwrap(t: R#Self.T): R#LibraCoin.T {
-    let coin: R#LibraCoin.T;
+  public unwrap(t: Self.T): LibraCoin.T {
+    let coin: LibraCoin.T;
     let recipient: address;
 
     // This "unpacks" a resource type by destroying the outer resource, but
