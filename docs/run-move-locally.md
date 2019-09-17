@@ -22,7 +22,7 @@ module MyModule {
   import 0x0.LibraCoin;
 
   // The identity function for coins: takes a LibraCoin.T as input and hands it back
-  public id(c: R#LibraCoin.T): R#LibraCoin.T {
+  public id(c: LibraCoin.T): LibraCoin.T {
     return move(c);
   }
 }
