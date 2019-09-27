@@ -5,7 +5,7 @@ title: Life of a Transaction
 
 To get a deeper understanding of the lifecycle of a Libra transaction, we will follow a transaction on its journey from being submitted to a Libra validator to being committed to the Libra Blockchain. We will then “zoom-in” on each logical component of a validator and take a look at its interactions with other components.
 
-## Client Submits a Transaction
+## Client Submits a Peer-To-Peer Transaction
 
 A Libra **client constructs a raw transaction** (let us call it T~5~raw) to transfer 10 LBR from Alice’s account to Bob’s account. The raw transaction includes the following fields. Each field is linked to its glossary definition.
 
@@ -93,7 +93,7 @@ In the [previous section](#lifecycle-of-the-transaction), we described the typic
 * Would like to get an overall idea of how the system works under the covers.
 * Are interested in eventually contributing to the Libra Core software.
 
-For our narrative, we will assume that a client submits a  transaction T~N~ to a validator V~X~. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (queries for existing information on the blockchain).
+For our narrative, we will assume that a client submits a transaction T~N~ to a validator V~X~. For each validator component, we will describe each of its inter-component interactions in subsections under the respective component's section. Note that subsections describing the inter-component interactions are not listed strictly in the order in which they are performed. Most of the interactions are relevant to the processing of a transaction, and a few are relevant to read queries by the client (queries for existing information on the blockchain).
 
  Let us look at the core logical components of a validator node:
 
@@ -115,7 +115,7 @@ Admission Control is the _sole external interface_ of the validator. Any request
 
 ### Client → AC (AC.1)
 
-A client submits a  transaction to the admission control of a validator V~X~. This is done via:
+A client submits a transaction to the admission control of a validator V~X~. This is done via:
 `AC::SubmitTransaction()`.
 
 ### AC → VM (AC.2)
@@ -152,7 +152,7 @@ When AC or mempool request the VM to validate a transaction via `VM::ValidateTra
 
 * Checks that the input signature on the signed transaction is correct (to reject incorrectly signed transactions).
 * Checks that the sender's account authentication key is the same as the hash of the public key (corresponding to the private key used to sign the transaction).
-* Verifies that the sequence number for the transaction is not less than the current sequence number for the sender's account.  Doing this check prevents the replay of the same transaction against the sender's account.
+* Verifies that the sequence number for the transaction is not less than the current sequence number for the sender's account. Doing this check prevents the replay of the same transaction against the sender's account.
 * Verifies that the program in the signed transaction is not malformed, as a malformed program cannot be executed by the VM.
 * Verifies that there is sufficient balance in the sender's account to support the max gas amount specified in the transaction, which ensures that the transaction can pay for the resources it uses.
 
@@ -238,7 +238,7 @@ Execution's job is to coordinate the execution of a block of transactions and ma
 
 ### Consensus → Execution (EX.1)
 
-*  Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
+* Consensus requests execution to execute a block of transactions via: `Execution::ExecuteBlock()`.
 * Execution maintains a “scratchpad,” which holds in-memory copies of the relevant portions of the [Merkle accumulators](#merkle-accumulators). This information is used to calculate the root hash of the current state of the blockchain.
 * The root hash of the current state is combined with the information about the transactions in the block to determine the new root hash of the accumulator. This is done prior to persisting any data, and to ensure that no state or transaction is stored until agreement is reached by a quorum of validators.
 * Execution computes the speculative root hash and then consensus of V~X~ signs this root hash and attempts to reach agreement on this root hash with other validators.
@@ -249,7 +249,7 @@ When consensus requests execution to execute a block of transactions via `Execut
 
 ### Consensus → Execution (EX.3)
 
-If a quorum of validators agrees on the block execution results, consensus of each validator informs its execution component via `Execution::CommitBlock()` that this block is ready to be committed.  This call to the execution component will include the signatures of the agreeing validators to provide proof of their agreement.
+If a quorum of validators agrees on the block execution results, consensus of each validator informs its execution component via `Execution::CommitBlock()` that this block is ready to be committed. This call to the execution component will include the signatures of the agreeing validators to provide proof of their agreement.
 
 ### Execution → Storage (EX.4)
 
