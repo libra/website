@@ -9,9 +9,6 @@ title:  September Libra Developer Update - Roadmap #1
     }
 </script>
 
-
-## September Libra Developer Update
-
 Since the official Libra project announcement in June, response from the developer community has been thrilling to watch. Developers have released several blockchain explorers ([libranaut](https://libranaut.io), [libraview](https://libraview.org), [librabrowser]( https://librabrowser.io), and [libexplorer](https://libexplorer.com)) and integrated Libra testnet into their wallets (ZenGo, including a large PR to Libra Core). We&#39;ve also seen other blockchain projects integrate Move into their systems ([Solana](https://medium.com/solana-labs/solana-now-supports-libras-move-vm-f5fabaf3033c)). Calibra continues to develop Libra Core heavily on [GitHub](https://github.com/libra/libra). The team has also released two new guides: one for [running Move applications locally](https://developers.libra.org/docs/run-move-locally) and another showing [how to run your own network](https://developers.libra.org/docs/run-local-network). The [Libra Discourse forums]() are active with discussions about transaction scripts, client development, and interest in Libra events continues to grow.
 
 Steady technical progress and open and transparent dialogue are key to growing developer interest in the project. As Libra Core progresses towards Mainnet, look for blog posts like this one to find roadmap updates.
@@ -72,7 +69,7 @@ We continue to complete design work for all priority features. We are making goo
 
 - Waypoints will provide clients with an external source of information about the history of the blockchain.
 
-**TCB (****Trusted Computing Base)**
+**TCB (Trusted Computing Base)**
 
 - The trusted computing base (TCB) defines subsets of components that are critical to system safety and stability. Minimizing the hardware and software dependencies of the critical components helps avoid inadvertent bugs and malicious attacks.
 
