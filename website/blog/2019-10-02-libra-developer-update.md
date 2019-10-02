@@ -87,7 +87,7 @@ We continue to complete design work for all priority features. We are making goo
   - Implemented vectors and explored other collection types to support.
 - We landed [#597](https://github.com/libra/libra/pull/597) which unblocks validator set management. There is additional work to support this in the verifier and as part of the correctness assurances.
 
-Libra Pre-Mainnet
+### Libra Pre-Mainnet
 
 As the project tracks towards the Mainnet milestone, it is necessary to bring more nodes online while maintaining the operation of the testnet. To aid this effort, we&#39;ve created a staging environment that we call  Pre-Mainnet. Pre-Mainnet is currently only accessible to partner nodes to allow them to connect to each other. A handful of partners have already deployed their nodes and have them communicating with each other. We expect to have more partners coming online shortly. We want to ensure the Libra network can meet rigorous performance benchmarks and overall system stability before opening access. Stay tuned.
 
