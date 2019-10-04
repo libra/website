@@ -94,3 +94,7 @@ As the project tracks towards the Mainnet milestone, it is necessary to bring mo
 ### Come Join Us In The Forum
 
 If you have any additional questions or comments for engineering team about this roadmap, please leave a comment [here](https://community.libra.org/c/announcements).
+
+---
+
+As the Libra Association has maintained all along, responsible financial innovation, and regulatory oversight are not in contest. The Libra project will comply with applicable laws and will not launch until this is achieved.
