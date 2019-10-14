@@ -71,6 +71,10 @@
   height: auto;
 }
 
+.formPage form .inputGroup.hidden {
+  display: none;
+}
+
 .formPage form .formControlGroup {
   margin: 1.5em 0 0 11em;
 }
@@ -98,6 +102,10 @@
   display: inline-block;
   vertical-align: middle;
   display: block;
+}
+
+form label.required:after {
+  content: " *";
 }
 
 .formPage form input,

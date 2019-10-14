@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', function(event) {
   const cookieKey = 'libra-developer-website.cookies-accepted';
   const cookiesAccepted = localStorage.getItem(cookieKey);
   const cookieBanner = document.getElementById('cookie-banner');
@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     localStorage.setItem(cookieKey, true);
     cookieBanner.classList.add('closed');
     document.body.classList.remove('cookie-banner-open');
-    
+
     window.setTimeout(function(){
       cookieBanner.style.display = 'none';
-    }, 200); 
+    }, 200);
   });
 });

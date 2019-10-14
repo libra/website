@@ -26,10 +26,12 @@ const getInput = (id, inputProps) => {
  *
  */
 const TextInput = ({ label, id, ...inputProps }) => {
-  const fieldLabel = inputProps.required ? `${label}*` : label;
+  const labelClass = inputProps.required ? 'required' : '';
+  const extraClassName = inputProps.className || '';
+
   return (
-    <div className="inputGroup">
-      <label htmlFor={id}>{fieldLabel}</label>
+    <div className={`inputGroup ${extraClassName}`}>
+      <label className={labelClass} htmlFor={id}>{label}</label>
       {getInput(id, inputProps)}
     </div>
   );
