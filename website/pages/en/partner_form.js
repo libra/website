@@ -219,7 +219,9 @@ const formFields = [{
       value: 'greaterThan100MUSD',
       text: '>100M USD'
     }]
-  }, {
+  }]
+ }, {
+  items: [{
     id: 'organizationGeoCoverage',
     label: 'Geographic coverage (please select all that apply to you)',
     type: 'select',
