@@ -221,9 +221,12 @@ const formFields = [{
     }]
   }, {
     id: 'organizationGeoCoverage',
-    label: 'Geographic coverage',
+    label: 'Geographic coverage (please select all that apply to you)',
     type: 'select',
     required: true,
+    multiple: true,
+    className: 'selectMulti',
+    placeholderText: 'Hold down ctrl or cmd to select multiple options',
     options: [{
       value: 'Africa',
       text: 'Africa'
