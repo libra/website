@@ -12,8 +12,11 @@
   var nonVcFields = [
     'enterpriseUserBase',
     'enterpriseCustomerBase',
-    'enterpriseMarketCap',
   ];
+
+  var nonVcFieldsRequired = [
+    'enterpriseMarketCap',
+  ]
 
   function showFields(fields, required) {
     for (var i = 0, fieldId; fieldId = fields[i]; i++) {
@@ -54,6 +57,7 @@
     } else {
       hideFields(enterpriseFields);
       hideFields(nonVcFields);
+      hideFields(nonVcFieldsRequired);
       hideFields(vcFields);
     }
   }
@@ -62,9 +66,11 @@
     if (val === 'VCIForg') {
       showFields(vcFields, true);
       hideFields(nonVcFields);
+      hideFields(nonVcFieldsRequired);
     } else {
       hideFields(vcFields);
-      showFields(nonVcFields, true);
+      showFields(nonVcFields, false);
+      showFields(nonVcFieldsRequired, true);
     }
   }
 

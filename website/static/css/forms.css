@@ -165,6 +165,10 @@ form label.required:after {
   top: -2em;
 }
 
+.formPage form .selectWrapper.selectMulti::after {
+  display: none;
+}
+
 .formPage form select {
   -moz-appearance: none;
   -webkit-appearance: none;
