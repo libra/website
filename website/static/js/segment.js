@@ -169,6 +169,22 @@
   /**
    * Sends the submitted form data to segment in a track call.
    */
+
+  function getMultiSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+
+    for (var i=0; i < options.length; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
+  }
+
   function trackFormData(form) {
     // FIXME: This needs to be in sync with the siteConfig
     const baseUrl = '/docs/';
@@ -181,8 +197,13 @@
       const data = {
         formId: form.id,
       };
+      
       fields.forEach(function(field) {
         data[field.id] = field.value;
+
+        if (field.multiple) {
+          data[field.id] = getMultiSelectValues(field);
+        }
       });
 
       const trackName = getTrackFormEventName(form);
