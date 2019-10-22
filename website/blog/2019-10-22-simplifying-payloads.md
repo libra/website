@@ -16,7 +16,7 @@ We are simplifying the types of payload a Libra transaction can contain. Current
 
 ## Payload of a Libra Transaction
 
-Currently, the <u>payload of a Libra transaction</u> has the following three variants:
+Currently, the [payload of a Libra transaction](https://github.com/libra/libra/blob/1f04143cb2490294ad4401ab73822d80260c4262/types/src/transaction.rs#L273-L281) has the following three variants:
 ```
 pub enumTransactionPayload {
     /// A regular programmatic transaction that is executed by the VM.
