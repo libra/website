@@ -1,5 +1,5 @@
 ---
-author: Libra Association
+author: Bison Trails
 title: A Guide To Running Libra Validators
 ---
 <script>
@@ -57,7 +57,7 @@ At Bison Trails, we also have proprietary systems that periodically snapshot the
 
 At Bison Trails, we&#39;re accustomed to adding a monitoring layer alongside the running blockchain software so that we can anticipate and take any scaling actions required through the normal evolution of the network and can react to any unanticipated events.
 
-In the case of the Libra blockchain, the core development team has given all validators a huge head start by shipping software that already publishes extremely useful metrics via Prometheus. [Prometheus]() is an excellent time-series data solution that is becoming the gold standard of metrics and alerting for devops teams. The best way to experience these metrics is to run a validator network via the Terraform method described above in [Getting Started Running a Validator](). As you can see in the screenshot below, it provides an out-of-the-box dashboard with many of the key metrics for individual as well as network-wide nodes.
+In the case of the Libra blockchain, the core development team has given all validators a huge head start by shipping software that already publishes extremely useful metrics via Prometheus. [Prometheus]() is an excellent time-series data solution that is becoming the gold standard of metrics and alerting for devops teams. The best way to experience these metrics is to run a validator network via the Terraform method described above in [Getting Started Running a Validator](#getting-started-running-a-validator-the-short-version). As you can see in the screenshot below, it provides an out-of-the-box dashboard with many of the key metrics for individual as well as network-wide nodes.
 
 Figure 3: Libra core ships with working metrics and example dashboards
 
