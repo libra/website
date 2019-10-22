@@ -1,11 +1,11 @@
 ---
-author: Runtian Zhou
+author: Calibra Engineering
 title: Simplifying Libra Transaction Payloads: Deprecation of the "Program" Type
 ---
 <script>
     let items = document.getElementsByClassName("post-meta");   
     for (var i = items.length - 1; i >= 0; i--) {
-        if (items[i].innerHTML = '<p class="post-meta">October 21, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 21, 2019</p>';
+        if (items[i].innerHTML = '<p class="post-meta">October 22, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 22, 2019</p>';
     }
 </script>
 
@@ -37,11 +37,11 @@ pub enumTransactionPayload {
   - Used for genesis transactions only.
 - **Module**
   - Used to publish a Move module.
-  - The payload is a single serialized Move [CompiledModule]().
+  - The payload is a single serialized Move [CompiledModule](https://github.com/libra/libra/blob/1f04143cb2490294ad4401ab73822d80260c4262/language/vm/src/file_format.rs#L1390).
   - A transaction with this type of payload just publishes the CompiledModule and does nothing else.
 - **Script**
   - Used to execute a Move transaction script.
-  - The payload is a serialized Move [CompiledScript]().
+  - The payload is a serialized Move [CompiledScript](https://github.com/libra/libra/blob/1f04143cb2490294ad4401ab73822d80260c4262/language/vm/src/file_format.rs#L1292).
   - A transaction with this type of payload just executes the CompiledScript and does nothing else.
 
 **Note:** Currently, module transactions are accepted on local networks only.
@@ -65,7 +65,7 @@ Move modules are stateless, and there&#39;s no difference between publishing mod
 
 ## How Do We Transition to the New Implementation?
 
-The Libra codebase has been modified and all occurrences of the old transaction type have been removed [(PR #923)]().
+The Libra codebase has been modified and all occurrences of the old transaction type have been removed [(PR #923)](https://github.com/libra/libra/pull/923).
 
 If you want to execute a transaction with a &quot;Script&quot; payload, the current transaction payload would look like this:
 ```
