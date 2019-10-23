@@ -14,14 +14,14 @@ As a member of the Libra Association, Bison Trails has gained in-depth experienc
 
 ## Getting Started Running a Validator (the short version)
 
-Before we get into the details of some of our lessons learned, we encourage you to download and run the Libra network software. The Libra Association team has open source software [available on GitHub]() accompanied by excellent documentation on the [Libra project developer&#39;s site](). They provide a guided tour of the Libra blockchain, an introduction to the Move programming language, and detailed instructions on how to build and run a validator. We won&#39;t get down in the weeds in this post, but the distilled version of running a node via Docker is as simple as checking out the source code and either:
+Before we get into the details of some of our lessons learned, we encourage you to download and run the Libra network software. The Libra project team has open source software [available on GitHub](https://github.com/libra/libra) accompanied by excellent documentation on the [Libra project developer&#39;s site](https://developers.libra.org/). They provide a guided tour of the Libra blockchain, an introduction to the Move programming language, and detailed instructions on how to build and run a validator. We won&#39;t get down in the weeds in this post, but the distilled version of running a node via Docker is as simple as checking out the source code and either:
 
-1. Running via Docker locally by following the instructions in the &quot;docker&quot; directory of the [testnet branch of Libra core]()
-2. Running a network on AWS using Terraform, again following the instructions in the &quot;terraform&quot; directory of the [testnet branch of Libra core]()
+1. Running via Docker locally by following the instructions in the &quot;docker&quot; directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
+2. Running a network on AWS using Terraform, again following the instructions in the &quot;terraform&quot; directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
 
-In either case, you should use the testnet branch of the code, as it is both more stable and recommended by the [Libra blockchain developer documentation]().
+In either case, you should use the testnet branch of the code, as it is both more stable and recommended by the [Libra blockchain developer documentation](https://developers.libra.org/docs/my-first-transaction#assumptions).
 
-It is relatively straightforward to run a validator using either of the methods above. We recommend you run via Docker locally at first to get a feel for the configuration of a node, see what its logs look like using the [docker logs]() command, and understand how the validators are bootstrapped to discover each other. Once you&#39;re comfortable locally, the Terraform deployment will launch a more realistic network of validators communicating with each other over the internet.
+It is relatively straightforward to run a validator using either of the methods above. We recommend you run via Docker locally at first to get a feel for the configuration of a node, see what its logs look like using the [docker logs](https://docs.docker.com/engine/reference/commandline/logs/) command, and understand how the validators are bootstrapped to discover each other. Once you&#39;re comfortable locally, the Terraform deployment will launch a more realistic network of validators communicating with each other over the internet.
 
 Our suggestions below will make the most sense to those who have already taken a crack at running the software by either of these methods, although we&#39;ve written them to be useful if you&#39;re here before you run your first validator.
 
@@ -57,7 +57,7 @@ At Bison Trails, we also have proprietary systems that periodically snapshot the
 
 At Bison Trails, we&#39;re accustomed to adding a monitoring layer alongside the running blockchain software so that we can anticipate and take any scaling actions required through the normal evolution of the network and can react to any unanticipated events.
 
-In the case of the Libra blockchain, the core development team has given all validators a huge head start by shipping software that already publishes extremely useful metrics via Prometheus. [Prometheus]() is an excellent time-series data solution that is becoming the gold standard of metrics and alerting for devops teams. The best way to experience these metrics is to run a validator network via the Terraform method described above in [Getting Started Running a Validator](#getting-started-running-a-validator-the-short-version). As you can see in the screenshot below, it provides an out-of-the-box dashboard with many of the key metrics for individual as well as network-wide nodes.
+In the case of the Libra blockchain, the core development team has given all validators a huge head start by shipping software that already publishes extremely useful metrics via Prometheus. [Prometheus](https://prometheus.io/) is an excellent time-series data solution that is becoming the gold standard of metrics and alerting for devops teams. The best way to experience these metrics is to run a validator network via the Terraform method described above in [Getting Started Running a Validator](#getting-started-running-a-validator-the-short-version). As you can see in the screenshot below, it provides an out-of-the-box dashboard with many of the key metrics for individual as well as network-wide nodes.
 
 Figure 3: Libra core ships with working metrics and example dashboards
 
@@ -83,7 +83,7 @@ Libra validators currently run with three key pairs stored in two configuration 
 At Bison Trails, we use a layered approach to securing access to keys. Since a Libra validator needs to read keys from files, the following two practices apply:
 
 1. **Restrict the key file permissions:** whatever user, the validator process is the only process that needs to read these files, and no process needs to write to them, so we recommend the permissions mode be set to &quot;400&quot;, meaning the user can read, and nobody else can read or write.
-2. **Don&#39;t touch the disk:** at a minimum we recommend that you use [tmpfs volumes]() for your Docker image and include bootstrapping code to make the configuration files available on the tmpfs volume.
+2. **Don&#39;t touch the disk:** at a minimum we recommend that you use [tmpfs volumes](https://docs.docker.com/v17.09/engine/admin/volumes/tmpfs/) for your Docker image and include bootstrapping code to make the configuration files available on the tmpfs volume.
 
 If you are just experimenting with the validators locally, there is no need to protect the keys, but it is important to note the fundamental differences between development mode and what you will want to do in production so that you are prepared for mainnet launch.
 
@@ -91,13 +91,13 @@ If you are just experimenting with the validators locally, there is no need to p
 
 In this post we have shared three of the ways that Libra node operators can approach preparing their Validators and Full Nodes for mainnet. In addition to the lessons we have learned from our hands-on experience running a validator, we have also found the following resources to be extremely helpful in learning more about the Libra blockchain:
 
-- [Life of a Transaction]()
-- [Libra Whitepaper]()
-- [Libra Blockchain Technical Whitepaper]()
-- [Libra Core github repository]()
+- [Life of a Transaction](https://developers.libra.org/docs/life-of-a-transaction)
+- [Libra Whitepaper](https://libra.org/en-US/white-paper/)
+- [Libra Blockchain Technical Whitepaper](https://developers.libra.org/docs/the-libra-blockchain-paper.html)
+- [Libra Core github repository](https://github.com/libra/libra)
 
 ## About Bison Trails
 
-[Bison Trails]() runs infrastructure for companies whose business depends on the security, availability, and performance of their blockchain nodes. We offer the premier multi-cloud, geographically distributed platform with enterprise-grade security, orchestration, redundancy, and scaling to run highly efficient nodes.
+[Bison Trails](https://bisontrails.co/) runs infrastructure for companies whose business depends on the security, availability, and performance of their blockchain nodes. We offer the premier multi-cloud, geographically distributed platform with enterprise-grade security, orchestration, redundancy, and scaling to run highly efficient nodes.
 
 In this post, we sketched out some of the suggestions we have to improve your Libra validator. If you have questions for us about your Libra validator, or any network software, we would love to hear from you. Contact us at <hi@bisontrails.co>.
