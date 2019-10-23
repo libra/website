@@ -71,6 +71,27 @@ const formFields = [{
   }]
  }, {
   items: [{
+    id: 'organizationRevenue',
+    label: 'Organization revenue',
+    type: 'select',
+    required: true,
+    options: [{
+      value: 'lessThan5M',
+      text: '<5M USD'
+    }, {
+      value: '5M-25M',
+      text: '5M - 25M USD'
+    }, {
+      value: '25M-50M',
+      text: '25M - 50M USD'
+    }, {
+      value: '50M-100M',
+      text: '50M - 100M USD'
+    }, {
+      value: 'greaterThan100MUSD',
+      text: '>100M USD'
+    }]
+  }, {
     id: 'organizationType',
     label: 'Organization type',
     type: 'select',
@@ -127,6 +148,19 @@ const formFields = [{
     }, {
       value: 'Industry',
       text: 'Industry'
+    }]
+  }, {
+    id: 'enterpriseType',
+    label: 'B2B or B2C?',
+    type: 'select',
+    required: true,
+    className: 'hidden',
+    options: [{
+      value: 'B2B',
+      text: 'B2B'
+    }, {
+      value: 'B2C',
+      text: 'B2C'
     }]
   }, {
     id: 'enterpriseUserBase',
@@ -198,27 +232,6 @@ const formFields = [{
       value: 'greaterThan1B',
       text: '>1B'
     }]
-  }, {
-    id: 'organizationRevenue',
-    label: 'Organization revenue',
-    type: 'select',
-    required: true,
-    options: [{
-      value: 'lessThan5M',
-      text: '<5M USD'
-    }, {
-      value: '5M-25M',
-      text: '5M - 25M USD'
-    }, {
-      value: '25M-50M',
-      text: '25M - 50M USD'
-    }, {
-      value: '50M-100M',
-      text: '50M - 100M USD'
-    }, {
-      value: 'greaterThan100MUSD',
-      text: '>100M USD'
-    }]
   }]
  }, {
   items: [{
@@ -239,11 +252,8 @@ const formFields = [{
       value: 'Central America',
       text: 'Central America'
     }, {
-      value: 'Eastern Europe',
-      text: 'Eastern Europe'
-    }, {
-      value: 'European Union',
-      text: 'European Union'
+      value: 'Europe',
+      text: 'Europe'
     }, {
       value: 'Middle East',
       text: 'Middle East'
