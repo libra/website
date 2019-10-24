@@ -30,11 +30,11 @@ module MyModule {
 
 ### Start a Local Network of Validator Nodes
 
-To run a local network with one validator node and create a local blockchain, change to the `libra` directory and run `libra_swarm`, as shown below:
+To run a local network with one validator node and create a local blockchain, change to the `libra` directory and run `libra-swarm`, as shown below:
 
 ```
 $ cd libra
-$ cargo run -p libra_swarm -- -s
+$ cargo run -p libra-swarm -- -s
 ```
 
 This command will take some time to run and it will perform the following actions:
