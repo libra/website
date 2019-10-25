@@ -4,10 +4,15 @@
 const React = require('react');
 
 const FormContainer = require(`${process.cwd()}/core/ContactForm/form-container.js`);
+const countryCodes = require(`${process.cwd()}/core/ContactForm/country-codes.js`);
+
 
 /**
  * NOTE: These ids should map to the Segment Zendesk mapping.
  * https://segment.com/docs/destinations/zendesk/
+ *
+ * See: static/js/forms.js. This is a stateless form and all
+ * the dynamic aspects are in the forms.js file.
  */
 const formFields = [{
   items: [{
@@ -51,18 +56,6 @@ const formFields = [{
     maxLength: '1000',
     rows: '5',
     required: true
-  }, {
-    id: 'sip',
-    label: 'Social Impact Partner',
-    type: 'select',
-    required: true,
-    options: [{
-      value: 'Yes',
-      text: 'Yes'
-    }, {
-      value: 'No',
-      text: 'No'
-    }]
   }]
 },{
   items: [{
@@ -75,7 +68,9 @@ const formFields = [{
     label: 'Organization website',
     type: 'text',
     required: true
-  }, {
+  }]
+ }, {
+  items: [{
     id: 'organizationType',
     label: 'Organization type',
     type: 'select',
@@ -97,12 +92,119 @@ const formFields = [{
       text: 'University'
     }]
   }, {
+    id: 'enterpriseField',
+    label: 'Organization field',
+    type: 'select',
+    required: false,
+    className: 'hidden',
+    options: [{
+      value: 'Finance',
+      text: 'Finance'
+    }, {
+      value: 'Internet',
+      text: 'Internet'
+    }, {
+      value: 'Technology',
+      text: 'Technology'
+    }, {
+      value: 'Retail',
+      text: 'Retail'
+    }, {
+      value: 'MediaAndEntertainment',
+      text: 'Media & Entertainment'
+    }, {
+      value: 'Telecommunications',
+      text: 'Telecommunications'
+    }, {
+      value: 'ConsultingAndAudit',
+      text: 'Consulting and Audit'
+    }, {
+      value: 'CryptoBlockchain',
+      text: 'Crypto/Blockchain'
+    }, {
+      value: 'VCIForg',
+      text: 'VC/IF org'
+    }, {
+      value: 'Industry',
+      text: 'Industry'
+    }]
+  }, {
+    id: 'enterpriseUserBase',
+    label: 'User base (B2C)',
+    type: 'select',
+    required: false,
+    className: 'hidden',
+    options: [{
+      value: 'lessThan5M',
+      text: '<5M'
+    }, {
+      value: '5M-20M',
+      text: '5M - 20M'
+    }, {
+      value: '20M-100M',
+      text: '20M - 100M'
+    }, {
+      value: 'greaterThan100M',
+      text: '>100M'
+    }]
+  }, {
+    id: 'enterpriseCustomerBase',
+    label: 'Merchants/customer base (B2B)',
+    type: 'select',
+    required: false,
+    className: 'hidden',
+    options: [{
+      value: 'lessThan10k',
+      text: '<10k'
+    }, {
+      value: '10k-100k',
+      text: '10k - 100k'
+    }, {
+      value: 'greaterThan100k',
+      text: '>100k'
+    }]
+  }, {
+    id: 'enterpriseMarketCap',
+    label: 'Market cap',
+    type: 'select',
+    required: false,
+    className: 'hidden',
+    options: [{
+      value: 'lessThan100M',
+      text: '<100M'
+    }, {
+      value: '100M-500M',
+      text: '100M - 500M'
+    }, {
+      value: '500M-1B',
+      text: '500M - 1B'
+    }, {
+      value: 'greaterThan1B',
+      text: '>1B'
+    }]
+  }, {
+    id: 'enterpriseAssets',
+    label: 'Assets under management (only for VC/IFs)',
+    type: 'select',
+    required: false,
+    className: 'hidden',
+    options: [{
+      value: 'lessThan500M',
+      text: '<500M'
+    }, {
+      value: '500M-1B',
+      text: '500M - 1B'
+    }, {
+      value: 'greaterThan1B',
+      text: '>1B'
+    }]
+  }, {
     id: 'organizationRevenue',
     label: 'Organization revenue',
     type: 'select',
     required: true,
     options: [{
-      value: 'greaterThan5M',
+      value: 'lessThan5M',
       text: '<5M USD'
     }, {
       value: '5M-25M',
@@ -114,22 +216,64 @@ const formFields = [{
       value: '50M-100M',
       text: '50M - 100M USD'
     }, {
-      value: 'lessThan100MUSD',
+      value: 'greaterThan100MUSD',
       text: '>100M USD'
+    }]
+  }, {
+    id: 'organizationGeoCoverage',
+    label: 'Geographic coverage',
+    type: 'select',
+    required: true,
+    options: [{
+      value: 'Africa',
+      text: 'Africa'
+    }, {
+      value: 'Asia',
+      text: 'Asia'
+    }, {
+      value: 'Central America',
+      text: 'Central America'
+    }, {
+      value: 'Eastern Europe',
+      text: 'Eastern Europe'
+    }, {
+      value: 'European Union',
+      text: 'European Union'
+    }, {
+      value: 'Middle East',
+      text: 'Middle East'
+    }, {
+      value: 'North America',
+      text: 'North America'
+    }, {
+      value: 'Oceania',
+      text: 'Oceania'
+    }, {
+      value: 'South America',
+      text: 'South America'
+    }, {
+      value: 'Caribbean',
+      text: 'Caribbean'
     }]
   }, {
     id: 'organizationHQ',
     label: 'Organization HQ',
-    type: 'text',
-    required: true
+    type: 'select',
+    required: true,
+    options: countryCodes.map(country => {
+      return {
+        value: country.abbreviation,
+        text: country.country
+      };
+    })
   }]
-}, ];
+}];
 
 function PartnerInterestForm(props) {
   return (
     <FormContainer
       {...props}
-      formId="partnerForm"
+      formId="partnerForm_2019-10-14"
       fields={formFields}
       title="Partner Interest"
       subtitle="Please complete the form below and hit submit."

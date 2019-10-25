@@ -6,27 +6,26 @@
    * Add the segment loader to the page
    */
   const script = document.createElement('script');
-  script.innerHTML = `
-   ! function() { var analytics = window.analytics = window.analytics || []; if (!analytics.initialize)
-       if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
-       else { analytics.invoked = !0;
-         analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
-         analytics.factory = function(t) {
-           return function() {
-             var e = Array.prototype.slice.call(arguments);
-             e.unshift(t);
-             analytics.push(e);
-             return analytics;
-           }
-         };
-         for (var t = 0; t < analytics.methods.length; t++) {
-           var e = analytics.methods[t];
-           analytics[e] = analytics.factory(e)
-         }
-         analytics.SNIPPET_VERSION = "4.1.0";
-      analytics.page();
-    }}();
-  `;
+  script.innerHTML = '! function() { var analytics = window.analytics = window.analytics || []; if (!analytics.initialize)' +
+       'if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");' +
+       'else { analytics.invoked = !0;' +
+         'analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];' +
+         'analytics.factory = function(t) {' +
+         '  return function() {' +
+         '    var e = Array.prototype.slice.call(arguments);' +
+         '    e.unshift(t);' +
+         '    analytics.push(e);' +
+         '    return analytics;' +
+         '  }' +
+         '};' +
+         'for (var t = 0; t < analytics.methods.length; t++) {' +
+         '  var e = analytics.methods[t];' +
+         '  analytics[e] = analytics.factory(e)' +
+         '}' +
+         'analytics.SNIPPET_VERSION = "4.1.0";' +
+      'analytics.page();' +
+    '}}();';
+
   document.getElementsByTagName('head')[0].appendChild(script);
 
   function testSegment() {
@@ -44,7 +43,7 @@
   /**
    * Find the form on the loaded page and send segment the form data on submit
    */
-  document.addEventListener('DOMContentLoaded', (event) => {
+  document.addEventListener('DOMContentLoaded', function(event) {
     testSegment();
     const forms = document.forms;
     for (i = 0; i < forms.length; i++) {
@@ -112,8 +111,10 @@
    */
   function filterFields(data, fields, mapping) {
     const filtered = Object.keys(data)
-      .filter(key => fields.includes(key))
-      .reduce((obj, key) => {
+      .filter(function(key) {
+        return fields.indexOf(key) >= 0;
+      })
+      .reduce(function(obj, key) {
         const mapKey = (mapping && mapping[key]) || key;
         obj[mapKey] = data[key];
         return obj;
@@ -127,17 +128,21 @@
       'organizationId',
       'organizationHQ',
       'organizationRevenue',
+      'organizationGeoCoverage',
       'organizationType',
       'organizationWebsite',
+      'enterpriseField',
+      'enterpriseUserBase',
+      'enterpriseCustomerBase',
+      'enterpriseMarketCap',
+      'enterpriseAssets',
     ];
+
     const filteredData = filterFields(data, fields);
     const groupId = filteredData.organizationId;
-    const groupData = {
-      ...filteredData,
-      name: groupId,
-    };
+    filteredData.name = groupId;
 
-    analytics.group(groupId, groupData);
+    analytics.group(groupId, filteredData);
   }
 
   function addIndentity(data, form) {
@@ -168,7 +173,7 @@
     // FIXME: This needs to be in sync with the siteConfig
     const baseUrl = '/docs/';
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', function(e) {
       e.preventDefault()
       toggleEnabledFormButton(false);
 
@@ -197,7 +202,7 @@
 
       setTimeout(function() {
         toggleEnabledFormButton(true);
-        window.location.replace(`/form-thanks`);
+        window.location.replace('/form-thanks');
       }, 500);
 
     })

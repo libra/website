@@ -44,13 +44,14 @@ const SelectInput = (props) => {
     ...selectProps
   } = props;
 
-  const fieldLabel = selectProps.required ? `${label}*` : label;
+  const labelClass = selectProps.required ? 'required' : '';
+  const extraClassName = selectProps.className || '';
 
   return (
-    <div className="inputGroup selectWrapper">
-      <label htmlFor={id}>{fieldLabel}</label>
+    <div className={`inputGroup selectWrapper ${extraClassName}`}>
+      <label className={labelClass} htmlFor={id}>{label}</label>
       <select id={id} {...selectProps}>
-        {getOptions(options, placeholderText, fieldLabel)}
+        {getOptions(options, placeholderText, label)}
       </select>
     </div>
   );
