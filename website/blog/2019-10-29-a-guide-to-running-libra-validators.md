@@ -14,16 +14,16 @@ As a member of the Libra Association, Bison Trails has gained in-depth experienc
 
 ## Getting Started Running a Validator (the short version)
 
-Before we get into the details of some of our lessons learned, we encourage you to download and run the Libra network software. The Libra project team has open source software [available on GitHub](https://github.com/libra/libra) accompanied by excellent documentation on the [Libra project developer&#39;s site](https://developers.libra.org/). They provide a guided tour of the Libra blockchain, an introduction to the Move programming language, and detailed instructions on how to build and run a validator. We won&#39;t get down in the weeds in this post, but the distilled version of running a node via Docker is as simple as checking out the source code and either:
+Before we get into the details of some of our lessons learned, we encourage you to download and run the Libra network software. The Libra project team has open source software [available on GitHub](https://github.com/libra/libra) accompanied by excellent documentation on the [Libra project developer's site](https://developers.libra.org/). They provide a guided tour of the Libra blockchain, an introduction to the Move programming language, and detailed instructions on how to build and run a validator. We won't get down in the weeds in this post, but the distilled version of running a node via Docker is as simple as checking out the source code and either:
 
-1. Running via Docker locally by following the instructions in the &quot;docker&quot; directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
-2. Running a network on AWS using Terraform, again following the instructions in the &quot;terraform&quot; directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
+1. Running via Docker locally by following the instructions in the "docker" directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
+2. Running a network on AWS using Terraform, again following the instructions in the "terraform" directory of the [testnet branch of Libra core](https://github.com/libra/libra/tree/testnet/docker)
 
 In either case, you should use the testnet branch of the code, as it is both more stable and recommended by the [Libra blockchain developer documentation](https://developers.libra.org/docs/my-first-transaction#assumptions).
 
-It is relatively straightforward to run a validator using either of the methods above. We recommend you run via Docker locally at first to get a feel for the configuration of a node, see what its logs look like using the [docker logs](https://docs.docker.com/engine/reference/commandline/logs/) command, and understand how the validators are bootstrapped to discover each other. Once you&#39;re comfortable locally, the Terraform deployment will launch a more realistic network of validators communicating with each other over the internet.
+It is relatively straightforward to run a validator using either of the methods above. We recommend you run via Docker locally at first to get a feel for the configuration of a node, see what its logs look like using the [docker logs](https://docs.docker.com/engine/reference/commandline/logs/) command, and understand how the validators are bootstrapped to discover each other. Once you're comfortable locally, the Terraform deployment will launch a more realistic network of validators communicating with each other over the internet.
 
-Our suggestions below will make the most sense to those who have already taken a crack at running the software by either of these methods, although we&#39;ve written them to be useful if you&#39;re here before you run your first validator.
+Our suggestions below will make the most sense to those who have already taken a crack at running the software by either of these methods, although we've written them to be useful if you're here before you run your first validator.
 
 ## Three Ways to Prepare for Mainnet
 
@@ -33,15 +33,15 @@ Next, we would like to share three suggestions based on our initial experience r
 
 When the Libra network launches, the ledger state will grow over time as new accounts are added and validated transaction executions create new versions of the ledger state. The database that stores ledger state will grow accordingly. It is important that validators and full nodes are able to recover quickly in the event that, for whatever reason, the validator process is restarted. In the worst case, a node can always, in theory, just resync the entire history starting from the genesis block, but this costly and time-consuming sync can be avoided trivially by storing the blockchain on a persistent volume.
 
-By convention, Libra validators are typically configured to store the blockchain data in the directory &quot;/opt/libra/data&quot;; you can store blockchain data elsewhere by changing the storage section of /opt/libra/etc/node.config.toml, but we recommend you stick to the default location.
+By convention, Libra validators are typically configured to store the blockchain data in the directory "/opt/libra/data"; you can store blockchain data elsewhere by changing the storage section of /opt/libra/etc/node.config.toml, but we recommend you stick to the default location.
 
 Figure 1: recommended storage configuration excerpted from node.config.toml
 
 ```
-dir = &quot;/opt/libra/data&quot;
+dir = "/opt/libra/data"
 ```
 
-Regardless of which system directory your node uses to store the blockchain, you will need to mount a persistent volume at that point in the directory tree. When running via Docker, which we recommend, this is as simple as using the --volume or --mount flag to specify mount details. For example, assuming you&#39;ve mounted a multi-TB persistent volume on the host at /data, and your configuration files are available on a secure volume /libra-config, you can invoke Docker to use the volume as follows:
+Regardless of which system directory your node uses to store the blockchain, you will need to mount a persistent volume at that point in the directory tree. When running via Docker, which we recommend, this is as simple as using the --volume or --mount flag to specify mount details. For example, assuming you've mounted a multi-TB persistent volume on the host at /data, and your configuration files are available on a secure volume /libra-config, you can invoke Docker to use the volume as follows:
 
 Figure 2: using the volume flag to persist
 
@@ -55,7 +55,7 @@ At Bison Trails, we also have proprietary systems that periodically snapshot the
 
 ### 2. Metrics and Alerts
 
-At Bison Trails, we&#39;re accustomed to adding a monitoring layer alongside the running blockchain software so that we can anticipate and take any scaling actions required through the normal evolution of the network and can react to any unanticipated events.
+At Bison Trails, we're accustomed to adding a monitoring layer alongside the running blockchain software so that we can anticipate and take any scaling actions required through the normal evolution of the network and can react to any unanticipated events.
 
 In the case of the Libra blockchain, the core development team has given all validators a huge head start by shipping software that already publishes extremely useful metrics via Prometheus. [Prometheus](https://prometheus.io/) is an excellent time-series data solution that is becoming the gold standard of metrics and alerting for devops teams. The best way to experience these metrics is to run a validator network via the Terraform method described above in [Getting Started Running a Validator](#getting-started-running-a-validator-the-short-version). As you can see in the screenshot below, it provides an out-of-the-box dashboard with many of the key metrics for individual as well as network-wide nodes.
 
@@ -82,8 +82,8 @@ Libra validators currently run with three key pairs stored in two configuration 
 
 At Bison Trails, we use a layered approach to securing access to keys. Since a Libra validator needs to read keys from files, the following two practices apply:
 
-1. **Restrict the key file permissions:** whatever user, the validator process is the only process that needs to read these files, and no process needs to write to them, so we recommend the permissions mode be set to &quot;400&quot;, meaning the user can read, and nobody else can read or write.
-2. **Don&#39;t touch the disk:** at a minimum we recommend that you use [tmpfs volumes](https://docs.docker.com/v17.09/engine/admin/volumes/tmpfs/) for your Docker image and include bootstrapping code to make the configuration files available on the tmpfs volume.
+1. **Restrict the key file permissions:** whatever user, the validator process is the only process that needs to read these files, and no process needs to write to them, so we recommend the permissions mode be set to "400", meaning the user can read, and nobody else can read or write.
+2. **Don't touch the disk:** at a minimum we recommend that you use [tmpfs volumes](https://docs.docker.com/v17.09/engine/admin/volumes/tmpfs/) for your Docker image and include bootstrapping code to make the configuration files available on the tmpfs volume.
 
 If you are just experimenting with the validators locally, there is no need to protect the keys, but it is important to note the fundamental differences between development mode and what you will want to do in production so that you are prepared for mainnet launch.
 
