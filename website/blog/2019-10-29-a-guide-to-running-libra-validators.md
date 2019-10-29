@@ -5,7 +5,7 @@ title: A Guide To Running Libra Validators
 <script>
     let items = document.getElementsByClassName("post-meta");   
     for (var i = items.length - 1; i >= 0; i--) {
-        if (items[i].innerHTML = '<p class="post-meta">October 24, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 24, 2019</p>';
+        if (items[i].innerHTML = '<p class="post-meta">October 29, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 29, 2019</p>';
     }
 </script>
 
@@ -98,6 +98,6 @@ In this post we have shared three of the ways that Libra node operators can appr
 
 ## About Bison Trails
 
-[Bison Trails](https://bisontrails.co/) runs infrastructure for companies whose business depends on the security, availability, and performance of their blockchain nodes. We offer the premier multi-cloud, geographically distributed platform with enterprise-grade security, orchestration, redundancy, and scaling to run highly efficient nodes.
+[Bison Trails](https://bisontrails.co/) is pioneering blockchain infrastructure. Our technology platform provides enterprise-grade security, multi-cloud and multi-region distribution, and a 99.99% uptime guarantee. Our aim is to strengthen the entire blockchain ecosystem, by providing robust infrastructure for the pioneers of tomorrow.
 
 In this post, we sketched out some of the suggestions we have to improve your Libra validator. If you have questions for us about your Libra validator, or any network software, we would love to hear from you. Contact us at <hi@bisontrails.co>.
