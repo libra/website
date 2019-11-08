@@ -15,14 +15,18 @@ usage() {
 }
 
 BUILD_STATIC=false
+BUILD_RUSTDOCS=false
 
-while getopts 'hb' flag; do
+while getopts 'hbr' flag; do
   case "${flag}" in
     h)
       usage
       ;;
     b)
       BUILD_STATIC=true
+      ;;
+    r)
+      BUILD_RUSTDOCS=true
       ;;
     *)
       usage
@@ -54,6 +58,21 @@ echo "Manually Copy Coding Guidelines"
 echo "-----------------------------------"
 sed -i.old '/^# Libra Core coding guidelines/d' libra/documentation/coding_guidelines.md
 cp libra/documentation/coding_guidelines.md docs/community/coding-guidelines.md
+
+if [[ $BUILD_RUSTDOCS == true ]]; then
+  echo "-----------------------------------"
+  echo "Generating API reference via Rustdoc"
+  echo "-----------------------------------"
+
+  cd libra
+  cargo doc --no-deps --workspace --lib || exit 1
+  RUSTDOC_DIR='libra/target/doc/'
+  DOCUSAURUS_RUSTDOC_DIR='website/static/docs/rustdocs/'
+  cd .. || exit
+
+  mkdir -p $DOCUSAURUS_RUSTDOC_DIR
+  cp -r $RUSTDOC_DIR $DOCUSAURUS_RUSTDOC_DIR
+fi
 
 echo "-----------------------------------"
 echo "Building Docusaurus 🦖"
