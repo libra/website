@@ -29,7 +29,7 @@ Our community of developers has responded enthusiastically, logging an amazing 3
 
 We want to say a very big thank you to all the developers in the community for all the hard work. We're thrilled to be part of such a passionate community!
 
-**Building involvement in Libra Core**
+## Building involvement in Libra Core
 
 The success of the Libra project lies with the extended community that supports it. To help us build on our existing foundation by getting even more people involved, we recently held a Libra Core Summit with Libra Association technical team members. It was our first step towards a collaborative development plan for Libra Core and Move. In the future, we intend to continue to host events for all developers to discuss issues, challenges, and opportunities in the Libra ecosystem. 
 
@@ -41,7 +41,7 @@ In addition to an expanded overview of the backstory, economics, and vision for 
 - How to scale the Libra network
 - Libra wallet interoperability
 
-**Expanding testnet**
+## Expanding testnet
 
 Until we launch mainnet, the best and fastest way we have to demonstrate Libra network functionality and provide early access to developers around the world is through our testnet. Testnet makes it easier and faster to test, troubleshoot, diagnose, and resolve software edge cases. One measure of our success in this phase is the number of nodes that are live on the testnet. Currently, testnet has:
 
@@ -53,7 +53,7 @@ For those organizations without a technical team to implement a node, the Libra 
 
 The Libra Association intends to deploy 100 nodes on the mainnet, representing a mix of on-premises and cloud-hosted infrastructure. All the work we are doing now on testnet supports this goal of greater resiliency on the network through a wider diversity of infrastructure.
 
-**Deepening the developer experience**
+## Deepening the developer experience
 
 As a Libra developer, we know that you commit significant time and resources to your work. We want to give you tools that will support you in making the most of your time and technical investments. Our work here includes:
 
@@ -73,7 +73,7 @@ PRs submitted are not guaranteed to be accepted in a timely fashion. If you have
 
 
 
-**Expanding the technical Roadmap and technical governance**
+## Expanding the technical Roadmap and technical governance
 
 You can check the technical progress we're making toward the Libra Core mainnet launch on our [Roadmap](https://github.com/orgs/libra/projects/1). Completed work includes:
 
@@ -86,7 +86,7 @@ We have a lot of work still to do, and we need a passionate, dedicated community
 
 The TSC will oversee and coordinate the technical design and development of the Libra network on behalf of the Libra Association members. Libra Association members will decide together how the TSC will operate, including how its members will be determined, the full scope of its responsibilities, and how the extended community can support specific initiatives. 
 
-**What opportunities interest you as a Libra developer?**
+## What opportunities interest you as a Libra developer?
 
 As a Libra developer, you're an incredibly important contributor to the Libra project. We're excited to be on this journey with you, and with everyone in our extended developer community, and we look forward to our continued progress toward mainnet launch.
 
