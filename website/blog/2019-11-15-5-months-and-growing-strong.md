@@ -75,7 +75,7 @@ PRs submitted are not guaranteed to be accepted in a timely fashion. If you have
 
 **Expanding the technical Roadmap and technical governance**
 
-You can check the technical progress we're making toward the Libra Core mainnet launch on our [Roadmap](https://developers.libra.org/blog/). Completed work includes:
+You can check the technical progress we're making toward the Libra Core mainnet launch on our [Roadmap](https://github.com/orgs/libra/projects/1). Completed work includes:
 
 - Libra Canonical Serialization (LCS)
 - MVP for full nodes
