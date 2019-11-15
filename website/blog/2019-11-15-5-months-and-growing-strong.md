@@ -1,6 +1,6 @@
 ---
 author: Michael Engle, Libra Association
-title: 5 months and growing strong with the Libra project
+title: 5 months and growing strong: the Libra project
 ---
 
 <script>
@@ -19,7 +19,7 @@ It's been just five months since we announced the Libra project on June 18, 2019
 - Teaching developers of all backgrounds and skill levels how to work with the Libra network by consistently publishing documentation and technical blogs.
 - Incentivizing developers to help us find and fix bugs faster by launching a Bug Bounty program.
 
-Our community of developers has responded enthusiastically, logging an amazing 34 projects in just seven weeks since launch of the testnet (we note that Grin had just three projects in its first seven weeks):
+Our community of developers has responded enthusiastically, logging an amazing 34 projects in just seven weeks since launch of the testnet:
 
 - 10 wallets
 - 11 blockchain explorers
