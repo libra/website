@@ -27,7 +27,8 @@ Our community of developers has responded enthusiastically, logging an amazing 3
 - 1 API
 - 11 clients
 
-We want to say a very big thank you to all the developers in the community for all the hard work. We're thrilled to be part of such a passionate community!
+We want to say a very big thank you to all the developers in the community for all the hard work. We’re thrilled to be part of such a passionate community!
+
 
 ## Building involvement in Libra Core
 
@@ -41,9 +42,10 @@ In addition to an expanded overview of the backstory, economics, and vision for 
 - How to scale the Libra network
 - Libra wallet interoperability
 
-## Expanding testnet
 
-Until we launch mainnet, the best and fastest way we have to demonstrate Libra network functionality and provide early access to developers around the world is through our testnet. Testnet makes it easier and faster to test, troubleshoot, diagnose, and resolve software edge cases. One measure of our success in this phase is the number of nodes that are live on the testnet. Currently, testnet has:
+## Expanding to the pre-mainnet
+
+Until we launch mainnet, the best and fastest way we have to demonstrate Libra network functionality and provide early access to developers around the world is through our pre-mainnet. Pre-mainnet makes it easier and faster to test, troubleshoot, diagnose, and resolve software edge cases. One measure of our success in this phase is the number of nodes that are live on the pre-mainnet. Currently, pre-mainnet has:
 
 - Deployed nodes: 7
 - In-process nodes: 6
@@ -51,7 +53,8 @@ Until we launch mainnet, the best and fastest way we have to demonstrate Libra n
 
 For those organizations without a technical team to implement a node, the Libra Association is working on a strategy to support deployment in 2020, when the Libra Core feature set is complete.
 
-The Libra Association intends to deploy 100 nodes on the mainnet, representing a mix of on-premises and cloud-hosted infrastructure. All the work we are doing now on testnet supports this goal of greater resiliency on the network through a wider diversity of infrastructure.
+The Libra Association intends to deploy 100 nodes on the mainnet, representing a mix of on-premises and cloud-hosted infrastructure. All the work we are doing now on pre-mainnet supports this goal of greater resiliency on the network through a wider diversity of infrastructure.
+
 
 ## Deepening the developer experience
 
@@ -63,17 +66,16 @@ As a Libra developer, we know that you commit significant time and resources to 
 - Scaling outreach through tooling, events, programs, and bounties
 - Supporting engineering efforts of the Technical Steering Committee and Roadmap process.
 
-Now, we want to make it easier and faster to submit code and documentation to the Libra project. On November 26, we're launching a new, streamlined process for completing Contributor License Agreements (CLAs). As with many open-source projects, you must complete and sign a CLA before you can submit code to the Libra project on GitHub.
+Now, we want to make it easier and faster to submit code and documentation to the Libra project. On November 26th, we’re launching a new, streamlined process for completing Contributor License Agreements (CLAs). As with many open-source projects, you must complete and sign a CLA before you can submit code to the Libra project on GitHub.
 
 Our new process streamlines how CLAs are submitted, reviewed, and verified, whether for individuals or for contributors working on behalf of a corporation or business.
 
-You can start the process from GitHub. Choose which type of CLA best fits your situation (individual or corporate) and follow the directions to fill out the appropriate form.
+You can start the process from GitHub. Choose which type of CLA best fits your situation (individual or corporate), fill out a form, and go from there. If your CLA requires additional signatures, we’ll make sure to collect those so you can focus on your code.
 
-PRs submitted are not guaranteed to be accepted in a timely fashion. If you have an ambitious feature that you wish to add to Libra Core and which does not fit into the existing Roadmap, reach out through engineering channels or to the Libra Association and start a discussion. Code review and code acceptance is managed by project maintainers. Review the [Contribution Guide](https://developers.libra.org/docs/community/contributing) and [Coding Guidelines](https://developers.libra.org/docs/community/coding-guidelines) prior to submitting your changes.
+As in any open source project, a CLA qualifies contributions for review, but submissions are not guaranteed to be accepted by maintainers. If you have an ambitious feature that you wish to add to Libra Core, and which does not fit into the existing Roadmap, reach out through engineering channels or to the Libra Association to start a discussion. Code review and code acceptance is managed by project maintainers. Review the [Contribution Guide](https://developers.libra.org/docs/community/contributing) and [Coding Guidelines](https://developers.libra.org/docs/community/coding-guidelines) prior to submitting your changes.
 
 
-
-## Expanding the technical Roadmap and technical governance
+## Expanding the technical Roadmap and technical governance 
 
 You can check the technical progress we're making toward the Libra Core mainnet launch on our [Roadmap](https://github.com/orgs/libra/projects/1). Completed work includes:
 
@@ -86,9 +88,10 @@ We have a lot of work still to do, and we need a passionate, dedicated community
 
 The TSC will oversee and coordinate the technical design and development of the Libra network on behalf of the Libra Association members. Libra Association members will decide together how the TSC will operate, including how its members will be determined, the full scope of its responsibilities, and how the extended community can support specific initiatives. 
 
+
 ## What opportunities interest you as a Libra developer?
 
-As a Libra developer, you're an incredibly important contributor to the Libra project. We're excited to be on this journey with you, and with everyone in our extended developer community, and we look forward to our continued progress toward mainnet launch.
+As a Libra developer, you’re an incredibly important contributor to the Libra project. We’re excited to be on this journey with you, and with everyone in our extended developer community, and we look forward to our continued progress toward mainnet launch.
 
 We invite you to dive in deeper, wherever you see the best opportunity to help us all move forward faster: 
 
