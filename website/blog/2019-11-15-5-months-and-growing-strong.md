@@ -1,6 +1,6 @@
 ---
 author: Michael Engle, Libra Association
-title: 5 months and growing strong: the Libra project
+title: Five months and growing strong: the Libra project
 ---
 
 <script>
@@ -11,10 +11,10 @@ title: 5 months and growing strong: the Libra project
     }
 </script>
 
-It's been just five months since we announced the Libra project on June 18, 2019, and nearly a month since the Libra Association charter was signed by its members in Geneva. We've been working at breakneck speed to build the global community of developers and the technical infrastructure needed to support it. Here are a few highlights of what we've been working on:
+It's been just five months since we announced the Libra project on June 18, 2019, and nearly a month since the Libra Association charter was signed by its members in Geneva. We've been working diligently to build the global community of developers and the technical infrastructure needed to support it. Here are a few highlights of what we've been working on:
 
 - Inviting community participation in shaping how we get to mainnet by making a detailed technical roadmap available to all. 
-- Encouraging developers to test Libra network functionality by launching and continuously improving testnet, which has logged more than 51,000 transactions since we reset the testnet on 9/17. 
+- Encouraging developers to test Libra network functionality by launching and continuously improving testnet, which has logged more than 51,000 transactions since we reset the testnet on September 17, 2019. 
 - Simplifying how developers work with the Libra project team, so they can focus more on building their projects, by integrating our online developer community, GitHub project, CLA process, and more.
 - Teaching developers of all backgrounds and skill levels how to work with the Libra network by consistently publishing documentation and technical blogs.
 - Incentivizing developers to help us find and fix bugs faster by launching a Bug Bounty program.
