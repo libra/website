@@ -45,7 +45,7 @@ In addition to an expanded overview of the backstory, economics, and vision for 
 
 ## Expanding to the pre-mainnet
 
-Until we launch mainnet, the best and fastest way we have to demonstrate Libra network functionality and provide early access to developers around the world is through our pre-mainnet. Pre-mainnet makes it easier and faster to test, troubleshoot, diagnose, and resolve software edge cases. One measure of our success in this phase is the number of nodes that are live on the pre-mainnet. Currently, pre-mainnet has:
+Until we launch mainnet, the best and fastest way we have to demonstrate Libra network functionality and provide early access is through our pre-mainnet. Pre-mainnet, a version of testnet available to Libra Association members, makes it easier and faster to test, troubleshoot, diagnose, and resolve software edge cases. One measure of our success in this phase is the number of nodes that are live on the pre-mainnet. Currently, pre-mainnet has:
 
 - Deployed nodes: 7
 - In-process nodes: 6
