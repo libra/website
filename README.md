@@ -62,3 +62,5 @@ Get the latest updates to our project by signing up to our [newsletter](https://
 ## License
 
 Libra Core is licensed as [Apache 2.0](https://github.com/libra/libra/blob/master/LICENSE)
+
+Testing CLA #5
