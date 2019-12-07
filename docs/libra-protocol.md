@@ -4,7 +4,7 @@ title: Libra Protocol: Key Concepts
 ---
 
 
-The Libra Blockchain is a cryptographically authenticated distributed database, and it is based on the Libra protocol. This document briefly describes the key concepts of the Libra protocol. For a detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper](https://libra.org/en-us/whitepaper).
+The Libra Blockchain is a cryptographically authenticated distributed database, and it is based on the Libra protocol. This document briefly describes the key concepts of the Libra protocol. For a detailed description of all the elements of the Libra protocol, refer to the [Libra Blockchain technical paper](the-libra-blockchain-paper.md).
 
 The Libra Blockchain is maintained by a distributed network of [validator nodes](reference/glossary.md#validator-node), also known as validators. The validators collectively follow a [consensus protocol](reference/glossary.md#consensus-protocol) to agree on an ordering of transactions in the blockchain.
 
@@ -21,7 +21,7 @@ Figure 1.1 represents the change of state of the Libra Blockchain that occurs wh
 
 * **A** and **B** represent Alice’s and Bob’s accounts in the blockchain.
 * **S~N-1~** represents the (N-1)^th^ state of the blockchain.
-* **T~N~** is the n-th transaction executed on the blockchain.  
+* **T~N~** is the n-th transaction executed on the blockchain.
     * In this example, T~N~ is - “send 10 LBR from person A’s account to person B’s account.”
 * **F** is a deterministic function. F always returns the same final state for a specific initial state and a specific transaction. If the current state of the blockchain is S~N-1~, and transaction T~N~ is executed on state S~N-1~, the new state of the blockchain is always S~N~.
 * **S~N~** is the n-th state of the blockchain. S~N~ is an outcome of applying F to S~N-1~ and T~N~.
