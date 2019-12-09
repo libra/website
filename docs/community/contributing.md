@@ -9,6 +9,10 @@ Our goal is to make contributing to the Libra project easy and transparent.
 The Libra Core project is currently an early-stage prototype, it is undergoing rapid development. Before making any substantial contribution to the project, be sure to discuss it in the Discourse forum to ensure that it fits into the project roadmap.
 </blockquote>
 
+## Contributor License Agreement
+
+The Libra project follows many popular Open Source projects by requiring a signed CLA before accepting contributions. [Sign the CLA](https://libra.org/en-US/cla-sign/).
+
 ## Contributing to Libra Core
 
 To contribute to Libra Core, ensure that you have the latest version of the codebase. To setup Libra Core with all the necessary dependencies for linting, testing, and building the documentation, run the following:
@@ -44,10 +48,6 @@ To submit your pull request:
 5. Make sure your code passes both linters.
 6. Complete the Contributor License Agreement (CLA), if you haven't already done so.
 7. Submit your pull request.
-
-## Contributor License Agreement
-
-For your pull requests to be accepted by any Libra project, you will need to sign a CLA. You will need to do this only once to work on any Libra open source project. Individuals contributing on their own behalf can sign the [Individual CLA](https://github.com/libra/libra/blob/master/contributing/individual-cla.pdf). If you are contributing on behalf of your employer, please ask them to sign the [Corporate CLA](https://github.com/libra/libra/blob/master/contributing/corporate-cla.pdf).
 
 ## Code of Conduct
 Please refer to the [Code of Conduct](../policies/code-of-conduct.md), which describes the expectations for interactions within the community.
