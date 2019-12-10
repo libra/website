@@ -30,7 +30,7 @@ To contribute, you must first submit a CLA. Follow these steps:
 
 4. Click **through to sign the CLA.**
 
-5. Once you're on the [&quot;Sign an agreement&quot; page](https:libra.orgen-UScla-sign), choose which type of CLA best fits how you plan to contribute to the project (as an individual or as a member of a corporation).
+5. Once you're on the [&quot;Sign an agreement&quot; page](https://libra.org/en-US/cla-sign/), choose which type of CLA best fits how you plan to contribute to the project (as an individual or as a member of a corporation).
 
 ![](https://libra.org/en-US/wp-content/uploads/sites/23/2019/12/CLA-blog-image-3.png)
 
