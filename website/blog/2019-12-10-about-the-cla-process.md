@@ -51,7 +51,7 @@ To contribute, you must first submit a CLA. Follow these steps:
 
 ![](https://libra.org/en-US/wp-content/uploads/sites/23/2019/12/CLA-blog-image-4.png)
 
-As in any open source project, a CLA qualifies contributions for review, but submissions are not guaranteed to be accepted by the maintainers. Code review and code acceptance are managed by project maintainers. Review the[Contribution Guide](https://developers.libra.org/docs/community/contributing) and [Coding Guidelines](https://developers.libra.org/docs/community/coding-guidelines) prior to submitting your changes.
+As in any open source project, a CLA qualifies contributions for review, but submissions are not guaranteed to be accepted by the maintainers. Code review and code acceptance are managed by project maintainers. Review the [Contribution Guide](https://developers.libra.org/docs/community/contributing) and [Coding Guidelines](https://developers.libra.org/docs/community/coding-guidelines) prior to submitting your changes.
 
 ## Checking the status of your CLA
 
