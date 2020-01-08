@@ -28,7 +28,7 @@ Gas is a way to ensure that all programs terminate; it also provides the ability
 
 ### _What does gas look like for a developer?_
 
-The transaction a client submits for execution contains a specified max\_gas\_amount and gas\_price. max\_gas\_amount is the maximum amount of gas that can be used to execute the transaction, and therefore it bounds the amount of computational resources that can be consumed by the transaction. gas\_price is a way to move from the abstract units of resource consumption that are used in the virtual machine (VM) — _gas units_ — into Libra. Consequently, the transaction submitter is guaranteed to be charged _at most_gas\_price \* max\_gas\_amount (the "gas liability") for the execution of the transaction.
+The transaction a client submits for execution contains a specified max\_gas\_amount and gas\_price. max\_gas\_amount is the maximum amount of gas that can be used to execute the transaction, and therefore it bounds the amount of computational resources that can be consumed by the transaction. gas\_price is a way to move from the abstract units of resource consumption that are used in the virtual machine (VM) — _gas units_ — into Libra. Consequently, the transaction submitter is guaranteed to be charged _at most_ gas\_price \* max\_gas\_amount (the "gas liability") for the execution of the transaction.
 
 ### Similarities with other blockchains
 
