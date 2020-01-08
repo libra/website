@@ -10,11 +10,6 @@ title: How gas works on the Libra blockchain
     }
 </script>
 
-
-# How gas works on the Libra blockchain
-
-Libra Association
-
 **Note** : The Libra Core software and the Move language are still under development; the information and the terminology used in this document are subject to change.
 
 This post starts a series on gas on the Libra blockchain. The goal of this series is to take you from "I have no idea what gas means" to understanding what gas is and, at a high level, how it works. As the first post in this series, our goal here is to introduce the subject and provide an overview of the design and design goals. In subsequent posts we'll dig in and explore each area in more technical detail.
@@ -23,15 +18,15 @@ This post starts a series on gas on the Libra blockchain. The goal of this serie
 
 Put simply:
 
-_Gas is a way for the Move virtual machine to track and account for the abstract representation of computational resources consumed during execution._
+> _Gas is a way for the Move virtual machine to track and account for the abstract representation of computational resources consumed during execution._
 
 In this way, gas is central to one of the most basic and crucial properties we need in Move:
 
-_The computational resources consumed by Move programs running on the blockchain chain are bounded._
+> _The computational resources consumed by Move programs running on the blockchain chain are bounded._
 
 Gas is a way to ensure that all programs terminate; it also provides the ability to charge a _transaction fee_ based in part on the resources consumed during the execution of the transaction.
 
-### What does gas look like for a developer?
+### _What does gas look like for a developer?_
 
 The transaction a client submits for execution contains a specified max\_gas\_amount and gas\_price.max\_gas\_amount is the maximum amount of gas that can be used to execute the transaction, and therefore it bounds the amount of computational resources that can be consumed by the transaction. gas\_price is a way to move from the abstract units of resource consumption that are used in the virtual machine (VM) — _gas units_ — into Libra. Consequently, the transaction submitter is guaranteed to be charged _at most_gas\_price \* max\_gas\_amount(the "gas liability") for the execution of the transaction.
 
@@ -83,6 +78,6 @@ In this post, we offered a high-level overview of the design space around gas in
 
 ## Endnotes
 
-**[1]** This will be discussed more in the upcoming posts on the distribution of transaction fees and the economics of gas and transaction fees.
+<font size="2">**[1]** This will be discussed more in the upcoming posts on the distribution of transaction fees and the economics of gas and transaction fees.</font>
 
-**[2]** Along with the deduction of the gas liability, the sequence number of the account is also incremented.
+<font size="2">**[2]** Along with the deduction of the gas liability, the sequence number of the account is also incremented.</font>
