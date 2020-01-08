@@ -22,13 +22,13 @@ Put simply:
 
 In this way, gas is central to one of the most basic and crucial properties we need in Move:
 
-> _The computational resources consumed by Move programs running on the blockchain chain are bounded._
+> _The computational resources consumed by Move programs running on the "blockchain chain" are bounded._
 
 Gas is a way to ensure that all programs terminate; it also provides the ability to charge a _transaction fee_ based in part on the resources consumed during the execution of the transaction.
 
 ### _What does gas look like for a developer?_
 
-The transaction a client submits for execution contains a specified max\_gas\_amount and gas\_price.max\_gas\_amount is the maximum amount of gas that can be used to execute the transaction, and therefore it bounds the amount of computational resources that can be consumed by the transaction. gas\_price is a way to move from the abstract units of resource consumption that are used in the virtual machine (VM) — _gas units_ — into Libra. Consequently, the transaction submitter is guaranteed to be charged _at most_gas\_price \* max\_gas\_amount(the "gas liability") for the execution of the transaction.
+The transaction a client submits for execution contains a specified max\_gas\_amount and gas\_price. max\_gas\_amount is the maximum amount of gas that can be used to execute the transaction, and therefore it bounds the amount of computational resources that can be consumed by the transaction. gas\_price is a way to move from the abstract units of resource consumption that are used in the virtual machine (VM) — _gas units_ — into Libra. Consequently, the transaction submitter is guaranteed to be charged _at most_gas\_price \* max\_gas\_amount (the "gas liability") for the execution of the transaction.
 
 ### Similarities with other blockchains
 
@@ -50,7 +50,7 @@ In this section, we'll provide a high-level technical overview of gas in the VM.
 
 ### Different types of resources
 
-For the VM to execute a transaction, the gas system needs to track the primary resources that are used by both the network and the VM. These fall into three resource "dimensions:" (1) the **computational cost** of executing the transaction itself; (2) the **network cost** of sending the transaction over the network; and finally (3) the **storage cost** of storing the data created and read during the transaction on the blockchain. The first two of these resources (compute and network) are ephemeral, whereas storage is long lived; once data is allocated, that data persists until it is deleted. In the case of accounts, the data lives indefinitely.
+For the VM to execute a transaction, the gas system needs to track the primary resources that are used by both the network and the VM. These fall into three resource "dimensions": (1) the **computational cost** of executing the transaction itself; (2) the **network cost** of sending the transaction over the network; and finally (3) the **storage cost** of storing the data created and read during the transaction on the blockchain. The first two of these resources (compute and network) are ephemeral, whereas storage is long lived; once data is allocated, that data persists until it is deleted. In the case of accounts, the data lives indefinitely.
 
 Each of these resource dimensions can fluctuate independently of the other. However, we also have only one gas price. This means the gas usage contributed for each resource dimension needs to be correct, because the gas price only acts as a multiplier to the total gas usage, not usage by dimension. Thus, the essential property that we design for is that the gas usage of a transaction needs to be as highly correlated with the real-world cost associated with executing the transaction as possible.
 
