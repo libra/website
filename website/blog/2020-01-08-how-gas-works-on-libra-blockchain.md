@@ -22,7 +22,7 @@ Put simply:
 
 In this way, gas is central to one of the most basic and crucial properties we need in Move:
 
-> _The computational resources consumed by Move programs running on the "blockchain chain" are bounded._
+> _The computational resources consumed by Move programs running on the blockchain are bounded._
 
 Gas is a way to ensure that all programs terminate; it also provides the ability to charge a _transaction fee_ based in part on the resources consumed during the execution of the transaction.
 
