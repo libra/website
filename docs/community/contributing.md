@@ -22,7 +22,7 @@ $ cd libra
 $ ./scripts/dev_setup.sh
 $ source ~/.cargo/env
 $ cargo build
-$ cargo test
+$ cargo xtest
 ```
 
 ## Coding Guidelines
