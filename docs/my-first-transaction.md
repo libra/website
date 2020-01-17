@@ -42,15 +42,15 @@ git clone https://github.com/libra/libra.git
 ### Checkout the testnet Branch
 
 ```bash
+cd libra
 git checkout testnet
 ```
 
 ### Install Dependencies
 
-To setup Libra Core, change to the `libra` directory and run the setup script to install the dependencies, as shown below:
+To setup Libra Core, run the setup script to install the dependencies, as shown below:
 
 ```
-cd libra
 ./scripts/dev_setup.sh
 ```
 The setup script performs these actions:
