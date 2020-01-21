@@ -55,6 +55,7 @@ cd libra
 ```
 The setup script performs these actions:
 
+* Installs [cURL](https://curl.haxx.se/docs/install.html)many operating systems do not have native support for curl, to install rust is necessary the same.
 * Installs rustup &mdash; rustup is an installer for the Rust programming language, which Libra Core is implemented in.
 * Installs the required versions of the rust-toolchain.
 * Installs CMake &mdash; to manage the build process.
