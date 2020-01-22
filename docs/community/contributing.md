@@ -21,8 +21,8 @@ $ git clone https://github.com/libra/libra.git
 $ cd libra
 $ ./scripts/dev_setup.sh
 $ source ~/.cargo/env
-$ cargo build
-$ cargo test
+$ cargo xbuild
+$ cargo xtest
 ```
 
 ## Coding Guidelines
