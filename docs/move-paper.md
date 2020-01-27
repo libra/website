@@ -11,3 +11,5 @@ We present *Move*, a safe and flexible programming language for the Libra Blockc
 ### Downloads
 
 [![Move: A Language With Programmable Resources PDF Download](assets/illustrations/move-language-pdf.png){: .download}](assets/papers/libra-move-a-language-with-programmable-resources.pdf)
+
+<a href="/papers">Previous versions</a>
