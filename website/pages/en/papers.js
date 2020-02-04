@@ -15,16 +15,18 @@ const papersLocation = "/docs/assets/papers";
 // new date at the top of the corresponding "dates" array.
 const paperMeta = {
   'The Libra Blockchain': {
+    abstractUrl: '/docs/the-libra-blockchain-paper/',
     paperBase: `${papersLocation}/the-libra-blockchain`,
     dates: [
       '2019-09-26',
       '2019-09-18',
-      '2019-06-18',
+      '2019-06-25',
     ],
     imgLoc: '/docs/assets/illustrations/libra-blockchain-pdf.png',
     imgAlt: 'The Libra Blockchain PDF Download'
   },
   'Move Programming Language': {
+    abstractUrl: '/docs/move-paper/',
     paperBase: `${papersLocation}/libra-move-a-language-with-programmable-resources`,
     dates: [
       '2019-09-26',
@@ -34,6 +36,7 @@ const paperMeta = {
     imgAlt: 'Move: A Language With Programmable Resources PDF Download'
   },
   'State Machine Replication': {
+    abstractUrl: '/docs/state-machine-replication-paper/',
     paperBase: `${papersLocation}/libra-consensus-state-machine-replication-in-the-libra-blockchain`,
     dates: [
       '2019-11-08',
@@ -69,7 +72,7 @@ function getPapers() {
 
     paperSections.push((
       <section key={metadata.paperBase}>
-        <h2>{paper}</h2>
+        <h2><a href={metadata.abstractUrl}>{paper}</a></h2>
         <ul>
           <li>
             <a href={`${metadata.paperBase}-${current}.pdf`}>
