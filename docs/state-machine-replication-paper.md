@@ -16,6 +16,6 @@ LBFT can reconfigure itself, by embedding configuration-change commands in the s
 
 ### Downloads
 
-[![State Machine Replication in the Libra Blockchain PDF Download](assets/illustrations/state-machine-pdf.png){: .download}](assets/papers/libra-consensus-state-machine-replication-in-the-libra-blockchain/2019-10-24.pdf)
+[![State Machine Replication in the Libra Blockchain PDF Download](assets/illustrations/state-machine-pdf.png){: .download}](assets/papers/libra-consensus-state-machine-replication-in-the-libra-blockchain/2019-11-08.pdf)
 
 <a href="/papers">Previous versions</a>
