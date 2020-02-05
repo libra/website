@@ -13,6 +13,7 @@ const papersLocation = "/docs/assets/papers";
 
 // Metadata on the paper versions. Whenever a new paper is added just add the
 // new date at the top of the corresponding "dates" array.
+// TODO (joshua): Automate the list of papers by looking at the directories.
 const paperMeta = {
   'The Libra Blockchain': {
     abstractUrl: '/docs/the-libra-blockchain-paper/',
@@ -65,7 +66,7 @@ function getPapers() {
     const oldPapers = dates.map(function (date, idx) {
       return (
         <li key={`${metadata.paperBase}--${idx}`}>
-          <a href={`${metadata.paperBase}-${date}.pdf`}>{date}</a>
+          <a href={`${metadata.paperBase}/${date}.pdf`}>{date}</a>
         </li>
       );
     });
@@ -75,7 +76,7 @@ function getPapers() {
         <h2><a href={metadata.abstractUrl}>{paper}</a></h2>
         <ul>
           <li>
-            <a href={`${metadata.paperBase}-${current}.pdf`}>
+            <a href={`${metadata.paperBase}/${current}.pdf`}>
               {`Latest version (${current})`}
             </a>
           </li>
