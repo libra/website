@@ -27,7 +27,7 @@ The `-s` option causes the CLI to be run after the local Libra network is launch
 To invoke the CLI client and configure it yourself, run:
 
 ```bash
-cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
+cargo run -p client --bin cli -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
 
 ```
 

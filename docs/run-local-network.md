@@ -73,7 +73,7 @@ You will see the following information in the output.
 ```
  To run the Libra CLI client in a separate process and connect to the local cluster of nodes you just spawned, use this command:
 
- cargo run --bin client -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
+ cargo run --bin cli -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
 
 ```
 
@@ -86,7 +86,7 @@ To  start an instance of the CLI client and connect to the local network you spa
 
 ```
 $ cd libra
-$ cargo run --bin client -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
+$ cargo run --bin cli -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
 ```
 This will spawn an instance of the CLI client in a separate process, and you will see the `libra%` prompt.
 
@@ -95,7 +95,7 @@ A sample output from running this command is shown below:
 ```
 
 Finished dev [unoptimized + debuginfo] target(s) in 0.72s
-Running `target/debug/client -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
+Running `target/debug/cli -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
 Connected to validator at: localhost:57149
 usage: <command> <args>
 
