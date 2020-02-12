@@ -112,7 +112,7 @@ main(payee: address, amount: u64) {
     // Creates a fresh account at the address `payee` by publishing a
     // LibraAccount.T resource under this address. If theres is already a
     // LibraAccount.T resource under the address, this will fail.
-    create_account(copy(payee));
+    LibraAccount.create_account(copy(payee));
   }
 
   LibraAccount.deposit(move(payee), move(coin));
