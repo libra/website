@@ -38,7 +38,7 @@ To run a network with one or more validator nodes and to create a local blockcha
 The following example starts a network with 4 nodes:
 
 ```
-$ cd libra
+$ cd libra # if you are not in your local libra GitHub repo
 $ cargo run -p libra-swarm -- -s -n 4
 ```
 
@@ -65,7 +65,7 @@ In the previous section, we ran `libra-swarm` using the `-s` option. This automa
 Run `libra-swarm` without the `-s` option as shown below:
 
 ```
-$ cd libra
+$ cd libra # if you are not in your local libra GitHub repo
 $ cargo run -p libra-swarm
 ```
 You will see the following information in the output.
@@ -73,7 +73,7 @@ You will see the following information in the output.
 ```
  To run the Libra CLI client in a separate process and connect to the local cluster of nodes you just spawned, use this command:
 
- cargo run --bin client -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
+ cargo run --bin cli -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
 
 ```
 
@@ -85,8 +85,8 @@ To  start an instance of the CLI client and connect to the local network you spa
 * Run the entire command you see in your output from step 1, as shown below:
 
 ```
-$ cd libra
-$ cargo run --bin client -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
+$ cd libra # if you are not in your local libra GitHub repo
+$ cargo run --bin cli -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
 ```
 This will spawn an instance of the CLI client in a separate process, and you will see the `libra%` prompt.
 

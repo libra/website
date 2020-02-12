@@ -33,7 +33,7 @@ module MyModule {
 To run a local network with one validator node and create a local blockchain, change to the `libra` directory and run `libra-swarm`, as shown below:
 
 ```
-$ cd libra
+$ cd libra # if you are not in your local libra GitHub repo
 $ cargo run -p libra-swarm -- -s
 ```
 
