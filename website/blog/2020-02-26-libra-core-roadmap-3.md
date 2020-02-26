@@ -28,7 +28,6 @@ We made incremental progress laying the groundwork toward a more open programmin
   - Implemented the new borrow-checker algorithm
   - Continued progress on the design of the Libra Upgrade protocol and VM versioning
   - Finished incremental changes to Events in response to pub/sub feedback
-  -
 - Tooling
   - Updated tooling for formal verification to support new language features
   - Added support for specifications in the Move IR compiler
