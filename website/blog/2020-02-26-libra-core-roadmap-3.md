@@ -21,6 +21,7 @@ We made incremental progress laying the groundwork toward a more open programmin
 ### Delivered
 
 - Core Move modules
+  - Validator reconfiguration: implemented VM and core module support
 - Move VM
   - Completed cleanup of the VM interpreter
   - Revised the VM architecture to separate Move and Libra protocol layers, and started on the implementation of this change
