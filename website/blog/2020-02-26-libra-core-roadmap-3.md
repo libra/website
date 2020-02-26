@@ -12,7 +12,7 @@ title: Libra Core Roadmap #3
 
 ## Roadmap #2 retrospective
 
-**Overview**
+### Overview
 
 In [Roadmap #2](https://developers.libra.org/blog/2019/12/17/libra-core-roadmap-2), we made solid progress on improvements to Move. We iterated on the design of the Move source language and cleaned up key parts of the VM. Further improvements, including additional VM cleanup, design of the Libra Upgrade protocol, and VM versioning, are still in progress.
 
@@ -21,7 +21,6 @@ We made incremental progress laying the groundwork toward a more open programmin
 ### Delivered
 
 - Core Move modules
-  - Validator reconfiguration: implemented VM and core module support.
 - Move VM
   - Completed cleanup of the VM interpreter
   - Revised the VM architecture to separate Move and Libra protocol layers, and started on the implementation of this change
@@ -77,7 +76,6 @@ The roadmap includes continuing code cleanup, testing, and operational awareness
 
 - Complete VM loader cleanup
 - Complete VM file format cleanup
-
 - VM versioning implementation
 - Basic debugging support
 - Libra Upgrade protocol
