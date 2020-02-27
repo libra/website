@@ -6,7 +6,7 @@ title: Libra Core Roadmap #3
 <script>
     let items = document.getElementsByClassName("post-meta");   
     for (var i = items.length - 1; i >= 0; i--) {
-        if (items[i].innerHTML = '<p class="post-meta">February 26, 2020</p>') items[i].innerHTML = '<p class="post-meta">February 26, 2020</p>';
+        if (items[i].innerHTML = '<p class="post-meta">February 28, 2020</p>') items[i].innerHTML = '<p class="post-meta">February 28, 2020</p>';
     }
 </script>
 
