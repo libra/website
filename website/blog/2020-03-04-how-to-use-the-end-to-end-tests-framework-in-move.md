@@ -18,7 +18,7 @@ The framework we use to test the Move language is end-to-end (e2e) tests. The go
 
 ## Understanding the testing pipeline
 
-[placeholder for diagram\_1\_e2e\_pipeline\_simple.svg]
+<img alt="" src="/img/diagram_1_e2e_pipeline_simple.svg">
 
 The e2e testing pipeline consists of the following components:
 
@@ -57,7 +57,7 @@ Next, we will go over the details of the testing framework using an example in t
 
 Here's a sample Move test that simulates a simple P2P payment scenario: Alice sends 200 microlibra to Bob and Bob checks that he has received the funds. We've also included a transaction that will fail in the end: Bob tries to overdraft from his account and send money back to Alice.
 
-[placeholder for diagram\_2\_example\_test.svg]
+<img alt="" src="/img/diagram_2_example_test.svg">
 
 This file can be broken into the following parts:
 
@@ -436,7 +436,7 @@ error: Negative Match
 
 For developers who want to learn more about or hack with the internals of the e2e testing framework, here's a detailed breakdown of the components:
 
-[placeholder for diagram\_3\_e2e\_pipeline\_full.svg]
+<img alt="" src="/img/diagram_3_e2e_pipeline_full.svg">
 
 ## Future work
 
