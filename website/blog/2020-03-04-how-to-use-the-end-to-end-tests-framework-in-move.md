@@ -77,7 +77,7 @@ There are two types of configs you can specify: **global configs** and **transac
 #### Account setup
 
 ```
-//! account: \<alias>, [initial balance], [initial sequence number], [role]
+//! account: <alias>, [initial balance], [initial sequence number], [role]
 ```
 
 Creates an account that can be used later in tests. Optionally, it's possible to specify the following parameters:
@@ -106,7 +106,7 @@ The {{default}} account alias always exists and is the sender of all transaction
 #### Sender
 
 ```
-//! sender: \<alias>
+//! sender: <alias>
 ```
 
 Specifies the sender of the transaction using aliases defined by the account configs.
@@ -116,7 +116,7 @@ Default: "default". (The default account.)
 #### Transaction arguments
 
 ```
-//! args: \<arg1>, \<arg2>, ...
+//! args: <arg1>, <arg2>, ...
 ```
 
 Specifies the transaction arguments. It has no effect if the transaction is a module publishing transaction.
@@ -134,7 +134,7 @@ Default: none.
 #### Max gas
 
 ```
-//! max-gas: \<integer value>
+//! max-gas: <integer value>
 ```
 
 This specifies the maximum gas units to pay for this transaction.
@@ -144,7 +144,7 @@ Default: current balance in account.
 #### Sequence number
 
 ```
-//! sequence-number: \<integer value>
+//! sequence-number: <integer value>
 ```
 
 Overrides the sequence number used to sign the transaction.
@@ -154,7 +154,7 @@ Default: current sequence number of the account.
 #### No-run
 
 ```
-//! no-run: \<stage1>, \<stage2>, ...
+//! no-run: <stage1>, <stage2>, ...
 ```
 
 Does not run the transaction through certain stages in the pipeline. Valid values are: "compiler," "verifier," "serializer," and "runtime." This feature should only be used if you are testing one of the earlier phases.
@@ -164,7 +164,7 @@ Default: none.
 #### Expiration time
 
 ```
-//! expiration-time: \<integer value>
+//! expiration-time: <integer value>
 ```
 
 Overrides the "expiration-time" of the current transaction. This is the time since the beginning of the testing harness.
@@ -198,7 +198,7 @@ arg_types: [Address, Struct(StructHandleIndex(0), [])], type_formals: [] }],
 locals_signatures: [LocalsSignature([Address, U64, U64, Bool, U64]),
 LocalsSignature([])], identifiers: [Identifier("<SELF>"), Identifier("main"),
 Identifier("LibraAccount"), Identifier("balance"), Identifier("LibraCoin"),
-Identifier("T"), Identifier("withdraw\_from\_sender"), Identifier("deposit")],
+Identifier("T"), Identifier("withdraw_from_sender"), Identifier("deposit")],
 byte_array_pool: [], address_pool:
 [90290bb38b30fa2971e969687609cacbee3b984b60547bbf17e5d9cdf28b9cb3,
 0000000000000000000000000000000000000000000000000000000000000000], main:
@@ -265,7 +265,7 @@ type_signatures: [], function_signatures: [FunctionSignature { return_types: [],
 arg_types: [], type_formals: [] }, FunctionSignature { return_types: [U64],
 arg_types: [Address], type_formals: [] }], locals_signatures:
 [LocalsSignature([Bool, U64]), LocalsSignature([])],
-identifiers: [Identifier("\<SELF>"), Identifier("main"), Identifier("LibraAccount"),
+identifiers: [Identifier("<SELF>"), Identifier("main"), Identifier("LibraAccount"),
 Identifier("balance")], byte_array_pool: [], address_pool:
 [c05a7b73d232d21975fd6031c69c3bc35f9a45b6bba55da7179ba33ec0aa6849,
 0000000000000000000000000000000000000000000000000000000000000000], main:
@@ -313,8 +313,8 @@ type_formals: [] }, FunctionSignature { return_types: [Struct(StructHandleIndex(
 [])], arg_types: [U64], type_formals: [] }, FunctionSignature { return_types: [],
 arg_types: [Address, Struct(StructHandleIndex(0), [])], type_formals: [] }],
 locals_signatures: [LocalsSignature([Address]), LocalsSignature([])], identifiers:
-[Identifier("\<SELF>"), Identifier("main"), Identifier("LibraCoin"),
-Identifier("T"), Identifier("LibraAccount"), Identifier("withdraw\_from\_sender"),
+[Identifier("<SELF>"), Identifier("main"), Identifier("LibraCoin"),
+Identifier("T"), Identifier("LibraAccount"), Identifier("withdraw_from_sender"),
 Identifier("deposit")], byte_array_pool: [], address_pool:
 [c05a7b73d232d21975fd6031c69c3bc35f9a45b6bba55da7179ba33ec0aa6849,
 0000000000000000000000000000000000000000000000000000000000000000], main:
