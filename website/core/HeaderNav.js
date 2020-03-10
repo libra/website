@@ -92,18 +92,23 @@ class HeaderNav extends React.Component {
         <div className="headerWrapper">
           <header>
             <div className="main-nav">
-              <a href={this.props.baseUrl}>
-                {this.props.config.headerIcon && (
-                  <img
-                    className="logo"
-                    src={this.props.baseUrl + this.props.config.headerIcon}
-                    alt={this.props.config.title}
-                  />
-                )}
-                {!this.props.config.disableHeaderTitle && (
-                  <h2 className={headerClass}>{this.props.title}</h2>
-                )}
-              </a>
+              <div className="logo-container">
+                <div className="mobile side-nav hidden">...</div>
+                <div className="mobile side-nav">x</div>
+                <a href={this.props.baseUrl}>
+                  {this.props.config.headerIcon && (
+                    <img
+                      className="logo"
+                      src={this.props.baseUrl + this.props.config.headerIcon}
+                      alt={this.props.config.title}
+                    />
+                  )}
+                  {!this.props.config.disableHeaderTitle && (
+                    <h2 className={headerClass}>{this.props.title}</h2>
+                  )}
+                </a>
+                <div className="mobile docs-image">image</div>
+              </div>
               {this.renderResponsiveNav()}
             </div>
           </header>
