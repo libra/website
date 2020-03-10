@@ -44,7 +44,16 @@ const siteConfig = {
     },
     { href: 'https://libra.org/learn-faqs/', label: 'Learn' },
     { href: 'https://libra.org/media-press-news/', label: 'Media' },
-    { href: 'https://libra.org/white-paper/', label: 'White Paper', highlight: true },
+    {
+      href: 'https://libra.org/white-paper/',
+      label: 'White Paper',
+      highlight: true,
+      mobileImg: {
+        image: '/img/white-paper.svg',
+        alt: 'White Paper',
+      },
+      mobileMain: true,
+    },
     // {search: false}, // position search box to the very right
   ],
 
