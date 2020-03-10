@@ -37,10 +37,13 @@ nav {
 
 .headerWrapper {
   background-color: #fff;
-  padding: 0.625rem;
+  padding: 0.4rem 0.625rem;
   border-bottom: 1px solid #e5e5e5;
   height: 60px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  display: flex;
 }
 
 .hidden {
@@ -56,18 +59,37 @@ nav {
 }
 
 .fixedHeaderContainer header {
-  display: block;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.fixedHeaderContainer header img {
+  margin-right: 0;
 }
 
 header .main-nav {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  flex: 1;
 }
 
 header .main-nav .side-nav-trigger {
   position: relative;
   z-index: 10000;
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+header .main-nav .side-nav-trigger.trigger-open {
+  padding-left: 3px;
+}
+
+header .main-nav .side-nav-trigger.trigger-close {
+  padding-right: 3px;
 }
 
 header .main-nav .logo-container {
@@ -75,6 +97,12 @@ header .main-nav .logo-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
+}
+
+header .main-nav .logo-container .docs-image > * {
+  color: #39298c;
+  height: 100%;
 }
 
 .fixedHeaderContainer header .headerTitleWithLogo {
@@ -88,15 +116,15 @@ header .main-nav .logo-container {
 
 .navigationSlider .slidingNav {
   top: unset;
+  margin-top: calc(0.4rem + 1px);
 }
 
 .navigationSlider .slidingNav ul {
   background: #fff;
   align-items: flex-start;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0.01rem;
   padding: 1rem;
-  padding-bottom: 2rem;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -137,12 +165,15 @@ header .main-nav .logo-container {
   border: 1px solid #e5e5e5;
   border-left: none;
   border-right: none;
+  border-top: none;
   background-color: #f9f8f8;
   color: #354052;
   height: 60px;
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
+  position: relative;
+  z-index: 1;
 }
 
 #SubNav header {
@@ -421,6 +452,10 @@ article p img.download {
     display: block;
   }
 
+  .fixedHeaderContainer header img {
+    margin-right: 10px;
+  }
+
   header .main-nav {
     display: flex;
     flex-flow: row nowrap;
@@ -434,6 +469,10 @@ article p img.download {
   .navigationSlider {
     height: unset;
     margin-right: 2em;
+  }
+
+  .navigationSlider .slidingNav {
+    margin-top: 0;
   }
 
   .navigationSlider .slidingNav ul {
