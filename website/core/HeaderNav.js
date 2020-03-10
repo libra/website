@@ -93,8 +93,8 @@ class HeaderNav extends React.Component {
           <header>
             <div className="main-nav">
               <div className="logo-container">
-                <div className="mobile side-nav-trigger">...</div>
-                <div className="mobile-hidden mobile side-nav-trigger">x</div>
+                <div className="mobile side-nav-trigger trigger-open">...</div>
+                <div className="mobile-hidden mobile side-nav-trigger trigger-close">x</div>
                 <a href={this.props.baseUrl}>
                   {this.props.config.headerIcon && (
                     <img
