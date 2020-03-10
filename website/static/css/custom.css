@@ -47,6 +47,10 @@ nav {
   display: none !important;
 }
 
+.mobile-hidden {
+  display: none;
+}
+
 .mobile {
   color: black; /* TODO remove */
 }
@@ -61,7 +65,7 @@ header .main-nav {
   align-items: center;
 }
 
-header .main-nav .side-nav {
+header .main-nav .side-nav-trigger {
   position: relative;
   z-index: 10000;
 }
@@ -124,6 +128,7 @@ header .main-nav .logo-container {
   padding: 0.8em 1.8rem;
   text-shadow: 0.5px 0 0;
   letter-spacing: 0.5px;
+  margin-top: 10px;
 }
 
 #SubNav {
@@ -390,6 +395,9 @@ article p img.download {
 }
 
 @media only screen and (min-width: 1024px) {
+  .mobile-hidden {
+    display: unset;
+  }
   .mobile {
     display: none;
   }
@@ -406,6 +414,7 @@ article p img.download {
     background-color: #fff;
     padding: 1rem 2rem;
     border: none;
+    height: 80px;
   }
 
   .fixedHeaderContainer header {
@@ -432,6 +441,8 @@ article p img.download {
     align-items: center;
     flex-direction: row;
     margin-top: 0;
+    border-bottom: none;
+    padding: 0;
   }
 
   .navigationSlider .slidingNav ul li:not(:first-child) {
@@ -471,6 +482,7 @@ article p img.download {
     padding: 0.8em 1.8rem;
     text-shadow: 0.5px 0 0;
     letter-spacing: 0.5px;
+    margin-top: 0;
   }
   #SubNav {
     padding: 1rem 2rem;
