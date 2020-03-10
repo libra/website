@@ -77,7 +77,7 @@ class HeaderNav extends React.Component {
       headerLinks.push({ search: true });
     }
     return (
-      <div className="navigationWrapper navigationSlider">
+      <div className="navigationWrapper navigationSlider mobile-hidden">
         <nav className="slidingNav">
           <ul className="nav-site nav-site-internal">{headerLinks.map(this.makeLinks, this)}</ul>
         </nav>
@@ -93,8 +93,8 @@ class HeaderNav extends React.Component {
           <header>
             <div className="main-nav">
               <div className="logo-container">
-                <div className="mobile side-nav hidden">...</div>
-                <div className="mobile side-nav">x</div>
+                <div className="mobile side-nav-trigger">...</div>
+                <div className="mobile-hidden mobile side-nav-trigger">x</div>
                 <a href={this.props.baseUrl}>
                   {this.props.config.headerIcon && (
                     <img
