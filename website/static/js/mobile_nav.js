@@ -1,35 +1,67 @@
-document.addEventListener('DOMContentLoaded', function(event) {
-  const mainNavToggles = document.querySelectorAll('.main-nav .mobile.side-nav-trigger');
-  const mainNav = document.querySelector('.main-nav .navigationWrapper.navigationSlider');
-  window.addEventListener('click', (event) => {
-    closeMainNav(mainNav, mainNavToggles);
+(() => {
+  let isMainNavClick = false;
+  let isSubNavClick = false;
+  document.addEventListener('DOMContentLoaded', function() {
+    addClickHandlersToMainNavTriggers();
+    addClickHandlersToSubNavTriggers();
   });
-  mainNav.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-  mainNavToggles.forEach((node) => {
-    node.addEventListener('click', (event) => {
-      event.stopPropagation();
-      mainNavToggles.forEach((toggle) => {
-        toggleVisibility(toggle);
-        toggle.classList.contains('trigger-open');
-      });
-      toggleVisibility(mainNav);
+
+  function addClickHandlersToMainNavTriggers() {
+    const mainNavToggles = document.querySelectorAll('.main-nav .mobile.main-nav-trigger');
+    const mainNav = document.querySelector('.main-nav .navigationWrapper.navigationSlider');
+    window.addEventListener('click', (event) => {
+      if (!isMainNavClick) {
+        closeNav(mainNav, mainNavToggles);
+      }
+      isMainNavClick = false;
     });
-  });
-});
+    mainNav.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+    addClickHandlersToNavToggles(mainNavToggles, mainNav, true, false);
+  }
 
-function toggleVisibility(node) {
-  node.classList.toggle('mobile-hidden');
-}
+  function addClickHandlersToSubNavTriggers() {
+    const subNavToggles = document.querySelectorAll('#SubNav .mobile.sub-nav-trigger');
+    const subNav = document.querySelector('#SubNav  .navigationWrapper.navigationSlider');
+    window.addEventListener('click', () => {
+      if (!isSubNavClick) {
+        closeNav(subNav, subNavToggles);
+      }
+      isSubNavClick = false;
+    });
+    subNav.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+    addClickHandlersToNavToggles(subNavToggles, subNav, false, true);
+  }
 
-function closeMainNav(mainNav, mainNavToggles) {
-  mainNavToggles.forEach((toggle) => {
-    if (toggle.classList.contains('trigger-open')) {
-      toggle.classList.remove('mobile-hidden');
-    } else {
-      toggle.classList.add('mobile-hidden');
-    }
-  });
-  mainNav.classList.add('mobile-hidden');
-}
+  function addClickHandlersToNavToggles(navToggles, nav, _isMainNavClick, _isSubNavClick) {
+    navToggles.forEach((node) => {
+      node.addEventListener('click', () => {
+        isMainNavClick = _isMainNavClick;
+        isSubNavClick = _isSubNavClick;
+        navToggles.forEach((toggle) => {
+          toggleVisibility(toggle);
+          toggle.classList.contains('trigger-open');
+        });
+        toggleVisibility(nav);
+      });
+    });
+  }
+
+  function toggleVisibility(node) {
+    node.classList.toggle('mobile-hidden');
+  }
+
+  function closeNav(nav, navToggles) {
+    navToggles.forEach((toggle) => {
+      if (toggle.classList.contains('trigger-open')) {
+        toggle.classList.remove('mobile-hidden');
+      } else {
+        toggle.classList.add('mobile-hidden');
+      }
+    });
+    nav.classList.add('mobile-hidden');
+  }
+})();

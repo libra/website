@@ -33,9 +33,9 @@ class SubNav extends React.Component {
     return (
       <div className="breadcrumb">
         <h2>Developers</h2>
-        {breadcrumbs.map(({ label, href }) => (
-          <a key={`${label}breadcrumb`} href={href}>
-            <span>/</span>
+        {breadcrumbs.map(({ label }) => (
+          <a key={`${label}breadcrumb`}>
+            <span className="mobile-hidden">/</span>
             <span>{label}</span>
           </a>
         ))}
@@ -118,10 +118,22 @@ class SubNav extends React.Component {
   renderResponsiveSubNav() {
     const subHeaderLinks = this.props.config.subHeaderLinks;
     return (
-      <div className="navigationWrapper navigationSlider">
+      <div className="navigationWrapper navigationSlider mobile-hidden">
         <nav className="slidingNav">
           <ul className="nav-site nav-site-internal">{subHeaderLinks.map(this.makeLinks, this)}</ul>
         </nav>
+      </div>
+    );
+  }
+  renderMobileTriggers() {
+    return (
+      <div>
+        <div className="mobile sub-nav-trigger pointer trigger-open">
+          <img src="/img/chevron-down.svg" alt="open" />
+        </div>
+        <div className="mobile-hidden mobile pointer sub-nav-trigger trigger-close">
+          <img src="/img/chevron-pressed.svg" alt="close" />
+        </div>
       </div>
     );
   }
@@ -131,6 +143,7 @@ class SubNav extends React.Component {
         <header>
           {this.renderBreadCrumb()}
           {this.renderResponsiveSubNav()}
+          {this.renderMobileTriggers()}
         </header>
       </div>
     );

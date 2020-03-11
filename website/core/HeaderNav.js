@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const CWD = process.cwd();
-// const PropTypes = require('prop-types');
 const React = require('react');
 const SubNav = require('./SubNav');
 
@@ -102,10 +100,10 @@ class HeaderNav extends React.Component {
     const mainNavMobileLinks = this.props.config.headerLinks.filter((link) => link.mobileMain);
     return (
       <div className="logo-container">
-        <div className="mobile side-nav-trigger trigger-open">
+        <div className="mobile pointer main-nav-trigger  trigger-open">
           <img src="/img/vertical-ellipse.svg" alt="open" />
         </div>
-        <div className="mobile-hidden mobile side-nav-trigger trigger-close">
+        <div className="mobile-hidden mobile pointer main-nav-trigger trigger-close">
           <img src="/img/close.svg" alt="close" />
         </div>
         <a href={this.props.baseUrl}>
