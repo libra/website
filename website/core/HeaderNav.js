@@ -136,7 +136,7 @@ class HeaderNav extends React.Component {
   render() {
     return (
       <div className="fixedHeaderContainer">
-        <div className="headerWrapper">
+        <div className="headerWrapper wrapper">
           <header>
             <div className="main-nav">
               {this.renderLogoContainer()}
