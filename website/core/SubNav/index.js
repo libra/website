@@ -139,8 +139,8 @@ class SubNav extends React.Component {
   }
   render() {
     return (
-      <div id="SubNav" className="wrapper">
-        <header>
+      <div id="SubNav">
+        <header className="wrapper">
           {this.renderBreadCrumb()}
           {this.renderResponsiveSubNav()}
           {this.renderMobileTriggers()}
