@@ -4,7 +4,7 @@
  */
 
 html body {
-  font-family: 'Helvetica', 'nb_international_pro', sans-serif;
+  font-family: 'nb_international_proregular', 'Helvetica', sans-serif;
   overflow-x: hidden;
   font-size: 16px;
 }
@@ -214,16 +214,7 @@ header .main-nav .logo-container .docs-image > * {
 #SubNav .navigationSlider .slidingNav ul li a {
   background-color: transparent;
   color: #000000;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 15px;
-  text-align: right;
-}
-
-#SubNav .navigationSlider .slidingNav ul,
-#SubNav .navigationSlider .slidingNav ul li a {
-  color: #000000;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 15px;
   text-align: right;
@@ -508,6 +499,7 @@ article p img.download {
     line-height: 24px;
     padding: 0.5em 1em;
     font-weight: normal;
+    font-size: 14px;
   }
 
   .navigationSlider .slidingNav ul li a:hover,
