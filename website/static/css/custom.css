@@ -197,6 +197,10 @@ header .main-nav .logo-container .docs-image > * {
   line-height: 23px;
 }
 
+#SubNav .navigationSlider .slidingNav {
+  margin-top: 30px;
+}
+
 #SubNav .navigationSlider .slidingNav ul li:not(:first-child) {
   margin-left: 0px;
 }
@@ -209,6 +213,23 @@ header .main-nav .logo-container .docs-image > * {
   font-weight: 300;
   line-height: 15px;
   text-align: right;
+}
+
+#SubNav .navigationSlider .slidingNav ul,
+#SubNav .navigationSlider .slidingNav ul li a {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 15px;
+  text-align: right;
+}
+
+#SubNav .navigationSlider .slidingNav ul {
+  background-color: #fff;
+}
+
+#SubNav .navigationSlider .slidingNav ul li a {
+  background-color: transparent;
 }
 
 #SubNav .navigationSlider .slidingNav ul li.siteNavItemActive > a,
@@ -504,6 +525,10 @@ article p img.download {
     font-size: 18px;
     font-weight: bold;
     line-height: 32px;
+  }
+
+  #SubNav .navigationSlider .slidingNav {
+    margin-top: 0;
   }
 
   #SubNav .navigationSlider .slidingNav ul,
