@@ -139,7 +139,7 @@ class SubNav extends React.Component {
   }
   render() {
     return (
-      <div id="SubNav">
+      <div id="SubNav" className="wrapper">
         <header>
           {this.renderBreadCrumb()}
           {this.renderResponsiveSubNav()}
