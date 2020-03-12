@@ -82,10 +82,6 @@ class HeaderNav extends React.Component {
 
   renderResponsiveNav() {
     const headerLinks = this.props.config.headerLinks;
-    const search = headerLinks.reduce((hasSearch, link) => hasSearch || link.search, false);
-    if (!search && this.props.config.algolia) {
-      headerLinks.push({ search: true });
-    }
     return (
       <div className="navigationWrapper navigationSlider mobile-hidden">
         <nav className="slidingNav">
