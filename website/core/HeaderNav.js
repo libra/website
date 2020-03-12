@@ -102,7 +102,7 @@ class HeaderNav extends React.Component {
         <div className="mobile-hidden mobile pointer main-nav-trigger trigger-close">
           <img src="/img/close.svg" alt="close" />
         </div>
-        <a href={this.props.baseUrl}>
+        <a href={this.props.config.headerLogoUrl || this.props.baseUrl}>
           {this.props.config.headerIcon && (
             <img
               className="logo"

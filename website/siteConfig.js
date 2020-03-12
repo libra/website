@@ -25,6 +25,7 @@ const siteConfig = {
   cleanUrl: true, // No .html extensions for paths
   blogSidebarCount: 'ALL', // Show all blog posts
   headerIcon: 'img/libra-nav-logo.png',
+  headerLogoUrl: 'https://libra.org',
   footerIcon: 'img/libra-logomark-white.png',
   favicon: 'img/libra.ico',
   cname: 'developers.libra.org',
@@ -58,10 +59,10 @@ const siteConfig = {
   ],
 
   subHeaderLinks: [
-    { page: 'index', label: 'Overview' },
+    { href: 'https://libra.org/open-source-developers/', label: 'Overview' },
     { doc: 'welcome-to-libra', label: 'Libra Docs' },
     { href: 'https://community.libra.org', label: 'Community' },
-    { href: 'https://github.com/libra/libra', label: 'GitHub' },
+    { href: 'https://github.com/libra/libra', label: 'GitHub', external: true },
     { search: true },
   ],
 
