@@ -62,6 +62,7 @@ const siteConfig = {
     { doc: 'welcome-to-libra', label: 'Libra Docs' },
     { href: 'https://community.libra.org', label: 'Community' },
     { href: 'https://github.com/libra/libra', label: 'GitHub' },
+    { search: true },
   ],
 
   // add users to the website
@@ -70,10 +71,10 @@ const siteConfig = {
   // search integration w/ algolia
 
   // This website manually inserts the Algolia Search bar in Footer.js
-  // algolia: {
-  //   apiKey: '0d48ee629d39ddc4916eeef7755a0c4c',
-  //   indexName: 'libra',
-  // },
+  algolia: {
+    apiKey: '0d48ee629d39ddc4916eeef7755a0c4c',
+    indexName: 'libra',
+  },
 
   // colors for website
   colors: {
