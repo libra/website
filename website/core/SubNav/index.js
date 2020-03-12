@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const React = require('react');
 
 class SubNav extends React.Component {
@@ -44,6 +37,10 @@ class SubNav extends React.Component {
   }
 
   makeHref(link) {
+    if (link.href) {
+      // set link to specified href
+      return link.href;
+    }
     if (link.doc) {
       // set link to document with current page's language/version
       const langPart = '';
@@ -57,10 +54,6 @@ class SubNav extends React.Component {
     if (link.page) {
       // set link to page with current page's language if appropriate
       return this.props.config.baseUrl + link.page;
-    }
-    if (link.href) {
-      // set link to specified href
-      return link.href;
     }
     if (link.blog) {
       // set link to blog url

@@ -1,14 +1,13 @@
-/**
- * Copyright (c) The Libra Core Contributors
- * SPDX-License-Identifier: Apache-2.0
- */
-
 const React = require('react');
 const SubNav = require('./SubNav');
 
 // header navbar used by all pages generated with docusaurus
 class HeaderNav extends React.Component {
   makeHref(link) {
+    if (link.href) {
+      // set link to specified href
+      return link.href;
+    }
     if (link.doc) {
       // set link to document with current page's language/version
       const langPart = '';
@@ -22,10 +21,6 @@ class HeaderNav extends React.Component {
     if (link.page) {
       // set link to page with current page's language if appropriate
       return this.props.config.baseUrl + link.page;
-    }
-    if (link.href) {
-      // set link to specified href
-      return link.href;
     }
     if (link.blog) {
       // set link to blog url

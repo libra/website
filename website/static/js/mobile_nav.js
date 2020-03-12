@@ -1,4 +1,4 @@
-(() => {
+(function() {
   let isMainNavClick = false;
   let isSubNavClick = false;
   document.addEventListener('DOMContentLoaded', function() {
@@ -9,13 +9,13 @@
   function addClickHandlersToMainNavTriggers() {
     const mainNavToggles = document.querySelectorAll('.main-nav .mobile.main-nav-trigger');
     const mainNav = document.querySelector('.main-nav .navigationWrapper.navigationSlider');
-    window.addEventListener('click', (event) => {
+    window.addEventListener('click', function() {
       if (!isMainNavClick) {
         closeNav(mainNav, mainNavToggles);
       }
       isMainNavClick = false;
     });
-    mainNav.addEventListener('click', (event) => {
+    mainNav.addEventListener('click', function(event) {
       event.stopPropagation();
     });
     addClickHandlersToNavToggles(mainNavToggles, mainNav, true, false);
@@ -24,24 +24,24 @@
   function addClickHandlersToSubNavTriggers() {
     const subNavToggles = document.querySelectorAll('#SubNav .mobile.sub-nav-trigger');
     const subNav = document.querySelector('#SubNav  .navigationWrapper.navigationSlider');
-    window.addEventListener('click', () => {
+    window.addEventListener('click', function() {
       if (!isSubNavClick) {
         closeNav(subNav, subNavToggles);
       }
       isSubNavClick = false;
     });
-    subNav.addEventListener('click', (event) => {
+    subNav.addEventListener('click', function(event) {
       event.stopPropagation();
     });
     addClickHandlersToNavToggles(subNavToggles, subNav, false, true);
   }
 
   function addClickHandlersToNavToggles(navToggles, nav, _isMainNavClick, _isSubNavClick) {
-    navToggles.forEach((node) => {
-      node.addEventListener('click', () => {
+    navToggles.forEach(function(node) {
+      node.addEventListener('click', function() {
         isMainNavClick = _isMainNavClick;
         isSubNavClick = _isSubNavClick;
-        navToggles.forEach((toggle) => {
+        navToggles.forEach(function(toggle) {
           toggleVisibility(toggle);
           toggle.classList.contains('trigger-open');
         });
@@ -55,7 +55,7 @@
   }
 
   function closeNav(nav, navToggles) {
-    navToggles.forEach((toggle) => {
+    navToggles.forEach(function(toggle) {
       if (toggle.classList.contains('trigger-open')) {
         toggle.classList.remove('mobile-hidden');
       } else {
