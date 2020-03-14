@@ -85,6 +85,7 @@ header .main-nav {
   flex: 1;
 }
 
+header .sub-nav-trigger,
 header .main-nav .main-nav-trigger {
   position: relative;
   z-index: 10000;
