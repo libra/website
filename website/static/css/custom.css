@@ -227,6 +227,7 @@ header .main-nav .logo-container .docs-image > * {
 
 #SubNav .navigationSlider .slidingNav ul li a {
   background-color: transparent;
+  height: 40px;
 }
 
 #SubNav .navigationSlider .slidingNav ul li.siteNavItemActive > a,
