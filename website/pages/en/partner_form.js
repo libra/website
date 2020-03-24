@@ -44,7 +44,7 @@ const formFields = [{
 },{
   items: [{
     id: 'interestsAndExpertise',
-    label: 'Describe why you’re interested in joining Libra and the expertise you’d bring to the network (1000 characters max)',
+    label: 'Describe your goals in working with the Libra project and the expertise you’d bring to the network either as a member or in any other capacity (1000 characters max)',
     type: 'textarea',
     maxLength: '1000',
     rows: '5',
