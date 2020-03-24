@@ -19,7 +19,7 @@ const users = [];
 const siteConfig = {
   title: 'Libra',
   tagline:
-    'Libra’s mission is to enable a simple global currency and financial infrastructure that empowers billions of people.',
+    'The Libra Association’s mission is to enable a simple global payment system and financial infrastructure that empowers billions of people.',
   url: 'https://developers.libra.org',
   baseUrl: baseUrl,
   cleanUrl: true, // No .html extensions for paths
@@ -138,8 +138,8 @@ const siteConfig = {
     // Highlighting for Move.
     // NB: This is not correct for the whole Move grammar but just for
     // the examples on the site!
-    hljs: function(hljs) {
-      hljs.registerLanguage('move', function(hljs) {
+    hljs: function (hljs) {
+      hljs.registerLanguage('move', function (hljs) {
         var KEYWORDS = [
           'public',
           'module',
