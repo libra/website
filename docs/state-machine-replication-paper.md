@@ -5,6 +5,8 @@ title: State Machine Replication in the Libra Blockchain
 
 <!-- hide the table of contents --><style>.toc-headings {display: none !important; visibility: hidden !important;}</style>
 
+_**Note to readers:** This information was published before the Association released White Paper v2.0, which includes a number of key updates to the Libra payment system. This information has not been modified to incorporate those updates and should be read in that context._
+
 ## Abstract
 
 This report describes the algorithmic core of LibraBFT, named LBFT, and discusses next steps in its production. The consensus protocol is responsible for ordering and finalizing transactions. LBFT decentralizes trust among a dynamically reconfigurable set of validators, and remains safe against network asynchrony and even if at any particular configuration epoch, a threshold of the participants are Byzantine.
