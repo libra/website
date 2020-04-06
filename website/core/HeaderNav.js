@@ -126,16 +126,19 @@ class HeaderNav extends React.Component {
 
   render() {
     return (
-      <div className="fixedHeaderContainer">
-        <div className="headerWrapper wrapper">
-          <header>
-            <div className="main-nav">
-              {this.renderLogoContainer()}
-              {this.renderResponsiveNav()}
-            </div>
-          </header>
+      <div>
+        <div className="fixedHeaderContainer">
+          <div className="headerWrapper wrapper">
+            <header>
+              <div className="main-nav">
+                {this.renderLogoContainer()}
+                {this.renderResponsiveNav()}
+              </div>
+            </header>
+          </div>
+          <SubNav {...this.props} />
         </div>
-        <SubNav {...this.props} />
+        <div className="navSpacer"></div>
       </div>
     );
   }

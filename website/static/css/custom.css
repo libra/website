@@ -26,8 +26,14 @@ nav {
   padding-bottom: 0 !important;
 }
 
+.navSpacer {
+  height: 120px;
+}
 .navPusher {
-  padding-top: 120px;
+  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
+  overflow-y: scroll;
+  padding-top: 0;
 }
 
 .fixedHeaderContainer {
@@ -457,9 +463,13 @@ article p img.download {
   .mobile {
     display: none;
   }
+  .navSpacer {
+    height: 80px;
+  }
   .navPusher {
-    min-height: calc(100vh - 140px);
-    padding-top: 140px;
+    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
+    padding-top: 40px;
   }
 
   .headerWrapper {
@@ -564,8 +574,21 @@ article p img.download {
   #SubNav .breadcrumb a span {
     margin-left: 0.5em;
   }
+
   .docsNavContainer {
-    top: 100px;
+    top: 40px;
+  }
+  .docsNavContainer,
+  .onPageNav > .toc-headings {
+    padding-bottom: 140px;
+  }
+
+  .onPageNav {
+    top: 80px;
+  }
+
+  .docsContainer {
+    padding-top: 80px;
   }
 }
 
