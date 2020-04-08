@@ -39,5 +39,6 @@ sub {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'nb_international_probold', 'Helvetica', sans-serif;
+  font-family: 'NB International Pro', 'Helvetica', sans-serif;
+  font-weight: bold;
 }

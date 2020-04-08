@@ -24,7 +24,7 @@ const siteConfig = {
   baseUrl: baseUrl,
   cleanUrl: true, // No .html extensions for paths
   blogSidebarCount: 'ALL', // Show all blog posts
-  headerIcon: 'img/libra-nav-logo.png',
+  headerIcon: 'img/libra-nav-logo.svg',
   headerLogoUrl: 'https://libra.org',
   footerIcon: 'img/libra-logomark-white.png',
   favicon: 'img/libra.ico',

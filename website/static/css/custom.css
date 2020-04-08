@@ -4,7 +4,7 @@
  */
 
 html body {
-  font-family: 'nb_international_proregular', 'Helvetica', sans-serif;
+  font-family: 'NB International Pro', 'Helvetica', sans-serif;
   overflow-x: hidden;
   font-size: 16px;
 }
@@ -116,6 +116,10 @@ header .main-nav .logo-container {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+header .main-nav .logo-container .logo {
+  height: 21px;
 }
 
 header .main-nav .logo-container .docs-image > * {
