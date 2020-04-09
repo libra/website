@@ -32,7 +32,7 @@ const paperMeta = {
   'State Machine Replication': {
     abstractUrl: '/docs/state-machine-replication-paper/',
     paperBase: `${papersLocation}/libra-consensus-state-machine-replication-in-the-libra-blockchain`,
-    dates: ['2019-11-08', '2019-10-24', '2019-09-26', '2019-09-19', '2019-06-28'],
+    dates: ['2020-04-09', '2019-11-08', '2019-10-24', '2019-09-26', '2019-09-19', '2019-06-28'],
     imgLoc: '/docs/assets/illustrations/state-machine-pdf.png',
     imgAlt: 'State Machine Replication in the Libra Blockchain PDF Download',
   },
