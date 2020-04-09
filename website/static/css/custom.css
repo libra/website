@@ -156,6 +156,8 @@ header .main-nav .logo-container .docs-image > * {
   font-weight: 300;
   font-size: 16px;
   line-height: 40px;
+  text-shadow: 0.5px 0 0;
+  letter-spacing: 0.5px;
 }
 
 .navigationSlider .slidingNav ul li.siteNavItemActive > a,
