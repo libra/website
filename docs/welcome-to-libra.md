@@ -20,7 +20,7 @@ The documentation discusses:
 - How to be part of the community built around this new payment system.
 
 <blockquote class="block_note">
-Note: The Libra protocol and APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our [regular communication](https://libra.org/en-US/blog/), we will publish our progress towards stable APIs. You can also stay up to date on the latest developments by [signing up](https://developers.libra.org/newsletter_form) for our developer newsletter.
+Note: The Libra protocol and APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our <a href="https://libra.org/en-US/blog/">regular communication</a>, we will publish our progress towards stable APIs. You can also stay up to date on the latest developments by <a href="https://developers.libra.org/newsletter_form">signing up</a> for our developer newsletter.
 </blockquote>
 
 ### Move: A new blockchain programming language
