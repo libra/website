@@ -30,6 +30,7 @@ const paperMeta = {
     abstractUrl: '/docs/move-paper/',
     paperBase: `${papersLocation}/libra-move-a-language-with-programmable-resources`,
     dates: [
+      '2020-04-09',
       '2019-09-26',
       '2019-06-18',
     ],
