@@ -15,13 +15,13 @@ const bash = (...args) => `~~~bash\n${String.raw(...args)}\n~~~`;
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
+    const { siteConfig, language = '' } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
     const langPart = `${language ? `${language}/` : ''}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
-    const SplashContainer = props => (
+    const SplashContainer = (props) => (
       <div className="homeContainer">
         <div className="homeSplashFade">
           <div className="wrapper homeWrapper">{props.children}</div>
@@ -29,7 +29,7 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Logo = props => (
+    const Logo = (props) => (
       <div className="splashLogo">
         <img src={props.img_src} alt="Project Logo" />
       </div>
@@ -41,7 +41,7 @@ class HomeSplash extends React.Component {
       </h2>
     );
 
-    const PromoSection = props => (
+    const PromoSection = (props) => (
       <div className="section promoSection">
         <div className="promoRow">
           <div className="pluginRowBlock">{props.children}</div>
@@ -49,7 +49,7 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Button = props => (
+    const Button = (props) => (
       <div className="pluginWrapper buttonWrapper">
         <a className="button" href={props.href} target={props.target}>
           {props.children}
@@ -64,7 +64,9 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href={docUrl('welcome-to-libra')}>Welcome to the Developer Site</Button>
-            <Button href={docUrl('the-libra-blockchain-paper.html')}>Libra Blockchain Technical Paper</Button>
+            <Button href={docUrl('the-libra-blockchain-paper.html')}>
+              Libra Blockchain Technical Paper
+            </Button>
             <Button href={docUrl('move-overview.html')}>Getting Started With Move</Button>
           </PromoSection>
         </div>
@@ -75,10 +77,10 @@ class HomeSplash extends React.Component {
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl} = siteConfig;
+    const { config: siteConfig, language = '' } = this.props;
+    const { baseUrl } = siteConfig;
 
-    const Button = props => (
+    const Button = (props) => (
       <div className="pluginWrapper buttonWrapper">
         <a className="button" href={props.href} target={props.target}>
           {props.children}
@@ -86,16 +88,9 @@ class Index extends React.Component {
       </div>
     );
 
-    const Block = props => (
-      <Container
-        padding={['bottom', 'top']}
-        id={props.id}
-        background={props.background}>
-        <GridBlock
-          align="center"
-          contents={props.children}
-          layout={props.layout}
-        />
+    const Block = (props) => (
+      <Container padding={['bottom', 'top']} id={props.id} background={props.background}>
+        <GridBlock align="center" contents={props.children} layout={props.layout} />
       </Container>
     );
 
@@ -103,8 +98,7 @@ class Index extends React.Component {
       <Block background="light">
         {[
           {
-            content:
-              'This is another description of how this project is useful',
+            content: 'This is another description of how this project is useful',
             image: `${baseUrl}img/libra_logo_lockup_white.svg`,
             imageAlign: 'right',
             title: 'Description',
@@ -128,30 +122,30 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection"
         id="quickstart"
-        style={{textAlign: 'center', marginBottom:'30px'}}>
+        style={{ textAlign: 'center', marginBottom: '30px' }}
+      >
         <h2>Try Libra</h2>
         <p>Currently available for macOS and Linux.</p>
         <Container>
           <h4>1. Clone Libra:</h4>
-          <div style={{marginLeft:"30px"}}>
-            <MarkdownBlock>{
-bash`git clone https://github.com/libra/libra.git && cd libra`}</MarkdownBlock>
+          <div style={{ marginLeft: '30px' }}>
+            <MarkdownBlock>{bash`git clone https://github.com/libra/libra.git && cd libra`}</MarkdownBlock>
           </div>
           <h4>2. Checkout the Testnet Branch:</h4>
-          <div style={{marginLeft:"30px"}}>
+          <div style={{ marginLeft: '30px' }}>
             <MarkdownBlock>{bash`git checkout testnet`}</MarkdownBlock>
           </div>
           <h4>3. Install Dependencies:</h4>
-          <div style={{marginLeft:"30px"}}>
+          <div style={{ marginLeft: '30px' }}>
             <MarkdownBlock>{bash`./scripts/dev_setup.sh`}</MarkdownBlock>
           </div>
-            <h4>4. Run the CLI:</h4>
-          <div style={{marginLeft:"30px"}}>
+          <h4>4. Run the CLI:</h4>
+          <div style={{ marginLeft: '30px' }}>
             <MarkdownBlock>{bash`./scripts/cli/start_cli_testnet.sh`}</MarkdownBlock>
           </div>
-            <h4>5. Run Your First Transaction:</h4>
-          <div style={{marginLeft:"30px"}}>
-                <Button href={'docs/my-first-transaction'}>My First Transaction</Button>
+          <h4>5. Run Your First Transaction:</h4>
+          <div style={{ marginLeft: '30px' }}>
+            <Button href={'/docs/my-first-transaction'}>My First Transaction</Button>
           </div>
         </Container>
       </div>
