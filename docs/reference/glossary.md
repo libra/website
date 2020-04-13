@@ -178,10 +178,6 @@ then there is a guarantee that T_N will never be included in the blockchain.
 
 ---
 
-### LBR
-
-- **LBR** is the abbreviation for Libra currency.
-
 ### Leader
 
 - A **leader** is a validator node that proposes a block of transactions for the consensus protocol.
