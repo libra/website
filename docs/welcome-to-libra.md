@@ -15,13 +15,21 @@ This site documents the open-source implementation of the Libra protocol, which 
 
 The documentation discusses:
 
-- How to experiment with the prototype firsthand by [sending transactions](https://developers.libra.org/docs/my-first-transaction) to the testnet.
 - Where to learn about new technology, such as the Libra protocol, the Move language, and the **Libra Byzantine Fault Tolerance (LibraBFT) consensus** protocol.
+- How to experiment with the prototype firsthand by [sending transactions](https://developers.libra.org/docs/my-first-transaction) to the testnet.
 - How to be part of the community built around this new payment system.
 
 <blockquote class="block_note">
-Note: The Libra protocol and APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that work may be required to publish applications using these APIs. As part of our <a href="https://libra.org/en-US/blog/">regular communication</a>, we will publish our progress towards stable APIs. You can also stay up to date on the latest developments by <a href="https://developers.libra.org/newsletter_form">signing up</a> for our developer newsletter.
+Note: The Libra protocol and APIs are not final. One of the key tasks in evolving the prototype is formalizing the protocol and APIs. We welcome experimentation with the software on the testnet, but developers should expect that protocols and APIs may change. As part of our <a href="https://libra.org/en-US/blog/">regular communication</a>, we will publish our progress towards stable APIs. You can also stay up to date on the latest developments by <a href="https://developers.libra.org/newsletter_form">signing up</a> for our developer newsletter.
 </blockquote>
+
+### The Libra Protocol
+
+The Libra protocol implements a cryptographically authenticated database to record accounts and their balances. The database stores a ledger of programmable resources, such as Libra Coins.
+
+The Libra Blockchain uses a new smart contract language called Move, which was developed specifically for the Libra network. To allow for the flexibility to meet new requirements over time, we chose to implement as much of the Libra protocol as possible in Move, leading to fast, easy, and secure development.
+
+The database is maintained by a distributed network of validator nodes that follow the LibraBFT consensus protocol. The protocol can tolerate up to one-third of the validator nodes being compromised and still guarantee consistency in processing transfers of Libra Coins. As part of the LibraBFT protocol, the validator nodes generate cryptographic signatures, attesting to the state of the Libra Blockchain. The Libra Blockchain uses a Merkle tree data structure to allow any user, anywhere in the world, to combine the cryptographic signatures of the validator nodes with a small piece of data — known as a “proof” — to get an authenticated record of any transaction on the Libra Blockchain, knowing that the transaction can never be changed or reversed.
 
 ### Move: A new blockchain programming language
 
@@ -31,7 +39,7 @@ Move takes insights from past security incidents with smart contracts and create
 
 Move takes insights from past security incidents with smart contracts and creates a language that makes it inherently easier to write code that fulfills the author’s intent. This lessens the risk of unintended bugs or security incidents. Specifically, Move is designed to prevent assets from being cloned. It enables “resource types” that constrain digital assets to the same properties as physical assets: a resource has a single owner, it can only be spent once, and the creation of new resources is restricted.
 
-Refer to [Getting Started With Move](https://developers.libra.org/docs/move-overview) for further information.
+You can refer to [Getting Started With Move](https://developers.libra.org/docs/move-overview) for further information.
 
 ### BFT (Byzantine Fault Tolerance) consensus approach
 
@@ -56,4 +64,12 @@ The Libra project welcomes a wide variety of developers, ranging from people who
 
 ### Getting Started
 
-The Libra repo contains a command-line interface (CLI) for submitting transactions to the testnet. [My First Transaction](https://developers.libra.org/docs/my-first-transaction) guides you through executing your first transaction on the Libra Blockchain using the Libra CLI client. The CLI allows a participant to construct, sign, and submit transactions to a [validator node](https://developers.libra.org/docs/reference/glossary#validator-node). Similarly, it allows a participant to issue queries to the Libra Blockchain (through the validator node or a full node), request the status of a transaction or account, and verify the response.
+The Libra repository contains a command-line interface (CLI) for submitting transactions to the testnet. [My First Transaction](https://developers.libra.org/docs/my-first-transaction) guides you through executing your first transaction on the Libra Blockchain using the Libra CLI client. The CLI allows a participant to construct, sign, and submit transactions to a [validator node](https://developers.libra.org/docs/reference/glossary#validator-node). Similarly, it allows a participant to issue queries to the Libra Blockchain (through the validator node or a full node), request the status of a transaction or account, and verify the response.
+
+<blockquote class="block_note">
+Note: While all developers are free to use the tesnet, mainnet will follow a phased rollout plan. Initially, the network will only be accessible to <a href="https://libra.org/en-US/white-paper/#lexicon">Designated Dealers</a> and <a href="https://libra.org/en-US/white-paper/#lexicon">Regulated Virtual Asset Service Providers (VASPs)</a> while the Association continues to develop its certification process for other VASPs and its compliance framework for <a href="https://libra.org/en-US/white-paper/#lexicon">Unhosted Wallets</a> based on the feedback received from regulators. The Association intends to make the network accessible to <a href="https://libra.org/en-US/white-paper/#lexicon">Certified VASPs</a> and Unhosted Wallets once the relevant compliance frameworks have been finalized. We know that due to our phased rollout plans, not all aspects of the Libra network will be available immediately to some developers, but we are excited to work with the community to drive the evolution of these features. For more details, click <a href="https://libra.org/en-US/white-paper/#compliance-and-the-prevention-of-illicit-activity">here</a>.
+</blockquote>
+
+### Stay Updated 
+
+Check out the Libra network’s [documentation](/docs/welcome-to-libra) and [community](http://community.libra.org) sites, and stay up to date by signing up for our newsletter [here](/newsletter_form). 
