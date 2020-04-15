@@ -8,6 +8,9 @@ title: How to use the end-to-end tests framework in Move
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">March 06, 2020</p>') items[i].innerHTML = '<p class="post-meta">March 06, 2020</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 **Note**: The Move language is under development; the information and the terminology used in this document are subject to change.

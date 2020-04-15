@@ -7,6 +7,9 @@ title: Libra Developer Spotlight
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">September 12, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 We’re so excited to see so many leading developers from around the globe innovating and working on the Libra testnet. We wanted to share a few examples that caught our eye!

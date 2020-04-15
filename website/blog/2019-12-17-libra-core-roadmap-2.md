@@ -9,6 +9,9 @@ title: Libra Core Roadmap #2
         console.log(items[i], items[i].innerText);
         if (items[i].innerHTML = '<p class="post-meta">December 17, 2019</p>') items[i].innerHTML = '<p class="post-meta">December 17, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 

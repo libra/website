@@ -7,6 +7,9 @@ title: Improving the LibraBFT protocol
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">September 26, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 We are happy to announce a new release of the [LibraBFT technical report](https://developers.libra.org/docs/state-machine-replication-paper).

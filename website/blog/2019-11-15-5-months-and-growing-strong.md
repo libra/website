@@ -9,6 +9,9 @@ title: Five months and growing strong: the Libra project
         console.log(items[i], items[i].innerText);
         if (items[i].innerHTML = '<p class="post-meta">November 15, 2019</p>') items[i].innerHTML = '<p class="post-meta">November 15, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 It's been just five months since we announced the Libra project on June 18, 2019, and nearly a month since the Libra Association charter was signed by its members in Geneva. We've been working diligently to build the global community of developers and the technical infrastructure needed to support it. Here are a few highlights of what we've been working on:

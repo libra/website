@@ -7,6 +7,9 @@ title: Simplifying Libra Transaction Payloads: Deprecation of the "Program" Type
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">October 22, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 22, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 

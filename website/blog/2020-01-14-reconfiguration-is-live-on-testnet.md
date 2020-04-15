@@ -8,6 +8,9 @@ title: Reconfiguration support is live on testnet
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">January 14, 2020</p>') items[i].innerHTML = '<p class="post-meta">January 14, 2020</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 We're happy to announce that Libra protocol now provides initial support for reconfiguration, which is the ability to change any configuration parameter on the blockchain without restarting any validators and while preserving Libra Byzantine Fault Tolerance (LibraBFT) safety and liveness guarantees. Reconfiguration has been successfully executed several times on testnet to add and remove validators from the validator set. We expect that reconfiguration will be used to add new validators to [pre-mainnet](https://developers.libra.org/blog/2019/11/15/5-months-and-growing-strong#expanding-to-the-pre-mainnet). In the future, reconfiguration can be leveraged to change other configuration parameters such as upgrading the consensus protocol or the Move language specifications.

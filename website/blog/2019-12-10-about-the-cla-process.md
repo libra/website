@@ -9,6 +9,9 @@ title: How to contribute code to the Libra project: about the CLA process
         console.log(items[i], items[i].innerText);
         if (items[i].innerHTML = '<p class="post-meta">December 10, 2019</p>') items[i].innerHTML = '<p class="post-meta">December 10, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 Built on open source software, the Libra network relies on a vibrant community of developers to enhance and continue growing the system. Any consumer, developer, or business can use the Libra network, build products on top of it, and add value through their services. This is foundational to the goal of building more inclusive financial options for billions of people around the world.

@@ -8,6 +8,9 @@ title: Steering committee now governs Libra technical development
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">January 16, 2020</p>') items[i].innerHTML = '<p class="post-meta">January 16, 2020</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 On December 16, 2019, the council of the Libra Association voted to establish a Technical Steering Committee (TSC) for the Libra project and elected five members that each contribute a unique perspective and bring valuable domain expertise to the project.

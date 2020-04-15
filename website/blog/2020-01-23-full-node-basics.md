@@ -8,6 +8,9 @@ title: Full node basics: an introduction to full nodes in the Libra network
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">January 23, 2020</p>') items[i].innerHTML = '<p class="post-meta">January 23, 2020</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 _**Note:** Libra Core software is still under development; the information and the terminology used in this document are subject to change._

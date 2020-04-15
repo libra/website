@@ -3,6 +3,12 @@ author: Libra Engineering Team
 title: Libra: The Path Forward
 ---
 
+<script>
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;
+</script>
+
 Today we are announcing the **Libra testnet**, a live demonstration of an early prototype of the technology behind [Libra](https://libra.org/) — a simple global currency and financial infrastructure that can empower billions of people.
 
 **Libra Core** is the open-source implementation of the [Libra protocol](https://developers.libra.org/docs/the-libra-blockchain-paper) — the specification of how transactions are submitted, ordered, executed, and recorded within the Libra ecosystem. This is the first implementation of the Libra protocol and the [Move language](https://developers.libra.org/docs/move-paper). This post, the Libra developer website, and Libra Core are published by the [Libra Association](https://libra.org/en-us/non-profit-association), an independent, not-for-profit membership organization tasked with evolving the Libra ecosystem. 

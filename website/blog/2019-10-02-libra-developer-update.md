@@ -7,6 +7,9 @@ title:  September Libra Developer Update - Roadmap #1
     for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].innerHTML = '<p class="post-meta">October 02, 2019</p>') items[i].innerHTML = '<p class="post-meta">October 02, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 Since the official Libra project announcement in June, response from the developer community has been thrilling to watch. Developers have released several blockchain explorers (libranaut, [libraview](https://libraview.org), [librabrowser]( https://librabrowser.io), and [libexplorer](https://libexplorer.com)) and integrated Libra testnet into their wallets ([ZenGo](https://zengo.com/libras-next-frontier-a-non-custodial-wallet-with-no-private-key/), including a large PR to Libra Core). We&#39;ve also seen other blockchain projects integrate Move into their systems ([Solana](https://medium.com/solana-labs/solana-now-supports-libras-move-vm-f5fabaf3033c)). Calibra continues to develop Libra Core heavily on [GitHub](https://github.com/libra/libra). The team has also released two new guides: one for [running Move applications locally](https://developers.libra.org/docs/run-move-locally) and another showing [how to run your own network](https://developers.libra.org/docs/run-local-network). The [Libra Discourse forums](https://community.libra.org/) are active with discussions about transaction scripts, client development, and interest in Libra events continues to grow.

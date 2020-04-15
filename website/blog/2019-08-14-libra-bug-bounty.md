@@ -9,6 +9,9 @@ title: Libra Bug Bounty Open to All
 		console.log(items[i], items[i].innerText);
 		if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">August 27, 2019</p>';
 	}
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;
 </script>
 
 When we built the Libra Blockchain, security was top of mind. If people are going to rely on Libra for their everyday financial needs, it is critical that the infrastructure behind it be dependable and safe. This is one of the reasons we shared our plans well in advance of launch and open-sourced an early-stage version of the Libra Blockchain code, Libra Core, under an Apache 2.0 License. This testnet will help us gather feedback from the community about the direction of the project and work toward ensuring a scalable, reliable, and secure launch.

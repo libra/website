@@ -9,6 +9,9 @@ title: The Libra Consensus Protocol: Today and Next Steps
         console.log(items[i], items[i].innerText);
         if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">November 09, 2019</p>';
     }
+    var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+    var redirect = 'https://libra.org/blog/' + slug;
+    window.location = redirect;    
 </script>
 
 The Libra blockchain development team is excited to share version 3 of the [Libra consensus whitepaper](/docs/state-machine-replication-paper/) with the community. This whitepaper features two important advances:
