@@ -9,12 +9,11 @@
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
-    "dfuzr-docusaurus": "^1.14.10"
+    "docusaurus": "^1.14.4"
   },
   "dependencies": {
     "remarkable": "^1.7.1",
     "katex": "0.7.1",
-    "vows": "^0.8.3",
     "remarkable-katex": "^1.0.1"
   }
 }
