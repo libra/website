@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "remarkable": "^1.7.1",
+    "katex": "0.7.1",
+    "vows": "^0.8.3",
     "remarkable-katex": "^1.0.1"
   }
 }
