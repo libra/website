@@ -10,7 +10,7 @@ title: Five months and growing strong: the Libra project
         if (items[i].innerHTML = '<p class="post-meta">November 15, 2019</p>') items[i].innerHTML = '<p class="post-meta">November 15, 2019</p>';
     }
     var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
-    var redirect = 'https://libra.org/blog/' + slug;
+    var redirect = 'https://libra.org/en-US/blog/' + slug;
     window.location = redirect;    
 </script>
 

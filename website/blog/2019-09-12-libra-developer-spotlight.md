@@ -8,7 +8,7 @@ title: Libra Developer Spotlight
         if (items[i].innerHTML = '<p class="post-meta">August 14, 2019</p>') items[i].innerHTML = '<p class="post-meta">September 12, 2019</p>';
     }
     var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
-    var redirect = 'https://libra.org/blog/' + slug;
+    var redirect = 'https://libra.org/en-US/blog/' + slug;
     window.location = redirect;    
 </script>
 

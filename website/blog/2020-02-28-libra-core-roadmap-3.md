@@ -9,7 +9,7 @@ title: Libra Core Roadmap #3
         if (items[i].innerHTML = '<p class="post-meta">February 28, 2020</p>') items[i].innerHTML = '<p class="post-meta">February 28, 2020</p>';
     }
     var slug = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
-    var redirect = 'https://libra.org/blog/' + slug;
+    var redirect = 'https://libra.org/en-US/blog/' + slug;
     window.location = redirect;    
 </script>
 
