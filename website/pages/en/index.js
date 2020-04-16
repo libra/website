@@ -59,6 +59,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
+        <script dangerouslySetInnerHTML={{__html: "window.location.replace('https://developers.libra.org/docs/welcome-to-libra');"}}></script>
         <div className="inner">
           <Logo img_src={baseUrl + 'img/libra-header-logo-white.png'} />
           <ProjectTitle siteConfig={siteConfig} />

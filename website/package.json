@@ -9,9 +9,9 @@
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
-    "dfuzr-docusaurus": "^1.14.10"
   },
   "dependencies": {
+    "dfuzr-docusaurus": "^1.14.10",
     "remarkable": "^1.7.1",
     "remarkable-katex": "^1.0.1"
   }
