@@ -34,6 +34,7 @@
       var label = document.querySelector(labelSelector);
       if (input) {
         input.parentElement.classList.remove('hidden');
+        input.classList.remove('hidden');
         if (required) {
           input.required = true;
           if (label) {
