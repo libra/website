@@ -66,9 +66,9 @@ Now let us see how a programmer can interact with these modules and resources in
 // Use LibraAccount module published on the blockchain at account address
 // 0x0...0. 0x0 is shorthand that the language pads out to
 //16 bytes by adding leading zeroes.
-use 0x0.LBR;
-use 0x0.Libra;
-use 0x0.LibraAccount;
+use 0x0::LBR;
+use 0x0::Libra;
+use 0x0::LibraAccount;
 fun main(payee: address, amount: u64) {
   // Acquire a Libra::T<LBR::T> resource with value `amount` from the sender's
   // account.  This will fail if the sender's balance is less than `amount`.
@@ -88,9 +88,9 @@ Let us look at a more complex example. In this example, we will use a transactio
 // emphasize the ability to split a `Libra::T<LBR::T>` resource. The more concise
 // way would be to use multiple calls to `LibraAccount::withdraw_from_sender`.
 
-use 0x0.LBR;
-use 0x0.Libra;
-use 0x0.LibraAccount;
+use 0x0::LBR;
+use 0x0::Libra;
+use 0x0::LibraAccount;
 fun main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
   let total = amount1 + amount2;
   let coin1 = LibraAccount::withdraw_from_sender<LBR::T>(total);

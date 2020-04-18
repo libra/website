@@ -181,12 +181,11 @@ Subcommands include:
 `compile | c` &mdash; Compile a Move program.
 
     Usage:
-      compile | c <sender_account_address>|<sender_account_ref_id> <file_path> <module|script> [output_file_path (compile into tmp file by default)]
+      compile | c <sender_account_address>|<sender_account_ref_id> <file_path> <dependency_source_files...>
     Arguments:
       sender_account_address|sender_account_ref_id - Address of the sender account|Local index of the sender account.
-      module|script - Distinguishes between move modules and move scripts.
-      file_path - Path to the source Move program written in Intermediate Representation (IR).
-      output_file_path - (Optional) Where the compiled module will be saved.
+      file_path - Path to the source Move program
+      dependency_source_files - Paths to any additional Move source files or directories of source files that the current file depends upon
 
 `publish | p` &mdash; Publish a Move module on the local blockchain.
 

@@ -13,21 +13,6 @@ To create, compile, and publish Move modules to an account on the local blockcha
 
 ## Compile and Publish Move Modules
 
-### Create Move Module
-
-Let’s start with an extremely simple module called `MyModule`. This module has a single procedure called `id`, which is an identity function for coins. It takes a `LibraCoin.T` resource as input and hands it back to the calling program. The Move Intermediate Representation (IR) code for this module is provided below, save it in a file named `my_module.mvir.`
-
-```
-module MyModule {
-  import 0x0.LibraCoin;
-
-  // The identity function for coins: takes a LibraCoin.T as input and hands it back
-  public id(c: LibraCoin.T): LibraCoin.T {
-    return move(c);
-  }
-}
-```
-
 ### Start a Local Network of Validator Nodes
 
 To run a local network with one validator node and create a local blockchain, change to the `libra` directory and run `libra-swarm`, as shown below:
@@ -74,14 +59,14 @@ For detailed instructions on working with a local cluster of validator nodes, re
 
 ### Create an Account
 
-Each Move module and resource type is hosted by a specific account address. For example, `LibraCoin` module is hosted by the account at address `0x0`. To import the `LibraCoin` module in other modules or transaction scripts, you would use `import 0x0.LibraCoin`.
+Each Move module and resource type is hosted by a specific account address. For example, the `Libra` module is hosted by the account at address `0x0`. To import the `Libra` module in other modules or transaction scripts, your Move code would specify `use 0x0::Libra`.
 
-To host `MyModule`, create an account:
+Before publishing a Move module, you first need to create an account to host it:
 
 ```
 libra% account create
 >> Creating/retrieving next account from wallet
-Created/retrieved account #0 address 810abcc08dbed34ea15d7eb261b8001da6a62d72acdbf87714dd243a175f9b62
+Created/retrieved account #0 address 717da70a461fef6307990847590ad7af
 
 ```
 
@@ -102,38 +87,54 @@ libra% query balance 0
 Balance is: 76.000000
 ```
 
+### Create Move Module
+
+Let’s start with an extremely simple module called `MyModule`. This module has a single procedure called `id`, which is an identity function for coins. It takes a `Libra::T<LBR::T>` resource as input and hands it back to the calling program. The Move code for this module is provided below. Change the address in the first line to be the address of the account you just created and then save it in a file named `my_module.move.` (Be sure to keep the "0x" prefix on the account address.)
+
+```
+address 0x717da70a461fef6307990847590ad7af:
+
+module MyModule {
+  use 0x0::Libra;
+  use 0x0::LBR;
+
+  // The identity function: takes a Libra::T<LBR::T> as input and hands it back
+  public fun id(c: Libra::T<LBR::T>): Libra::T<LBR::T> {
+    c
+  }
+}
+```
+
 ### Compile Move Module
 
-To compile `my_module.mvir`, use the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
+To compile `my_module.move`, use the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
 
 ```
-libra% dev compile 0 <path to my_module.mvir> module
+libra% dev compile 0 <path to my_module.move> <path to language/stdlib/modules>
 ```
 * 0 &mdash; Index/ref_id of the account that the module will be published under.
-* `module` &mdash; Indicates that you are compiling a Move module. If you were compiling a transaction script, you would use `script` instead.
+* Arguments listed after the source file name specify dependencies, and since this module depends on the Move standard library, you need to specify the path to that directory.
 
-Move IR gets fed into the IR compiler in a `.mvir` file and the compiler outputs the corresponding bytecode file. When you are ready to publish this module into an account on the blockchain,  use this bytecode file and not the `.mvir` file.
+The Move code gets fed into the compiler in a `.move` file and the compiler outputs the corresponding bytecode file. When you are ready to publish this module into an account on the blockchain,  use this bytecode file and not the `.move` file.
 
-After the module is successfully compiled, you'll see the following message in the output, it contains the path to the bytecode file produced by compiling `my_module.mvir`.
+After the module is successfully compiled, you'll see the following message in the output, it contains the path to the bytecode file produced by compiling `my_module.move`.
 
 ```
-Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpigAZCx
+Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 ```
-
-If you would like to save the bytecode file in a specific path, instead of a temporary path, you can specify it as an argument to the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
 
 ### Publish Compiled Module
 
 To publish the module bytecode on your local blockchain, run the [dev publish](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command and use the path to the compiled module bytecode file as shown below:
 
 ```
-libra% dev publish 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpigAZCx
+libra% dev publish 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 
 waiting .....transaction is stored!
 no events emitted.
 Successfully published module
 ```
-Upon successful execution of the `dev publish` command, the bytecode for `MyModule` is published under the sender’s account. To use the procedures and types declared in `MyModule`, other transaction scripts and modules can import it using `import <sender_address>.MyModule`.
+Upon successful execution of the `dev publish` command, the bytecode for `MyModule` is published under the sender’s account. To use the procedures and types declared in `MyModule`, other transaction scripts and modules can import it with `use <sender_address>::MyModule`.
 
  Subsequent modules published under `<sender_address>` must not be named `MyModule`. Each account may hold at most one module with a given name. Attempting to publish a second module named `MyModule` under `<sender_address>` will result in a failed transaction.
 
@@ -146,43 +147,37 @@ Upon successful execution of the `dev publish` command, the bytecode for `MyModu
 **Note**: You'll find samples of transaction scripts in the [libra/language/stdlib/transaction_scripts](https://github.com/libra/libra/tree/master/language/stdlib/transaction_scripts) directory.
 </blockquote>
 
-Now let’s write the following script to use `MyModule` and save it as `custom_script.mvir`:
+Now let’s write the following script to use `MyModule` and save it as `custom_script.move`:
 
 ```
-import 0x0.LibraAccount;
-import 0x0.LibraCoin;
-import {{sender}}.MyModule;
+use 0x0::LibraAccount;
+use 0x0::LBR;
+use 0x0::Transaction;
+use 0x717da70a461fef6307990847590ad7af::MyModule;
 
-main(amount: u64) {
-  let coin: LibraCoin.T;
-  coin = LibraAccount.withdraw_from_sender(move(amount));
-  //calls the id procedure defined in our custom module
-  LibraAccount.deposit(get_txn_sender(), MyModule.id(move(coin)));
-  return;
+fun main(amount: u64) {
+  let coin = LibraAccount::withdraw_from_sender<LBR::T>(amount);
+  // Calls the id procedure defined in our custom module
+  LibraAccount::deposit<LBR::T>(Transaction::sender(), MyModule::id(coin));
 }
 ```
 
-In this script, `{{sender}}`will be automatically replaced with sender account address when the script is executed. Alternatively, you could write an import with a fully qualified address:
+Be sure to change the account address for MyModule to match the account that you created.
 
-```
- import 0x810abcc08dbed34ea15d7eb261b8001da6a62d72acdbf87714dd243a175f9b62.MyModule;
-```
 
 ### Compile Transaction Script
 
 To compile your transaction script, use the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
 
 ```
-libra% dev compile 0 <path_to_custom_script.mvir> script
+libra% dev compile 0 <path to custom_script.move> <path to my_module.move> <path to language/stdlib/modules>
 ```
 
- `custom_script.mvir` is in Move IR, and upon successful compilation of `custom_script.mvir` the compiler will  output the corresponding bytecode file. You'll use this bytecode file (not the `.mvir` file) when you execute this script. After the script is successfully compiled, you'll see the path to the bytecode file in your output:
+ `custom_script.move` is the Move source file, and upon successful compilation of `custom_script.move` the compiler will output the corresponding bytecode file. You'll use this bytecode file (not the `.move` file) when you execute this script. After the script is successfully compiled, you'll see the path to the bytecode file in your output:
 
 ```
-Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpDZhL21
+Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
 ```
-
-If you would like to save the bytecode file at a specific path, and not at a temporary path, you can specify it as an argument to the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
 
 ### Execute Transaction Script
 
@@ -194,40 +189,43 @@ To execute your script, use the [dev execute](reference/libra-cli#dev-d-mdash-op
 </blockquote>
 
 ```
-libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpDZhL21 10
+libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv 10
 waiting .....transaction is stored!
 Successfully finished execution
 ```
 
 * `0` &mdash; Index/ref_id of the sender account. For this example, it is the same account which compiled and published the module.
-* `/var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpDZhL21` &mdash; Path to the compiled_script for this example.
+* `/var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv` &mdash; Path to the compiled_script for this example.
 * `10` &mdash; Amount of microlibra. This amount must be less than or equal to the amount in the sender’s account.
 
 ## Troubleshooting
 
 ### Compile Move Program
 
-If the client cannot locate your Move program (module or script), you'll see this error:
+If the client cannot locate your Move source file, you'll see this error:
 
 ```
-libra% dev compile 0 ~/my-tscripts/custom_script.mvir script
+libra% dev compile 0 ~/my-tscripts/custom_script.move script
 >> Compiling program
-No such file or directory (os error 2)
+error: No such file or directory '~/my-tscripts/custom_script.move'
+compilation failed
 ```
+
+This may happen because the client does not currently perform tilde expansion,
+so you need to list the path to your home directory instead.
 
 If you see the following error, refer to the usage of the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command, specify all the required arguments and try compiling again.
 
 ```
 Invalid number of arguments for compilation
 ```
-For syntax related compilation errors, refer to [Move IR syntax](https://github.com/libra/libra/blob/master/language/compiler/ir_to_bytecode/syntax/src/lib.rs).
 
 ### Publish Compiled Module
 
 If you compile a module using one account (e.g., `dev compile` 0 ...) and try to publish it to a different account (e.g., `dev publish` 1 ...), you'll see the following error:
 
 ```
-libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpigAZCx
+libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 
 Transaction failed with vm status: Validation(SendingAccountDoesNotExist("sender address: 21cd9d131bce6050218281f737186861e9dcb7b7804485742e1be8fd564137f9"))
 
@@ -253,14 +251,14 @@ Republishing/updating an existing module under the same sender account address d
 If the sender account index is invalid, you'll see this error:
 
 ```
-libra% dev execute 2 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpDZhL21 10
+libra% dev execute 2 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv 10
 Unable to find account by account reference id: 2, to see all existing accounts, run: 'account list'
 ```
 
 The following error indicates that either the arguments to the transaction script are missing or one or more of the arguments are of the wrong type.
 
 ```
-libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/.tmpDZhL21
+libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
 Transaction failed with vm status: Verification([Script(TypeMismatch("Actual Type Mismatch"))])
 
 ```
