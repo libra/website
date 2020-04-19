@@ -19,7 +19,6 @@ To connect to the testnet through the CLI, a convenience script can be used to i
 To start a local Libra network and spawn a CLI client that connects to this local network, run:
 ```bash
 cargo run -p libra-swarm -- -s
-
 ```
 The `-s` option causes the CLI to be run after the local Libra network is launched.  Note that this may take a few minutes to build and then start.
 
@@ -27,8 +26,7 @@ The `-s` option causes the CLI to be run after the local Libra network is launch
 To invoke the CLI client and configure it yourself, run:
 
 ```bash
-cargo run -p client --bin client -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
-
+cargo run -p cli --bin cli -- [OPTIONS] --host <host> --validator_set_file <validator_set_file>
 ```
 
 #### Options
