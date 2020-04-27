@@ -154,6 +154,7 @@
       'title',
       'formId',
       'organizationId',
+      'companyId'
     ];
 
     // Using organizationId here will set off some automagic segment configuration
@@ -197,7 +198,7 @@
       const data = {
         formId: form.id,
       };
-      
+
       fields.forEach(function(field) {
         data[field.id] = field.value;
 
