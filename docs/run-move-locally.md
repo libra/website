@@ -205,7 +205,7 @@ Successfully finished execution
 If the client cannot locate your Move source file, you'll see this error:
 
 ```
-libra% dev compile 0 ~/my-tscripts/custom_script.move script
+libra% dev compile 0 ~/my-tscripts/custom_script.move
 >> Compiling program
 error: No such file or directory '~/my-tscripts/custom_script.move'
 compilation failed
