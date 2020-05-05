@@ -25,6 +25,14 @@ $ cargo build
 $ cargo xtest
 ```
 
+If you would like to contribute, please do the following:
+
+* Visit [Libra on GitHub](https://github.com/libra/libra)
+* Select fork and fork into your own account
+* Add your fork as a remote repository
+* Push your commits to your repository
+* Make a pull request to merge into libra/libra
+
 ## Coding Guidelines
 
 For detailed guidance on how to contribute to the Libra Core codebase refer to [Coding Guidelines](coding-guidelines.md).
