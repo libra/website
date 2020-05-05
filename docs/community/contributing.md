@@ -37,8 +37,6 @@ If you are familiar with Markdown, you can start contributing!
 
 ## Pull Requests
 
-During the initial phase of development, we plan to only audit and review the pull requests. As the codebase stabilizes, we will be able to accept pull requests from the community.
-
 To submit your pull request:
 
 1. Fork the `libra` repo and create your branch from `master`.
