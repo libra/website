@@ -15,18 +15,14 @@ usage() {
 }
 
 BUILD_STATIC=false
-BUILD_RUSTDOCS=false
 
-while getopts 'hbr' flag; do
+while getopts 'hb' flag; do
   case "${flag}" in
     h)
       usage
       ;;
     b)
       BUILD_STATIC=true
-      ;;
-    r)
-      BUILD_RUSTDOCS=true
       ;;
     *)
       usage
@@ -45,7 +41,7 @@ sed -i.old '/^# /d' libra/admission_control/README.md; cp libra/admission_contro
 sed -i.old '/^# /d' libra/language/bytecode-verifier/README.md; cp libra/language/bytecode-verifier/README.md docs/crates/bytecode-verifier.md
 sed -i.old '/^# /d' libra/consensus/README.md; cp libra/consensus/README.md docs/crates/consensus.md
 sed -i.old '/^# /d' libra/crypto/crypto/README.md; cp libra/crypto/crypto/README.md docs/crates/crypto.md
-sed -i.old '/^# /d' libra/executor/README.md; cp libra/executor/README.md docs/crates/executor.md
+sed -i.old '/^# /d' libra/execution/README.md; cp libra/execution/README.md docs/crates/execution.md
 sed -i.old '/^# /d' libra/language/README.md; cp libra/language/README.md docs/crates/move-language.md
 sed -i.old '/^# /d' libra/language/compiler/README.md; cp libra/language/compiler/README.md docs/crates/ir-to-bytecode.md
 sed -i.old '/^# /d' libra/mempool/README.md; cp libra/mempool/README.md docs/crates/mempool.md
@@ -58,21 +54,6 @@ echo "Manually Copy Coding Guidelines"
 echo "-----------------------------------"
 sed -i.old '/^# Libra Core coding guidelines/d' libra/documentation/coding_guidelines.md
 cp libra/documentation/coding_guidelines.md docs/community/coding-guidelines.md
-
-if [[ $BUILD_RUSTDOCS == true ]]; then
-  echo "-----------------------------------"
-  echo "Generating API reference via Rustdoc"
-  echo "-----------------------------------"
-
-  cd libra
-  cargo doc --no-deps --workspace --lib || exit 1
-  RUSTDOC_DIR='libra/target/doc/'
-  DOCUSAURUS_RUSTDOC_DIR='website/static/docs/rustdocs/'
-  cd .. || exit
-
-  mkdir -p $DOCUSAURUS_RUSTDOC_DIR
-  cp -r $RUSTDOC_DIR $DOCUSAURUS_RUSTDOC_DIR
-fi
 
 echo "-----------------------------------"
 echo "Building Docusaurus 🦖"
