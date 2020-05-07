@@ -39,7 +39,7 @@ const siteConfig = {
     { href: 'https://libra.org/vision/', label: 'Vision' },
     { href: 'https://libra.org/association/', label: 'Association' },
     {
-      href: 'https://libra.org/open-source-developers/',
+      href: 'https://libra.org/developers/',
       label: 'Developers',
       selected: true,
     },
@@ -59,7 +59,7 @@ const siteConfig = {
   ],
 
   subHeaderLinks: [
-    { href: 'https://libra.org/open-source-developers/', label: 'Overview' },
+    { href: 'https://libra.org/developers/', label: 'Overview' },
     { doc: 'welcome-to-libra', label: 'Libra Docs' },
     { href: 'https://community.libra.org', label: 'Community' },
     { href: 'https://github.com/libra/libra', label: 'GitHub', external: true },
