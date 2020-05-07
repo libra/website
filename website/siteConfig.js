@@ -61,6 +61,7 @@ const siteConfig = {
   subHeaderLinks: [
     { href: 'https://libra.org/open-source-developers/', label: 'Overview' },
     { doc: 'welcome-to-libra', label: 'Libra Docs' },
+    { href: 'https://lip.libra.org', label: 'Governance' },
     { href: 'https://community.libra.org', label: 'Community' },
     { href: 'https://github.com/libra/libra', label: 'GitHub', external: true },
     { search: true },
