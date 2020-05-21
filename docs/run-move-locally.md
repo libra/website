@@ -92,15 +92,15 @@ Balance is: 76.000000
 Let’s start with an extremely simple module called `MyModule`. This module has a single procedure called `id`, which is an identity function for coins. It takes a `Libra::T<LBR::T>` resource as input and hands it back to the calling program. The Move code for this module is provided below. Change the address in the first line to be the address of the account you just created and then save it in a file named `my_module.move.` (Be sure to keep the "0x" prefix on the account address.)
 
 ```
-address 0x717da70a461fef6307990847590ad7af:
+address 0x717da70a461fef6307990847590ad7af {
+  module MyModule {
+    use 0x0::Libra;
+    use 0x0::LBR;
 
-module MyModule {
-  use 0x0::Libra;
-  use 0x0::LBR;
-
-  // The identity function: takes a Libra::T<LBR::T> as input and hands it back
-  public fun id(c: Libra::T<LBR::T>): Libra::T<LBR::T> {
-    c
+    // The identity function: takes a Libra::T<LBR::T> as input and hands it back
+    public fun id(c: Libra::T<LBR::T>): Libra::T<LBR::T> {
+      c
+    }
   }
 }
 ```
@@ -150,15 +150,17 @@ Upon successful execution of the `dev publish` command, the bytecode for `MyModu
 Now let’s write the following script to use `MyModule` and save it as `custom_script.move`:
 
 ```
-use 0x0::LibraAccount;
-use 0x0::LBR;
-use 0x0::Transaction;
-use 0x717da70a461fef6307990847590ad7af::MyModule;
+script {
+  use 0x0::LibraAccount;
+  use 0x0::LBR;
+  use 0x0::Transaction;
+  use 0x717da70a461fef6307990847590ad7af::MyModule;
 
-fun main(amount: u64) {
-  let coin = LibraAccount::withdraw_from_sender<LBR::T>(amount);
-  // Calls the id procedure defined in our custom module
-  LibraAccount::deposit<LBR::T>(Transaction::sender(), MyModule::id(coin));
+  fun main(amount: u64) {
+    let coin = LibraAccount::withdraw_from_sender<LBR::T>(amount);
+    // Calls the id procedure defined in our custom module
+    LibraAccount::deposit<LBR::T>(Transaction::sender(), MyModule::id(coin));
+  }
 }
 ```
 
