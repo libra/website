@@ -19,8 +19,8 @@ jobs:
     # Install git
     - name: Install git
       run: |
-        apt --assume-yes update 
-        apt --assume-yes install git
+        sudo apt --assume-yes update
+        sudo apt --assume-yes install git
     # Deploy the website
     - name: Deploying Libra Website to GitHub Pages
       run: |
