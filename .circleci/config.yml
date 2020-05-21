@@ -23,7 +23,7 @@ jobs:
             echo "machine github.com login libra-doc-bot password $PUBLISH_AND_DEPLOY_TOKEN" > ~/.netrc
             ./scripts/build_docs.sh -b
             cd website
-            GIT_USER=libra-doc-bot USE_SSH=true yarn run publish-gh-pages
+            GIT_USER=libra-doc-bot USE_SSH=false yarn run publish-gh-pages
 
 workflows:
   version: 2.1
