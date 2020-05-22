@@ -39,7 +39,7 @@ Perform the following steps to submit a transaction to a validator node on the L
 ```bash
 git clone https://github.com/libra/libra.git && cd libra
 ```
-### Checkout the `testnet` Branch
+### Checkout the testnet Branch
 
 ```bash
 git checkout testnet
