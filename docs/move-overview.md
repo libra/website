@@ -66,9 +66,9 @@ Now let us see how a programmer can interact with these modules and resources in
 // Use LibraAccount module published on the blockchain at account address
 // 0x0...0. 0x0 is shorthand that the language pads out to
 //16 bytes by adding leading zeroes.
-use 0x0.LBR;
-use 0x0.Libra;
-use 0x0.LibraAccount;
+use 0x0::LBR;
+use 0x0::Libra;
+use 0x0::LibraAccount;
 fun main(payee: address, amount: u64) {
   // Acquire a Libra::T<LBR::T> resource with value `amount` from the sender's
   // account.  This will fail if the sender's balance is less than `amount`.
@@ -88,9 +88,9 @@ Let us look at a more complex example. In this example, we will use a transactio
 // emphasize the ability to split a `Libra::T<LBR::T>` resource. The more concise
 // way would be to use multiple calls to `LibraAccount::withdraw_from_sender`.
 
-use 0x0.LBR;
-use 0x0.Libra;
-use 0x0.LibraAccount;
+use 0x0::LBR;
+use 0x0::Libra;
+use 0x0::LibraAccount;
 fun main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
   let total = amount1 + amount2;
   let coin1 = LibraAccount::withdraw_from_sender<LBR::T>(total);
@@ -109,7 +109,7 @@ This concludes our "tour" of transaction scripts. For more examples, including t
 ### Writing Modules
 
 We will now turn our attention to writing our own Move modules instead of just reusing the existing `LibraAccount` and `Libra` modules. Consider this situation:
-Bob is going to create an account at address _a_ at some point in the future. Alice wants to "earmark" some funds for Bob so that he can pull them into his account once it is created. But she also wants to be able to reclaim the funds for herself if Bob never creates the account.
+Bob is going to create an account at address _a_ at some point in the future. Alice wants to "earmark" some of her coins for Bob so that he can pull them into his account once it is created. But she also wants to be able to remove the earmark from her coins if, for example, Bob never creates the account.
 
 To solve this problem for Alice, we will write a module `EarmarkedLibra` which:
 
@@ -170,4 +170,4 @@ module EarmarkedLibraCoin {
 }
 ```
 
-Alice can create an earmarked coin for Bob by creating a transaction script that invokes `create` on Bob's address _a_ and a `Libra::T` that she owns. Once _a_ has been created, Bob can claim the coin by sending a transaction from _a_. This invokes `claim_for_recipient` to claim a `Libra::T` for Bob that he can store wherever he wishes. If Bob takes too long to create an account under _a_ and Alice wants to reclaim her funds, she can do so by using `claim_for_creator`.
+Alice can create an earmarked coin for Bob by creating a transaction script that invokes `create` on Bob's address _a_ and a `Libra::T` that she owns. Once _a_ has been created, Bob can claim the coin by sending a transaction from _a_. This invokes `claim_for_recipient` to claim a `Libra::T` for Bob that he can store in whichever address he wishes. If Bob takes too long to create an account under _a_ and Alice wants to remove the earmark from her coins, she can do so by using `claim_for_creator`.

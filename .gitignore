@@ -17,4 +17,3 @@ website/node_modules/
 libra
 docs/crates/*
 docs/community/coding-guidelines.md
-website/static/docs/rustdocs/

@@ -21,7 +21,7 @@ $ git clone https://github.com/libra/libra.git
 $ cd libra
 $ ./scripts/dev_setup.sh
 $ source ~/.cargo/env
-$ cargo xbuild
+$ cargo build
 $ cargo xtest
 ```
 
@@ -36,8 +36,6 @@ All developer documentation is published on the Libra developer site. The develo
 If you are familiar with Markdown, you can start contributing!
 
 ## Pull Requests
-
-During the initial phase of development, we plan to only audit and review the pull requests. As the codebase stabilizes, we will be able to accept pull requests from the community.
 
 To submit your pull request:
 
