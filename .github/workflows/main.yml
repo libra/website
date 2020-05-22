@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'libra/website'
+    
     runs-on: ubuntu-latest
 
     steps:
