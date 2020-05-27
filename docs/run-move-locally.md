@@ -40,8 +40,8 @@ Account operations
 query | q
 Query operations
 transfer | transferb | t | tb
-<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 100000)] Suffix 'b' is for blocking.
-Transfer coins (in libra) from account to another.
+<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 400_000)] Suffix 'b' is for blocking.
+Transfer coins from one account to another.
 dev
 Local Move development
 help | h
@@ -75,16 +75,17 @@ In the above output, 0 is the index of the account you just created, and the hex
 The `create` command generates a local keypair. To create the account on the local blockchain, you'll need to mint money into the account, as shown below:
 
 ```
-libra% account mintb 0 76
+libra% account mintb 0 76 LBR
 >> Minting coins
-waiting ....transaction is stored!
+waiting ....
+transaction executed!
 Finished minting!
 ```
-To check whether the account was successfully created on the local blockchain, query the account balance. Note that the account balance you see in the output is in libra.
+To check whether the account was successfully created on the local blockchain, query the account balance.
 
 ```
 libra% query balance 0
-Balance is: 76.000000
+Balance is: 76.000000LBR
 ```
 
 ### Create Move Module
@@ -120,7 +121,8 @@ The Move code gets fed into the compiler in a `.move` file and the compiler outp
 After the module is successfully compiled, you'll see the following message in the output, it contains the path to the bytecode file produced by compiling `my_module.move`.
 
 ```
-Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
+Successfully compiled a program at:
+  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 ```
 
 ### Publish Compiled Module
@@ -130,7 +132,8 @@ To publish the module bytecode on your local blockchain, run the [dev publish](r
 ```
 libra% dev publish 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 
-waiting .....transaction is stored!
+waiting .....
+transaction executed!
 no events emitted.
 Successfully published module
 ```
@@ -178,7 +181,8 @@ libra% dev compile 0 <path to custom_script.move> <path to my_module.move> <path
  `custom_script.move` is the Move source file, and upon successful compilation of `custom_script.move` the compiler will output the corresponding bytecode file. You'll use this bytecode file (not the `.move` file) when you execute this script. After the script is successfully compiled, you'll see the path to the bytecode file in your output:
 
 ```
-Successfully compiled a program at /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
+Successfully compiled a program at:
+  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
 ```
 
 ### Execute Transaction Script
@@ -192,7 +196,8 @@ To execute your script, use the [dev execute](reference/libra-cli#dev-d-mdash-op
 
 ```
 libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv 10
-waiting .....transaction is stored!
+waiting .....
+transaction executed!
 Successfully finished execution
 ```
 
@@ -209,7 +214,7 @@ If the client cannot locate your Move source file, you'll see this error:
 ```
 libra% dev compile 0 ~/my-tscripts/custom_script.move
 >> Compiling program
-error: No such file or directory '~/my-tscripts/custom_script.move'
+Error: No such file or directory '~/my-tscripts/custom_script.move'
 compilation failed
 ```
 
@@ -229,7 +234,7 @@ If you compile a module using one account (e.g., `dev compile` 0 ...) and try to
 ```
 libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
 
-Transaction failed with vm status: Validation(SendingAccountDoesNotExist("sender address: 21cd9d131bce6050218281f737186861e9dcb7b7804485742e1be8fd564137f9"))
+transaction failed to execute; status: MODULE_ADDRESS_DOES_NOT_MATCH_SENDER!
 
 ```
 
@@ -261,7 +266,7 @@ The following error indicates that either the arguments to the transaction scrip
 
 ```
 libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
-Transaction failed with vm status: Verification([Script(TypeMismatch("Actual Type Mismatch"))])
+transaction failed to execute; status: TYPE_MISMATCH!
 
 ```
 

@@ -129,6 +129,9 @@ write | w <file name>
   Save Libra wallet mnemonic recovery seed to disk
 mint | mintb | m | mb <receiver account> <number of coins>
   Mint coins to the account. Suffix 'b' is for blocking
+addc | addcb | ac | acb <account_address> <currency_code>
+  Add specified currency to the account. Suffix 'b' is for blocking
+
 ```
 
 ### Step 2: Create Alice’s Account
@@ -143,7 +146,7 @@ Sample output on success:
 
 ```plaintext
 >> Creating/retrieving next account from wallet
-Created/retrieved account #0 address 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
+Created/retrieved account #0 address cc2219df031a68115fad9aee98e051e9
 ```
 
 0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they have created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
@@ -158,7 +161,7 @@ Sample output on success:
 
 ```plaintext
 >> Creating/retrieving next account from wallet
-Created/retrieved account #1 address 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7
+Created/retrieved account #1 address 33138303ce638c8fa469435250f5f1c3
 ```
 
 1 is the index for Bob’s account, and the hex string is the address of Bob’s account.
@@ -172,8 +175,8 @@ To list the accounts you have created, enter this command:
 
 Sample output on success:
 ```plaintext
-User account index: 0, address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, sequence number: 0
-User account index: 1, address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, sequence number: 0
+User account index: 0, address: cc2219df031a68115fad9aee98e051e9, sequence number: 0, status: Local
+User account index: 1, address: 33138303ce638c8fa469435250f5f1c3, sequence number: 0, status: Local
 ```
 The sequence number for an account indicates the number of transactions that have been sent from that account. It is incremented every time a transaction sent from that account is executed and stored in the blockchain. To know more, refer to [sequence number](reference/glossary.md#sequence-number).
 
@@ -185,10 +188,11 @@ Minting and adding coins to accounts on testnet is done via Faucet. Faucet is a 
 
 To mint Libra and add to Alice’s account, enter this command:
 
-`libra% account mint 0 110`
+`libra% account mint 0 110 LBR`
 
 * 0 is the index of Alice’s account.
 * 110  is the amount of Libra to be added to Alice’s account.
+* LBR is the currency code for Libra
 
 A successful account mint command will also create Alice’s account on the blockchain.
 
@@ -207,10 +211,11 @@ If your account mint command did not submit your request successfully, refer to
 
 To mint Libra and add to Bob’s account, enter this command:
 
-`libra% account mint 1 52`
+`libra% account mint 1 52 LBR`
 
 * 1 is the index of Bob’s account.
 * 52 is the amount of Libra to be added to Bob’s account.
+* LBR is the currency code for Libra
 * A successful account mint command will also create Bob’s account on the blockchain. Another way to create Bob’s account on the blockchain is to transfer money from Alice’s account to Bob’s account.
 
 Sample output on success:
@@ -230,7 +235,7 @@ To check the balance in Alice’s account, enter this command:
 
 Sample output on success:
 
-`Balance is: 110`
+`Balance is: 110.000000LBR`
 
 To check the balance in Bob’s account, enter this command:
 
@@ -238,7 +243,7 @@ To check the balance in Bob’s account, enter this command:
 
 Sample output on success:
 
-`Balance is: 52`
+`Balance is: 52.000000LBR`
 
 ## Submit a Transaction
 
@@ -261,11 +266,12 @@ In `query sequence 0`, 0 is the index of Alice’s account. A sequence number of
 
 To submit a transaction to transfer 10 LBR from Alice’s account to Bob’s account, enter this command:
 
-`libra% transfer 0 1 10`
+`libra% transfer 0 1 10 LBR`
 
 * 0 is the index of Alice’s account.
 * 1 is the index of Bob’s account.
 * 10 is the number of Libra to transfer from Alice’s account to Bob’s account.
+* LBR is the currency code for Libra
 
 Sample output on success:
 
@@ -283,7 +289,7 @@ To troubleshoot the transfer command, refer to [Troubleshooting](#the-transfer-c
 
 **The Blocking Transfer Command**: You can use the `transferb` command (as shown below), instead of the `transfer` command. `transferb` will submit the transaction and return to the client prompt only after the transaction has been committed to the blockchain. An example is shown below:
 
-`libra% transferb 0 1 10`
+`libra% transferb 0 1 10 LBR`
 
 Refer to [Life of a Transaction](life-of-a-transaction.md) for an understanding of the lifecycle of a transaction from submission to execution and storage.
 
@@ -306,9 +312,9 @@ To check the final balance in both accounts, query the balance again for each ac
 
 ```plaintext
 libra% query balance 0
-Balance is: 100
+Balance is: 100.000000LBR
 libra% query balance 1
-Balance is: 62
+Balance is: 62.000000LBR
 ```
 
 ### Congratulations!
@@ -344,7 +350,7 @@ If your client did not connect to the testnet:
 * If the validator node you connected to on testnet is unavailable, you will get a “Server unavailable” message as shown below:
 
   ```plaintext
-  libra% account mint 0 110
+  libra% account mint 0 110 LBR
   >> Minting coins
   [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to the client is running
   ```
@@ -359,7 +365,7 @@ If your client did not connect to the testnet:
 If the testnet validator node (your client was connected to) is unavailable or your connection to the testnet has timed-out, you will see this error:
 
 ```plaintext
-libra% transfer 0 1 10
+libra% transfer 0 1 10 LBR
 >> Transferring
 [ERROR] Failed to perform transaction: Server unavailable, please retry and/or check if host passed to the client is running
 ```
@@ -380,30 +386,75 @@ This example will query for a single transaction's details using the account and
 ```plaintext
 libra% query txn_acc_seq 0 0 true
 >> Getting committed transaction by account and sequence number
-Committed transaction: SignedTransaction {
- { raw_txn: RawTransaction {
-    sender: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8,
-    sequence_number: 0,
-    payload: {,
-      transaction: peer_to_peer_transaction,
-      args: [
-        {ADDRESS: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7},
-        {U64: 10000000},
-      ]
+Committed transaction: TransactionView {
+    version: 2168,
+    transaction: UserTransaction {
+        sender: "cc2219df031a68115fad9aee98e051e9",
+        signature_scheme: "Scheme::Ed25519",
+        signature: "6bbdb1410d2ff27de675a40c7d4d3a6cab149302ca3e4f789100ede739009147d066da60680d34dc1aa32dcf22d21ea679da22963e0027292c8b76f287aad70d",
+        public_key: "babe538296960c2822f569c9ecf086e77d42c86240f6d813e7a17e0d193199ce",
+        sequence_number: 0,
+        max_gas_amount: 1000000,
+        gas_unit_price: 0,
+        expiration_time: 1590540963,
+        script_hash: "c8bc3dda60e9662965b3223c22e3d3e3e7b6f698cf1a6930a449eb99daa35e7c",
+        script: PeerToPeer {
+            receiver: "33138303ce638c8fa469435250f5f1c3",
+            auth_key_prefix: BytesView(
+                "e0707324f21c8103e5f1d0c2a528ee86",
+            ),
+            amount: 10000000,
+            metadata: BytesView(
+                "",
+            ),
+            metadata_signature: BytesView(
+                "",
+            ),
+        },
     },
-    max_gas_amount: 10000,
-    gas_unit_price: 0,
-    expiration_time: 1560466424s,
-},
- public_key: 55af3fe3f28550a2f1e5ebf073ef193feda44344d94c463b48be202aa0b3255d,
- signature: Signature( R: CompressedEdwardsY: [210, 23, 214, 62, 228, 179, 64, 147, 81, 159, 180, 138, 100, 211, 111, 139, 178, 148, 81, 1, 240, 135, 148, 145, 104, 234, 227, 239, 198, 153, 13, 199], s: Scalar{
-  bytes: [203, 76, 105, 49, 64, 130, 162, 81, 22, 237, 159, 26, 80, 181, 111, 94, 84, 6, 152, 126, 181, 192, 62, 103, 130, 94, 246, 174, 139, 214, 3, 15],
-} ),
- }
- }
-Events:
-ContractEvent { access_path: AccessPath { address: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/sent_events_count/" } , index: 0, event_data: AccountEvent { account: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, amount: 10000000 } }
-ContractEvent { access_path: AccessPath { address: 8337aac709a41fe6be03cad8878a0d4209740b1608f8a81566c9a7d4b95a2ec7, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/received_events_count/" } , index: 0, event_data: AccountEvent { account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8, amount: 10000000 } }
+    events: [
+        EventView {
+            key: BytesView(
+                "0100000000000000cc2219df031a68115fad9aee98e051e9",
+            ),
+            sequence_number: 0,
+            transaction_version: 2168,
+            data: SentPayment {
+                amount: AmountView {
+                    amount: 10000000,
+                    currency: "LBR",
+                },
+                receiver: BytesView(
+                    "33138303ce638c8fa469435250f5f1c3",
+                ),
+                metadata: BytesView(
+                    "",
+                ),
+            },
+        },
+        EventView {
+            key: BytesView(
+                "000000000000000033138303ce638c8fa469435250f5f1c3",
+            ),
+            sequence_number: 1,
+            transaction_version: 2168,
+            data: ReceivedPayment {
+                amount: AmountView {
+                    amount: 10000000,
+                    currency: "LBR",
+                },
+                sender: BytesView(
+                    "cc2219df031a68115fad9aee98e051e9",
+                ),
+                metadata: BytesView(
+                    "",
+                ),
+            },
+        },
+    ],
+    vm_status: EXECUTED,
+    gas_used: 0,
+}
 ```
 
 Note that the transaction amount is shown in microlibra.
@@ -413,60 +464,29 @@ Note that the transaction amount is shown in microlibra.
 In the following example, we will query for “sent” events from the account at reference index 0.  You will notice there is a single event since we sent one transaction from this account.  The proof of the current state is also returned so that verification can be performed that no events are missing - this is done when the query does not return “limit” events.
 
 ```plaintext
-libra% query event 0 sent 0 true 10
+libra% query event 0 sent 0 10
 >> Getting events by account and event type.
-EventWithProof {
-  transaction_version: 3,
-  event_index: 0,
-  event: ContractEvent { access_path: AccessPath { address: e7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b, type: Resource, hash: "217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc97", suffix: "/sent_events_count/" } , index: 0, event_data: AccountEvent { account: 46efbad798a739c088e0e98dd9d592c27c7eb45ba1f8ccbdfc00bd4d7f2947f3, amount: 10000000 } },
-  proof: EventProof { ledger_info_to_transaction_info_proof: AccumulatorProof { siblings: [HashValue(62570ae9a994bcb20c03c055667a4966fa50d0f17867dd5819465072fd2c58ba), HashValue(cce2cf325714511e7d04fa5b48babacd5af943198e6c1ac3bdd39c53c87cb84c)] }, transaction_info: TransactionInfo { signed_transaction_hash: HashValue(69bed01473e0a64140d96e46f594bc4b463e88e244b694e962b7e19fde17f30d), state_root_hash: HashValue(5809605d5eed94c73e57f615190c165b11c5e26873012285cc6b131e0817c430), event_root_hash: HashValue(645df3dee8f53a0d018449392b8e9da814d258da7346cf64cd96824f914e68f9), gas_used: 0 }, transaction_info_to_event_proof: AccumulatorProof { siblings: [HashValue(5d0e2ebf0952f0989cb5b38b2a9b52a09e8d804e893cb99bf9fa2c74ab304bb1)] } }
-}
-Last event state: Some(
-    AccountStateWithProof {
-        version: 3,
-        blob: Some(
-            AccountStateBlob {
-             Raw: 0x010000002100000001217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc974400000020000000e7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b00e1f50500000000000000000000000001000000000000000100000000000000
-             Decoded: Ok(
-                AccountResource {
-                    balance: 100000000,
-                    sequence_number: 1,
-                    authentication_key: 0xe7460e02058b36d28e8eef03f0834c605d3d6c57455b8ec9c3f0a3c8b89f248b,
-                    sent_events_count: 1,
-                    received_events_count: 0,
-                },
-            )
-             },
-        ),
-        proof: AccountStateProof {
-            ledger_info_to_transaction_info_proof: AccumulatorProof {
-                siblings: [
-                    HashValue(62570ae9a994bcb20c03c055667a4966fa50d0f17867dd5819465072fd2c58ba),
-                    HashValue(cce2cf325714511e7d04fa5b48babacd5af943198e6c1ac3bdd39c53c87cb84c),
-                ],
-            },
-            transaction_info: TransactionInfo {
-                signed_transaction_hash: HashValue(69bed01473e0a64140d96e46f594bc4b463e88e244b694e962b7e19fde17f30d),
-                state_root_hash: HashValue(5809605d5eed94c73e57f615190c165b11c5e26873012285cc6b131e0817c430),
-                event_root_hash: HashValue(645df3dee8f53a0d018449392b8e9da814d258da7346cf64cd96824f914e68f9),
-                gas_used: 0,
-            },
-            transaction_info_to_account_proof: SparseMerkleProof {
-                leaf: Some(
-                    (
-                        HashValue(c0fbd63b0ae4abfe57c8f24f912f164ba0537741e948a65f00d3fae0f9373981),
-                        HashValue(fc45057fd64606c7ca40256b48fbe486660930bfef1a9e941cafcae380c25871),
-                    ),
-                ),
-                siblings: [
-                    HashValue(4136803b3ba779bb2c1daae7360f3f839e6fef16ae742590a6698b350a5fc376),
-                    HashValue(5350415253455f4d45524b4c455f504c414345484f4c4445525f484153480000),
-                    HashValue(a9a6bda22dd6ee78ddd3a42da152b9bd39797b7da738e9d6023f407741810378),
-                ],
-            },
+EventView { key: BytesView("0100000000000000cc2219df031a68115fad9aee98e051e9"), sequence_number: 0, transaction_version: 2168, data: SentPayment { amount: AmountView { amount: 10000000, currency: "LBR" }, receiver: BytesView("33138303ce638c8fa469435250f5f1c3"), metadata: BytesView("") } }
+Last event state: AccountView {
+    balances: [
+        AmountView {
+            amount: 100000000,
+            currency: "LBR",
         },
-    },
-)
+    ],
+    sequence_number: 1,
+    authentication_key: BytesView(
+        "1b72d1171fc0c2c41b06408c06e9d675cc2219df031a68115fad9aee98e051e9",
+    ),
+    sent_events_key: BytesView(
+        "0100000000000000cc2219df031a68115fad9aee98e051e9",
+    ),
+    received_events_key: BytesView(
+        "0000000000000000cc2219df031a68115fad9aee98e051e9",
+    ),
+    delegated_key_rotation_capability: false,
+    delegated_withdrawal_capability: false,
+}
 ```
 
 ### Query Account State
@@ -477,22 +497,70 @@ In this example, we will query for the state of a single account.
 libra% query account_state 0
 >> Getting latest account state
 Latest account state is:
- Account: 3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8
- State: Some(
-    AccountStateBlob {
-     Raw: 0x010000002100000001217da6c6b3e19f1825cfb2676daecce3bf3de03cf26647c78df00b371b25cc9744000000200000003ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a800e1f50500000000000000000000000001000000000000000100000000000000
-     Decoded: Ok(
-        AccountResource {
-            balance: 100000000,
-            sequence_number: 1,
-            authentication_key: 0x3ed8e5fafae4147b2a105a0be2f81972883441cfaaadf93fc0868e7a0253c4a8,
-            sent_events_count: 1,
-            received_events_count: 0,
-        },
-    )
-     },
+ Account: (
+    cc2219df031a68115fad9aee98e051e9,
+    Some(
+        AuthenticationKey(
+            [
+                27,
+                114,
+                209,
+                23,
+                31,
+                192,
+                194,
+                196,
+                27,
+                6,
+                64,
+                140,
+                6,
+                233,
+                214,
+                117,
+                204,
+                34,
+                25,
+                223,
+                3,
+                26,
+                104,
+                17,
+                95,
+                173,
+                154,
+                238,
+                152,
+                224,
+                81,
+                233,
+            ],
+        ),
+    ),
 )
- Blockchain Version: 3
+ State: Some(
+    AccountView {
+        balances: [
+            AmountView {
+                amount: 100000000,
+                currency: "LBR",
+            },
+        ],
+        sequence_number: 1,
+        authentication_key: BytesView(
+            "1b72d1171fc0c2c41b06408c06e9d675cc2219df031a68115fad9aee98e051e9",
+        ),
+        sent_events_key: BytesView(
+            "0100000000000000cc2219df031a68115fad9aee98e051e9",
+        ),
+        received_events_key: BytesView(
+            "0000000000000000cc2219df031a68115fad9aee98e051e9",
+        ),
+        delegated_key_rotation_capability: false,
+        delegated_withdrawal_capability: false,
+    },
+)
+ Blockchain Version: 3590
 ```
 
 ## Run a Local Validator Node
