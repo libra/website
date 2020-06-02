@@ -18,7 +18,7 @@ The goal of the Libra Blockchain is to serve as a foundation for financial servi
   <li>Able to scale to billions of accounts, which requires high transaction throughput, low latency, and an efficient, high-capacity storage system.</li>
   <li>Highly secure to ensure the safety of funds and financial data.</li>
   <li>Flexible, so that it can power future innovation in financial services.</li>
-</ul> 
+</ul>
 — <a href="https://libra.org/en-us/whitepaper">Libra White Paper</a>
 </blockquote>
 
@@ -80,3 +80,6 @@ Note: While all developers are free to use the tesnet, mainnet will follow a pha
 ### Stay Updated
 
 Check out the Libra network’s [documentation](/docs/welcome-to-libra) and [community](http://community.libra.org) sites, and stay up to date by signing up for our newsletter [here](/newsletter_form).
+
+Tell us your plan to build a [product or service](/developer_form). We know that not all aspects of the Libra network will be available immediately to some developers. We're excited to work with the community to evolve these features, and look forward to your participation!
+
