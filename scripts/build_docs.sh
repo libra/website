@@ -37,7 +37,7 @@ git submodule update --init
 echo "-----------------------------------"
 echo "Manually Copying READMEs to docs/crates"
 echo "-----------------------------------"
-sed -i.old '/^# /d' libra/admission_control/README.md; cp libra/admission_control/README.md docs/crates/admission-control.md
+sed -i.old '/^# /d' libra/admission-control/README.md; cp libra/admission-control/README.md docs/crates/admission-control.md
 sed -i.old '/^# /d' libra/language/bytecode-verifier/README.md; cp libra/language/bytecode-verifier/README.md docs/crates/bytecode-verifier.md
 sed -i.old '/^# /d' libra/consensus/README.md; cp libra/consensus/README.md docs/crates/consensus.md
 sed -i.old '/^# /d' libra/crypto/crypto/README.md; cp libra/crypto/crypto/README.md docs/crates/crypto.md
