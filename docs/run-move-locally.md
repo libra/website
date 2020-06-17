@@ -59,7 +59,7 @@ For detailed instructions on working with a local cluster of validator nodes, re
 
 ### Create an Account
 
-Each Move module and resource type is hosted by a specific account address. For example, the `Libra` module is hosted by the account at address `0x0`. To import the `Libra` module in other modules or transaction scripts, your Move code would specify `use 0x0::Libra`.
+Each Move module and resource type is hosted by a specific account address. For example, the `Libra` module is hosted by the account at address `0x1`. To import the `Libra` module in other modules or transaction scripts, your Move code would specify `use 0x1::Libra`.
 
 Before publishing a Move module, you first need to create an account to host it:
 
@@ -95,11 +95,11 @@ Let’s start with an extremely simple module called `MyModule`. This module has
 ```
 address 0x717da70a461fef6307990847590ad7af {
   module MyModule {
-    use 0x0::Libra;
-    use 0x0::LBR;
+    use 0x1::Libra::Libra;
+    use 0x1::LBR::LBR;
 
-    // The identity function: takes a Libra::T<LBR::T> as input and hands it back
-    public fun id(c: Libra::T<LBR::T>): Libra::T<LBR::T> {
+    // The identity function: takes a Libra<LBR> as input and hands it back
+    public fun id(c: Libra<LBR>): Libra<LBR> {
       c
     }
   }
@@ -154,15 +154,16 @@ Now let’s write the following script to use `MyModule` and save it as `custom_
 
 ```
 script {
-  use 0x0::LibraAccount;
-  use 0x0::LBR;
-  use 0x0::Transaction;
+  use 0x1::LibraAccount;
+  use 0x1::LBR::LBR;
   use 0x717da70a461fef6307990847590ad7af::MyModule;
 
-  fun main(amount: u64) {
-    let coin = LibraAccount::withdraw_from_sender<LBR::T>(amount);
+  fun main(account: &signer, amount: u64) {
+    let withdrawal_cap = LibraAccount::extract_withdraw_capability(account);
+    let coin = LibraAccount::withdraw_from<LBR>(&withdrawal_cap, amount);
+    LibraAccount::restore_withdraw_capability(withdrawal_cap);
     // Calls the id procedure defined in our custom module
-    LibraAccount::deposit<LBR::T>(Transaction::sender(), MyModule::id(coin));
+    LibraAccount::deposit_to<LBR>(account, MyModule::id(coin));
   }
 }
 ```

@@ -38,7 +38,7 @@ Move modules define the rules for updating the global state of the Libra Blockch
 - The key feature of Move is the ability to define custom resource types. Resource types are used to encode safe digital assets with rich programmability.
 - Resources are ordinary values in the language. They can be stored as data structures, passed as arguments to procedures, returned from procedures, and so on.
 - The Move type system provides special safety guarantees for resources. Move resources can never be duplicated, reused, or discarded. A resource type can only be created or destroyed by the module that defines the type. These guarantees are enforced statically by the [Move virtual machine](reference/glossary.md#move-virtual-machine-mvm) via bytecode verification. The Move virtual machine will refuse to run code that has not passed through the bytecode verifier.
-- All Libra currencies are implemented using the generic `Libra::T type`. For example: the LBR currency is represented as `Libra::T<LBR::T>` and a hypothetical USD currency would be represented as `Libra::T<USD::T>`. `Libra::T` has no special status in the language; every Move resource enjoys the same protections.
+- All Libra currencies are implemented using the generic `Libra` type. For example: the LBR currency is represented as `Libra<LBR>` and a hypothetical USD currency would be represented as `Libra<USD>`. `Libra` has no special status in the language; every Move resource enjoys the same protections.
 
 ## Move: Under the Hood
 
@@ -48,13 +48,13 @@ This section describes how to write [transaction scripts](#writing-transaction-s
 
 ### Writing Transaction Scripts
 
-As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount::T` and `Libra::T` resource types. `LibraAccount` is the name of the module, and `T` is the name of a resource declared by that module. This is a common naming convention in Move; the “main” type declared by a module is typically named `T`.
+As we explained in [Move Transaction Scripts Enable Programmable Transactions](#move-transaction-scripts-enable-programmable-transactions), users write transaction scripts to request updates to the global storage of the Libra Blockchain. There are two important building blocks that will appear in almost any transaction script: the `LibraAccount` and `Libra` resource types.
 
-When we say that a user "has an account at address `0xff` on the Libra Blockchain", what we mean is that the address `0xff` holds an instance of the `LibraAccount::T` resource. Every nonempty address has a `LibraAccount::T` resource. This resource stores account data, such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount::T` resource or invoking procedures of the `LibraAccount` module.
+When we say that a user "has an account at address `0xff` on the Libra Blockchain", what we mean is that the address `0xff` holds an instance of the `LibraAccount` resource. Every nonempty address has a `LibraAccount` resource. This resource stores account data, such as the sequence number, authentication key, and balance. Any part of the Libra system that wants to interact with an account must do so by reading data from the `LibraAccount` resource or invoking procedures of the `LibraAccount` module.
 
-The account balance is a generic resource of type `LibraAccount::Balance`. A single Libra account may hold balances in multiple currencies. For example, an account that holds both LBR and USD would have a `LibraAccount::Balance<LBR::T>` resource and a `LibraAccount::Balance<USD::T>` resource. However, every account must have at least one balance.
+The account balance is a generic resource of type `LibraAccount::Balance`. (`LibraAccount` is the name of the module, and `Balance` is the name of a resource declared by that module, in addition to the `LibraAccount` resource.) A single Libra account may hold balances in multiple currencies. For example, an account that holds both LBR and USD would have a `LibraAccount::Balance<LBR>` resource and a `LibraAccount::Balance<USD>` resource. However, every account must have at least one balance.
 
-A `Balance<Token>` resource holds a resource of type `Libra::T<Token>`. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this is the generic type of a Libra coin. This type is a "first-class citizen" in the language just like any other Move resource. Resources of type `Libra::T` can be stored in program variables, passed between procedures, and so on.
+A `Balance<Token>` resource holds a resource of type `Libra<Token>`. As we explained in [Move Has First Class Resources](#move-has-first-class-resources), this is the generic type of a Libra coin. This type is a "first-class citizen" in the language just like any other Move resource. Resources of type `Libra` can be stored in program variables, passed between procedures, and so on.
 
 We encourage the interested reader to examine the Move definitions of these two key resources in the `LibraAccount` and `Libra` modules under the `libra/language/stdlib/modules/` directory.
 
@@ -64,21 +64,26 @@ Now let us see how a programmer can interact with these modules and resources in
 // Simple peer-peer payment example.
 
 script {
-  // Use LibraAccount module published on the blockchain at account address
-  // 0x0...0. 0x0 is shorthand that the language pads out to
+  // Use the LibraAccount module published on the blockchain at account address
+  // 0x0...1. 0x1 is shorthand that the language pads out to
   // 16 bytes by adding leading zeroes.
-  use 0x0::LBR;
-  use 0x0::Libra;
-  use 0x0::LibraAccount;
-  fun main(payee: address, amount: u64) {
-    // Acquire a Libra::T<LBR::T> resource with value `amount` from the sender's
-    // account.  This will fail if the sender's balance is less than `amount`.
-    let coin = LibraAccount::withdraw_from_sender<LBR::T>(amount);
+  use 0x1::LibraAccount;
+  // Use the LBR resource from the LBR module. Naming the resource here makes
+  // it possible to reference the resource without the module name.
+  use 0x1::LBR::LBR;
+  fun main(payer: &signer, payee: address, amount: u64) {
+    // Acquire the capability to withdraw from the payer's account.
+    let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
+    // Acquire a Libra<LBR> resource with value `amount` from the payer's
+    // account.  This will fail if the payer's balance is less than `amount`.
+    let coin = LibraAccount::withdraw_from<LBR>(&payer_withdrawal_cap, amount);
+    // Restore the capability back to the payer's account.
+    LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
     // Move the `coin` resource into the account of `payee`. If there is no
     // account at the address `payee`, this step will fail
-    // Note that we could have also written `deposit<LBR::T>` here, but the
+    // Note that we could have also written `deposit<LBR>` here, but the
     // compiler is able to infer this for us based on the type of `coin`
-    LibraAccount::deposit(payee, coin)
+    LibraAccount::deposit(payer, payee, coin);
   }
 }
 ```
@@ -87,23 +92,26 @@ Let us look at a more complex example. In this example, we will use a transactio
 
 ```move
 // Multiple payee example. This is written in a slightly verbose way to
-// emphasize the ability to split a `Libra::T<LBR::T>` resource. The more concise
-// way would be to use multiple calls to `LibraAccount::withdraw_from_sender`.
+// emphasize the ability to split a `Libra<LBR>` resource. The more concise
+// way would be to use multiple calls to `LibraAccount::withdraw_from`.
 
 script {
-  use 0x0::LBR;
-  use 0x0::Libra;
-  use 0x0::LibraAccount;
-  fun main(payee1: address, amount1: u64, payee2: address, amount2: u64) {
+  use 0x1::Libra;
+  use 0x1::LibraAccount;
+  use 0x1::LBR::LBR;
+  fun main(payer: &signer, payee1: address, amount1: u64, payee2: address, amount2: u64) {
+    let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
     let total = amount1 + amount2;
-    let coin1 = LibraAccount::withdraw_from_sender<LBR::T>(total);
+    let coin1 = LibraAccount::withdraw_from<LBR>(&payer_withdrawal_cap, total);
+    LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
+
     // This mutates `coin1`, which now has value `amount1`.
     // `coin2` has value `amount2`.
-    let coin2 = LibraCoin::withdraw(&mut coin1, amount2);
+    let coin2 = Libra::withdraw(&mut coin1, amount2);
 
     // Perform the payments
-    LibraAccount::deposit(payee1, coin1);
-    LibraAccount::deposit(payee2, coin2)
+    LibraAccount::deposit(payer, payee1, coin1);
+    LibraAccount::deposit(payer, payee2, coin2)
   }
 }
 ```
@@ -117,10 +125,10 @@ Bob is going to create an account at address _a_ at some point in the future. Al
 
 To solve this problem for Alice, we will write a module `EarmarkedLibra` which:
 
-- Declares a new resource type `EarmarkedLibra::T` that wraps a Libra::T and recipient address.
+- Declares a new resource type `EarmarkedLibra` that wraps a `Libra` and recipient address.
 - Allows Alice to create such a type and publish it under her account (the `create` procedure).
 - Allows Bob to claim the resource (the `claim_for_recipient` procedure).
-- Allows anyone with an `EarmarkedLibra::T` to destroy it and acquire the underlying coin (the `unwrap` procedure).
+- Allows anyone with an `EarmarkedLibra` to destroy it and acquire the underlying coin (the `unwrap` procedure).
 
 ```move
 // The address where the module will be published:
@@ -128,49 +136,57 @@ address 0xcc2219df031a68115fad9aee98e051e9 {
 
   // A module for earmarking a coin for a specific recipient
   module EarmarkedLibraCoin {
-    use 0x0::Libra;
+    use 0x1::Libra::Libra;
+    use 0x1::Signer;
 
     // A wrapper containing a generic Libra and the address of the recipient the
     // coin is earmarked for.
-    resource struct T<Token> {
-      coin: Libra::T<Token>,
+    resource struct EarmarkedLibraCoin<Token> {
+      coin: Libra<Token>,
       recipient: address
     }
 
     // Create a new earmarked coin with the given `recipient`.
     // Publish the coin under the transaction sender's account address.
-    public fun create<Token>(coin: Libra::T<Token>, recipient: address) {
-      // Construct or "pack" a new resource of type T. Only procedures of the
-      // `EarmarkedLibraCoin` module can create an `EarmarkedLibraCoin.T`.
-      let t = T { coin, recipient };
+    public fun create<Token>(sender: &signer, coin: Libra<Token>, recipient: address) {
+      // Construct or "pack" a new EarmarkedLibraCoin resource. Only procedures of the
+      // `EarmarkedLibraCoin` module can create that resource.
+      let t = EarmarkedLibraCoin { coin, recipient };
 
       // Publish the earmarked coin under the transaction sender's account
       // address. Each account can contain at most one resource of a given type;
       // this call will fail if the sender already has a resource of this type.
-      move_to_sender(t);
+      move_to(sender, t);
     }
 
     // Allow the transaction sender to claim a coin that was earmarked for her.
     public fun claim_for_recipient<Token>(
+      sender: &signer,
       earmarked_coin_address: address
-    ): Libra::T<Token> acquires T {
+    ): Libra<Token> acquires EarmarkedLibraCoin {
       // Remove the earmarked coin resource published under `earmarked_coin_address`
       // and "unpack" it to remove `coin and `recipient`.
-      // If there is no resource of type T<Token> published under the address, this will fail.
-      let T { coin, recipient } = move_from<T<Token>>(earmarked_coin_address);
+      // If there is no resource of type EarmarkedLibraCoin<Token> published under
+      // the address, this will fail.
+      let EarmarkedLibraCoin { coin, recipient } =
+        move_from<EarmarkedLibraCoin<Token>>(earmarked_coin_address);
 
       // Ensure that the transaction sender is the recipient. If this assertion
       // fails, the transaction will fail and none of its effects (e.g.,
       // removing the earmarked coin) will be committed.  99 is an error code
       // that will be emitted in the transaction output if the assertion fails.
-      assert(recipient == Transaction::sender(), 99);
+      assert(recipient == Signer::address_of(sender), 99);
+
       // Return the coin
       coin
     }
 
     // Allow the creator of the earmarked coin to reclaim it.
-    public fun claim_for_creator<Token>(): Libra::T<Token> acquires T {
-      let T { coin, recipient:_ } = move_from<T<Token>>(Transaction::sender());
+    public fun claim_for_creator<Token>(
+      sender: &signer
+    ): Libra<Token> acquires EarmarkedLibraCoin {
+      let EarmarkedLibraCoin { coin, recipient:_ } =
+        move_from<EarmarkedLibraCoin<Token>>(Signer::address_of(sender));
       coin
     }
 
@@ -178,4 +194,4 @@ address 0xcc2219df031a68115fad9aee98e051e9 {
 }
 ```
 
-Alice can create an earmarked coin for Bob by creating a transaction script that invokes `create` on Bob's address _a_ and a `Libra::T` that she owns. Once _a_ has been created, Bob can claim the coin by sending a transaction from _a_. This invokes `claim_for_recipient` to claim a `Libra::T` for Bob that he can store in whichever address he wishes. If Bob takes too long to create an account under _a_ and Alice wants to remove the earmark from her coins, she can do so by using `claim_for_creator`.
+Alice can create an earmarked coin for Bob by creating a transaction script that invokes `create` on Bob's address _a_ and a `Libra` that she owns. Once _a_ has been created, Bob can claim the coin by sending a transaction from _a_. This invokes `claim_for_recipient` to claim a `Libra` for Bob that he can store in whichever address he wishes. If Bob takes too long to create an account under _a_ and Alice wants to remove the earmark from her coins, she can do so by using `claim_for_creator`.
