@@ -1,7 +1,3 @@
-/**
- * Copyright (c) The Libra Core Contributors
- * SPDX-License-Identifier: Apache-2.0
- */
 import React from 'react';
 import Layout from '@theme/Layout';
 import styles from './styles.module.css';
