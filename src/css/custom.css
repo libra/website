@@ -14,7 +14,7 @@ body a:hover {
   word-break: break-all;
 }
 
-.prism-code > div {
+.prism-code > div { /* codeBlockLines */
   width: 0;
 }
 
@@ -28,7 +28,7 @@ body a:hover {
   --snippet-background: #F7FAFC;
   background-color: var(--snippet-background);
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--snippet-border-radius);
 }
 
 .snippet-container .tabs, .snippet-header {
@@ -39,13 +39,24 @@ body a:hover {
   height: var(--snippet-header-height);
 }
 
-.snippet-container > div:last-child {
-  padding-right: 10px;
+.snippet-container:not(.is-within-multi-step) .prism-code > div { /* codeBlockLines */
+  border: 1px solid var(--snippet-border-color);
+  border-top-width: 0;
 }
 
 .single-wrapper {
   height: 100%;
 }
+
+.snippet-container .prism-code {
+  margin-top: calc( var(--snippet-header-height) * -1 );
+  padding-top: var(--snippet-header-height);
+}
+
+/*.snippet-container .prism-code {
+  margin-top: 12px;
+  padding-top: 0 !important;
+}*/
 
 .snippet-container .tab-item {
   border: 0px !important;
@@ -70,11 +81,6 @@ body a:hover {
 
 .snippet-container div[role="tabpanel"] {
   margin: 0 !important;
-}
-
-.snippet-container .prism-code {
-  margin-top: calc( var(--snippet-header-height) * -1 );
-  padding-top: var(--snippet-header-height);
 }
 
 .snippet-container button {

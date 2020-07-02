@@ -15,9 +15,17 @@
   overflow-x: inherit;
 }
 
+.root :global(.snippet-header) {
+  border-top-left-radius: 0
+}
+
 .root div[role="tabpanel"] {
   margin-top: 0 !important;
   background-color: var(--snippet-background-color); /* matches the color of the snippet theme */
+}
+
+.root div[role="tabpanel"] > div > div {
+  border: 1px solid var(--snippet-border-color);
 }
 
 .root :global(.tab-item) {
@@ -51,11 +59,28 @@
   padding: 0 20px;
 }
 
+.root li[role="tab"]:first-child > * {
+  border-top-left-radius: var(--snippet-border-radius);
+}
+
 @media small-tablet-breakpoint-max-query, 
 large-tablet-breakpoint-query and desktop-breakpoint-max-query {
   li[role="tab"]:before {
     content: '';
     padding-top: 100%;
+  }
+
+  .root :global(.snippet-header) {
+    border-top-right-radius: 0;
+  }
+
+  .root div[role="tabpanel"], .root div[role="tabpanel"] > div > div {
+    border-bottom-left-radius: var(--snippet-border-radius);
+    border-bottom-right-radius: var(--snippet-border-radius);
+  }
+
+  .root li[role="tab"]:last-child > * {
+    border-top-right-radius: var(--snippet-border-radius);
   }
 }
 
@@ -63,6 +88,17 @@ large-tablet-breakpoint-query and desktop-breakpoint-max-query {
 desktop-breakpoint-query {
   .root > div {
     display: flex;
+  }
+
+  .root div[role="tabpanel"], 
+  .root :global(.snippet-header), 
+  .root div[role="tabpanel"] > div > div {
+    border-top-right-radius: var(--snippet-border-radius);
+  }
+
+  .root div[role="tabpanel"], 
+  .root div[role="tabpanel"] > div > div {
+    border-bottom-right-radius: var(--snippet-border-radius);
   }
 
   .root ul[role="tablist"] {
@@ -97,6 +133,10 @@ desktop-breakpoint-query {
 
   .root :global(.prism-code) {
     max-height: initial;
+  }
+
+  .root li[role="tab"]:last-child > * {
+    border-bottom-left-radius: var(--snippet-border-radius);
   }
 }
 @media small-tablet-breakpoint-max-query, 
