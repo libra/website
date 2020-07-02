@@ -31,6 +31,10 @@
   border: 1px solid var(--snippet-border-color);
 }
 
+.root div[role="tabpanel"] > div > div {
+  border: 1px solid var(--snippet-border-color);
+}
+
 .root :global(.tab-item) {
   border: 0;
   flex: 1;
