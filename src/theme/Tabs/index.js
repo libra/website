@@ -22,6 +22,8 @@ function Tabs(props) {
   const {tabGroupChoices, setTabGroupChoices} = useTabGroupChoiceContext();
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
+  const [hasHadChange, setHasHadChange] = useState(false);
+
   if (groupId != null) {
     const relevantTabGroupChoice = tabGroupChoices[groupId];
     if (
@@ -74,6 +76,18 @@ function Tabs(props) {
     }
   };
 
+  /*
+   * Even though a tab is selected on render, we don't want to show the
+   * selected/hover state on the tab headers until subsequent renders
+   */
+  const onChange = callback => {
+    if (!hasHadChange) {
+      setHasHadChange(true);
+    }
+
+    callback();
+  };
+
   return (
     <div>
       <ul
@@ -87,14 +101,14 @@ function Tabs(props) {
             tabIndex="0"
             aria-selected={selectedValue === value}
             className={classnames('tab-item', styles.tabItem, {
-              'tab-item--active': selectedValue === value,
+              'tab-item--active': selectedValue === value && hasHadChange,
             })}
             key={value}
             ref={(tabControl) => tabRefs.push(tabControl)}
-            onKeyDown={(event) => handleKeydown(tabRefs, event.target, event)}
-            onFocus={() => changeSelectedValue(value)}
-            onMouseOver={() => changeSelectedValue(value)}
-            onClick={() => changeSelectedValue(value)}>
+            onKeyDown={(event) => onChange(() => handleKeydown(tabRefs, event.target, event))}
+            onFocus={() => onChange(() => changeSelectedValue(value))}
+            onMouseOver={() => onChange(() => changeSelectedValue(value))}
+            onClick={() => onChange(() => changeSelectedValue(value))}>
             {label}
           </li>
         ))}
