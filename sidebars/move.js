@@ -4,17 +4,18 @@ const Sidebar = [
   backToHome,
   {
     extra: {
-      classNames: ['spacer'],
+      classNames: ['categoryLabel', 'spacerMD'],
       icon: 'img/move.svg',
       iconDark: 'img/move-dark.svg',
+      iconClasses: ['iconLeft'],
       noLink: true,
     },
-    id: 'move/overview-v2', 
+    id: 'move/overview-v2',
     type: 'doc',
   },
   {
     extra: {
-      classNames: ['categoryIndex'],
+      classNames: ['categoryIndex', 'normalWeight'],
     },
     href: '/docs/move/overview-v2',
     label: 'Overview',

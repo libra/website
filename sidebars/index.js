@@ -9,7 +9,7 @@ module.exports = {
   Core,
   Home,
   MerchantSolutions,
-  WalletApp,
   Move,
   NodeOperators,
+  WalletApp,
 };

@@ -4,7 +4,7 @@ const Sidebar = [
    backToHome,
   {
     extra: {
-      classNames: ['spacer'],
+      classNames: ['categoryLabel'],
       icon: 'img/core-contributors.svg',
       iconDark: 'img/core-contributors-dark.svg',
       noLink: true,
@@ -14,7 +14,7 @@ const Sidebar = [
   },
   {
     extra: {
-      classNames: ['categoryIndex'],
+      classNames: ['categoryIndex'], // make one class
     },
     href: '/docs/core/overview-v2',
     label: 'Overview',
@@ -24,7 +24,7 @@ const Sidebar = [
     extra: {
       icon: 'img/concepts.svg',
       iconDark: 'img/concepts-dark.svg',
-      theme: 'secondary',
+      iconClasses: ['listTitle'],
     },
     label: 'Concepts',
     type: 'category',
@@ -41,7 +41,7 @@ const Sidebar = [
     extra: {
       icon: 'img/tutorials.svg',
       iconDark: 'img/tutorials-dark.svg',
-      theme: 'secondary',
+      iconClasses: ['listTitle'],
     },
     label: 'Tutorials',
     type: 'category',
@@ -54,10 +54,9 @@ const Sidebar = [
   },
   {
     extra: {
-      classNames: [],
       icon: 'img/develop.svg',
       iconDark: 'img/develop-dark.svg',
-      theme: 'secondary',
+      iconClasses: ['listTitle'],
     },
     label: 'Develop',
     type: 'category',
@@ -68,7 +67,7 @@ const Sidebar = [
       'core/libra-cli',
     ]
   },
-  getReference('secondary'),
+  getReference(),
 ];
 
 module.exports = Sidebar;

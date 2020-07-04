@@ -1,15 +1,17 @@
 const backToHome = {
   extra: {
-    classNames: ['backToHome', 'iconSmall'],
+    classNames: ['backToHome'],
     icon: 'img/shared/arrow-left.svg',
+    iconHover: 'img/shared/arrow-left-hover.svg',
+    iconDarkHover: 'img/shared/arrow-left-dark-hover.svg',
   },
   href: '/docs/welcome-to-libra-v2',
   label: 'Home',
   type: 'link',
 };
 
-const getReference = (theme = 'primary') => {
-  const classNames = [];
+const getReference = (theme = 'secondary') => {
+  const classNames = ['reference'];
   const type = theme === 'primary' ? 'doc' : 'ref';
 
   if (theme === 'secondary') {
@@ -30,6 +32,7 @@ const getReference = (theme = 'primary') => {
         type,
         id: 'v2-docs-guide',
         extra: {
+          classNames: ['iconIndented'],
           icon: 'img/roadmap.png',
           iconDark: 'img/reference-dark.svg',
         },
@@ -38,6 +41,7 @@ const getReference = (theme = 'primary') => {
         type,
         id: 'reference/glossary',
         extra: {
+          classNames: ['iconIndented'],
           icon: 'img/terminology.svg',
           iconDark: 'img/terminology-dark.svg',
         },
@@ -46,6 +50,7 @@ const getReference = (theme = 'primary') => {
         type,
         id: 'reference/roadmap',
         extra: {
+          classNames: ['iconIndented'],
           icon: 'img/roadmap.png',
           iconDark: 'img/reference-dark.svg',
         },
@@ -54,6 +59,7 @@ const getReference = (theme = 'primary') => {
         type,
         id: 'reference/compliance',
         extra: {
+          classNames: ['iconIndented'],
           icon: 'img/compliance.svg',
           iconDark: 'img/compliance-dark.svg',
         }
@@ -62,6 +68,7 @@ const getReference = (theme = 'primary') => {
         type,
         id: 'reference/security',
         extra: {
+          classNames: ['iconIndented'],
           icon: 'img/security.svg',
           iconDark: 'img/security-dark.svg',
         }
