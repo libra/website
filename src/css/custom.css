@@ -39,6 +39,11 @@ body a:hover {
   height: var(--snippet-header-height);
 }
 
+.snippet-container .snippet-header {
+  position: sticky;
+  top: 0;
+}
+
 .snippet-container:not(.is-within-multi-step) .prism-code > div { /* codeBlockLines */
   border: 1px solid var(--snippet-border-color);
   border-top-width: 0;
@@ -86,6 +91,7 @@ body a:hover {
   background-size: 12px;
   opacity: 1;
   padding-right: 20px;
+  top: 1px;
   visibility: visible;
 }
 
@@ -96,13 +102,13 @@ body a:hover {
   line-height: var(--snippet-header-height);
   padding-top: 0;
   padding-bottom: 0;
-  top: 0;
 }
 
 .snippet-container .learn-more {
   position: absolute;
   right: 69px;
   text-decoration: none;
+  top: 0;
 }
 
 .snippet-container .prism-code {

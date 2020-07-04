@@ -20,8 +20,9 @@
 }
 
 .root div[role="tabpanel"] {
-  margin-top: 0 !important;
   background-color: var(--snippet-background-color); /* matches the color of the snippet theme */
+  margin-top: 0 !important;
+  position: relative;
 }
 
 .root div[role="tabpanel"] > div > div {
@@ -46,6 +47,11 @@
   min-height: 120px;
   max-height: 300px;
   overflow: auto;
+  position: unset;
+}
+
+.root :global(.snippet-container) {
+  position: unset;
 }
 
 .root :global(.prism-code) {
@@ -119,7 +125,8 @@ desktop-breakpoint-query {
 
   .root div[role="tabpanel"] > div {
     height: 100%;
-    position: relative;
+    position: absolute;
+    width: 100%;
   }
 
   .root div[role="tabpanel"] > div > div { /* CodeBlock Component */
@@ -128,7 +135,6 @@ desktop-breakpoint-query {
     max-height: 100%;
     overflow: auto;
     padding: 0;
-    position: absolute;
     width: 100%;
   }
 
