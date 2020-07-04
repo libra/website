@@ -19,14 +19,14 @@ main {
   margin: 2em;
 }
 
-/* Code Snippet  */
+/* Code Snippet */
 .snippet-container {
   --copy-snippet-url: url('/img/copy.svg');
   --copy-snippet-color: #6B7689;
   --snippet-background: #F7FAFC;
   background-color: var(--snippet-background);
-  position: relative;
   border-radius: var(--snippet-border-radius);
+  position: relative;
 }
 
 .snippet-container .tabs, .snippet-header {

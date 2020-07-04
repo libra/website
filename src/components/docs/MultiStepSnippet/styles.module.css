@@ -16,7 +16,9 @@
 }
 
 .root :global(.snippet-header) {
-  border-top-left-radius: 0
+  border-top-left-radius: 0;
+  position: sticky;
+  top: 0;
 }
 
 .root div[role="tabpanel"] {
