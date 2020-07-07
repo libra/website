@@ -5,80 +5,80 @@ disable_pagination: true
 sidebar_label: Home
 ---
 
-Browse the latest documentation on the Libra Core, wallets, payments, and node operations. 
+Browse the latest documentation on the Libra Core, wallets, payments, and node operations.
 
 <div className="margin-vert--lg" />
 
 The Libra payment system is built on a secure, scalable, and reliable blockchain. It is backed by a reserve of high-quality liquid assets comprising cash or ca​sh eq​uivalents and very short-term government secu​rities. This will help ensure that people and businesses have confidence that their Libra Coins can be converted into their local currency. It is governed by the [Libra Association](http://libra.org/) and its subsidiary Libra Networks, tasked with developing and operating the Libra network and the Libra project.
 
 <CardsWrapper title="We welcome developers who want to:">
-  <OverlayCard 
+  <OverlayCard
     description="This section of content will be available soon"
-    icon="img/core-contributors.svg" 
-    iconDark="img/core-contributors-dark.svg" 
-    title="Contribute to Core" 
-    to="#"
-  />
-  <OverlayCard 
-    description="This section of content will be available soon"
-    icon="img/docs/merchant-solutions.svg" 
-    iconDark="img/docs/merchant-solutions-dark.svg"
-    title="Contribute to Libra Blockchain" 
-    to="#"
-  />
-  <OverlayCard 
-    description="This section of content will be available soon"
-    icon="img/wallet-app.svg" 
-    iconDark="img/wallet-app-dark.svg"
-    title="Build a Wallet" 
+    icon="img/core-contributors.svg"
+    iconDark="img/core-contributors-dark.svg"
+    title="Contribute to Core"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/wallet-app.svg" 
+    icon="img/docs/merchant-solutions.svg"
+    iconDark="img/docs/merchant-solutions-dark.svg"
+    title="Contribute to Libra Blockchain"
+    to="#"
+  />
+  <OverlayCard
+    description="This section of content will be available soon"
+    icon="img/wallet-app.svg"
+    iconDark="img/wallet-app-dark.svg"
+    title="Build a Wallet"
+    to="#"
+  />
+  <OverlayCard
+    description="This section of content will be available soon"
+    icon="img/wallet-app.svg"
     iconDark="img/wallet-app-dark.svg"
     title="Develop a wallet for the Libra Network"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/move.svg" 
+    icon="img/move.svg"
     iconDark="img/move-dark.svg"
     title="Develop with Move"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/move.svg" 
+    icon="img/move.svg"
     iconDark="img/move-dark.svg"
     title="Learn about and experiment with the Move language"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/docs/merchant-solutions.svg" 
-    iconDark="img/docs/merchant-solutions-dark.svg" 
+    icon="img/docs/merchant-solutions.svg"
+    iconDark="img/docs/merchant-solutions-dark.svg"
     title="Accept Payments"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/docs/merchant-solutions.svg" 
-    iconDark="img/docs/merchant-solutions-dark.svg" 
+    icon="img/docs/merchant-solutions.svg"
+    iconDark="img/docs/merchant-solutions-dark.svg"
     title="Accept payments and integrate with the network"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/move.svg" 
+    icon="img/move.svg"
     iconDark="img/move-dark.svg"
     title="Run a Full Node"
     to="#"
   />
   <OverlayCard
     description="This section of content will be available soon"
-    icon="img/core-contributors.svg" 
-    iconDark="img/core-contributors-dark.svg" 
+    icon="img/core-contributors.svg"
+    iconDark="img/core-contributors-dark.svg"
     title="Learn how to operate full nodes in the Libra Blockchain"
     to="#"
   />
@@ -92,7 +92,7 @@ The Libra payment system is built on a secure, scalable, and reliable blockchain
   defaultValue="my-first-transaction"
   values={[
     { value: 'my-first-transaction', label: (
-      <ColorCard 
+      <ColorCard
         color="purpleDark"
         icon="img/transaction.svg"
         overlay="Send a test transaction to orem ipsum dolor sit amet, ctetur adipiscing elit, sed do"
@@ -101,18 +101,18 @@ The Libra payment system is built on a secure, scalable, and reliable blockchain
       />
     )},
     { value: 'run-move', label: (
-      <ColorCard 
+      <ColorCard
         color="purpleLight"
-        icon="img/docs/move-program.svg" 
+        icon="img/docs/move-program.svg"
         overlay="Second overlay (no content specified in comps"
         title="Write a move program"
         type="snippetTab"
       />
     )},
     { value: 'demo-wallet', label: (
-      <ColorCard 
+      <ColorCard
         color="aqua"
-        icon="img/docs/try-a-wallet.svg" 
+        icon="img/docs/try-a-wallet.svg"
         overlay="Third overlay (no content specified in comps"
         title="Try out a wallet"
         type="snippetTab"
@@ -135,7 +135,7 @@ libra% query balance 0
 libra% query balance 1
 libra% transfer 0 1 10 LBR
 libra% query balance 0
-libra% query balance 1 
+libra% query balance 1
 ```
 
 </MultiStepTabItem>

@@ -2,8 +2,8 @@ html {
   --snippet-header-height: 36px;
 }
 
-body a:hover {
-  color: inherit;
+main {
+  position: relative;
 }
 
 .prism-code > * {
@@ -37,11 +37,6 @@ body a:hover {
   border-top-right-radius: var(--ifm-global-radius);
   flex-wrap: wrap;
   height: var(--snippet-header-height);
-}
-
-.snippet-container .snippet-header {
-  position: sticky;
-  top: 0;
 }
 
 .snippet-container:not(.is-within-multi-step) .prism-code > div { /* codeBlockLines */

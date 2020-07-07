@@ -6,7 +6,6 @@ sidebar_label: V2 Docs Guide
 
 <br />
 
-
 ## Excerpt
 
 <Excerpt image="img/white-paper-excerpt.svg">
