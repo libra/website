@@ -49,7 +49,7 @@
 }
 
 .root :global(.prism-code) {
-  padding: 
+  padding:
     calc( var(--snippet-header-height) + 10px )
     0px
     20px;
@@ -63,7 +63,7 @@
   border-top-left-radius: var(--snippet-border-radius);
 }
 
-@media small-tablet-breakpoint-max-query, 
+@media small-tablet-breakpoint-max-query,
 large-tablet-breakpoint-query and desktop-breakpoint-max-query {
   li[role="tab"]:before {
     content: '';
@@ -74,7 +74,8 @@ large-tablet-breakpoint-query and desktop-breakpoint-max-query {
     border-top-right-radius: 0;
   }
 
-  .root div[role="tabpanel"], .root div[role="tabpanel"] > div > div {
+  .root div[role="tabpanel"],
+  .root div[role="tabpanel"] > div > div {
     border-bottom-left-radius: var(--snippet-border-radius);
     border-bottom-right-radius: var(--snippet-border-radius);
   }
@@ -90,13 +91,13 @@ desktop-breakpoint-query {
     display: flex;
   }
 
-  .root div[role="tabpanel"], 
-  .root :global(.snippet-header), 
+  .root div[role="tabpanel"],
+  .root :global(.snippet-header),
   .root div[role="tabpanel"] > div > div {
     border-top-right-radius: var(--snippet-border-radius);
   }
 
-  .root div[role="tabpanel"], 
+  .root div[role="tabpanel"],
   .root div[role="tabpanel"] > div > div {
     border-bottom-right-radius: var(--snippet-border-radius);
   }
@@ -139,7 +140,7 @@ desktop-breakpoint-query {
     border-bottom-left-radius: var(--snippet-border-radius);
   }
 }
-@media small-tablet-breakpoint-max-query, 
+@media small-tablet-breakpoint-max-query,
 large-tablet-breakpoint-query and desktop-breakpoint-max-query {
   .root li[role="tab"] {
     background: transparent !important;

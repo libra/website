@@ -53,11 +53,6 @@ body a:hover {
   padding-top: var(--snippet-header-height);
 }
 
-/*.snippet-container .prism-code {
-  margin-top: 12px;
-  padding-top: 0 !important;
-}*/
-
 .snippet-container .tab-item {
   border: 0px !important;
   font-family: NB International Pro Bold;
