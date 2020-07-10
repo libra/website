@@ -7,11 +7,7 @@ main {
 }
 
 .prism-code > * {
-  /*
-   * Prevents code block from overflowing on extremely
-   * long words
-   */
-  word-break: break-all;
+  white-space: nowrap !important;
 }
 
 .prism-code > div { /* codeBlockLines */
