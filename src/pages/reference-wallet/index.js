@@ -8,7 +8,7 @@ export default props => {
       <div className={styles.root}>
         <iframe
           className={styles.walletApp}
-          src="http://demo-wallet.libra.org/login"
+          src="https://demo-wallet.libra.org/login"
         />
       </div>
     </Layout>
