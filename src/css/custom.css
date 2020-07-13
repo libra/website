@@ -21,6 +21,8 @@ main {
 
 /* Code Snippet  */
 .snippet-container {
+  --copy-snippet-url: url('/img/copy.svg');
+  --copy-snippet-color: #6B7689;
   --snippet-background: #F7FAFC;
   background-color: var(--snippet-background);
   position: relative;
@@ -107,13 +109,9 @@ main {
   border-top-right-radius: 0;
 }
 
-.snippet-container {
-  --copy-snippet-url: url('/img/copy.svg');
-  --copy-snippet-color: #6B7689;
-}
-
-.token-line {
-  white-space: break-spaces !important;
+/* Doc Classes */
+.gapless-image {
+  margin-top: -9px;
 }
 
 html[data-theme='dark'] .snippet-container {

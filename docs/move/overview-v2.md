@@ -15,7 +15,7 @@ Move was designed and created as the programming language for the Libra network.
 Given custom Move modules will not be supported at [launch](https://libra.org/white-paper/#whats-next), we are targeting an early Move Developer persona.
 
 
-The early Move Developer is one with some programming experience, who wants to begin understanding the core programming language used to implement custom transaction logic and smart contracts for the Libra Blockchain. 
+The early Move Developer is one with some programming experience, who wants to begin understanding the core programming language used to implement custom transaction logic and smart contracts for the Libra Blockchain.
 
 ### Hobbyists
 
@@ -32,6 +32,12 @@ Currently, Move is not targeting developers who wish to create custom modules an
 ## Move Architecture
 
 Move has all of the syntax and semantics you would expect from a first-class programming language. However, there is an entire architecture dedicated to creating, using, and executing code based on Move. The diagram below shows the architecture of Move as it pertains to the Libra payment system, from using the source language to script execution. Click on a specific topic of the diagram to be taken to more information about that specific area.
+
+<img src="/img/docs/move-arc-1.svg" />
+<img className="gapless-image" src="/img/docs/move-arc-2.svg" />
+<img className="gapless-image" src="/img/docs/move-arc-3.svg" />
+<img className="gapless-image" src="/img/docs/move-arc-4.svg" />
+<img className="gapless-image" src="/img/docs/move-arc-5.svg" />
 
 ## Reference
 
