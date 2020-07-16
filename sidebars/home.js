@@ -3,7 +3,7 @@ const {getReference} = require('./components');
 const Sidebar = [
   {
     type: 'doc',
-    id: 'welcome-to-libra-v2',
+    id: 'welcome-to-libra',
     extra: {
       classNames: ['home'],
       icon: 'img/home.svg',
@@ -16,7 +16,7 @@ const Sidebar = [
     items: [
       {
         type: 'ref',
-        id: 'core/overview-v2',
+        id: 'core/overview',
         extra: {
           classNames: ['iconIndented'],
           icon: 'img/core-contributors.svg',
@@ -43,7 +43,7 @@ const Sidebar = [
       },
       {
         type: 'ref',
-        id: 'move/overview-v2',
+        id: 'move/overview',
         extra: {
           classNames: ['iconIndented'],
           icon: 'img/move.svg',

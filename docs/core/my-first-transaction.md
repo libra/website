@@ -5,7 +5,7 @@ title: My First Transaction
 
 This document will guide you through executing your first transaction on the Libra Blockchain. Before you follow the steps to execute your first transaction, we recommend that you read the following documents to familiarize yourself with the key aspects of the Libra ecosystem and the Libra protocol:
 
-* [Welcome](welcome-to-libra.md)
+* [Welcome](/docs/welcome-to-libra)
 * [The Libra protocol: Key Concepts](libra-protocol.md)
 
 We provide a command line interface (CLI) client to interact with the blockchain.
@@ -591,7 +591,7 @@ Once you have executed your first transaction, you may refer to the document [Li
 
 ## Reference
 
-* [Welcome page](welcome-to-libra.md).
+* [Welcome page](/docs/welcome-to-libra).
 * [Libra Protocol: Key Concepts](libra-protocol.md) &mdash; Introduces you to the fundamental concepts of the Libra protocol.
 * [Getting Started With Move](move-overview.md) &mdash; Introduces you to a new blockchain programming language called Move.
 * [Life of a Transaction](life-of-a-transaction.md) &mdash; Provides a look at what happens "under the hood" when a transaction is submitted and executed.

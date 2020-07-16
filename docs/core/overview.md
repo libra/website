@@ -1,25 +1,94 @@
 ---
 id: overview
-title: Libra Core Overview
 sidebar_label: Core Contributors
+title: Overview
 ---
 
-Libra Core is the official name for the open-source implementation of the Libra protocol published by the Libra Association.
+This section details the concepts and technology powering the Libra Blockchain and how you can contribute to the Libra Core.
 
-* This software is the first implementation of the Libra protocol and the Move language.
-* Libra Core includes both validator and client functionalities.
-* Libra Core is written in Rust.
+The Libra Core is a set of functionalities and technologies working together to make transacting on the Libra Blockchain effective and secure.
 
-## Component READMEs of Libra Core
+## Discover
 
-* [Admission Control](crates/admission-control.md)
-* [Bytecode Verifier](crates/bytecode-verifier.md)
-* [Consensus](crates/consensus.md)
-* [Crypto](crates/crypto.md)
-* [Execution](crates/execution.md)
-* [Mempool](crates/mempool.md)
-* [Move IR Compiler](crates/ir-to-bytecode.md)
-* [Move Language](crates/move-language.md)
-* [Network](crates/network.md)
-* [Storage](crates/storage.md)
-* [Virtual Machine](crates/vm.md)
+<CardsWrapper>
+  <ColorCard
+    color="purpleDark"
+    icon="img/transaction.svg"
+    iconDark="img/transaction-dark.svg"
+    to="/docs/core/libra-protocol"
+    title="Explore Libra Concepts"
+  />
+  <ColorCard
+    color="purpleLight"
+    icon="img/docs/move-program.svg"
+    iconDark="img/docs/move-program-dark.svg"
+    to="/docs/core/my-first-transaction"
+    title="Send a Test Transaction"
+  />
+  <ColorCard
+    color="aqua"
+    icon="img/docs/try-a-wallet.svg"
+    iconDark="img/docs/try-a-wallet-dark.svg"
+    to="/docs/core/libra-protocol"
+    title="Run a Local Network"
+  />
+</CardsWrapper>
+
+## Learn
+
+<CardsWrapper>
+  <OverlayCard
+    description="How do transactions work?"
+    icon="img/wallet-app.svg"
+    iconDark="img/wallet-app-dark.svg"
+    title="Transactions"
+    to="/docs/core/life-of-a-transaction"
+  />
+  <OverlayCard
+    description="Understand how validator node concepts in the Libra Blockchain"
+    icon="img/wallet-app.svg"
+    iconDark="img/wallet-app-dark.svg"
+    title="Validator Nodes"
+    to="/docs/core/libra-protocol#validator-node-validator"
+  />
+  <OverlayCard
+    description="Explore how the LibraBFT consensus protocol works"
+    icon="img/wallet-app.svg"
+    iconDark="img/wallet-app-dark.svg"
+    title="Consensus"
+    to="#"
+  />
+</CardsWrapper>
+
+## Develop
+
+<CardsWrapper>
+  <SimpleCard
+    icon="img/github.svg"
+    iconDark="img/github-dark.svg"
+    title="Contribute to Libra Core"
+    to="/docs/core/contributing"
+  />
+  <SimpleCard
+    icon="img/github.svg"
+    iconDark="img/github-dark.svg"
+    title="Libra CLI"
+    to="/docs/core/libra-cli"
+  />
+  <SimpleCard
+    icon="img/github.svg"
+    iconDark="img/github-dark.svg"
+    title="Coding Guidelines"
+    to="/docs/core/coding-guidelines"
+  />
+</CardsWrapper>
+
+
+## Reference
+
+<CardsWrapper>
+  <MerchantReference />
+  <WalletReference />
+  <MoveReference />
+  <NodeReference />
+</CardsWrapper>

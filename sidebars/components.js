@@ -5,7 +5,7 @@ const backToHome = {
     iconHover: 'img/shared/arrow-left-hover.svg',
     iconDarkHover: 'img/shared/arrow-left-dark-hover.svg',
   },
-  href: '/docs/welcome-to-libra-v2',
+  href: '/docs/welcome-to-libra',
   label: 'Home',
   type: 'link',
 };
@@ -30,29 +30,11 @@ const getReference = (theme = 'secondary') => {
     items: [
       {
         type,
-        id: 'v2-docs-guide',
-        extra: {
-          classNames: ['iconIndented'],
-          icon: 'img/roadmap.png',
-          iconDark: 'img/reference-dark.svg',
-        },
-      },
-      {
-        type,
         id: 'reference/glossary',
         extra: {
           classNames: ['iconIndented'],
           icon: 'img/terminology.svg',
           iconDark: 'img/terminology-dark.svg',
-        },
-      },
-      {
-        type,
-        id: 'reference/roadmap',
-        extra: {
-          classNames: ['iconIndented'],
-          icon: 'img/roadmap.png',
-          iconDark: 'img/reference-dark.svg',
         },
       },
       {

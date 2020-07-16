@@ -33,10 +33,6 @@
   z-index: 10;
 }
 
-.root .overlay span {
-  align-self: center;
-}
-
 .image {
   --size: 100px;
   background-repeat: no-repeat;
@@ -75,6 +71,10 @@
   padding: 0 3px;
 }
 
+.root * {
+  word-break: inherit;
+}
+
 :global(.tab-item--active) .root.snippetTab {
   box-shadow: none;
   border: 0;
@@ -93,6 +93,10 @@
   padding: 3px;
   width: var(--doc-card-size);
   z-index: 10;
+}
+
+.overlay span {
+  align-self: center;
 }
 
 :global(.tab-item--active) .overlay {

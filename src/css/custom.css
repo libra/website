@@ -84,6 +84,7 @@ main {
   background-size: 12px;
   opacity: 1;
   padding-right: 20px;
+  right: 20px;
   top: 1px;
   visibility: visible;
 }
@@ -99,7 +100,7 @@ main {
 
 .snippet-container .learn-more {
   position: absolute;
-  right: 69px;
+  right: 82px;
   text-decoration: none;
   top: 0;
 }

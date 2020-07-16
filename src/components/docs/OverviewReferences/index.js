@@ -8,7 +8,7 @@ const CoreReference = () => (
     iconDark="img/core-contributors-dark.svg"
     smallerImage
     title="Core contributor overview"
-    to="/docs/core/overview-v2"
+    to="/docs/core/overview"
   />
 );
 
@@ -38,7 +38,7 @@ const MoveReference = () => (
     iconDark="img/move-dark.svg"
     smallerImage
     title="Move overview"
-    to="/docs/move/overview-v2"
+    to="/docs/move/overview"
   />
 );
 

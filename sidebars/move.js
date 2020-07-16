@@ -10,14 +10,14 @@ const Sidebar = [
       iconClasses: ['iconLeft'],
       noLink: true,
     },
-    id: 'move/overview-v2',
+    id: 'move/overview',
     type: 'doc',
   },
   {
     extra: {
       classNames: ['categoryIndex', 'normalWeight'],
     },
-    href: '/docs/move/overview-v2',
+    href: '/docs/move/overview',
     label: 'Overview',
     type: 'link',
   },

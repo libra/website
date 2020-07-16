@@ -1,5 +1,5 @@
 ---
-id: welcome-to-libra-v2
+id: welcome-to-libra
 title: Libra Developer Documentation
 disable_pagination: true
 sidebar_label: Home
@@ -9,9 +9,11 @@ sidebar_label: Home
 
 ## Welcome to Libra!
 
-The [Libra Association](https://www.libra.org) governs the system, while its subsidiary Libra Networks operates the network and administers the reserve.
+The Libra payment system is built on a secure, scalable, and reliable blockchain.
 
-<CardsWrapper title="We welcome developers who want to:">
+The [Libra Association](https://www.libra.org) manages the development roadmap for Libra Core, and oversees the public process for proposing changes to it. The Libra Association’s subsidiary, Libra Networks, is responsible for and manages all aspects of the Libra Payment Network, which is the layer where all payment-related activity and decisions occur.
+
+<CardsWrapper title="We welcome developers who want to">
   <OverlayCard
     description="Contribute to the Libra Blockchain"
     icon="img/core-contributors.svg"
@@ -90,6 +92,17 @@ The [Libra Association](https://www.libra.org) governs the system, while its sub
 ```bash
 # Create two accounts and transfer LBR between the two.
 # This uses the testnet for experimentation
+
+libra% account create
+libra% account create
+libra% account list
+libra% account mint 0 110 LBR
+libra% account mint 1 52 LBR
+libra% query balance 0
+libra% query balance 1
+libra% transfer 0 1 10 LBR
+libra% query balance 0
+libra% query balance 1
 
 libra% account create
 libra% account create
