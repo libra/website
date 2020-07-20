@@ -26,7 +26,7 @@ Understanding that the capability to create custom modules on the Libra network 
 
 ### Core Contributor
 
-Beyond a hobbyist wanting to stay ahead of the curve for the core programming language is someone who may want to contribute directly to Move. Whether this includes submitting language improvements or even adding core modules available on the Libra networkPlatform, the core contributor will understand Move at a deep level. Once familiar with Move, the core contributor may want to submit a request to the Libra Association to add new transaction or module types, via the [Libra Improvement Protocol (LIP) process](https://lip.libra.org/).
+Beyond a hobbyist wanting to stay ahead of the curve for the core programming language is someone who may want to [contribute](https://libra.org/en-US/cla-sign/) directly to Move. Whether this includes submitting language improvements or even adding core modules available on the Libra payment network, the core contributor will understand Move at a deep level. Once familiar with Move, the core contributor may want to submit a request to the Libra Association to add new transaction or module types, via the [Libra Improvement Protocol (LIP) process](https://lip.libra.org/).
 
 ### Who Move is currently not targeting
 
