@@ -18,7 +18,3 @@ Please report security bugs on [Libra’s Bug Bounty with HackerOne](https://hac
 You can also report security bugs by emailing us directly at [security@libra.org](mailto:security@libra.org).
 
 Thank you for improving the security of the Libra Blockchain! Your efforts and responsible disclosure are appreciated, and every effort will be made to acknowledge your contributions in a timely manner.
-
-## Comments on This Policy
-
-If you have suggestions on how this process could be improved, please submit a pull request.

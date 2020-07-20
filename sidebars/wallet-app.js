@@ -4,11 +4,10 @@ const Sidebar = [
    backToHome,
   {
     extra: {
-      classNames: ['categoryLabel', 'spacerMD'],
+      classNames: ['categoryLabel'],
       icon: 'img/wallet-app.svg',
       iconDark: 'img/wallet-app-dark.svg',
       iconClasses: ['iconLeft'],
-      noLink: true,
     },
     id: 'wallet-app/overview',
     type: 'doc',
@@ -23,9 +22,9 @@ const Sidebar = [
   },
   {
     extra: {
+      iconClasses: ['listTitle'],
       icon: 'img/concepts.svg',
       iconDark: 'img/concepts-dark.svg',
-      theme: 'secondary',
     },
     label: 'Concepts',
     type: 'category',
@@ -37,9 +36,9 @@ const Sidebar = [
   },
   {
     extra: {
+      iconClasses: ['listTitle'],
       icon: 'img/tutorials.svg',
       iconDark: 'img/tutorials-dark.svg',
-      theme: 'secondary',
     },
     label: 'Tutorials',
     type: 'category',
@@ -52,10 +51,9 @@ const Sidebar = [
   },
   {
     extra: {
-      classNames: [],
+      iconClasses: ['listTitle'],
       icon: 'img/develop.svg',
       iconDark: 'img/develop-dark.svg',
-      theme: 'secondary',
     },
     label: 'Develop',
     type: 'category',
@@ -80,7 +78,7 @@ const Sidebar = [
       },
     ]
   },
-  getReference('secondary'),
+  getReference(),
 ];
 
 module.exports = Sidebar;

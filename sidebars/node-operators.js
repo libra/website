@@ -4,7 +4,7 @@ const Sidebar = [
   backToHome,
   {
     extra: {
-      classNames: ['categoryLabel', 'spacerMD'],
+      classNames: ['categoryLabel'],
       icon: 'img/node-operators.svg',
       iconDark: 'img/node-operators-dark.svg',
       iconClasses: ['iconLeft'],
@@ -15,7 +15,7 @@ const Sidebar = [
   },
   {
     extra: {
-      classNames: ['categoryIndex', 'normalWeight'],
+      classNames: ['categoryIndex'],
     },
     href: '/docs/node/overview',
     label: 'Overview',

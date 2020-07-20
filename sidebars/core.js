@@ -14,7 +14,7 @@ const Sidebar = [
   },
   {
     extra: {
-      classNames: ['categoryIndex'], // make one class
+      classNames: ['categoryIndex'],
     },
     href: '/docs/core/overview',
     label: 'Overview',
