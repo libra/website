@@ -33,7 +33,7 @@ The image below details the different user flows for the Demo Wallet.
 
 ### Use the Demo Wallet
 
-Check out the embedded demo of the Web version of the reference wallet hosted at [https://demo-wallet.libra.org](https://demo-wallet.libra.org). 
+Check out the [embedded demo of the Web reference wallet](/docs/wallet-app/demo-wallet-swagger-api). 
 
 
 

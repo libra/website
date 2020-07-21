@@ -115,3 +115,9 @@ html[data-theme='dark'] .snippet-container {
   --copy-snippet-color: white;
   --snippet-background: rgb(41, 45, 62);
 }
+
+iframe {
+  width: 100%;
+  height: 800px;
+  border: 0;
+}
