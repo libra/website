@@ -90,39 +90,56 @@ Balance is: 76.000000LBR
 
 ### Create Move module
 
-Let’s start with an extremely simple module called `MyModule`. This module has a single procedure called `id`, which is an identity function for coins. It takes a `Libra::T<LBR::T>` resource as input and hands it back to the calling program. The Move code for this module is provided below. Change the address in the first line to be the address of the account you just created and then save it in a file named `my_module.move.` (Be sure to keep the "0x" prefix on the account address.)
+Let’s start with a simple module called `SimpleFee`. This module implements a per-account
+processing fee that can be added to payment transactions.
+An account can specify an on-chain Move resource with the fee amount that should be charged for
+each coin type. The account owner can set the fee amounts, and anyone can retrieve the
+fees to add them to payments.
+The Move code for this module is provided below. Change the address in the first line to be the address of the account you just created and then save it in a file named `SimpleFee.move.` (Be sure to keep the "0x" prefix on the account address.)
 
 ```
 address 0x717da70a461fef6307990847590ad7af {
-  module MyModule {
-    use 0x1::Libra::Libra;
-    use 0x1::LBR::LBR;
 
-    // The identity function: takes a Libra<LBR> as input and hands it back
-    public fun id(c: Libra<LBR>): Libra<LBR> {
-      c
-    }
+module SimpleFee {
+  // A simple fixed-price per-account processing fee that can be added
+  // to payment transactions. There is a different fee for each CoinType.
+  resource struct Fee<CoinType> {
+    fee: u64
   }
+
+  // Set the fee amount.
+  public fun set_fee<CoinType>(account: &signer, fee: u64) {
+    move_to(account, Fee<CoinType> { fee })
+  }
+
+  // Get the fee for an account.
+  public fun get_fee<CoinType>(account: address): u64 acquires Fee {
+    if (exists<Fee<CoinType>>(account))
+      borrow_global<Fee<CoinType>>(account).fee
+    else
+      0
+  }
+}
 }
 ```
 
 ### Compile Move module
 
-To compile `my_module.move`, use the [dev compile](libra-cli#dev--d--operations-related-to-move-transaction-scripts-and-modules) command.
+To compile `SimpleFee.move`, use the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
 
 ```
-libra% dev compile 0 <path to my_module.move> <path to language/stdlib/modules>
+libra% dev compile 0 <path to SimpleFee.move> <path to language/stdlib/modules>
 ```
 * 0 &mdash; Index/ref_id of the account that the module will be published under.
 * Arguments listed after the source file name specify dependencies, and since this module depends on the Move standard library, you need to specify the path to that directory.
 
 The Move code gets fed into the compiler in a `.move` file and the compiler outputs the corresponding bytecode file. When you are ready to publish this module into an account on the blockchain,  use this bytecode file and not the `.move` file.
 
-After the module is successfully compiled, you'll see the following message in the output, it contains the path to the bytecode file produced by compiling `my_module.move`.
+After the module is successfully compiled, you'll see the following message in the output, it contains the path to the bytecode file produced by compiling `SimpleFee.move`.
 
 ```
 Successfully compiled a program at:
-  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
+  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/modules/0_SimpleFee.mv
 ```
 
 ### Publish compiled module
@@ -130,64 +147,87 @@ Successfully compiled a program at:
 To publish the module bytecode on your local blockchain, run the [dev publish](libra-cli#dev--d--operations-related-to-move-transaction-scripts-and-modules) command and use the path to the compiled module bytecode file as shown below:
 
 ```
-libra% dev publish 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
+libra% dev publish 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/modules/0_SimpleFee.mv
 
 waiting .....
 transaction executed!
 no events emitted.
 Successfully published module
 ```
-Upon successful execution of the `dev publish` command, the bytecode for `MyModule` is published under the sender’s account. To use the procedures and types declared in `MyModule`, other transaction scripts and modules can import it with `use <sender_address>::MyModule`.
+Upon successful execution of the `dev publish` command, the bytecode for `SimpleFee` is published under the sender’s account. To use the procedures and types declared in `SimpleFee`, other transaction scripts and modules can import it with `use <sender_address>::SimpleFee`.
 
- Subsequent modules published under `<sender_address>` must not be named `MyModule`. Each account may hold at most one module with a given name. Attempting to publish a second module named `MyModule` under `<sender_address>` will result in a failed transaction.
+ Subsequent modules published under `<sender_address>` must not be named `SimpleFee`. Each account may hold at most one module with a given name. Attempting to publish a second module named `SimpleFee` under `<sender_address>` will result in a failed transaction.
 
 ## Compile and execute transaction scripts
 
-### Create transaction script
+### Create transaction scripts
 
 <blockquote className="block_note">
 **Note**: You'll find samples of transaction scripts in the [libra/language/stdlib/transaction_scripts](https://github.com/libra/libra/tree/master/language/stdlib/transaction_scripts) directory.
 </blockquote>
 
-Now let’s write the following script to use `MyModule` and save it as `custom_script.move`:
+To use the `SimpleFee` module, let's first create a transaction script to set the fee amount.
+Edit the SimpleFee account address in the following script
+to match the account that you created and then save it as `set_lbr_fee.move`:
 
 ```
 script {
-  use 0x1::LibraAccount;
-  use 0x1::LBR::LBR;
-  use 0x717da70a461fef6307990847590ad7af::MyModule;
+use 0x1::LBR::LBR;
+use 0x717da70a461fef6307990847590ad7af::SimpleFee;
 
-  fun main(account: &signer, amount: u64) {
-    let withdrawal_cap = LibraAccount::extract_withdraw_capability(account);
-    let coin = LibraAccount::withdraw_from<LBR>(&withdrawal_cap, amount);
-    LibraAccount::restore_withdraw_capability(withdrawal_cap);
-    // Calls the id procedure defined in our custom module
-    LibraAccount::deposit_to<LBR>(account, MyModule::id(coin));
-  }
+fun set_lbr_fee(account: &signer, fee: u64) {
+  SimpleFee::set_fee<LBR>(account, fee)
+}
 }
 ```
 
-Be sure to change the account address for MyModule to match the account that you created.
+(The CLI client does not currently translate currency codes to coin types for custom scripts,
+so this example script is hardcoded to use LBR coins.)
 
-
-### Compile transaction script
-
-To compile your transaction script, use the [dev compile](libra-cli#dev--d--operations-related-to-move-transaction-scripts-and-modules) command.
+You'll also want a custom script to send a payment with an added fee, so in the same way, edit the account address in the following script and save it as `pay_lbr_with_fee.move`:
 
 ```
-libra% dev compile 0 <path to custom_script.move> <path to my_module.move> <path to language/stdlib/modules>
+script {
+use 0x1::LibraAccount;
+use 0x1::LBR::LBR;
+use 0x717da70a461fef6307990847590ad7af::SimpleFee;
+
+fun pay_lbr_with_fee(payer: &signer, payee: address, amount: u64) {
+  let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
+  let total = amount + SimpleFee::get_fee<LBR>(payee);
+  LibraAccount::pay_from<LBR>(&payer_withdrawal_cap, payee, total, x"", x"");
+  LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
+}
+}
 ```
 
- `custom_script.move` is the Move source file, and upon successful compilation of `custom_script.move` the compiler will output the corresponding bytecode file. You'll use this bytecode file (not the `.move` file) when you execute this script. After the script is successfully compiled, you'll see the path to the bytecode file in your output:
+### Compile transaction scripts
+
+To compile your transaction scripts, use the [dev compile](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command.
+
+```
+libra% dev compile 0 <path to set_lbr_fee.move> <path to SimpleFee.move> <path to language/stdlib/modules>
+```
+
+ `set_lbr_fee.move` is the Move source file, and upon successful compilation of `set_lbr_fee.move` the compiler will output the corresponding bytecode file. You'll use this bytecode file (not the `.move` file) when you execute this script. After the script is successfully compiled, you'll see the path to the bytecode file in your output:
 
 ```
 Successfully compiled a program at:
-  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
+  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv
 ```
 
-### Execute transaction script
+Repeat the compilation steps for the `pay_lbr_with_fee.move` script:
 
-To execute your script, use the [dev execute](libra-cli#dev--d--operations-related-to-move-transaction-scripts-and-modules) command on the bytecode output from [Compile Transaction Script](#compile-transaction-script) step above.
+```
+libra% dev compile 0 <path to pay_lbr_with_fee.move> <path to SimpleFee.move> <path to language/stdlib/modules>
+>> Compiling program
+Successfully compiled a program at:
+  /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/pay_lbr_with_fee.mv
+```
+
+### Execute transaction scripts
+
+To execute a custom script, use the [dev execute](reference/libra-cli#dev-d-mdash-operations-related-to-move-transaction-scripts-and-modules) command on the bytecode output from [Compile Transaction Script](#compile-transaction-script) step above. First let's use the `set_lbr_fee` script to specify a fee amount:
 
 <blockquote className="block_note">
 
@@ -195,26 +235,60 @@ To execute your script, use the [dev execute](libra-cli#dev--d--operations-relat
 </blockquote>
 
 ```
-libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv 10
+libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv 10000
 waiting .....
 transaction executed!
 Successfully finished execution
 ```
 
 * `0` &mdash; Index/ref_id of the sender account. For this example, it is the same account which compiled and published the module.
-* `/var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv` &mdash; Path to the compiled_script for this example.
-* `10` &mdash; Amount of microlibra. This amount must be less than or equal to the amount in the sender’s account.
+* `/var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv` &mdash; Path to the compiled script.
+* `10000` &mdash; Amount of the fee in units of micro-Libra (0.01 Libra).
+
+Next, we can set up another account and use the `pay_lbr_with_fee` script to send a payment with the added fee:
+
+```
+libra% account create
+>> Creating/retrieving next account from wallet
+Created/retrieved account #1 address aed273e4e7b36276e1442656cc16eb31
+libra% account mintb 1 10 LBR
+>> Minting coins
+waiting ....
+transaction executed!
+Finished minting!
+libra% dev execute 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/pay_lbr_with_fee.mv 0x717da70a461fef6307990847590ad7af 1000000
+waiting ....
+transaction executed!
+Successfully finished execution
+```
+
+* `1` &mdash; Index/ref_id of the sender account, which is the newly created account that will send the payment.
+* `/var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/pay_lbr_with_fee.mv` &mdash; Path to the compiled script.
+* `0x717da70a461fef6307990847590ad7af` &mdash; The payee account address (account index 0).
+* `1000000` &mdash; Amount of the payment in units of micro-Libra (1.0 Libra).
+
+The results of this transaction can be observed by querying the account balances:
+
+```
+libra% query balance 0
+Balance is: 77.010000LBR
+libra% query balance 1
+Balance is: 8.990000LBR
+```
+
+As expected, the 1.0 Libra payment was increased by the 0.01 Libra fee,
+so that 1.01 Libra was transferred from account 1 to account 0.
 
 ## Troubleshooting
 
 ### Compile move program
 
-If the client cannot locate your Move source file, you'll see this error:
+If the client cannot locate your Move source file, you'll see something like this error:
 
 ```
-libra% dev compile 0 ~/my-tscripts/custom_script.move
+libra% dev compile 0 ~/my-tscripts/set_lbr_fee.move
 >> Compiling program
-Error: No such file or directory '~/my-tscripts/custom_script.move'
+Error: No such file or directory '~/my-tscripts/set_lbr_fee.move'
 compilation failed
 ```
 
@@ -232,7 +306,7 @@ Invalid number of arguments for compilation
 If you compile a module using one account (e.g., `dev compile` 0 ...) and try to publish it to a different account (e.g., `dev publish` 1 ...), you'll see the following error:
 
 ```
-libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/transaction_0_module_MyModule.mv
+libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/modules/0_SimpleFee.mv
 
 transaction failed to execute; status: MODULE_ADDRESS_DOES_NOT_MATCH_SENDER!
 
@@ -258,14 +332,14 @@ Republishing/updating an existing module under the same sender account address d
 If the sender account index is invalid, you'll see this error:
 
 ```
-libra% dev execute 2 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv 10
+libra% dev execute 2 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv 10000
 Unable to find account by account reference id: 2, to see all existing accounts, run: 'account list'
 ```
 
 The following error indicates that either the arguments to the transaction script are missing or one or more of the arguments are of the wrong type.
 
 ```
-libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/transaction_0_script.mv
+libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv
 transaction failed to execute; status: TYPE_MISMATCH!
 
 ```

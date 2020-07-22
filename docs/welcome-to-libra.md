@@ -176,4 +176,4 @@ Check out the Libra Payment Network’s documentation and community sites, and s
 
 <div className="margin-vert--lg" />
 
-Tell us your plan to build a product or service. We know that not all aspects of the Libra Payment Network will be available immediately to some developers. We're excited to work with the community to evolve these features, and look forward to your participation!
+Tell us your plan to build a [product or service](/partner_form/). We know that not all aspects of the Libra Payment Network will be available immediately to some developers. We're excited to work with the community to evolve these features, and look forward to your participation!
