@@ -12,14 +12,17 @@ title: Run a Local Network
 `libra-swarm [FLAGS] [OPTIONS]`
 
 FLAGS:
-* `-l | --enable_logging` &mdash; Enables logging.
+
+* `-l | --enable-logging` &mdash; Enables logging.
 * `-h | --help` &mdash; Prints help information.
-* `-s | --start_client` &mdash; Starts Libra CLI client.
-* `-v | --version` &mdash; Prints version information.
+* `-s | --start-client` &mdash; Starts Libra CLI client.
+* `-V | --version` &mdash; Prints version information.
 
 OPTIONS:
-* `-n | --num_nodes <num_nodes>` &mdash; Number of local nodes to start (1 is the default).
-* `-c | --config_dir <config_dir>` &mdash; The directory used by `libra-swarm` to save the config files, logs, libradb, etc. for the nodes. The user can inspect the information saved in the `<config_dir>` even after `libra-swarm` exits. If this directory is unspecified, a temporary directory is used to save this information. The files in `<config_dir>` are automatically deleted when `libra-swarm` exits.
+
+* `-n | --num-nodes <num-nodes>` &mdash; Number of local nodes to start (1 is the default).
+* `-c | --config-dir <config-dir>` &mdash; The directory used by `libra-swarm` to save the config files, logs, libradb, etc. for the nodes. The user can inspect the information saved in the `<config-dir>` even after `libra-swarm` exits. If this directory is unspecified, a temporary directory is used to save this information. The files in `<config-dir>` are automatically deleted when `libra-swarm` exits.
+* `-f | --num-full-nodes <num-full-nodes>` &mdash; If greater than 0, starts a full node swarm connected to the first node in the validator swarm [default: 0]
 
 ## Prerequisites
 
@@ -89,28 +92,31 @@ cargo run --bin cli -- -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq
 This will spawn an instance of the CLI client in a separate process, and you will see the `libra%` prompt.
 
 A sample output from running this command is shown below:
-```
 
+```
 Finished dev [unoptimized + debuginfo] target(s) in 0.72s
 Running `target/debug/client -a localhost -p 57149 -s "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/.tmpmSSKk9/trusted_peers.config.toml" -m "/var/folders/xd/sfg4x6713w350lq73kgfc7qxnq5swl/T/keypair.ATvJWTliQf0a/temp_faucet_keys"
-Connected to validator at: localhost:57149
+Connected to validator at: http://localhost:57149
 usage: <command> <args>
 
 Use the following commands:
 
 account | a
-Account operations
+  Account operations
 query | q
-Query operations
+  Query operations
 transfer | transferb | t | tb
-<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 100000)] Suffix 'b' is for blocking.
-Transfer coins (in libra) from account to another.
+  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 400_000)] Suffix 'b' is for blocking. 
+  Transfer coins from one account to another.
+info | i
+  Print cli config and client internal information
 dev
-Local move development
+  Local Move development
 help | h
-Prints this help
+  Prints this help
 quit | q!
-Exit this client
+  Exit this client
+
 
 Please, input commands:
 

@@ -36,18 +36,20 @@ usage: <command> <args>
 Use the following commands:
 
 account | a
-Account operations
+  Account operations
 query | q
-Query operations
+  Query operations
 transfer | transferb | t | tb
-<sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 400_000)] Suffix 'b' is for blocking.
-Transfer coins from one account to another.
+  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 400_000)] Suffix 'b' is for blocking.
+  Transfer coins from one account to another.
+info | i
+  Print cli config and client internal information
 dev
-Local Move development
+  Local Move development
 help | h
-Prints this help
+  Prints this help
 quit | q!
-Exit this client
+  Exit this client
 
 
 Please, input commands:
@@ -65,8 +67,8 @@ Before publishing a Move module, you first need to create an account to host it:
 
 ```
 libra% account create
->> Creating/retrieving next account from wallet
-Created/retrieved account #0 address 717da70a461fef6307990847590ad7af
+>> Creating/retrieving next local account from wallet
+Created/retrieved local account #0 address 717da70a461fef6307990847590ad7af
 
 ```
 
@@ -76,10 +78,14 @@ The `create` command generates a local keypair. To create the account on the loc
 
 ```
 libra% account mintb 0 76 LBR
->> Minting coins
+>> Creating recipient account before minting from faucet
 waiting ....
 transaction executed!
-Finished minting!
+no events emitted
+>> Sending coins from faucet
+waiting ....
+transaction executed!
+Finished sending coins from faucet!
 ```
 To check whether the account was successfully created on the local blockchain, query the account balance.
 
@@ -239,6 +245,7 @@ To execute a custom script, use the [dev execute](reference/libra-cli#dev-d-mdas
 libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv 10000
 waiting .....
 transaction executed!
+no events emitted
 Successfully finished execution
 ```
 
@@ -250,13 +257,17 @@ Next, we can set up another account and use the `pay_lbr_with_fee` script to sen
 
 ```
 libra% account create
->> Creating/retrieving next account from wallet
-Created/retrieved account #1 address aed273e4e7b36276e1442656cc16eb31
+>> Creating/retrieving next local account from wallet
+Created/retrieved local account #1 address aed273e4e7b36276e1442656cc16eb31
 libra% account mintb 1 10 LBR
->> Minting coins
+>> Creating recipient account before minting from faucet
 waiting ....
 transaction executed!
-Finished minting!
+no events emitted
+>> Sending coins from faucet
+waiting ....
+transaction executed!
+Finished sending coins from faucet!
 libra% dev execute 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/pay_lbr_with_fee.mv 0x717da70a461fef6307990847590ad7af 1000000
 waiting ....
 transaction executed!
@@ -309,7 +320,7 @@ If you compile a module using one account (e.g., `dev compile` 0 ...) and try to
 ```
 libra% dev publish 1 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/b8639bd9fe2403874bbfde5643486bde/modules/0_SimpleFee.mv
 
-transaction failed to execute; status: MODULE_ADDRESS_DOES_NOT_MATCH_SENDER!
+transaction failed to execute; status: VerificationError!
 
 ```
 
@@ -341,7 +352,7 @@ The following error indicates that either the arguments to the transaction scrip
 
 ```
 libra% dev execute 0 /var/folders/tq/8gxrrmhx16376zxd5r4h9hhn_x1zq3/T/5fa11d0acf5d53e8d257ab31534b2017/scripts/set_lbr_fee.mv
-transaction failed to execute; status: TYPE_MISMATCH!
+transaction failed to execute; status: VerificationError!
 
 ```
 

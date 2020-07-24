@@ -84,8 +84,12 @@ account | a
 query | q
   Query operations
 transfer | transferb | t | tb
-  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> [gas_unit_price (default=0)] [max_gas_amount (default 10000)] Suffix 'b' is for blocking.
-  Transfer coins from account to another.
+  <sender_account_address>|<sender_account_ref_id> <receiver_account_address>|<receiver_account_ref_id> <number_of_coins> <currency_code> [gas_unit_price_in_micro_libras (default=0)] [max_gas_amount_in_micro_libras (default 400_000)] Suffix 'b' is for blocking.
+  Transfer coins from one account to another.
+info | i
+  Print cli config and client internal information
+dev
+  Local Move development
 help | h
   Prints this help
 quit | q!
@@ -120,15 +124,15 @@ usage: account <arg>
 Use the following args for this command:
 
 create | c
-  Create an account. Returns reference ID to use in other operations
+  Create a local account--no on-chain effect. Returns reference ID to use in other operations
 list | la
   Print all accounts that were created or loaded
 recover | r <file path>
   Recover Libra wallet from the file path
 write | w <file name>
   Save Libra wallet mnemonic recovery seed to disk
-mint | mintb | m | mb <receiver account> <number of coins>
-  Mint coins to the account. Suffix 'b' is for blocking
+mint | mintb | m | mb <receiver_account_ref_id>|<receiver_account_address> <number_of_coins> <currency_code> [use_base_units (default=false)]
+  Send currency of the given type from the faucet address to the given recipient address. Creates an account at the recipient address if one does not already exist. Suffix 'b' is for blocking
 addc | addcb | ac | acb <account_address> <currency_code>
   Add specified currency to the account. Suffix 'b' is for blocking
 
@@ -145,8 +149,8 @@ To create Alice’s account, enter this command:
 Sample output on success:
 
 ```plaintext
->> Creating/retrieving next account from wallet
-Created/retrieved account #0 address cc2219df031a68115fad9aee98e051e9
+>> Creating/retrieving next local account from wallet
+Created/retrieved local account #0 address cc2219df031a68115fad9aee98e051e9
 ```
 
 0 is the index of Alice’s account, and the hex string is the address of Alice’s account. The index is just a way to refer to Alice’s account. The account index is a local CLI index that can be used in other CLI commands for users to conveniently refer to the accounts they have created. The index is meaningless to the blockchain. Alice’s account will be created on the blockchain only when either money is added to Alice’s account via minting, or money is transferred to Alice’s account via a transfer from another user. Note that you may also use the hex address in CLI commands. The account index is just a convenience wrapper around the account address.
@@ -160,8 +164,8 @@ To create Bob’s account, repeat the account creation command:
 Sample output on success:
 
 ```plaintext
->> Creating/retrieving next account from wallet
-Created/retrieved account #1 address 33138303ce638c8fa469435250f5f1c3
+>> Creating/retrieving next local account from wallet
+Created/retrieved local account #1 address 33138303ce638c8fa469435250f5f1c3
 ```
 
 1 is the index for Bob’s account, and the hex string is the address of Bob’s account.
@@ -199,8 +203,12 @@ A successful account mint command will also create Alice’s account on the bloc
 Sample output on success:
 
 ```plaintext
->> Minting coins
-Mint request submitted
+>> Creating recipient account before minting from faucet
+waiting ....
+transaction executed!
+no events emitted
+>> Sending coins from faucet
+Request submitted to faucet
 ```
 Note that when the request is submitted, it means that it has been added to the mempool (of a validator node on testnet) successfully. It does not necessarily imply that it will be successfully completed. Later, we will query the account balance to confirm if minting was successful.
 
@@ -221,8 +229,12 @@ To mint Libra and add to Bob’s account, enter this command:
 Sample output on success:
 
 ```plaintext
->> Minting coins
-Mint request submitted
+>> Creating recipient account before minting from faucet
+waiting ....
+transaction executed!
+no events emitted
+>> Sending coins from faucet
+Request submitted to faucet
 ```
 If your account mint command did not submit your request successfully, refer to
 [Troubleshooting](#minting-and-adding-money-to-account)
@@ -351,8 +363,8 @@ If your client did not connect to the testnet:
 
   ```plaintext
   libra% account mint 0 110 LBR
-  >> Minting coins
-  [ERROR] Error minting coins: Server unavailable, please retry and/or check **if** host passed to the client is running
+  ....
+  [ERROR] Error transferring coins from faucet: Server unavailable, please retry and/or check **if** host passed to the client is running
   ```
 * If your balance was not updated after submitting a transaction, wait a moment and query the balance again. There may be a delay if the blockchain is experiencing a very high volume of transactions.  If your balance still is not updated, please try minting again.
 
@@ -387,23 +399,23 @@ This example will query for a single transaction's details using the account and
 libra% query txn_acc_seq 0 0 true
 >> Getting committed transaction by account and sequence number
 Committed transaction: TransactionView {
-    version: 2168,
+    version: 2788,
     transaction: UserTransaction {
         sender: "cc2219df031a68115fad9aee98e051e9",
         signature_scheme: "Scheme::Ed25519",
         signature: "6bbdb1410d2ff27de675a40c7d4d3a6cab149302ca3e4f789100ede739009147d066da60680d34dc1aa32dcf22d21ea679da22963e0027292c8b76f287aad70d",
         public_key: "babe538296960c2822f569c9ecf086e77d42c86240f6d813e7a17e0d193199ce",
         sequence_number: 0,
+        chain_id: 4,
         max_gas_amount: 1000000,
         gas_unit_price: 0,
-        expiration_time: 1590540963,
+        gas_currency: "LBR",
+        expiration_timestamp_secs: 1595614184,
         script_hash: "c8bc3dda60e9662965b3223c22e3d3e3e7b6f698cf1a6930a449eb99daa35e7c",
         script: PeerToPeer {
             receiver: "33138303ce638c8fa469435250f5f1c3",
-            auth_key_prefix: BytesView(
-                "e0707324f21c8103e5f1d0c2a528ee86",
-            ),
             amount: 10000000,
+            currency: "LBR",
             metadata: BytesView(
                 "",
             ),
@@ -412,13 +424,14 @@ Committed transaction: TransactionView {
             ),
         },
     },
+    hash: "b33f9dfb4f0cb161b3f6ce84398381dbd132978f2810d66e04003ff64e1f2dd6",
     events: [
         EventView {
             key: BytesView(
                 "0100000000000000cc2219df031a68115fad9aee98e051e9",
             ),
             sequence_number: 0,
-            transaction_version: 2168,
+            transaction_version: 2788,
             data: SentPayment {
                 amount: AmountView {
                     amount: 10000000,
@@ -426,6 +439,9 @@ Committed transaction: TransactionView {
                 },
                 receiver: BytesView(
                     "33138303ce638c8fa469435250f5f1c3",
+                ),
+                sender: BytesView(
+                    "cc2219df031a68115fad9aee98e051e9",
                 ),
                 metadata: BytesView(
                     "",
@@ -437,7 +453,7 @@ Committed transaction: TransactionView {
                 "000000000000000033138303ce638c8fa469435250f5f1c3",
             ),
             sequence_number: 1,
-            transaction_version: 2168,
+            transaction_version: 2788,
             data: ReceivedPayment {
                 amount: AmountView {
                     amount: 10000000,
@@ -446,14 +462,17 @@ Committed transaction: TransactionView {
                 sender: BytesView(
                     "cc2219df031a68115fad9aee98e051e9",
                 ),
+                receiver: BytesView(
+                    "33138303ce638c8fa469435250f5f1c3",
+                ),
                 metadata: BytesView(
                     "",
                 ),
             },
         },
     ],
-    vm_status: EXECUTED,
-    gas_used: 0,
+    vm_status: Executed,
+    gas_used: 175,
 }
 ```
 
@@ -466,7 +485,7 @@ In the following example, we will query for “sent” events from the account a
 ```plaintext
 libra% query event 0 sent 0 10
 >> Getting events by account and event type.
-EventView { key: BytesView("0100000000000000cc2219df031a68115fad9aee98e051e9"), sequence_number: 0, transaction_version: 2168, data: SentPayment { amount: AmountView { amount: 10000000, currency: "LBR" }, receiver: BytesView("33138303ce638c8fa469435250f5f1c3"), metadata: BytesView("") } }
+EventView { key: BytesView("0100000000000000cc2219df031a68115fad9aee98e051e9"), sequence_number: 0, transaction_version: 2788, data: SentPayment { amount: AmountView { amount: 10000000, currency: "LBR" }, receiver: BytesView("33138303ce638c8fa469435250f5f1c3"), sender: BytesView("cc2219df031a68115fad9aee98e051e9"), metadata: BytesView("") } }
 Last event state: AccountView {
     balances: [
         AmountView {
@@ -486,6 +505,16 @@ Last event state: AccountView {
     ),
     delegated_key_rotation_capability: false,
     delegated_withdrawal_capability: false,
+    is_frozen: false,
+    role: ParentVASP {
+        human_name: "testnet",
+        base_url: "https://libra.org",
+        expiration_time: 18446744073709551615,
+        compliance_key: BytesView(
+            "b7a3c12dc0c8c748ab07525b701122b88bd78f600c76342d27f25e5f92444cde",
+        ),
+        num_children: 0,
+    },
 }
 ```
 
@@ -558,9 +587,19 @@ Latest account state is:
         ),
         delegated_key_rotation_capability: false,
         delegated_withdrawal_capability: false,
+        is_frozen: false,
+        role: ParentVASP {
+            human_name: "testnet",
+            base_url: "https://libra.org",
+            expiration_time: 18446744073709551615,
+            compliance_key: BytesView(
+                "b7a3c12dc0c8c748ab07525b701122b88bd78f600c76342d27f25e5f92444cde",
+            ),
+            num_children: 0,
+        },
     },
 )
- Blockchain Version: 3590
+ Blockchain Version: 8012
 ```
 
 ## Run a Local Validator Node
