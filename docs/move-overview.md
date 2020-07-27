@@ -64,59 +64,31 @@ Now let us see how a programmer can interact with these modules and resources in
 // Simple peer-peer payment example.
 
 script {
-  // Use the LibraAccount module published on the blockchain at account address
-  // 0x0...1. 0x1 is shorthand that the language pads out to
-  // 16 bytes by adding leading zeroes.
-  use 0x1::LibraAccount;
-  // Use the LBR resource from the LBR module. Naming the resource here makes
-  // it possible to reference the resource without the module name.
-  use 0x1::LBR::LBR;
-  fun main(payer: &signer, payee: address, amount: u64) {
-    // Acquire the capability to withdraw from the payer's account.
-    let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
-    // Acquire a Libra<LBR> resource with value `amount` from the payer's
-    // account.  This will fail if the payer's balance is less than `amount`.
-    let coin = LibraAccount::withdraw_from<LBR>(&payer_withdrawal_cap, amount);
-    // Restore the capability back to the payer's account.
-    LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
-    // Move the `coin` resource into the account of `payee`. If there is no
-    // account at the address `payee`, this step will fail
-    // Note that we could have also written `deposit<LBR>` here, but the
-    // compiler is able to infer this for us based on the type of `coin`
-    LibraAccount::deposit(payer, payee, coin);
-  }
+// Use the LibraAccount module published on the blockchain at account address
+// 0x0...1. 0x1 is shorthand that the language pads out to
+// 16 bytes by adding leading zeroes.
+use 0x1::LibraAccount;
+// Use the LBR resource from the LBR module. Naming the resource here makes
+// it possible to reference the resource without the module name.
+use 0x1::LBR::LBR;
+
+fun peer_to_peer_lbr_payment(payer: &signer, payee: address, amount: u64) {
+  // Acquire the capability to withdraw from the payer's account.
+  let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
+  // Withdraw a value of `amount` LBR from the payer's account and deposit
+  // it into the account at the address `payee`. This will fail if the
+  // payer's balance is less than `amount` or if there is no account at the
+  // address `payee`. The `metadata` and `metadata_signature` arguments are
+  // not specified, so this could also fail if the transaction requires
+  // that information.
+  LibraAccount::pay_from<LBR>(&payer_withdrawal_cap, payee, amount, x"", x"");
+  // Restore the capability back to the payer's account.
+  LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
+}
 }
 ```
 
-Let us look at a more complex example. In this example, we will use a transaction script to pay multiple recipients instead of just one.
-
-```move
-// Multiple payee example. This is written in a slightly verbose way to
-// emphasize the ability to split a `Libra<LBR>` resource. The more concise
-// way would be to use multiple calls to `LibraAccount::withdraw_from`.
-
-script {
-  use 0x1::Libra;
-  use 0x1::LibraAccount;
-  use 0x1::LBR::LBR;
-  fun main(payer: &signer, payee1: address, amount1: u64, payee2: address, amount2: u64) {
-    let payer_withdrawal_cap = LibraAccount::extract_withdraw_capability(payer);
-    let total = amount1 + amount2;
-    let coin1 = LibraAccount::withdraw_from<LBR>(&payer_withdrawal_cap, total);
-    LibraAccount::restore_withdraw_capability(payer_withdrawal_cap);
-
-    // This mutates `coin1`, which now has value `amount1`.
-    // `coin2` has value `amount2`.
-    let coin2 = Libra::withdraw(&mut coin1, amount2);
-
-    // Perform the payments
-    LibraAccount::deposit(payer, payee1, coin1);
-    LibraAccount::deposit(payer, payee2, coin2)
-  }
-}
-```
-
-This concludes our "tour" of transaction scripts. For more examples, including the transaction scripts supported in the initial testnet, refer to `libra/language/stdlib/transaction_scripts`.
+For more examples, including the transaction scripts supported in the initial testnet, refer to `libra/language/stdlib/transaction_scripts`.
 
 ### Writing Modules
 
@@ -134,63 +106,64 @@ To solve this problem for Alice, we will write a module `EarmarkedLibra` which:
 // The address where the module will be published:
 address 0xcc2219df031a68115fad9aee98e051e9 {
 
-  // A module for earmarking a coin for a specific recipient
-  module EarmarkedLibraCoin {
-    use 0x1::Libra::Libra;
-    use 0x1::Signer;
+// A module for earmarking a coin for a specific recipient
+module EarmarkedLibraCoin {
+  use 0x1::Libra::Libra;
+  use 0x1::Signer;
 
-    // A wrapper containing a generic Libra and the address of the recipient the
-    // coin is earmarked for.
-    resource struct EarmarkedLibraCoin<Token> {
-      coin: Libra<Token>,
-      recipient: address
-    }
-
-    // Create a new earmarked coin with the given `recipient`.
-    // Publish the coin under the transaction sender's account address.
-    public fun create<Token>(sender: &signer, coin: Libra<Token>, recipient: address) {
-      // Construct or "pack" a new EarmarkedLibraCoin resource. Only procedures of the
-      // `EarmarkedLibraCoin` module can create that resource.
-      let t = EarmarkedLibraCoin { coin, recipient };
-
-      // Publish the earmarked coin under the transaction sender's account
-      // address. Each account can contain at most one resource of a given type;
-      // this call will fail if the sender already has a resource of this type.
-      move_to(sender, t);
-    }
-
-    // Allow the transaction sender to claim a coin that was earmarked for her.
-    public fun claim_for_recipient<Token>(
-      sender: &signer,
-      earmarked_coin_address: address
-    ): Libra<Token> acquires EarmarkedLibraCoin {
-      // Remove the earmarked coin resource published under `earmarked_coin_address`
-      // and "unpack" it to remove `coin and `recipient`.
-      // If there is no resource of type EarmarkedLibraCoin<Token> published under
-      // the address, this will fail.
-      let EarmarkedLibraCoin { coin, recipient } =
-        move_from<EarmarkedLibraCoin<Token>>(earmarked_coin_address);
-
-      // Ensure that the transaction sender is the recipient. If this assertion
-      // fails, the transaction will fail and none of its effects (e.g.,
-      // removing the earmarked coin) will be committed.  99 is an error code
-      // that will be emitted in the transaction output if the assertion fails.
-      assert(recipient == Signer::address_of(sender), 99);
-
-      // Return the coin
-      coin
-    }
-
-    // Allow the creator of the earmarked coin to reclaim it.
-    public fun claim_for_creator<Token>(
-      sender: &signer
-    ): Libra<Token> acquires EarmarkedLibraCoin {
-      let EarmarkedLibraCoin { coin, recipient:_ } =
-        move_from<EarmarkedLibraCoin<Token>>(Signer::address_of(sender));
-      coin
-    }
-
+  // A wrapper containing a generic Libra and the address of the recipient the
+  // coin is earmarked for.
+  resource struct EarmarkedLibraCoin<Token> {
+    coin: Libra<Token>,
+    recipient: address
   }
+
+  // Error codes
+  const EWRONG_RECIPIENT: u64 = 0;
+
+  // Create a new earmarked coin with the given `recipient`.
+  // Publish the coin under the transaction sender's account address.
+  public fun create<Token>(sender: &signer, coin: Libra<Token>, recipient: address) {
+    // Construct or "pack" a new EarmarkedLibraCoin resource. Only procedures of the
+    // `EarmarkedLibraCoin` module can create that resource.
+    let t = EarmarkedLibraCoin { coin, recipient };
+
+    // Publish the earmarked coin under the transaction sender's account
+    // address. Each account can contain at most one resource of a given type;
+    // this call will fail if the sender already has a resource of this type.
+    move_to(sender, t);
+  }
+
+  // Allow the transaction sender to claim a coin that was earmarked for her.
+  public fun claim_for_recipient<Token>(
+    sender: &signer,
+    earmarked_coin_address: address
+  ): Libra<Token> acquires EarmarkedLibraCoin {
+    // Remove the earmarked coin resource published under `earmarked_coin_address`
+    // and "unpack" it to remove `coin and `recipient`.
+    // If there is no resource of type EarmarkedLibraCoin<Token> published under
+    // the address, this will fail.
+    let EarmarkedLibraCoin { coin, recipient } =
+      move_from<EarmarkedLibraCoin<Token>>(earmarked_coin_address);
+
+    // Ensure that the transaction sender is the recipient. If this assertion
+    // fails, the transaction will fail and none of its effects (e.g.,
+    // removing the earmarked coin) will be committed.
+    assert(recipient == Signer::address_of(sender), EWRONG_RECIPIENT);
+
+    // Return the coin
+    coin
+  }
+
+  // Allow the creator of the earmarked coin to reclaim it.
+  public fun claim_for_creator<Token>(
+    sender: &signer
+  ): Libra<Token> acquires EarmarkedLibraCoin {
+    let EarmarkedLibraCoin { coin, recipient:_ } =
+      move_from<EarmarkedLibraCoin<Token>>(Signer::address_of(sender));
+    coin
+  }
+}
 }
 ```
 
