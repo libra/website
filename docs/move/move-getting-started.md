@@ -88,7 +88,7 @@ fun peer_to_peer_lbr_payment(payer: &signer, payee: address, amount: u64) {
 }
 ```
 
-For more examples, including the transaction scripts supported in the initial testnet, refer to `libra/language/stdlib/transaction_scripts`.
+For more examples, including the transaction scripts supported in the initial testnet, refer to [`libra/language/stdlib/transaction_scripts`](https://github.com/libra/libra/tree/master/language/stdlib/transaction_scripts).
 
 ### Writing modules
 
