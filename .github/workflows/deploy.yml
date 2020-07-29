@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  deploy:
     if: github.repository == 'libra/website'
     
     runs-on: ubuntu-latest
