@@ -2,7 +2,7 @@
 id: welcome-to-libra
 title: Libra Developer Documentation
 disable_pagination: true
-sidebar_label: Home
+sidebar_label: Welcome to Libra
 ---
 
 <span />
