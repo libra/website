@@ -53,7 +53,7 @@ const Sidebar = [
       iconDark: 'img/merchant-solutions-dark.svg',
       iconClasses: ['listTitle'],
     },
-    label: 'Wallets',
+    label: 'Merchants',
     type: 'category',
     items: [
       'merchant/overview',
