@@ -1,11 +1,5 @@
 ---
-<<<<<<< HEAD
 id: gas
-title: Gas
----
-
-=======
-id: libra-gas
 title: Gas
 ---
 

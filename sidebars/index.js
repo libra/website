@@ -8,8 +8,8 @@ const NodeOperators = require('./node-operators');
 module.exports = {
   Core,
   Home,
-  MerchantSolutions,
-  Move,
-  NodeOperators,
-  WalletApp,
+  // MerchantSolutions,
+  // Move,
+  // NodeOperators,
+  // WalletApp,
 };

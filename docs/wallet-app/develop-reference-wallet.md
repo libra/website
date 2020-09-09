@@ -1,7 +1,7 @@
 ---
 id: develop-reference-wallet
 title: 'Reference Wallet Development'
-sidebar_label: Set Up
+sidebar_label: Setup & Extending the Wallet
 
 ---
 

@@ -39,12 +39,7 @@ const Sidebar = [
     type: 'category',
     items: [
       'wallet-app/intro-to-lrw',
-      'wallet-app/wallet-arch',
-      'wallet-app/libra-c-source',
-      'core/gas',
-      'core/nodes',
-      'core/clients',
-      'core/events',
+      'wallet-app/develop-reference-wallet',
     ]
   },
   {
@@ -179,28 +174,6 @@ const Sidebar = [
         href: 'https://github.com/libra/libra-client-sdk-typescript',
         label: 'TypeScript',
       },
-    ]
-  },
-  {
-    extra: {
-      icon: 'img/wallet-app.svg',
-      iconDark: 'img/wallet-app-dark.svg',
-      iconClasses: ['listTitle'],
-    },
-    label: 'Extend Reference Wallet',
-    type: 'category',
-    items: [
-      'wallet-app/login-and-auth',
-      'wallet-app/custody-mod',
-      'wallet-app/compliance-mod',
-      'wallet-app/risk-mod',
-      'wallet-app/trxn-wf',
-      'wallet-app/storage-mod',
-      'wallet-app/service-api',
-      'wallet-app/pubsub',
-      'wallet-app/inventory-mod',
-      'wallet-app/admin-mod',
-      'wallet-app/localizn',
     ]
   },
   getReference('primary'),

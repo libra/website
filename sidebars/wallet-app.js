@@ -30,8 +30,6 @@ const Sidebar = [
     type: 'category',
     items: [
       'wallet-app/intro-to-lrw',
-      'wallet-app/wallet-arch',
-      'wallet-app/libra-c-source',
     ]
   },
   {
