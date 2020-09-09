@@ -1,5 +1,5 @@
 ---
-id: try-local-lrw
+id: try-local-web-wallet
 title: 'Try the Local Wallet'
 sidebar_label: Try the Local Web Wallet
 
