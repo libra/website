@@ -1,7 +1,7 @@
 ---
 id: intro-to-lrw
-title: 'Introduction to the Libra Reference Wallet'
-sidebar_label: Introduction
+title: 'Try the Local Wallet'
+sidebar_label: Try the Local Web Wallet
 ---
 
 
