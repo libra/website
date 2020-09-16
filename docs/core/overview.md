@@ -1,6 +1,6 @@
 ---
 id: overview
-sidebar_label: Core Contributors
+sidebar_label: Libra Core
 title: Overview
 ---
 

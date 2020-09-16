@@ -7,7 +7,7 @@ const Sidebar = [
       classNames: ['categoryLabel'],
       icon: 'img/core-contributors.svg',
       iconDark: 'img/core-contributors-dark.svg',
-      noLink: true,
+      noLink: false,
     },
     id: 'core/overview',
     type: 'doc',
@@ -33,8 +33,14 @@ const Sidebar = [
       'core/life-of-a-transaction',
       'core/the-libra-blockchain-paper',
       'core/state-machine-replication-paper',
+      'core/accounts',
+      'core/transaction-types',
+      'core/gas',
+      'core/nodes',
+      'core/clients',
+      'core/events',
     ]
-  },
+  },  
   {
     extra: {
       icon: 'img/tutorials.svg',
@@ -45,6 +51,7 @@ const Sidebar = [
     type: 'category',
     items: [
       'core/my-first-transaction',
+      'core/my-first-client',
       'core/run-local-network',
     ]
   },
